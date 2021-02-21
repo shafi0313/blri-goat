@@ -59,7 +59,7 @@
 			<!-- Logo Header -->
 			<div class="logo-header">
 
-                <a href="{{ route('admin.dashboard') }}" class="logo"> <h3 class="display:4 text-light mt-3">Mondol Traders</h3>
+                <a href="{{ route('admin.dashboard') }}" class="logo"> <h3 class="display:4 text-light mt-3">Animal Info.(Goat)</h3>
 					{{-- <img src="{{ asset('backend/img/logoazzara.svg') }}" alt="navbar brand" class="navbar-brand"> --}}
 				</a>
 				<button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">

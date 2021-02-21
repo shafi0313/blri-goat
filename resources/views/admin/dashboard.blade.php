@@ -64,8 +64,8 @@
                                 <div class="col col-stats">
                                     <div class="numbers">
                                         <a href="">
-                                            <p class="card-category">Total Customer</p>
-                                            <h4 class="card-title"></h4>
+                                            <p class="card-category">Total Farm</p>
+                                            <h4 class="card-title">10</h4>
                                         </a>
                                     </div>
                                 </div>
@@ -85,8 +85,8 @@
                                 <div class="col col-stats">
                                     <div class="numbers">
                                         <a href="">
-                                            <p class="card-category">Total Supplier</p>
-                                            <h4 class="card-title"></h4>
+                                            <p class="card-category">Total Community</p>
+                                            <h4 class="card-title">5</h4>
                                         </a>
                                     </div>
                                 </div>
@@ -106,8 +106,8 @@
                                 <div class="col col-stats">
                                     <div class="numbers">
                                         <a href="">
-                                            <p class="card-category">Total Product</p>
-                                            <h4 class="card-title"> </h4>
+                                            <p class="card-category">Total Goat</p>
+                                            <h4 class="card-title"> 100</h4>
                                         </a>
                                     </div>
                                 </div>
@@ -137,7 +137,7 @@
                         </div>
                     </div>
                 </div> --}}
-                <div class="col-sm-6 col-md-4">
+                {{-- <div class="col-sm-6 col-md-4">
                     <div class="card card-stats card-info card-round">
                         <div class="card-body">
                             <div class="row">
@@ -158,7 +158,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-6 col-md-4">
+                <div class="col-sm-6 col-md-4"> --}}
                     {{-- <div class="card card-stats card-info card-round">
                         <div class="card-body">
                             <div class="row">

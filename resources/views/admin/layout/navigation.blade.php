@@ -75,9 +75,64 @@
                                     <span class="sub-item">User Management</span>
                                 </a>
                             </li>
-                            {{-- <li class="{{$sm=='adminIndex'?'activeSub':''}}">
-                                <a href="{{ route('employee.index')}}">
-                                    <span class="sub-item">Employee</span>
+                            <li class="{{$sm=='adminIndex'?'activeSub':''}}">
+                                <a href="{{ route('farmer.index')}}">
+                                    <span class="sub-item">Farmer</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+
+                <li class="nav-item {{$p=='invoice'?'active':''}}">
+                    <a data-toggle="collapse" href="#invoice">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                        <p>Tools</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse" id="invoice">
+                        <ul class="nav nav-collapse">
+                            <li>
+                                <a href="{{ route('farm.index') }}">
+                                    <span class="sub-item">Farm</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('community-cat.index') }}">
+                                    <span class="sub-item">Community Category</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('animal-cat.index') }}">
+                                    <span class="sub-item">Animal Category</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('community.index') }}">
+                                    <span class="sub-item">Community</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li class="nav-item {{$p=='invoice'?'active':''}}">
+                    <a data-toggle="collapse" href="#animal">
+                        <i class="fas fa-info-circle"></i>
+                        <p>Animal </p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse" id="animal">
+                        <ul class="nav nav-collapse">
+                            <li>
+                                <a href="{{ route('animalInfo.user') }}">
+                                    <span class="sub-item">Animal Information</span>
+                                </a>
+                            </li>
+                            {{-- <li>
+                                <a href="{{ route('community.index') }}">
+                                    <span class="sub-item">Community</span>
                                 </a>
                             </li> --}}
                         </ul>

@@ -7,17 +7,17 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
-class AdminUserController extends Controller
+class FarmerController extends Controller
 {
     public function index()
     {
-        $adminUsers = User::where('type', 1)->get();
-        return view('admin.user_management.admin.index', compact('adminUsers'));
+        $adminUsers = User::where('type', 2)->get();
+        return view('admin.user_management.farmer.index', compact('adminUsers'));
     }
 
     public function create()
     {
-        return view('admin.user_management.admin.create');
+        return view('admin.user_management.farmer.create');
     }
 
     public function store(Request $request)
@@ -26,7 +26,6 @@ class AdminUserController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users,email',
             'phone' => 'required|numeric',
-            'is' => 'required',
             'address' => 'required',
             'password' => 'required|confirmed|min:6',
         ]);
@@ -46,8 +45,8 @@ class AdminUserController extends Controller
             'phone' => $request->input('phone'),
             'age' => $request->input('age'),
             'gender' => $request->input('gender'),
-            'type' => 1,
-            'is' => $request->input('is'),
+            'type' => 2,
+            'is' => 1,
             'address' => $request->input('address'),
             'profile_photo_path' => $image_name,
             'password' => bcrypt($request->input('password')),
@@ -58,17 +57,17 @@ class AdminUserController extends Controller
         try {
             $user = User::create($data);
             $permission = [
-                'role_id' => $request->input('is'),
+                'role_id' => 2,
                 'model_type' => "App\Models\User",
                 'model_id' =>  $user->id,
             ];
             DB::table('model_has_roles')->insert($permission);
             DB::commit();
-            toast('User Successfully Inserted','success');
-            return redirect()->route('admin-user.index');
+            toast('Farmer Successfully Inserted','success');
+            return redirect()->route('farmer.index');
         } catch (\Exception $ex) {
             DB::rollBack();
-            toast($ex->getMessage().'User Inserted Faild','error');
+            toast($ex->getMessage().'Farmer Inserted Faild','error');
             return back();
         }
     }
@@ -76,7 +75,7 @@ class AdminUserController extends Controller
     public function edit($id)
     {
         $adminUsers = User::find($id);
-        return view('admin.user_management.admin.edit', compact('adminUsers'));
+        return view('farmer.user_management.farmer.edit', compact('adminUsers'));
     }
 
     public function update(Request $request, $id)
@@ -128,15 +127,24 @@ class AdminUserController extends Controller
         }
     }
 
-    public function __construct()
-    {
-         $this->middleware('password.confirm')->only('destroy');
-    }
-
     public function destroy(Request $request, $id)
     {
+        $getData = User::where('is', 1)->first();
+        // $getData = User::where('is', 1)->get();
+        // foreach($getData as $getDatas){
+        //     return $getDatas->password;
+        // }
+        return $getData->password;
+        // return$password = bcrypt($request->password);
+        // return User::find($id);
 
-        return $request;
+
+        if($getData->password == $request->password){
+            return 'asdfgasdf';
+        }else{
+            return 'Not';
+        }
+
 
     }
 }

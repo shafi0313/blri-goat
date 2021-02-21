@@ -1,5 +1,5 @@
 @extends('admin.layout.master')
-@section('title', 'Author')
+@section('title', 'Farmer')
 @section('content')
 @php $p='tools'; $sm="userCreate"; @endphp
 <div class="main-panel">
@@ -9,9 +9,9 @@
                 <ul class="breadcrumbs">
                     <li class="nav-home"><a href="{{ route('admin.dashboard')}}"><i class="flaticon-home"></i></a></li>
                     <li class="separator"><i class="flaticon-right-arrow"></i></li>
-                    <li class="nav-item"><a href="{{ route('admin-user.index')}}">Author</a></li>
+                    <li class="nav-item"><a href="{{ route('farmer.index')}}">Farmer</a></li>
                     <li class="separator"><i class="flaticon-right-arrow"></i></li>
-                    <li class="nav-item active">Add Author</li>
+                    <li class="nav-item active">Add Farmer</li>
                 </ul>
             </div>
             <div class="divider1"></div>
@@ -19,11 +19,11 @@
                 <div class="col-md-12">
                     <div class="card">
                         {{-- Page Content Start --}}
-                        <div class="card-header">
+                        {{-- <div class="card-header">
                             <div class="d-flex align-items-center">
-                                <h4 class="card-title">Add Author</h4>
+                                <h4 class="card-title">Add Farmer</h4>
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="card-body">
                             @if ($errors->any())
                                 <div class="alert alert-danger">
@@ -34,22 +34,9 @@
                                     </ul>
                                 </div>
                             @endif
-                            <form action="{{ route('admin-user.store')}}" method="post" enctype="multipart/form-data">
+                            <form action="{{ route('farmer.store')}}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
-                                    <div class="form-group col-sm-6">
-                                        <label for="business_name">Permission <span class="t_r">*</span></label>
-                                        <select name="is" id="" class="form-control @error('is') is-invalid @enderror">
-                                            <option selected value disabled>Select</option>
-                                            <option value="1">Admin</option>
-                                            {{-- <option value="2">Editor</option>
-                                            <option value="3">Viewer</option> --}}
-                                        </select>
-                                        @error('is_')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-
                                     <div class="form-group col-sm-6">
                                         <label for="name">Name <span class="t_r">*</span></label>
                                         <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{old('name')}}" placeholder="Enter Author Name" required>
@@ -57,8 +44,6 @@
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
-
-
 
                                     <div class="form-group col-sm-6">
                                         <label for="phone">Phone<span class="t_r">*</span></label>
@@ -99,7 +84,6 @@
                                     <div class="form-group col-sm-6">
                                         <label for="address">Address <span class="t_r">*</span></label>
                                         <textarea name="address" id="" cols="15" rows="6" class="form-control @error('address') is-invalid @enderror" value="{{old('address')}}" placeholder="Enter Mailing Address" required></textarea>
-                                        {{-- <input type="text" name="address" class="form-control @error('address') is-invalid @enderror" value="{{old('address')}}" placeholder="Enter Address" required> --}}
                                         @error('address')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror

@@ -1,5 +1,5 @@
 @extends('admin.layout.master')
-@section('title', 'Admin User')
+@section('title', 'Farmer')
 @section('content')
 @php $p='admin'; $sm='adminIndex'; @endphp
 <div class="main-panel">
@@ -10,7 +10,7 @@
                     <li class="nav-home">
                         <a href="{{ route('admin.dashboard')}}" title="Dashboard"><i class="flaticon-home"></i></a></li>
                     <li class="separator"><i class="flaticon-right-arrow"></i></li>
-                    <li class="nav-item active">Admin user</li>
+                    <li class="nav-item active">Farmer /li>
                 </ul>
             </div>
             <div class="divider1"></div>
@@ -19,10 +19,10 @@
                     <div class="card">
                         <div class="card-header">
                             <div class="d-flex align-items-center">
-                                <h4 class="card-title">Admin User</h4>
-                                <a class="btn btn-primary btn-round ml-auto" href="{{ route('admin-user.create') }}">
+                                <h4 class="card-title">Farmer</h4>
+                                <a class="btn btn-primary btn-round ml-auto" href="{{ route('farmer.create') }}">
                                     <i class="fa fa-plus"></i>
-                                    Add New Admin User
+                                    Add New
                                 </a>
                             </div>
                         </div>
@@ -66,7 +66,7 @@
                                                         <i class="fa fa-edit"></i>
                                                     </a>
 
-                                                    <a data-route="{{ route('admin.destroy', $adminUser->id) }}" class="_delete"></a>
+                                                    <a data-route="{{ route('admin-user.destroy', $adminUser->id) }}" class="_delete"></a>
 
                                                     {{-- <a href="admin/users/destroy/{{$adminUser->id}}" data-toggle="tooltip" title="" class="btn btn-link btn-danger delete" data-original-title="Remove">
                                                         <i class="fa fa-times"></i>

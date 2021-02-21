@@ -2,9 +2,15 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\FarmController;
 use App\Http\Controllers\Admin\LoginController;
+use App\Http\Controllers\Admin\FarmerController;
 use App\Http\Controllers\Admin\AdminUserController;
+use App\Http\Controllers\Admin\AnimalCatController;
+use App\Http\Controllers\Admin\CommunityController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\AnimalInfoController;
+use App\Http\Controllers\Admin\CommunityCatController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,8 +42,31 @@ Route::middleware(['auth','admin'])->prefix('admin')->group(function(){
 
     // User Start________________________________________________________________________________________________________________
     Route::resource('/admin-user', AdminUserController::class);
+    // Route::post('/admin-user/destroy/{id}', [AdminUserController::class, 'destroy'])->name('admin.destroy');
     Route::post('/admin-user/user-file-store', [AdminUserController::class, 'userFileStore'])->name('admin.userFileStore');
-    Route::get('/admin-user/file/destroy/{id}', [AdminUserController::class, 'userFileDestroy'])->name('admin.userFileDestroy');
+    Route::post('/admin-user/file/destroy/{id}', [AdminUserController::class, 'userFileDestroy'])->name('admin.userFileDestroy');
+
+    Route::resource('/farmer', FarmerController::class);
+    Route::post('/farmer/user-file-store', [AdminUserController::class, 'userFileStore'])->name('farmer.userFileStore');
+    Route::post('/farmer/file/destroy/{id}', [AdminUserController::class, 'userFileDestroy'])->name('farmer.userFileDestroy');
+
+    Route::resource('/farm', FarmController::class);
+    Route::resource('/community-cat', CommunityCatController::class);
+    Route::resource('/community', CommunityController::class);
+
+    Route::get('/animal-info/user', [AnimalInfoController::class, 'user'])->name('animalInfo.user');
+    Route::get('/animal-info/create/{user}', [AnimalInfoController::class, 'createId'])->name('animalInfo.create');
+    Route::resource('/animal-info', AnimalInfoController::class);
+
+    Route::get('/get-community', [AnimalInfoController::class, 'getCommunity'])->name('animalInfo.getCommunity');
+
+
+    Route::resource('/animal-cat', AnimalCatController::class);
+    Route::get('/get-animal-cat', [AnimalCatController::class, 'getAnimalCat'])->name('getAnimalCat');
+    Route::post('animal-sub-cat/store', [AnimalCatController::class, 'SubCatStore'])->name('animalCat.SubCatStore');
+    Route::get('animal-sub-sub-cat/{id}', [AnimalCatController::class, 'subEdit'])->name('animalCat.subEdit');
+    Route::post('animal-sub-sub-cat/{id}', [AnimalCatController::class, 'subUpdate'])->name('animalCat.subUpdate');
+
 
 
 
