@@ -121,7 +121,7 @@ class AnimalCatController extends Controller
     }
     public function destroy($id)
     {
-        Farm::find($id)->delete();
+        AnimalCat::find($id)->delete();
         toast('Farm Successfully Deleted','success');
         return redirect()->back();
     }
