@@ -18,11 +18,12 @@ class CreateAnimalInfosTable extends Migration
             $table->foreignId('user_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreignId('farm_id')->nullable()->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreignId('community_id')->nullable()->constrained()->cascadeOnUpdate()->cascadeOnDelete();
-            $table->integer('size');
+            $table->integer('animal_tag');
+            $table->enum('type',['1','2'])->comment('1=Goat,2=Sheep');
+            $table->integer('sire');
             $table->integer('dam');
-            $table->integer('goat_tag');
-            $table->string('color',80);
-            $table->enum('sex', ['1','2'])->comment('1=Male,2=Female');
+            $table->string('color',80)->nullable();
+            $table->enum('sex', ['M','F']);
             $table->double('birth_wt',4,2);
             $table->integer('litter_size');
             $table->integer('generation');

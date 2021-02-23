@@ -2,13 +2,18 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\User;
-use App\Models\AnimalInfo;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Models\Community;
-use App\Models\CommunityCat;
 use App\Models\Farm;
+use App\Models\User;
+use App\Models\Community;
+use App\Models\AnimalInfo;
+use App\Models\CommunityCat;
+use Illuminate\Http\Request;
+use GuzzleHttp\Promise\Create;
+use App\Models\ProductionRecord;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\AnimalInfoStoreRequest;
+use App\Http\Requests\PrductionRecordStoreRequest;
 
 class AnimalInfoController extends Controller
 {
@@ -17,10 +22,10 @@ class AnimalInfoController extends Controller
         $users = User::where('type', 2)->get();
         return view('admin.animal_info.user', compact('users'));
     }
-    public function index()
+    
+    public function individualIndex($id)
     {
-
-        $animalInfos = AnimalInfo::all();
+        $animalInfos = AnimalInfo::where('user_id', $id)->get();
         return view('admin.animal_info.index', compact('animalInfos'));
     }
 
@@ -30,7 +35,33 @@ class AnimalInfoController extends Controller
         $farms = Farm::all();
         $communityCats = CommunityCat::all();
 
-        return view('admin.animal_info.create', compact('farms','communityCats'));
+        return view('admin.animal_info.create', compact('user','farms','communityCats'));
+    }
+
+    /**
+     * Store a new blog post.
+     *
+     * @param  \App\Http\Requests\AnimalInfoStoreRequest  $animalInfoStoreRequest
+     * @return Illuminate\Http\Response
+     */
+    public function store(AnimalInfoStoreRequest $animalInfoStoreRequest, PrductionRecordStoreRequest $productionRecordStore )
+    {
+        $animalInfo = $animalInfoStoreRequest->validated();
+        DB::beginTransaction();
+
+        $animalStore = AnimalInfo::create($animalInfo);
+        $productionRecord = $productionRecordStore->validated();
+        $productionRecord = ['animal_info_id' => $animalStore->id];
+        ProductionRecord::create($productionRecord);
+        try{
+            DB::commit();
+            toast('Success','success');
+            return redirect()->route('animal-info.index');
+        }catch(\Exception $ex){
+            DB::rollBack();
+            toast('Error', 'error');
+            return redirect()->back();
+        }
     }
 
     public function getCommunity(Request $request)

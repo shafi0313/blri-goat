@@ -34,8 +34,9 @@
                                     </ul>
                                 </div>
                             @endif
-                            <form action="{{ route('farm.store')}}" method="post">
+                            <form action="{{ route('animal-info.store')}}" method="post">
                                 @csrf
+                                <input type="hidden" name="user_id" value="{{$user->id}}">
                                 <div class="row">
                                     <div class="form-check">
 										<label>Select <span class="t_r">*</span></label><br>
@@ -51,27 +52,27 @@
 
 
                                     <div class="form-group col-md-3" id="farmSelect" style="display: none">
-                                        <label for="name">Farm <span class="t_r">*</span></label>
-                                        <select name="" class="form-control @error('name') is-invalid @enderror">
+                                        <label for="farm_id">Farm <span class="t_r">*</span></label>
+                                        <select name="farm_id" class="form-control @error('name') is-invalid @enderror" id="farm_id">
                                             <option value="">Select</option>
                                             @foreach ($farms as $farm)
                                             <option value="{{$farm->id}}">{{$farm->name}}</option>
                                             @endforeach
                                         </select>
-                                        @error('name')
+                                        @error('farm_id')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
 
                                     <div class="form-group col-md-3 community" style="display: none">
-                                        <label for="name">Community Name <span class="t_r">*</span></label>
-                                        <select name="" id="community_cat" class="form-control @error('name') is-invalid @enderror">
+                                        <label for="community_id">Community Name <span class="t_r">*</span></label>
+                                        <select name="community_id" id="community_cat" class="form-control @error('name') is-invalid @enderror">
                                             <option value="">Select</option>
                                             @foreach ($communityCats as $communityCat)
                                             <option value="{{$communityCat->id}}">{{$communityCat->name}}</option>
                                             @endforeach
                                         </select>
-                                        @error('name')
+                                        @error('community_id')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
@@ -83,123 +84,134 @@
                                 </div>
 
                                 <div class="row">
-                                    <div class="form-group col-md-2">
-                                        <label for="name">Sire <span class="t_r">*</span></label>
-                                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{old('name')}}" required>
-                                        @error('name')
+                                    <div class="form-check col-md-3">
+										<label>Type <span class="t_r">*</span></label><br>
+										<label class="form-radio-label" id="farm">
+											<input class="form-radio-input" type="radio" name="type" value="1" required>
+											<span class="form-radio-sign">Goat</span>
+										</label>
+										<label class="form-radio-label ml-3" id="community">
+											<input class="form-radio-input" type="radio" name="type" value="2" required>
+											<span class="form-radio-sign">Sheep</span>
+										</label>
+									</div>
+
+                                    <div class="form-group col-md-3">
+                                        <label for="sire">Sire <span class="t_r">*</span></label>
+                                        <input name="sire" type="text" class="form-control @error('sire') is-invalid @enderror"  value="{{old('sire')}}" required>
+                                        @error('sire')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
 
-                                    <div class="form-group col-md-2">
-                                        <label for="name">Dam <span class="t_r">*</span></label>
-                                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{old('name')}}" required>
-                                        @error('name')
+                                    <div class="form-group col-md-3">
+                                        <label for="dam">Dam <span class="t_r">*</span></label>
+                                        <input name="dam" type="text" class="form-control @error('dam') is-invalid @enderror" value="{{old('dam')}}" required>
+                                        @error('dam')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
 
-                                    <div class="form-group col-md-2">
-                                        <label for="name">Goat Tag <span class="t_r">*</span></label>
-                                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{old('name')}}" required>
-                                        @error('name')
+                                    <div class="form-group col-md-3">
+                                        <label for="animal_tag">Animal Tag <span class="t_r">*</span></label>
+                                        <input name="animal_tag" type="text" class="form-control @error('animal_tag') is-invalid @enderror" value="{{old('animal_tag')}}" required>
+                                        @error('animal_tag')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
 
-                                    <div class="form-group col-md-2">
-                                        <label for="name">Coat Color </label>
-                                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{old('name')}}" required>
-                                        @error('name')
+                                    <div class="form-group col-md-3">
+                                        <label for="color">Coat Color </label>
+                                        <input name="color" type="text" class="form-control @error('color') is-invalid @enderror" value="{{old('color')}}">
+                                        @error('color')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
 
-                                    <div class="form-group col-md-2">
-                                        <label for="name">Sex <span class="t_r">*</span></label>
-                                        <select name="" class="form-control @error('name') is-invalid @enderror">
+                                    <div class="form-group col-md-3">
+                                        <label for="sex">Sex <span class="t_r">*</span></label>
+                                        <select name="sex" class="form-control @error('sex') is-invalid @enderror">
                                             <option value="" selected disabled>Select</option>
-                                            <option value="">Male</option>
-                                            <option value="">Female</option>
+                                            <option value="M">Male</option>
+                                            <option value="F">Female</option>
                                         </select>
-                                        @error('name')
+                                        @error('sex')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
 
-                                    <div class="form-group col-md-2">
-                                        <label for="name">Birth Weight (Kg) <span class="t_r">*</span></label>
-                                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{old('name')}}" required>
-                                        @error('name')
+                                    <div class="form-group col-md-3">
+                                        <label for="birth_wt">Birth Weight (Kg) <span class="t_r">*</span></label>
+                                        <input name="birth_wt" type="text" class="form-control @error('birth_wt') is-invalid @enderror" value="{{old('birth_wt')}}" required>
+                                        @error('birth_wt')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
 
-                                    <div class="form-group col-md-2">
-                                        <label for="name">Litter Size <span class="t_r">*</span></label>
-                                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{old('name')}}" required>
-                                        @error('name')
+                                    <div class="form-group col-md-3">
+                                        <label for="litter_size">Litter Size <span class="t_r">*</span></label>
+                                        <input name="litter_size" type="text" class="form-control @error('litter_size') is-invalid @enderror" value="{{old('litter_size')}}" required>
+                                        @error('litter_size')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
 
-                                    <div class="form-group col-md-2">
-                                        <label for="name">Generation <span class="t_r">*</span></label>
-                                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{old('name')}}" required>
-                                        @error('name')
+                                    <div class="form-group col-md-3">
+                                        <label for="generation">Generation <span class="t_r">*</span></label>
+                                        <input name="generation" type="text" class="form-control @error('name') is-invalid @enderror" value="{{old('generation')}}" required>
+                                        @error('generation')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
 
-                                    <div class="form-group col-md-2">
-                                        <label for="name">Parity </label>
-                                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{old('name')}}" required>
-                                        @error('name')
+                                    <div class="form-group col-md-3">
+                                        <label for="paity">Parity </label>
+                                        <input name="paity" type="text" class="form-control @error('paity') is-invalid @enderror" value="{{old('paity')}}">
+                                        @error('paity')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
 
-                                    <div class="form-group col-md-2">
-                                        <label for="name">Dam milk production (ml) </label>
-                                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{old('name')}}" required>
-                                        @error('name')
+                                    <div class="form-group col-md-3">
+                                        <label for="dam_milk">Dam milk production (ml) </label>
+                                        <input  name="dam_milk" type="text" class="form-control @error('dam_milk') is-invalid @enderror" value="{{old('dam_milk')}}">
+                                        @error('dam_milk')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
 
-                                    <div class="form-group col-md-2">
-                                        <label for="name">Date of Birth <span class="t_r">*</span></label>
-                                        <input type="date" class="form-control @error('name') is-invalid @enderror" name="name" value="{{old('name')}}" required>
-                                        @error('name')
+                                    <div class="form-group col-md-3">
+                                        <label for="d_o_b">Date of Birth <span class="t_r">*</span></label>
+                                        <input  name="d_o_b" type="date" class="form-control @error('d_o_b') is-invalid @enderror" value="{{old('d_o_b')}}" required>
+                                        @error('d_o_b')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
 
-                                    <div class="form-group col-md-2">
-                                        <label for="name">Season of Birth </label>
-                                        <input type="date" class="form-control @error('name') is-invalid @enderror" name="name" value="{{old('name')}}" required>
-                                        @error('name')
+                                    <div class="form-group col-md-3">
+                                        <label for="season_d_o_b">Season of Birth </label>
+                                        <input name="season_d_o_b" type="date" class="form-control @error('season_d_o_b') is-invalid @enderror" value="{{old('season_d_o_b')}}">
+                                        @error('season_d_o_b')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
 
-                                    <div class="form-group col-md-2">
-                                        <label for="name">Date of Culling/ Death </label>
-                                        <input type="date" class="form-control @error('name') is-invalid @enderror" name="name" value="{{old('name')}}" required>
-                                        @error('name')
+                                    <div class="form-group col-md-3">
+                                        <label for="death_date">Date of Culling/ Death </label>
+                                        <input type="date" class="form-control @error('death_date') is-invalid @enderror" name="death_date" value="{{old('death_date')}}">
+                                        @error('death_date')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
 
 
                                     <div class="form-group col-md-8">
-                                        <label for="name">Remarks <span class="t_r">*</span></label>
-                                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{old('name')}}" required>
-                                        @error('name')
+                                        <label for="remark">Remarks <span class="t_r">*</span></label>
+                                        <input name="remark" type="text" class="form-control @error('remark') is-invalid @enderror" value="{{old('remark')}}" required>
+                                        @error('remark')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
-
                                 </div>
 
                                 <div align="center" class="mr-auto card-action">
@@ -221,28 +233,32 @@
     $('#farm').click(function(){
         $('#farmSelect').fadeIn()
         $('.community').fadeOut()
+        $('#farm_id').attr('required', true)
+        $("[name='community_id']").attr('required', false)
+        $("[name='name']").attr('required', false)
     })
     $('#community').click(function(){
         $('#farmSelect').fadeOut()
         $('.community').fadeIn()
+        $('#farm_id').attr('required', false)
+        $("[name='community_id']").attr('required', true)
+        $("#comm").attr('required', true)
     })
 
     $('#community_cat').on('change',function(e) {
-            var communityCatId = $(this).val();
-            // alert(communityCatId)
-            $.ajax({
-                url:'{{ route("animalInfo.getCommunity") }}',
-                type:"get",
-                data: {
-                    communityCatId: communityCatId
-                    },
-                success:function (res) {
-                    res = $.parseJSON(res);
-                    // alert(res.com)
-                    $('#comm').html(res.com);
-                }
-            })
-        });
+        var communityCatId = $(this).val();
+        $.ajax({
+            url:'{{ route("animalInfo.getCommunity") }}',
+            type:"get",
+            data: {
+                communityCatId: communityCatId
+                },
+            success:function (res) {
+                res = $.parseJSON(res);
+                $('#comm').html(res.com);
+            }
+        })
+    });
 </script>
 @endpush
 @endsection

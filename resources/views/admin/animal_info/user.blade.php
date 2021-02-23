@@ -57,6 +57,10 @@
                                                     <a href="{{ route('animalInfo.create', $user->id) }}" title="" class="btn btn-link btn-primary btn-lg">
                                                         Select
                                                     </a>
+                                                    <span> || </span>
+                                                    <a href="{{ route('animalInfo.individualIndex', $user->id) }}" title="" class="btn btn-link btn-primary btn-lg">
+                                                        Show
+                                                    </a>
                                                     {{-- <form action="{{ route('farm.destroy', $user->id) }}" method="POST">
                                                         @csrf
                                                         @method('DELETE')

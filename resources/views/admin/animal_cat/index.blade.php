@@ -205,10 +205,7 @@
                         </div>
                     </div>
 
-                    <div align="center" class="mr-auto card-action">
-                        <button type="submit" class="btn btn-success">Submit</button>
-                        <button type="reset" class="btn btn-danger">Reset</button>
-                    </div>
+                    
 
                 </div>
                 <div class="modal-footer">
@@ -299,10 +296,6 @@
                     </div>
                 </div>
 
-
-
-
-
                     <div class="form-group">
                         <label for="edit-name">Name <strong style="color:red;">*</strong></label>
                         <input type="text" class="form-control" id="edit-name" name="name" required>
@@ -324,7 +317,7 @@
         });
 
         $('#multi-filter-select').DataTable( {
-            "pageLength": 10,
+            "lengthMenu": [[50, 100, -1], [50, 100, "All"]],
             initComplete: function () {
                 this.api().columns().every( function () {
                     var column = this;

@@ -130,11 +130,21 @@
                                     <span class="sub-item">Animal Information</span>
                                 </a>
                             </li>
-                            {{-- <li>
-                                <a href="{{ route('community.index') }}">
-                                    <span class="sub-item">Community</span>
+                            <li>
+                                <a href="{{ route('production-record.index') }}">
+                                    <span class="sub-item">Production Record</span>
                                 </a>
-                            </li> --}}
+                            </li>
+                            <li>
+                                <a href="{{ route('service-record.index') }}">
+                                    <span class="sub-item">Service Record</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('disease-and-health.index') }}">
+                                    <span class="sub-item">Disease and Health Record</span>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </li>

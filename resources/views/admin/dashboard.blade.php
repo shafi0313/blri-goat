@@ -65,7 +65,7 @@
                                     <div class="numbers">
                                         <a href="">
                                             <p class="card-category">Total Farm</p>
-                                            <h4 class="card-title">10</h4>
+                                            <h4 class="card-title">{{$farms}}</h4>
                                         </a>
                                     </div>
                                 </div>
@@ -86,7 +86,7 @@
                                     <div class="numbers">
                                         <a href="">
                                             <p class="card-category">Total Community</p>
-                                            <h4 class="card-title">5</h4>
+                                            <h4 class="card-title">{{$communities}}</h4>
                                         </a>
                                     </div>
                                 </div>

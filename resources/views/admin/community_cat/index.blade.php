@@ -130,7 +130,7 @@
         });
 
         $('#multi-filter-select').DataTable( {
-            "pageLength": 10,
+            "lengthMenu": [[50, 100, -1], [50, 100, "All"]],
             initComplete: function () {
                 this.api().columns().every( function () {
                     var column = this;

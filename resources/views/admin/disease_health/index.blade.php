@@ -1,5 +1,5 @@
 @extends('admin.layout.master')
-@section('title', 'Animal Information')
+@section('title', 'Disease and Health Record')
 @section('content')
 <?php $p = 'ds'; $sm="balkPurchase"; ?>
 <?php $p = 'tools'; ?>
@@ -11,7 +11,7 @@
                     <li class="nav-home">
                     <a href="{{ route('admin.dashboard')}}"><i class="flaticon-home"></i></a></li>
                     <li class="separator"><i class="flaticon-right-arrow"></i></li>
-                    <li class="nav-item active">Aminal Information</li>
+                    <li class="nav-item active">Disease and Health Record</li>
                 </ul>
             </div>
             <div class="divider1"></div>
@@ -20,19 +20,23 @@
                     <div class="card">
                         <div class="card-header">
                             <div class="d-flex align-items-center">
-                                <h4 class="card-title">Animal Information</h4>
-                                <a href="{{route('animal-info.create')}}" class="btn btn-primary btn-round ml-auto text-light"><i class="fa fa-plus"></i> Add New</a>
+                                <h4 class="card-title">Disease and Health Record</h4>
+                                <a href="{{route('service-record.create')}}" class="btn btn-primary btn-round ml-auto text-light"><i class="fa fa-plus"></i> Add New</a>
                             </div>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table id="multi-filter-select" class="display table table-striped table-hover" >
                                     <thead class="bg-secondary thw">
-                                        <tr>
+                                        <tr class="text-center">
                                             <th style="width: 35px">SL</th>
-                                            <th>Sire</th>
-                                            <th>Dam</th>
-                                            <th>Animal Tag</th>
+                                            <th>Amimal Tag</th>
+                                            <th>Breed</th>
+                                            <th>Sex</th>
+                                            <th>Name of Disease</th>
+                                            <th>Clinical Sign</th>
+                                            <th>Season of Disease</th>
+                                            <th>Recovered/Dead</th>
                                             <th class="no-sort" style="text-align:center;width:80px" >Action</th>
                                         </tr>
                                     </thead>
@@ -40,22 +44,28 @@
                                         <tr>
                                             <th></th>
                                             <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
                                         @php $x=1; @endphp
-                                        @foreach ($animalInfos as $animalInfo)
-                                        <tr>
-                                            <td class="text-center">{{ $x++ }} </td>
-                                            <td>{{ $animalInfo->sire }} </td>
-                                            <td>{{ $animalInfo->dam }} </td>
-                                            <td>{{ $animalInfo->animal_tag }} </td>
+                                        {{-- @foreach ($productionRecords as $productionRecord)
+                                        <tr class="text-center">
+                                            <td>{{ $x++ }} </td>
+                                            <td>{{ $productionRecord->animalInfo->goat_tag }} </td>
+                                            <td>{{ $productionRecord->animalInfo->sex }} </td>
+                                            <td>{{ $productionRecord->animalInfo->birth_wt }} </td>
                                             <td>
                                                 <div class="form-button-action">
-                                                    <a href="{{ route('farm.edit', $animalInfo->id) }}" title="Edit" class="btn btn-link btn-primary btn-lg">
-                                                        <i class="fa fa-edit"></i>
+                                                    <a href="{{ route('production.createId', $productionRecord->id) }}" title="Edit" class="btn btn-link btn-primary btn-lg">
+                                                        <i class="fa fa-edit">Input</i>
                                                     </a>
-                                                    <form action="{{ route('farm.destroy', $animalInfo->id) }}" method="POST">
+                                                    <form action="{{ route('farm.destroy', $productionRecord->id) }}" method="POST">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" title="Delete" class="btn btn-link btn-danger" data-original-title="Remove" onclick="return confirm('Are you sure?')">
@@ -65,7 +75,7 @@
                                                 </div>
                                             </td>
                                         </tr>
-                                        @endforeach
+                                        @endforeach --}}
                                     </tbody>
                                 </table>
                             </div>
@@ -76,48 +86,6 @@
         </div>
     </div>
 </div>
-
-
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Add License Farm</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <form action="{{route('farm.store')}}" method="POST">
-            @csrf
-            <div class="modal-body">
-                <div class="form-group">
-                    <label for="" class="col-sm-2 control-label">Farm Name <span class="t_r">*</span></label>
-                    <div class="col-sm-12">
-                        <input type="text" class="form-control" name="name" placeholder="Enter Farm Name" required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="" class="col-sm-2 control-label">Information </label>
-                    <div class="col-sm-12">
-                        <input type="text" class="form-control" name="info" placeholder="Enter Farm Information">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="" class="col-sm-2 control-label">Address <span class="t_r">*</span></label>
-                    <div class="col-sm-12">
-                        <input type="text" class="form-control" name="address" placeholder="Enter Farm Information">
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Save</button>
-            </div>
-        </form>
-      </div>
-    </div>
-  </div>
 
 @push('custom_scripts')
 <script >
@@ -153,19 +121,7 @@
         $('#add-row').DataTable({
             "pageLength": 5,
         });
-
         var action = '<td> <div class="form-button-action"> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task"> <i class="fa fa-edit"></i> </button> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove"> <i class="fa fa-times"></i> </button> </div> </td>';
-
-        // $('#addRowButton').click(function() {
-        //     $('#add-row').dataTable().fnAddData([
-        //         $("#addName").val(),
-        //         $("#addPosition").val(),
-        //         $("#addOffice").val(),
-        //         action
-        //         ]);
-        //     $('#addRowModal').modal('hide');
-
-        // });
     });
 </script>
 @endpush

@@ -11,12 +11,16 @@ use App\Models\SalesInvoice;
 use Illuminate\Http\Request;
 use App\Models\PurchaseInvoice;
 use App\Http\Controllers\Controller;
+use App\Models\Community;
+use App\Models\Farm;
 
 class DashboardController extends Controller
 {
     public function index()
     {
-        return view('admin.dashboard');
+        $farms = Farm::count();
+        $communities = Community::count();
+        return view('admin.dashboard', compact('farms','communities'));
     }
 
     public function VisitorInfo()
