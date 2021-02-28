@@ -36,7 +36,6 @@
                             @endif
                             <form action="{{ route('animal-info.store')}}" method="post">
                                 @csrf
-                                <input type="hidden" name="user_id" value="{{$user->id}}">
                                 <div class="row">
                                     <div class="form-check">
 										<label>Select <span class="t_r">*</span></label><br>
@@ -121,7 +120,7 @@
                                     </div>
 
                                     <div class="form-group col-md-3">
-                                        <label for="color">Coat Color </label>
+                                        <label for="color">Animal Color </label>
                                         <input name="color" type="text" class="form-control @error('color') is-invalid @enderror" value="{{old('color')}}">
                                         @error('color')
                                             <div class="alert alert-danger">{{ $message }}</div>

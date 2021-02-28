@@ -24,7 +24,6 @@ class AnimalInfoStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'user_id' => 'required',
             'farm_id' => 'sometimes',
             'community_id' => 'sometimes',
             'type' => 'required',

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class PrductionRecordStoreRequest extends FormRequest
+class ProductionRecordUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,6 @@ class PrductionRecordStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'animal_info_id' => 'required',
-            'type' => 'required',
             'month_1' => 'nullable|numeric',
             'month_2' => 'sometimes',
             'month_3' => 'sometimes',

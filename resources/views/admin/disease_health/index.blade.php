@@ -21,7 +21,7 @@
                         <div class="card-header">
                             <div class="d-flex align-items-center">
                                 <h4 class="card-title">Disease and Health Record</h4>
-                                <a href="{{route('service-record.create')}}" class="btn btn-primary btn-round ml-auto text-light"><i class="fa fa-plus"></i> Add New</a>
+                                <a href="{{route('disease-and-health.create')}}" class="btn btn-primary btn-round ml-auto text-light"><i class="fa fa-plus"></i> Add New</a>
                             </div>
                         </div>
                         <div class="card-body">
@@ -36,8 +36,14 @@
                                             <th>Name of Disease</th>
                                             <th>Clinical Sign</th>
                                             <th>Season of Disease</th>
+                                            <th>Date of Deworming</th>
+                                            <th>Date of Dipping</th>
+                                            <th>Date of PPR Vaccination</th>
+                                            <th>Date of FMD Vaccination</th>
+                                            <th>Date of Goat Pox Vaccination</th>
+                                            <th>Date of Contagious Ecthyma Vaccination</th>
                                             <th>Recovered/Dead</th>
-                                            <th class="no-sort" style="text-align:center;width:80px" >Action</th>
+                                            <th class="no-sort" style="text-align:center;width:80px">Action</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -54,13 +60,23 @@
                                     </tfoot>
                                     <tbody>
                                         @php $x=1; @endphp
-                                        {{-- @foreach ($productionRecords as $productionRecord)
+                                        @foreach ($diseaseHealths as $diseaseHealth)
                                         <tr class="text-center">
                                             <td>{{ $x++ }} </td>
-                                            <td>{{ $productionRecord->animalInfo->goat_tag }} </td>
-                                            <td>{{ $productionRecord->animalInfo->sex }} </td>
-                                            <td>{{ $productionRecord->animalInfo->birth_wt }} </td>
-                                            <td>
+                                            <td>{{ $diseaseHealth->animalInfo->animal_tag }} </td>
+                                            <td>{{ $diseaseHealth->animalInfo->sex }} </td>
+                                            <td>{{ $diseaseHealth->animalInfo->birth_wt }} </td>
+                                            <td>{{ $diseaseHealth->disease_name }} </td>
+                                            <td>{{ $diseaseHealth->clinical_sign }} </td>
+                                            <td>{{ $diseaseHealth->disease_season }} </td>
+                                            <td>{{ \Carbon\Carbon::parse($diseaseHealth->deworming_date)->format('d/m/Y')}} </td>
+                                            <td>{{ \Carbon\Carbon::parse($diseaseHealth->dipping_date)->format('d/m/Y')}} </td>
+                                            <td>{{ \Carbon\Carbon::parse($diseaseHealth->ppr_vac_date)->format('d/m/Y')}} </td>
+                                            <td>{{ \Carbon\Carbon::parse($diseaseHealth->fmd_vac_date)->format('d/m/Y')}} </td>
+                                            <td>{{ \Carbon\Carbon::parse($diseaseHealth->pox_vacn_date)->format('d/m/Y')}} </td>
+                                            <td>{{ \Carbon\Carbon::parse($diseaseHealth->contagious_vac_date)->format('d/m/Y')}} </td>
+                                            <td>{{ $diseaseHealth->report }}</td>
+                                            {{-- <td>
                                                 <div class="form-button-action">
                                                     <a href="{{ route('production.createId', $productionRecord->id) }}" title="Edit" class="btn btn-link btn-primary btn-lg">
                                                         <i class="fa fa-edit">Input</i>
@@ -73,9 +89,9 @@
                                                         </button>
                                                     </form>
                                                 </div>
-                                            </td>
+                                            </td> --}}
                                         </tr>
-                                        @endforeach --}}
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -88,6 +104,8 @@
 </div>
 
 @push('custom_scripts')
+
+
 <script >
     $(document).ready(function() {
         $('#basic-datatables').DataTable({

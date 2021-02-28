@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\CommunityController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\AnimalInfoController;
 use App\Http\Controllers\Admin\CommunityCatController;
+use App\Http\Controllers\Admin\ReproductionController;
 use App\Http\Controllers\Admin\DiseaseHealthController;
 use App\Http\Controllers\Admin\ServiceRecordController;
 use App\Http\Controllers\Admin\ProductionRecordController;
@@ -58,11 +59,8 @@ Route::middleware(['auth','admin'])->prefix('admin')->group(function(){
     Route::resource('/community', CommunityController::class);
 
     Route::resource('/animal-info', AnimalInfoController::class);
-    Route::get('/animal_info/user', [AnimalInfoController::class, 'user'])->name('animalInfo.user');
-    Route::get('/animal_info/individual/{id}', [AnimalInfoController::class, 'individualIndex'])->name('animalInfo.individualIndex');
-
-    Route::get('/animal-info/create/{user}', [AnimalInfoController::class, 'createId'])->name('animalInfo.create');
     Route::get('/get-community', [AnimalInfoController::class, 'getCommunity'])->name('animalInfo.getCommunity');
+
 
 
     Route::resource('/animal-cat', AnimalCatController::class);
@@ -72,7 +70,8 @@ Route::middleware(['auth','admin'])->prefix('admin')->group(function(){
     Route::post('animal-sub-sub-cat/{id}', [AnimalCatController::class, 'subUpdate'])->name('animalCat.subUpdate');
 
     Route::resource('/production-record', ProductionRecordController::class);
-    Route::get('/production-record-create/{animalInfo}', [ProductionRecordController::class, 'createId'])->name('production.createId');
+    Route::resource('/reproduction-record', ReproductionController::class);
+    Route::get('/get-animal-info', [ProductionRecordController::class, 'getAnimalInfo'])->name('animalInfo.getAnimalInfo');
 
     Route::resource('/service-record', ServiceRecordController::class);
 

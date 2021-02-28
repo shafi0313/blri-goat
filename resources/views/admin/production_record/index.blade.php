@@ -32,7 +32,13 @@
                                             <th style="width: 35px">SL</th>
                                             <th>Animal Tag</th>
                                             <th>Sex</th>
-                                            <th>Birth Wt. (kg)</th>
+                                            <th>Birth Wt.(kg)</th>
+                                            <th>1 m. body wt.(kg)</th>
+                                            <th>2 m. body wt.(kg)</th>
+                                            <th>3 m. body wt.(kg)</th>
+                                            <th>4 m. body wt.(kg)</th>
+                                            <th>5 m. body wt.(kg)</th>
+                                            <th>6 m. body wt.(kg)</th>
                                             <th class="no-sort" style="text-align:center;width:80px" >Action</th>
                                         </tr>
                                     </thead>
@@ -52,10 +58,16 @@
                                             <td>{{ $productionRecord->animalInfo->animal_tag }} </td>
                                             <td>{{ $productionRecord->animalInfo->sex }} </td>
                                             <td>{{ $productionRecord->animalInfo->birth_wt }} </td>
+                                            <td>{{ $productionRecord->month_1 }} </td>
+                                            <td>{{ $productionRecord->month_2 }} </td>
+                                            <td>{{ $productionRecord->month_3 }} </td>
+                                            <td>{{ $productionRecord->month_4 }} </td>
+                                            <td>{{ $productionRecord->month_5 }} </td>
+                                            <td>{{ $productionRecord->month_6 }} </td>
                                             <td>
                                                 <div class="form-button-action">
-                                                    <a href="{{ route('production.createId', $productionRecord->id) }}" title="Edit" class="btn btn-link btn-primary btn-lg">
-                                                        <i class="fa fa-edit">Input</i>
+                                                    <a href="{{route('production-record.edit',$productionRecord->id)}}" title="Edit" class="btn btn-link btn-primary btn-lg">
+                                                        <i class="fa fa-edit"></i>
                                                     </a>
                                                     {{-- <form action="{{ route('farm.destroy', $productionRecord->id) }}" method="POST">
                                                         @csrf

@@ -3,36 +3,36 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\AnimalInfo;
+use App\Models\Reproduction;
 use Illuminate\Http\Request;
-use App\Models\ProductionRecord;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\PrductionRecordStoreRequest;
-use App\Http\Requests\ProductionRecordUpdateRequest;
+use App\Http\Requests\ReproductionStoreRequest;
 
-class ProductionRecordController extends Controller
+class ReproductionController extends Controller
 {
     public function index()
     {
-        $productionRecords = ProductionRecord::all();
-        return view('admin.production_record.index', compact('productionRecords'));
+        $reproductions = Reproduction::all();
+        return view('admin.reproduction.index', compact('reproductions'));
     }
 
     public function create()
     {
         $animalInfos = AnimalInfo::all();
-        return view('admin.production_record.create', compact('animalInfos'));
+        return view('admin.reproduction.create', compact('animalInfos'));
     }
 
-    public function store(PrductionRecordStoreRequest $productionRecordStore)
+    public function store(ReproductionStoreRequest $request)
     {
-        $productionRecord = $productionRecordStore->validated();
+        $productionRecord = $request->validated();
         DB::beginTransaction();
+        // Reproduction::create($productionRecord);
         try{
-            ProductionRecord::create($productionRecord);
+            Reproduction::create($productionRecord);
             DB::commit();
             toast('Success','success');
-            return redirect()->route('production-record.index');
+            return redirect()->route('reproduction-record.index');
         }catch(\Exception $ex){
             DB::rollBack();
             toast('Error', 'error');
@@ -42,7 +42,7 @@ class ProductionRecordController extends Controller
 
     public function edit($id)
     {
-        $productionRecord = ProductionRecord::find($id);
+        $productionRecord = Reproduction::find($id);
         return view('admin.production_record.edit', compact('productionRecord'));
     }
 

@@ -51,7 +51,7 @@
                                         @enderror
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <label for="name">Community Name <span class="t_r">*</span></label>
+                                        <label for="name">Farm Name <span class="t_r">*</span></label>
                                         <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{old('name')}}" required>
                                         @error('name')
                                             <div class="alert alert-danger">{{ $message }}</div>

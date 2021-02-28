@@ -126,13 +126,18 @@
                     <div class="collapse" id="animal">
                         <ul class="nav nav-collapse">
                             <li>
-                                <a href="{{ route('animalInfo.user') }}">
+                                <a href="{{ route('animal-info.index') }}">
                                     <span class="sub-item">Animal Information</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="{{ route('production-record.index') }}">
                                     <span class="sub-item">Production Record</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('reproduction-record.index') }}">
+                                    <span class="sub-item">Reproduction Record</span>
                                 </a>
                             </li>
                             <li>
