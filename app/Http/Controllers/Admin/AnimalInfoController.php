@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AnimalInfoStoreRequest;
 use App\Http\Requests\PrductionRecordStoreRequest;
+use App\Models\AnimalCat;
 
 class AnimalInfoController extends Controller
 {
@@ -25,7 +26,9 @@ class AnimalInfoController extends Controller
     {
         $farms = Farm::all();
         $communityCats = CommunityCat::all();
-        return view('admin.animal_info.create', compact('farms','communityCats'));
+        $goatCats = AnimalCat::where('type',1)->where('parent_id', 0)->get();
+        $sheepCats = AnimalCat::where('type',2)->where('parent_id', 0)->get();
+        return view('admin.animal_info.create', compact('farms','communityCats','goatCats','sheepCats'));
     }
 
     /**
@@ -38,8 +41,6 @@ class AnimalInfoController extends Controller
     {
         $animalInfo = $animalInfoStoreRequest->validated();
         DB::beginTransaction();
-
-
 
         try{
             AnimalInfo::create($animalInfo);
@@ -63,5 +64,17 @@ class AnimalInfoController extends Controller
             $com .= '<option value="'.$community->id.'">'.$community->name.'</option>';
         }
         return json_encode(['com'=>$com]);
+    }
+
+    public function getAnimalCat(Request $request)
+    {
+        $animalCatId = $request->animalCatId;
+        $animalCats = AnimalCat::where('parent_id', $animalCatId)->get();
+        $animal = '';
+        $animal .= '<option value="0">Select</option>';
+        foreach($animalCats as $animalCat){
+            $animal .= '<option value="'.$animalCat->id.'">'.$animalCat->name.'</option>';
+        }
+        return json_encode(['animal'=>$animal]);
     }
 }

@@ -26,6 +26,8 @@ class AnimalInfoStoreRequest extends FormRequest
         return [
             'farm_id' => 'sometimes',
             'community_id' => 'sometimes',
+            'animal_cat_id' => 'sometimes',
+            'animal_sub_cat_id' => 'sometimes',
             'type' => 'required',
             'sire' => 'required',
             'dam' => 'required',

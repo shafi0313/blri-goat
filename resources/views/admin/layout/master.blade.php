@@ -33,21 +33,8 @@
     {{-- For Date Picker --}}
     <link rel="stylesheet" href="{{ asset('backend/datepicker/css/bootstrap-datepicker3.standalone.min.css') }}">
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
-	{{-- <link rel="stylesheet" href="{{ asset('admin/cdn/jquery-ui.css')}}"> --}}
-
 
     <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
-
-    {{-- @include('sweetalert::alert', ['cdn' => "https://cdn.jsdelivr.net/npm/sweetalert2@9"]) --}}
-
-	{{-- <script src="{{ asset('admin/cdn/jquery-ui.js')}}"></script> --}}
-
-	{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script> --}}
-    {{-- <script src="{{ asset('admin/cdn/toastr.min.js')}}"></script> --}}
-
-    {{-- Presscription Medicine Search --}}
-    {{-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css"> --}}
 </head>
 <body>
 	<div class="wrapper">
@@ -59,7 +46,7 @@
 			<!-- Logo Header -->
 			<div class="logo-header">
 
-                <a href="{{ route('admin.dashboard') }}" class="logo"> <h3 class="display:4 text-light mt-3">Animal Info.(Goat)</h3>
+                <a href="{{ route('admin.dashboard') }}" class="logo"> <h3 class="display:4 text-light mt-3">Animal Info.</h3>
 					{{-- <img src="{{ asset('backend/img/logoazzara.svg') }}" alt="navbar brand" class="navbar-brand"> --}}
 				</a>
 				<button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">

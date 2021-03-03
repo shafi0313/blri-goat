@@ -60,6 +60,7 @@ Route::middleware(['auth','admin'])->prefix('admin')->group(function(){
 
     Route::resource('/animal-info', AnimalInfoController::class);
     Route::get('/get-community', [AnimalInfoController::class, 'getCommunity'])->name('animalInfo.getCommunity');
+    Route::get('/get-animal-sub-cat', [AnimalInfoController::class, 'getAnimalCat'])->name('animalInfo.getAnimalCat');
 
 
 

@@ -33,6 +33,12 @@
                                             <th>Sire</th>
                                             <th>Dam</th>
                                             <th>Animal Tag</th>
+                                            <th>Coat color</th>
+                                            <th>Sex</th>
+                                            <th>Birth Wt. (kg)</th>
+                                            <th>Litter Size</th>
+                                            <th>Generation</th>
+                                            <th>Parity</th>
                                             <th class="no-sort" style="text-align:center;width:80px" >Action</th>
                                         </tr>
                                     </thead>
@@ -50,6 +56,12 @@
                                             <td>{{ $animalInfo->sire }} </td>
                                             <td>{{ $animalInfo->dam }} </td>
                                             <td>{{ $animalInfo->animal_tag }} </td>
+                                            <td>{{ $animalInfo->color }} </td>
+                                            <td>{{ $animalInfo->sex }} </td>
+                                            <td>{{ $animalInfo->birth_wt }} </td>
+                                            <td>{{ $animalInfo->litter_size }} </td>
+                                            <td>{{ $animalInfo->generation }} </td>
+                                            <td>{{ $animalInfo->parity }} </td>
                                             <td>
                                                 <div class="form-button-action">
                                                     <a href="{{ route('farm.edit', $animalInfo->id) }}" title="Edit" class="btn btn-link btn-primary btn-lg">

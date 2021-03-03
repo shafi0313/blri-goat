@@ -85,15 +85,55 @@
                                 <div class="row">
                                     <div class="form-check col-md-3">
 										<label>Type <span class="t_r">*</span></label><br>
-										<label class="form-radio-label" id="farm">
+										<label class="form-radio-label" id="goat">
 											<input class="form-radio-input" type="radio" name="type" value="1" required>
 											<span class="form-radio-sign">Goat</span>
 										</label>
-										<label class="form-radio-label ml-3" id="community">
+										<label class="form-radio-label ml-3" id="sheep">
 											<input class="form-radio-input" type="radio" name="type" value="2" required>
 											<span class="form-radio-sign">Sheep</span>
 										</label>
 									</div>
+
+                                    <div class="form-group col-md-3 goatCat" style="display: none">
+                                        <label for="sire">Goat Category <span class="t_r">*</span></label>
+                                        <select name="animal_cat_id" id="" class="form-control animal goat @error('sire') is-invalid @enderror">
+                                            <option value="">Select</option>
+                                            @foreach ($goatCats as $goatCat)
+                                            <option value="{{$goatCat->id}}">{{$goatCat->name}}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('sire')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+
+                                    <div class="form-group col-md-3 goatCat" style="display: none">
+                                        <label for="sire">Goat Sub Category <span class="t_r">*</span></label>
+                                        <select name="animal_sub_cat_id" id="" class="form-control animalSub goat @error('sire') is-invalid @enderror"></select>
+                                    </div>
+
+                                    <div class="form-group col-md-3 sheepCat" style="display: none">
+                                        <label for="sire">Sheep Category <span class="t_r">*</span></label>
+                                        <select name="animal_cat_id" id="" class="form-control animal sheep @error('sire') is-invalid @enderror">
+                                            <option value="">Select</option>
+                                            @foreach ($sheepCats as $sheeptCat)
+                                            <option value="{{$sheeptCat->id}}">{{$sheeptCat->name}}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('sire')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+
+                                    <div class="form-group col-md-3 sheepCat" style="display: none">
+                                        <label for="sire">Sheep Sub Category <span class="t_r">*</span></label>
+                                        <select name="animal_sub_cat_id" id="" class="form-control animalSub sheep @error('sire') is-invalid @enderror"></select>
+                                    </div>
+                                </div>
+
+
+                                <div class="row">
 
                                     <div class="form-group col-md-3">
                                         <label for="sire">Sire <span class="t_r">*</span></label>
@@ -229,6 +269,7 @@
 
 @push('custom_scripts')
 <script>
+    // farm
     $('#farm').click(function(){
         $('#farmSelect').fadeIn()
         $('.community').fadeOut()
@@ -244,6 +285,8 @@
         $("#comm").attr('required', true)
     })
 
+
+
     $('#community_cat').on('change',function(e) {
         var communityCatId = $(this).val();
         $.ajax({
@@ -255,6 +298,44 @@
             success:function (res) {
                 res = $.parseJSON(res);
                 $('#comm').html(res.com);
+            }
+        })
+    });
+
+    // Animal Cat
+    $('#goat').click(function(){
+        $('.sheep').val('')
+        $('.goat').val('')
+    })
+    $('#goat').click(function(){
+        $('.goatCat').fadeIn()
+        $('.sheepCat').fadeOut()
+        $('.sheep').attr('disabled', true)
+        $('.goat').attr('disabled', false)
+        $('.goat').attr('required', true)
+        $('.sheep').attr('required', false)
+    })
+
+    $('#sheep').click(function(){
+        $('.sheepCat').fadeIn()
+        $('.goatCat').fadeOut()
+        $('.goat').attr('disabled', true)
+        $('.sheep').attr('disabled', false)
+        $('.sheep').attr('required', true)
+        $('.goat').attr('required', false)
+    })
+
+    $('.animal').on('change',function(e) {
+        var animalCatId = $(this).val();
+        $.ajax({
+            url:'{{ route("animalInfo.getAnimalCat") }}',
+            type:"get",
+            data: {
+                animalCatId: animalCatId
+                },
+            success:function (res) {
+                res = $.parseJSON(res);
+                $('.animalSub').html(res.animal);
             }
         })
     });

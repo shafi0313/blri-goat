@@ -75,11 +75,11 @@
                                     <span class="sub-item">User Management</span>
                                 </a>
                             </li>
-                            <li class="{{$sm=='adminIndex'?'activeSub':''}}">
+                            {{-- <li class="{{$sm=='adminIndex'?'activeSub':''}}">
                                 <a href="{{ route('farmer.index')}}">
                                     <span class="sub-item">Farmer</span>
                                 </a>
-                            </li>
+                            </li> --}}
                         </ul>
                     </div>
                 </li>
@@ -88,7 +88,7 @@
                 <li class="nav-item {{$p=='invoice'?'active':''}}">
                     <a data-toggle="collapse" href="#invoice">
                         <i class="fas fa-file-invoice-dollar"></i>
-                        <p>Tools</p>
+                        <p>Farm Settings</p>
                         <span class="caret"></span>
                     </a>
                     <div class="collapse" id="invoice">
@@ -103,14 +103,15 @@
                                     <span class="sub-item">Community Category</span>
                                 </a>
                             </li>
-                            <li>
-                                <a href="{{ route('animal-cat.index') }}">
-                                    <span class="sub-item">Animal Category</span>
-                                </a>
-                            </li>
+
                             <li>
                                 <a href="{{ route('community.index') }}">
                                     <span class="sub-item">Community</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('animal-cat.index') }}">
+                                    <span class="sub-item">Animal Category</span>
                                 </a>
                             </li>
                         </ul>
@@ -120,7 +121,7 @@
                 <li class="nav-item {{$p=='invoice'?'active':''}}">
                     <a data-toggle="collapse" href="#animal">
                         <i class="fas fa-info-circle"></i>
-                        <p>Animal </p>
+                        <p>Animal Data Forms </p>
                         <span class="caret"></span>
                     </a>
                     <div class="collapse" id="animal">

@@ -15,8 +15,12 @@ class CreateAnimalInfosTable extends Migration
     {
         Schema::create('animal_infos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('farm_id')->nullable()->constrained()->cascadeOnUpdate()->cascadeOnDelete();
-            $table->foreignId('community_id')->nullable()->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId('farm_id')->nullable()->constrained()->cascadeOnUpdate();
+            $table->foreignId('community_id')->nullable()->constrained()->cascadeOnUpdate();
+            $table->unsignedBigInteger('animal_cat_id');
+            $table->foreign('animal_cat_id')->references('id')->on('animal_cats')->cascadeOnUpdate();
+            $table->unsignedBigInteger('animal_sub_cat_id');
+            $table->foreign('animal_sub_cat_id')->references('id')->on('animal_cats')->cascadeOnUpdate();
             $table->integer('animal_tag');
             $table->enum('type',['1','2'])->comment('1=Goat,2=Sheep');
             $table->integer('sire');
