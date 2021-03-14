@@ -45,6 +45,22 @@
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
+
+                                    <div class="form-group col-md-6">
+                                        <label for="name">District <span class="t_r">*</span></label>
+                                        <select name="district_id" id="district_id" class="form-control">
+                                            <option value="">Select</option>
+                                            @foreach ($districts as $district)
+                                            <option value="{{$district->id}}">{{$district->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group col-md-6">
+                                        <label for="name">Upazila <span class="t_r">*</span></label>
+                                        <select name="district_id" id="upazila" class="form-control">
+                                        </select>
+                                    </div>
                                     <div class="form-group col-md-12">
                                         <label for="address">Address <span class="t_r">*</span></label>
                                         <input type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{old('address')}}" required>
@@ -73,6 +89,21 @@
     $('#preCal').click(function(){
         $('#cal').slideToggle()
     })
+
+
+    $('#district_id').on('change',function(e) {
+            var district_id = $('#district_id').val();
+            // var cat_id = $('#product_id').val();
+            $.ajax({
+                url:'{{ route("get.upazila") }}',
+                type:"get",
+                data: {district_id: district_id},
+                success:function (res) {
+                    res = $.parseJSON(res);
+                    $('#upazila').html(res.dis);
+                }
+            })
+        });
 </script>
 @endpush
 @endsection

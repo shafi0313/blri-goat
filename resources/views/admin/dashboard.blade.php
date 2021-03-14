@@ -1,7 +1,7 @@
 @extends('admin.layout.master')
 @section('title', 'Dashboard')
 @section('content')
-<?php $p = 'da'; ?>
+<?php $p = 'da'; $sm='' ?>
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">

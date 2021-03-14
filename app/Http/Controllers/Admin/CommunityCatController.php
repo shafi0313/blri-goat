@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Models\Upazila;
+use App\Models\District;
 use App\Models\Community;
 use App\Models\CommunityCat;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class CommunityCatController extends Controller
 {
@@ -17,7 +19,8 @@ class CommunityCatController extends Controller
 
     public function create()
     {
-        return view('admin.community_cat.create');
+        $districts = District::all();
+        return view('admin.community_cat.create', compact('districts'));
     }
 
     public function store(Request $request)

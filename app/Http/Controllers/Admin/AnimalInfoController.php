@@ -13,9 +13,15 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\AnimalInfoStoreRequest;
 use App\Http\Requests\PrductionRecordStoreRequest;
 use App\Models\AnimalCat;
+use App\Exports\AnimalInfoExport;
+use Excel;
 
 class AnimalInfoController extends Controller
 {
+    public function exportIntoExcel()
+    {
+        return Excel::download(new AnimalInfoExport, 'animal_information.xlsx');
+    }
     public function index()
     {
         $animalInfos = AnimalInfo::all();

@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\FarmController;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\FarmerController;
+use App\Http\Controllers\Admin\GlobalController;
 use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\AnimalCatController;
 use App\Http\Controllers\Admin\CommunityController;
@@ -44,6 +45,8 @@ Route::middleware(['auth','admin'])->prefix('admin')->group(function(){
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('/laraDashboard', [AuthController::class, 'laraDashboard'])->name('laraDashboard');
 
+    Route::get('/get-upazila', [GlobalController::class, 'upazila'])->name('get.upazila');
+
     // User Start________________________________________________________________________________________________________________
     Route::resource('/admin-user', AdminUserController::class);
     // Route::post('/admin-user/destroy/{id}', [AdminUserController::class, 'destroy'])->name('admin.destroy');
@@ -61,6 +64,8 @@ Route::middleware(['auth','admin'])->prefix('admin')->group(function(){
     Route::resource('/animal-info', AnimalInfoController::class);
     Route::get('/get-community', [AnimalInfoController::class, 'getCommunity'])->name('animalInfo.getCommunity');
     Route::get('/get-animal-sub-cat', [AnimalInfoController::class, 'getAnimalCat'])->name('animalInfo.getAnimalCat');
+
+    Route::get('/animal-info-excel', [AnimalInfoController::class, 'exportIntoExcel'])->name('animalInfo.exportIntoExcel');
 
 
 

@@ -20,7 +20,8 @@
                         <div class="card-header">
                             <div class="d-flex align-items-center">
                                 <h4 class="card-title">Animal Information</h4>
-                                <a href="{{route('animal-info.create')}}" class="btn btn-primary btn-round ml-auto text-light"><i class="fa fa-plus"></i> Add New</a>
+                                <a href="{{route('animalInfo.exportIntoExcel')}}" class="btn btn-info btn-round ml-auto text-light"><i class="fas fa-file-excel"></i> Download</a>&nbsp;&nbsp;
+                                <a href="{{route('animal-info.create')}}" class="btn btn-primary btn-round text-light"><i class="fa fa-plus"></i> Add New</a>
                             </div>
                         </div>
                         <div class="card-body">
@@ -37,7 +38,12 @@
                                             <th>Birth Wt. (kg)</th>
                                             <th>Litter Size</th>
                                             <th>Generation</th>
-                                            <th>Parity</th>
+                                            <th>Paity</th>
+                                            <th>Dam Milk</th>
+                                            <th>Date of Birth</th>
+                                            <th>Season Date of Birth</th>
+                                            <th>Death Date</th>
+                                            <th>Remark</th>
                                             <th class="no-sort" style="text-align:center;width:80px" >Action</th>
                                         </tr>
                                     </thead>
@@ -60,7 +66,12 @@
                                             <td>{{ $animalInfo->birth_wt }} </td>
                                             <td>{{ $animalInfo->litter_size }} </td>
                                             <td>{{ $animalInfo->generation }} </td>
-                                            <td>{{ $animalInfo->parity }} </td>
+                                            <td>{{ $animalInfo->paity }} </td>
+                                            <td>{{ $animalInfo->dam_milk }} </td>
+                                            <td>{{ $animalInfo->d_o_b }} </td>
+                                            <td>{{ $animalInfo->season_d_o_b }} </td>
+                                            <td>{{ $animalInfo->death_date }} </td>
+                                            <td>{{ $animalInfo->remark }} </td>
                                             <td>
                                                 <div class="form-button-action">
                                                     <a href="{{ route('farm.edit', $animalInfo->id) }}" title="Edit" class="btn btn-link btn-primary btn-lg">
