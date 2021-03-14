@@ -1,6 +1,6 @@
 @extends('admin.layout.master')
 @section('title', 'Animal Category')
-@php $p='license Farm'; $sm="balkPurchase"; @endphp
+@php $p='farmSett'; $sm='animalCat'; @endphp
 @section('content')
 <div class="main-panel">
     <div class="content">

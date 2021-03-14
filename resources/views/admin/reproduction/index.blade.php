@@ -1,8 +1,7 @@
 @extends('admin.layout.master')
 @section('title', 'Reproduction Record')
 @section('content')
-<?php $p = 'ds'; $sm="balkPurchase"; ?>
-<?php $p = 'tools'; ?>
+@php $p='animalForm'; $sm="reProRecord"; @endphp
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">

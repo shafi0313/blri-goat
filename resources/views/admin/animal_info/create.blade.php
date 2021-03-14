@@ -1,7 +1,7 @@
 @extends('admin.layout.master')
 @section('title', 'Animal Information')
+@php $p='animalForm'; $sm="animalInfo"; @endphp
 @section('content')
-@php $p='tools'; $sm="userCreate"; @endphp
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">

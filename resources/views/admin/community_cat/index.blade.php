@@ -1,8 +1,7 @@
 @extends('admin.layout.master')
 @section('title', 'Community Category')
 @section('content')
-<?php $p = 'ds'; $sm="balkPurchase"; ?>
-<?php $p = 'tools'; ?>
+@php $p = 'farmSett'; $sm='commCat'; @endphp
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">

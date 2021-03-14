@@ -1,8 +1,7 @@
 @extends('admin.layout.master')
 @section('title', 'Farm')
 @section('content')
-<?php $p = 'ds'; $sm="balkPurchase"; ?>
-<?php $p = 'tools'; ?>
+@php $p = 'farmSett'; $sm='farm'; @endphp
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">

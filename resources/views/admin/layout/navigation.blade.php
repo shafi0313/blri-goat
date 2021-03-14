@@ -5,7 +5,7 @@
         margin: 0 2px 0 10px !important;
     }
 </style>
-@php $sm="balkPurchasesdf"; @endphp
+{{-- @php $sm="balkPurchasesdf"; @endphp --}}
 <div class="sidebar">
 	<div class="sidebar-background"></div>
 	<div class="sidebar-wrapper scrollbar-inner">
@@ -85,31 +85,31 @@
                 </li>
 
 
-                <li class="nav-item {{$p=='invoice'?'active':''}}">
+                <li class="nav-item {{$p=='farmSett'?'active submenu':''}}">
                     <a data-toggle="collapse" href="#invoice">
                         <i class="fas fa-file-invoice-dollar"></i>
                         <p>Farm Settings</p>
                         <span class="caret"></span>
                     </a>
-                    <div class="collapse" id="invoice">
+                    <div class="collapse {{$p=='farmSett'?'show':''}}" id="invoice">
                         <ul class="nav nav-collapse">
-                            <li>
+                            <li class="{{$sm=='farm'?'active':''}} ">
                                 <a href="{{ route('farm.index') }}">
                                     <span class="sub-item">Farm</span>
                                 </a>
                             </li>
-                            <li>
+                            <li class="{{$sm=='commCat'?'active':''}}">
                                 <a href="{{ route('community-cat.index') }}">
                                     <span class="sub-item">Community Category</span>
                                 </a>
                             </li>
 
-                            <li>
+                            <li class="{{$sm=='comm'?'active':''}}">
                                 <a href="{{ route('community.index') }}">
                                     <span class="sub-item">Community</span>
                                 </a>
                             </li>
-                            <li>
+                            <li class="{{$sm=='animalCat'?'active':''}}">
                                 <a href="{{ route('animal-cat.index') }}">
                                     <span class="sub-item">Animal Category</span>
                                 </a>
@@ -118,35 +118,35 @@
                     </div>
                 </li>
 
-                <li class="nav-item {{$p=='invoice'?'active':''}}">
+                <li class="nav-item {{$p=='animalForm'?'active':''}}">
                     <a data-toggle="collapse" href="#animal">
                         <i class="fas fa-info-circle"></i>
                         <p>Animal Data Forms </p>
                         <span class="caret"></span>
                     </a>
-                    <div class="collapse" id="animal">
+                    <div class="collapse {{$p=='animalForm'?'show':''}}" id="animal">
                         <ul class="nav nav-collapse">
-                            <li>
+                            <li class="{{$sm=='animalInfo'?'active':''}}">
                                 <a href="{{ route('animal-info.index') }}">
                                     <span class="sub-item">Animal Information</span>
                                 </a>
                             </li>
-                            <li>
+                            <li class="{{$sm=='proRecord'?'active':''}}">
                                 <a href="{{ route('production-record.index') }}">
                                     <span class="sub-item">Production Record</span>
                                 </a>
                             </li>
-                            <li>
+                            <li class="{{$sm=='reProRecord'?'active':''}}">
                                 <a href="{{ route('reproduction-record.index') }}">
                                     <span class="sub-item">Reproduction Record</span>
                                 </a>
                             </li>
-                            <li>
+                            <li class="{{$sm=='serviceRec'?'active':''}}">
                                 <a href="{{ route('service-record.index') }}">
                                     <span class="sub-item">Service Record</span>
                                 </a>
                             </li>
-                            <li>
+                            <li class="{{$sm=='DHRec'?'active':''}}">
                                 <a href="{{ route('disease-and-health.index') }}">
                                     <span class="sub-item">Disease and Health Record</span>
                                 </a>

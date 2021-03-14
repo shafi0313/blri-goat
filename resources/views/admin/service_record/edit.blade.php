@@ -1,7 +1,7 @@
 @extends('admin.layout.master')
 @section('title', 'Farm')
-@php $p='license Farm'; $sm="balkPurchase"; @endphp
 @section('content')
+@php $p='animalForm'; $sm="serviceRec"; @endphp
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">
