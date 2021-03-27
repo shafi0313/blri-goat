@@ -12,9 +12,11 @@ use App\Http\Controllers\Admin\CommunityController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\AnimalInfoController;
 use App\Http\Controllers\Admin\CommunityCatController;
+use App\Http\Controllers\Admin\MorphometricController;
 use App\Http\Controllers\Admin\ReproductionController;
 use App\Http\Controllers\Admin\DiseaseHealthController;
 use App\Http\Controllers\Admin\ServiceRecordController;
+use App\Http\Controllers\Admin\MilkProductionController;
 use App\Http\Controllers\Admin\ProductionRecordController;
 
 /*
@@ -46,6 +48,7 @@ Route::middleware(['auth','admin'])->prefix('admin')->group(function(){
     Route::get('/laraDashboard', [AuthController::class, 'laraDashboard'])->name('laraDashboard');
 
     Route::get('/get-upazila', [GlobalController::class, 'upazila'])->name('get.upazila');
+    Route::get('/get-animal-info', [GlobalController::class, 'getAnimalInfo'])->name('get.getAnimalInfo');
 
     // User Start________________________________________________________________________________________________________________
     Route::resource('/admin-user', AdminUserController::class);
@@ -61,11 +64,20 @@ Route::middleware(['auth','admin'])->prefix('admin')->group(function(){
     Route::resource('/community-cat', CommunityCatController::class);
     Route::resource('/community', CommunityController::class);
 
+    // Animal Info
     Route::resource('/animal-info', AnimalInfoController::class);
     Route::get('/get-community', [AnimalInfoController::class, 'getCommunity'])->name('animalInfo.getCommunity');
     Route::get('/get-animal-sub-cat', [AnimalInfoController::class, 'getAnimalCat'])->name('animalInfo.getAnimalCat');
-
     Route::get('/animal-info-excel', [AnimalInfoController::class, 'exportIntoExcel'])->name('animalInfo.exportIntoExcel');
+
+    // Morphometric
+    Route::resource('/morphometric', MorphometricController::class);
+
+
+
+    // Milk Production
+    Route::resource('/milk-production', MilkProductionController::class);
+
 
 
 
@@ -77,11 +89,12 @@ Route::middleware(['auth','admin'])->prefix('admin')->group(function(){
 
     Route::resource('/production-record', ProductionRecordController::class);
     Route::resource('/reproduction-record', ReproductionController::class);
-    Route::get('/get-animal-info', [ProductionRecordController::class, 'getAnimalInfo'])->name('animalInfo.getAnimalInfo');
+
 
     Route::resource('/service-record', ServiceRecordController::class);
 
     Route::resource('/disease-and-health', DiseaseHealthController::class);
+
 
 
 

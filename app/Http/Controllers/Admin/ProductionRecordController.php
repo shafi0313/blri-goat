@@ -59,17 +59,5 @@ class ProductionRecordController extends Controller
             return redirect()->back();
         }
     }
-    public function getAnimalInfo(Request $request)
-    {
-        $animalInfoId = $request->animalInfoId;
-        $animalInfos = AnimalInfo::where('id', $animalInfoId)->get();
-        foreach($animalInfos as $animalInfo){
-            $sex = $animalInfo->sex;
-            $color = $animalInfo->color;
-            $birth_wt = $animalInfo->birth_wt;
-            $type = $animalInfo->type;
-            $d_o_b = $animalInfo->d_o_b;
-        }
-        return json_encode(['sex'=>$sex, 'color'=>$color, 'birth_wt'=>$birth_wt, 'type'=>$type, 'd_o_b'=>$d_o_b]);
-    }
+
 }

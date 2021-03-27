@@ -95,18 +95,18 @@
                         <ul class="nav nav-collapse">
                             <li class="{{$sm=='farm'?'active':''}} ">
                                 <a href="{{ route('farm.index') }}">
-                                    <span class="sub-item">Farm</span>
+                                    <span class="sub-item">Research Farm</span>
                                 </a>
                             </li>
                             <li class="{{$sm=='commCat'?'active':''}}">
                                 <a href="{{ route('community-cat.index') }}">
-                                    <span class="sub-item">Community Category</span>
+                                    <span class="sub-item">Community Farm</span>
                                 </a>
                             </li>
 
                             <li class="{{$sm=='comm'?'active':''}}">
                                 <a href="{{ route('community.index') }}">
-                                    <span class="sub-item">Community</span>
+                                    <span class="sub-item">Farm</span>
                                 </a>
                             </li>
                             <li class="{{$sm=='animalCat'?'active':''}}">
@@ -121,34 +121,103 @@
                 <li class="nav-item {{$p=='animalForm'?'active':''}}">
                     <a data-toggle="collapse" href="#animal">
                         <i class="fas fa-info-circle"></i>
-                        <p>Animal Data Forms </p>
+                        <p>Animal Record</p>
                         <span class="caret"></span>
                     </a>
                     <div class="collapse {{$p=='animalForm'?'show':''}}" id="animal">
                         <ul class="nav nav-collapse">
                             <li class="{{$sm=='animalInfo'?'active':''}}">
                                 <a href="{{ route('animal-info.index') }}">
-                                    <span class="sub-item">Animal Information</span>
+                                    <span class="sub-item">Animal Info.</span>
+                                </a>
+                            </li>
+                            <li class="{{$sm=='animalInfo'?'active':''}}">
+                                <a href="{{ route('morphometric.index') }}">
+                                    <span class="sub-item">Morphometric</span>
                                 </a>
                             </li>
                             <li class="{{$sm=='proRecord'?'active':''}}">
                                 <a href="{{ route('production-record.index') }}">
-                                    <span class="sub-item">Production Record</span>
+                                    <span class="sub-item">Body Weight</span>
                                 </a>
                             </li>
                             <li class="{{$sm=='reProRecord'?'active':''}}">
                                 <a href="{{ route('reproduction-record.index') }}">
-                                    <span class="sub-item">Reproduction Record</span>
+                                    <span class="sub-item">Reproduction</span>
+                                </a>
+                            </li>
+
+                            <li class="{{$sm=='reProRecord'?'active':''}}">
+                                <a href="{{ route('milk-production.index') }}">
+                                    <span class="sub-item">Milk Production</span>
+                                </a>
+                            </li>
+                            <li class="{{$sm=='reProRecord'?'active':''}}">
+                                <a href="">
+                                    <span class="sub-item">Semen Analysis</span>
                                 </a>
                             </li>
                             <li class="{{$sm=='serviceRec'?'active':''}}">
                                 <a href="{{ route('service-record.index') }}">
-                                    <span class="sub-item">Service Record</span>
+                                    <span class="sub-item">Service</span>
+                                </a>
+                            </li>
+                            <li class="{{$sm=='serviceRec'?'active':''}}">
+                                <a href="">
+                                    <span class="sub-item">Distribution</span>
+                                </a>
+                            </li>
+                            <li class="{{$sm=='serviceRec'?'active':''}}">
+                                <a href="">
+                                    <span class="sub-item">Dead/Culled</span>
                                 </a>
                             </li>
                             <li class="{{$sm=='DHRec'?'active':''}}">
                                 <a href="{{ route('disease-and-health.index') }}">
-                                    <span class="sub-item">Disease and Health Record</span>
+                                    <span class="sub-item">Omit from Animal record</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+
+                <li class="nav-item {{$p=='farmSett'?'active submenu':''}}">
+                    <a data-toggle="collapse" href="#hm">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                        <p>Health Management</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse {{$p=='farmSett'?'show':''}}" id="hm">
+                        <ul class="nav nav-collapse">
+                            <li class="{{$sm=='farm'?'active':''}}">
+                                <a href="">
+                                    <span class="sub-item">Health Management</span>
+                                </a>
+                            </li>
+                            <li class="{{$sm=='farm'?'active':''}}">
+                                <a href="">
+                                    <span class="sub-item">Disease and Treatment</span>
+                                </a>
+                            </li>
+                            <li class="{{$sm=='farm'?'active':''}}">
+                                <a href="">
+                                    <span class="sub-item">Vaccination</span>
+                                </a>
+                            </li>
+                            <li class="{{$sm=='farm'?'active':''}}">
+                                <a href="">
+                                    <span class="sub-item">Deworming</span>
+                                </a>
+                            </li>
+                            <li class="{{$sm=='farm'?'active':''}}">
+                                <a href="">
+                                    <span class="sub-item">Dipping</span>
+                                </a>
+                            </li>
+                            <li class="{{$sm=='farm'?'active':''}}">
+                                <a href="">
+                                    <span class="sub-item">Parasite</span>
                                 </a>
                             </li>
                         </ul>
