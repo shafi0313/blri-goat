@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Carbon\Carbon;
 use App\Models\Upazila;
 use App\Models\District;
 use App\Models\AnimalInfo;
@@ -31,7 +32,7 @@ class GlobalController extends Controller
             $color = $animalInfo->color;
             $birth_wt = $animalInfo->birth_wt;
             $type = $animalInfo->type;
-            $d_o_b = $animalInfo->d_o_b;
+            $d_o_b = Carbon::parse($animalInfo->d_o_b)->format('Y-m-d');
             $paity = $animalInfo->paity;
             $litter_size = $animalInfo->litter_size;
         }

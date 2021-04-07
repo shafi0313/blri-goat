@@ -132,8 +132,43 @@
                                     </div>
                                 </div>
 
-
                                 <div class="row">
+                                    <div class="form-group col-md-3">
+                                        <label for="sex">Sex <span class="t_r">*</span></label>
+                                        <select name="sex" id="sex" class="form-control @error('sex') is-invalid @enderror">
+                                            <option value="" selected disabled>Select</option>
+                                            <option value="M">M</option>
+                                            <option value="F">F</option>
+                                        </select>
+                                        @error('sex')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+
+                                    <div class="form-check col-md-3" id="m_type" style="display: none">
+										<label>M Type <span class="t_r">*</span></label><br>
+										<label class="form-radio-label" id="patha">
+											<input class="form-radio-input" type="radio" name="m_type" value="1" required>
+											<span class="form-radio-sign">patha</span>
+										</label>
+										<label class="form-radio-label ml-3" id="khasi">
+											<input class="form-radio-input" type="radio" name="m_type" value="2" required>
+											<span class="form-radio-sign">Khasi</span>
+										</label>
+									</div>
+
+                                    <div class="form-group col-md-3">
+                                        <label for="sex">Type <span class="t_r">*</span></label>
+                                        <select name="a_type" class="form-control @error('a_type') is-invalid @enderror">
+                                            <option value="" selected disabled>Select</option>
+                                            <option value="1">প্রজননক্ষম</option>
+                                            <option value="2">বাড়ন্ত</option>
+                                            <option value="3">বাচ্চা</option>
+                                        </select>
+                                        @error('a_type')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
 
                                     <div class="form-group col-md-3">
                                         <label for="sire">Sire <span class="t_r">*</span></label>
@@ -163,18 +198,6 @@
                                         <label for="color">Animal Color </label>
                                         <input name="color" type="text" class="form-control @error('color') is-invalid @enderror" value="{{old('color')}}">
                                         @error('color')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-
-                                    <div class="form-group col-md-3">
-                                        <label for="sex">Sex <span class="t_r">*</span></label>
-                                        <select name="sex" class="form-control @error('sex') is-invalid @enderror">
-                                            <option value="" selected disabled>Select</option>
-                                            <option value="M">Male</option>
-                                            <option value="F">Female</option>
-                                        </select>
-                                        @error('sex')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
@@ -285,7 +308,14 @@
         $("#comm").attr('required', true)
     })
 
-
+    $('#sex').on('change',function(e) {
+        var sex = $(this).val();
+        if(sex=='M'){
+            $('#m_type').show()
+        }else{
+            $('#m_type').hide()
+        }
+    })
 
     $('#community_cat').on('change',function(e) {
         var communityCatId = $(this).val();

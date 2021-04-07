@@ -247,7 +247,7 @@
     $('#animalInfo').on('change',function(e) {
         var animalInfoId = $(this).val();
         $.ajax({
-            url:'{{ route("animalInfo.getAnimalInfo") }}',
+            url:'{{ route("get.getAnimalInfo") }}',
             type:"get",
             data: {
                 animalInfoId: animalInfoId

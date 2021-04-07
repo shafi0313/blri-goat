@@ -1,7 +1,7 @@
 @extends('admin.layout.master')
-@section('title', 'Production Record')
+@section('title', 'Semen Analysis')
 @section('content')
-@php $p='animalForm'; $sm="proRecord"; @endphp
+@php $p='animalForm'; $sm="reProRecord"; @endphp
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">
@@ -9,9 +9,9 @@
                 <ul class="breadcrumbs">
                     <li class="nav-home"><a href="{{ route('admin.dashboard')}}"><i class="flaticon-home"></i></a></li>
                     <li class="separator"><i class="flaticon-right-arrow"></i></li>
-                    <li class="nav-item"><a href="{{ route('animal-info.index')}}">Production Record</a></li>
+                    <li class="nav-item"><a href="{{ route('semen-analysis.index')}}">Semen Analysis</a></li>
                     <li class="separator"><i class="flaticon-right-arrow"></i></li>
-                    <li class="nav-item active">Add Production Record</li>
+                    <li class="nav-item active">Add Semen Analysis</li>
                 </ul>
             </div>
             <div class="divider1"></div>
@@ -34,7 +34,7 @@
                                     </ul>
                                 </div>
                             @endif
-                            <form action="{{ route('production-record.store')}}" method="post">
+                            <form action="{{ route('semen-analysis.store')}}" method="post">
                                 @csrf
                                 <input type="hidden" name="type" id="type">
                                 <div class="row">
@@ -56,77 +56,41 @@
                                         <input type="text" class="form-control" id="sex"  value="" readonly>
                                     </div>
 
-                                    <div class="form-group col-md-3">
+                                    {{-- <div class="form-group col-md-3">
                                         <label for="">Goat Color <span class="t_r">*</span></label>
                                         <input type="text" class="form-control"  id="color" value="" readonly>
-                                    </div>
+                                    </div> --}}
 
-                                    <div class="form-group col-md-3">
+                                    {{-- <div class="form-group col-md-3">
                                         <label for="">Birth Wt. (Kg) <span class="t_r">*</span></label>
                                         <input type="text" class="form-control" id="birth_wt" readonly>
-                                    </div>
-
+                                    </div> --}}
 
                                     <div class="form-group col-md-3">
-                                        <label for="month_1">1 months body wt. (kg)</label>
-                                        <input type="number" class="form-control @error('month_1') is-invalid @enderror" name="month_1" value="{{old('month_1')}}">
-                                        @error('month_1')
+                                        <label for="coll_date">Semen collecting Date <span class="t_r">*</span></label>
+                                        <input name="coll_date" type="date" class="form-control @error('coll_date') is-invalid @enderror" value="{{old('coll_date')}}" required>
+                                        @error('coll_date')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
-
                                     <div class="form-group col-md-3">
-                                        <label for="month_2">2 months body wt. (kg)</label>
-                                        <input type="number" class="form-control @error('month_2') is-invalid @enderror" name="month_2" value="{{old('month_2')}}">
-                                        @error('month_2')
+                                        <label for="volume">Semen Volume <span class="t_r">*</span></label>
+                                        <input name="volume" type="number" step="any" class="form-control @error('volume') is-invalid @enderror" value="{{old('volume')}}" required>
+                                        @error('volume')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
-
                                     <div class="form-group col-md-3">
-                                        <label for="month_3">3 months body wt. (kg)</label>
-                                        <input type="number" class="form-control @error('month_3') is-invalid @enderror" name="month_3" value="{{old('month_3')}}">
-                                        @error('month_3')
+                                        <label for="s_color">Semen color <span class="t_r">*</span></label>
+                                        <input name="s_color" type="text" class="form-control @error('s_color') is-invalid @enderror" value="{{old('s_color')}}" required>
+                                        @error('s_color')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
-
                                     <div class="form-group col-md-3">
-                                        <label for="month_4">4 months body wt. (kg)</label>
-                                        <input type="number" class="form-control @error('month_4') is-invalid @enderror" name="month_4" value="{{old('month_4')}}">
-                                        @error('month_4')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-
-                                    <div class="form-group col-md-3">
-                                        <label for="month_5">5 months body wt. (kg)</label>
-                                        <input type="number" class="form-control @error('month_5') is-invalid @enderror" name="month_5" value="{{old('month_5')}}">
-                                        @error('month_5')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-
-                                    <div class="form-group col-md-3">
-                                        <label for="month_6">6 months body wt. (kg)</label>
-                                        <input type="number" class="form-control @error('month_6') is-invalid @enderror" name="month_6" value="{{old('month_6')}}">
-                                        @error('month_6')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-
-                                    <div class="form-group col-md-3">
-                                        <label for="g_rate_month_3">Growth rate at 3 months (g/d)</label>
-                                        <input type="number" class="form-control @error('g_rate_month_3') is-invalid @enderror" name="g_rate_month_3" value="{{old('g_rate_month_3')}}">
-                                        @error('g_rate_month_3')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-
-                                    <div class="form-group col-md-3">
-                                        <label for="g_rate_month_6">Growth rate at 6 months (g/d)</label>
-                                        <input type="number" class="form-control @error('g_rate_month_6') is-invalid @enderror" name="g_rate_month_6" value="{{old('g_rate_month_6')}}">
-                                        @error('g_rate_month_6')
+                                        <label for="number_of_straw">Number of Straw made <span class="t_r">*</span></label>
+                                        <input name="number_of_straw" type="number" step="any" class="form-control @error('number_of_straw') is-invalid @enderror" value="{{old('number_of_straw')}}" required>
+                                        @error('number_of_straw')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
@@ -162,6 +126,8 @@
                 $('#color').val(res.color);
                 $('#birth_wt').val(res.birth_wt);
                 $('#type').val(res.type);
+                $('#paity').val(res.paity);
+                $('#litter_size').val(res.litter_size);
             }
         })
     });

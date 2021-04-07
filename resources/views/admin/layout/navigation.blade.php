@@ -87,7 +87,7 @@
 
                 <li class="nav-item {{$p=='farmSett'?'active submenu':''}}">
                     <a data-toggle="collapse" href="#invoice">
-                        <i class="fas fa-file-invoice-dollar"></i>
+                        <i class="fas fa-tools"></i>
                         <p>Farm Settings</p>
                         <span class="caret"></span>
                     </a>
@@ -153,7 +153,7 @@
                                 </a>
                             </li>
                             <li class="{{$sm=='reProRecord'?'active':''}}">
-                                <a href="">
+                                <a href="{{ route('semen-analysis.index') }}">
                                     <span class="sub-item">Semen Analysis</span>
                                 </a>
                             </li>
@@ -163,7 +163,7 @@
                                 </a>
                             </li>
                             <li class="{{$sm=='serviceRec'?'active':''}}">
-                                <a href="">
+                                <a href="{{ route('distribution.index') }}">
                                     <span class="sub-item">Distribution</span>
                                 </a>
                             </li>
@@ -184,7 +184,7 @@
 
                 <li class="nav-item {{$p=='farmSett'?'active submenu':''}}">
                     <a data-toggle="collapse" href="#hm">
-                        <i class="fas fa-file-invoice-dollar"></i>
+                        <i class="fas fa-heartbeat"></i>
                         <p>Health Management</p>
                         <span class="caret"></span>
                     </a>
@@ -224,94 +224,29 @@
                     </div>
                 </li>
 
-
-
-
-
-
-                {{-- <li class="nav-item {{$p=='account'?'active':''}}">
-                    <a data-toggle="collapse" href="#account">
-                        <i class="fas fa-calculator"></i>
-                        <p>Account</p>
+                {{-- Report  --}}
+                <li class="nav-item {{$p=='farmSett'?'active submenu':''}}">
+                    <a data-toggle="collapse" href="#report">
+                        <i class="fas fa-file"></i>
+                        <p>Report</p>
                         <span class="caret"></span>
                     </a>
-                    <div class="collapse" id="account">
+                    <div class="collapse {{$p=='farmSett'?'show':''}}" id="report">
                         <ul class="nav nav-collapse">
-                            <li>
-                                <a href="{{ route('account-main.selectDate')}}">
-                                    <span class="sub-item">Main Accounts</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ route('account-received.index')}}">
-                                    <span class="sub-item">Received</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ route('account-payment.index')}}">
-                                    <span class="sub-item">Payment</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ route('authorLedgerBook.index')}}">
-                                    <span class="sub-item">Author Ledger Book</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ route('salesStatement.selectDate')}}">
-                                    <span class="sub-item">Sales Statement</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ route('purchaseStatement.selectDate')}}">
-                                    <span class="sub-item">Purchase Statement</span>
+                            <li class="{{$sm=='farm'?'active':''}}">
+                                <a href="{{ route('researchStock.selectDate') }}">
+                                    <span class="sub-item">BLRI Stock Report</span>
                                 </a>
                             </li>
                         </ul>
                     </div>
-                </li> --}}
+                </li>
 
-                {{-- <li class="nav-item {{$p=='productStock'?'active':''}}">
-                    <a href="{{ route('ProductStock.index')}}">
-                        <i class="fas fa-layer-group"></i>
+                {{-- <li class="nav-item {{$p=='visitor'?'active':''}}">
+                    <a class="dropdown-item" href="{{ route('researchStock.selectDate') }}" >
+                        <i class="fas fa-user-secret"></i>
                         <p>Stock</p>
                     </a>
-                </li> --}}
-
-                {{-- <li class="nav-item {{$p=='purchaseInvoice'?'active':''}}">
-                    <a data-toggle="collapse" href="#purchaseInvoice">
-                        <i class="fas fa-shopping-cart"></i>
-                        <p>Purchase</p>
-                        <span class="caret"></span>
-                    </a>
-                    <div class="collapse" id="purchaseInvoice">
-                        <ul class="nav nav-collapse">
-                            <li>
-                                <a href="{{ route('purchase-invoice.index')}}">
-                                    <i class="far fa-check-circle sub_icon"></i>
-                                    <span>Invoice</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ route('return-purchase-invoice.index')}}">
-                                    <i class="far fa-times-circle sub_icon"></i>
-                                    <span>Return Invoice</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ route('purchaseLedgerBook.index')}}">
-                                    <i class="fas fa-book-open sub_icon"></i>
-                                    <span>Ledger Book</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ route('purchaseTrush.trush')}}">
-                                    <i class="fas fa-trash sub_icon"></i>
-                                    <span>Trash</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
                 </li> --}}
 
 

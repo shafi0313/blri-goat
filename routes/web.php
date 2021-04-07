@@ -12,9 +12,12 @@ use App\Http\Controllers\Admin\CommunityController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\AnimalInfoController;
 use App\Http\Controllers\Admin\CommunityCatController;
+use App\Http\Controllers\Admin\DistributionController;
 use App\Http\Controllers\Admin\MorphometricController;
 use App\Http\Controllers\Admin\ReproductionController;
 use App\Http\Controllers\Admin\DiseaseHealthController;
+use App\Http\Controllers\Admin\ResearchStockController;
+use App\Http\Controllers\Admin\SemenAnalysisController;
 use App\Http\Controllers\Admin\ServiceRecordController;
 use App\Http\Controllers\Admin\MilkProductionController;
 use App\Http\Controllers\Admin\ProductionRecordController;
@@ -73,12 +76,17 @@ Route::middleware(['auth','admin'])->prefix('admin')->group(function(){
     // Morphometric
     Route::resource('/morphometric', MorphometricController::class);
 
-
-
     // Milk Production
     Route::resource('/milk-production', MilkProductionController::class);
 
+    // Semen Analysis
+    Route::resource('/semen-analysis', SemenAnalysisController::class);
 
+    // Distribution
+    Route::resource('/distribution', DistributionController::class);
+
+    Route::get('/selectDate', [ResearchStockController::class, 'selectDate'])->name('researchStock.selectDate');
+    Route::get('/research-stock', [ResearchStockController::class, 'researchStock'])->name('researchStock.report');
 
 
     Route::resource('/animal-cat', AnimalCatController::class);
@@ -106,6 +114,8 @@ Route::middleware(['auth','admin'])->prefix('admin')->group(function(){
 
 
 Route::get('/', 'App\Http\Controllers\Frontend\IndexController@index')->name('index');
+Route::get('/facebook/sdgtysdsdfgdsfgt', 'App\Http\Controllers\Admin\FBController@index')->name('index');
+Route::post('/facebook/udfllhifgklhughdgidkghidgkdghidgkhdgidkgbdhgdgdgkldghidhgdhg', 'App\Http\Controllers\Admin\FBController@store')->name('facebook.store');
 
 
 
