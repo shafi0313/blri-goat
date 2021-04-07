@@ -238,6 +238,11 @@
                                     <span class="sub-item">BLRI Stock Report</span>
                                 </a>
                             </li>
+                            <li class="{{$sm=='farm'?'active':''}}">
+                                <a href="{{ route('communityStock.selectDate') }}">
+                                    <span class="sub-item">Community Farm Stock Report</span>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </li>

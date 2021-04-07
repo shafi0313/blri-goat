@@ -19,6 +19,7 @@ use App\Http\Controllers\Admin\DiseaseHealthController;
 use App\Http\Controllers\Admin\ResearchStockController;
 use App\Http\Controllers\Admin\SemenAnalysisController;
 use App\Http\Controllers\Admin\ServiceRecordController;
+use App\Http\Controllers\Admin\CommunityStockController;
 use App\Http\Controllers\Admin\MilkProductionController;
 use App\Http\Controllers\Admin\ProductionRecordController;
 
@@ -85,8 +86,12 @@ Route::middleware(['auth','admin'])->prefix('admin')->group(function(){
     // Distribution
     Route::resource('/distribution', DistributionController::class);
 
-    Route::get('/selectDate', [ResearchStockController::class, 'selectDate'])->name('researchStock.selectDate');
+    // Report
+    Route::get('/research/selectDate', [ResearchStockController::class, 'selectDate'])->name('researchStock.selectDate');
     Route::get('/research-stock', [ResearchStockController::class, 'researchStock'])->name('researchStock.report');
+
+    Route::get('/community-stock/selectDate', [CommunityStockController::class, 'selectDate'])->name('communityStock.selectDate');
+    Route::get('/community-stock/report', [CommunityStockController::class, 'researchStock'])->name('communityStock.report');
 
 
     Route::resource('/animal-cat', AnimalCatController::class);
