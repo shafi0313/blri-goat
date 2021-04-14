@@ -98,7 +98,7 @@
                                     <div class="form-group col-md-3 goatCat" style="display: none">
                                         <label for="sire">Goat Category <span class="t_r">*</span></label>
                                         <select name="animal_cat_id" id="" class="form-control animal goat @error('sire') is-invalid @enderror">
-                                            <option value="">Select</option>
+                                            <option >Select</option>
                                             @foreach ($goatCats as $goatCat)
                                             <option value="{{$goatCat->id}}">{{$goatCat->name}}</option>
                                             @endforeach
@@ -109,14 +109,14 @@
                                     </div>
 
                                     <div class="form-group col-md-3 goatCat" style="display: none">
-                                        <label for="sire">Goat Sub Category <span class="t_r">*</span></label>
+                                        <label for="sire">Goat Sub Category *</span></label>
                                         <select name="animal_sub_cat_id" id="" class="form-control animalSub goat @error('sire') is-invalid @enderror"></select>
                                     </div>
 
                                     <div class="form-group col-md-3 sheepCat" style="display: none">
                                         <label for="sire">Sheep Category <span class="t_r">*</span></label>
                                         <select name="animal_cat_id" id="" class="form-control animal sheep @error('sire') is-invalid @enderror">
-                                            <option value="">Select</option>
+                                            <option>Select</option>
                                             @foreach ($sheepCats as $sheeptCat)
                                             <option value="{{$sheeptCat->id}}">{{$sheeptCat->name}}</option>
                                             @endforeach
@@ -127,7 +127,7 @@
                                     </div>
 
                                     <div class="form-group col-md-3 sheepCat" style="display: none">
-                                        <label for="sire">Sheep Sub Category <span class="t_r">*</span></label>
+                                        <label for="sire">Sheep Sub Category </label>
                                         <select name="animal_sub_cat_id" id="" class="form-control animalSub sheep @error('sire') is-invalid @enderror"></select>
                                     </div>
                                 </div>
@@ -135,8 +135,8 @@
                                 <div class="row">
                                     <div class="form-group col-md-3">
                                         <label for="sex">Sex <span class="t_r">*</span></label>
-                                        <select name="sex" id="sex" class="form-control @error('sex') is-invalid @enderror">
-                                            <option value="" selected disabled>Select</option>
+                                        <select name="sex" id="sex" class="form-control @error('sex') is-invalid @enderror" required>
+                                            <option  selected disabled>Select</option>
                                             <option value="M">M</option>
                                             <option value="F">F</option>
                                         </select>
@@ -148,19 +148,19 @@
                                     <div class="form-check col-md-3" id="m_type" style="display: none">
 										<label>M Type <span class="t_r">*</span></label><br>
 										<label class="form-radio-label" id="patha">
-											<input class="form-radio-input" type="radio" name="m_type" value="1" required>
+											<input class="form-radio-input" type="radio" name="m_type" value="1">
 											<span class="form-radio-sign">patha</span>
 										</label>
 										<label class="form-radio-label ml-3" id="khasi">
-											<input class="form-radio-input" type="radio" name="m_type" value="2" required>
+											<input class="form-radio-input" type="radio" name="m_type" value="2">
 											<span class="form-radio-sign">Khasi</span>
 										</label>
 									</div>
 
-                                    <div class="form-group col-md-3">
-                                        <label for="sex">Type <span class="t_r">*</span></label>
+                                    {{-- <div class="form-group col-md-3">
+                                        <label for="a_type">Type <span class="t_r">*</span></label>
                                         <select name="a_type" class="form-control @error('a_type') is-invalid @enderror">
-                                            <option value="" selected disabled>Select</option>
+                                            <option selected disabled>Select</option>
                                             <option value="1">প্রজননক্ষম</option>
                                             <option value="2">বাড়ন্ত</option>
                                             <option value="3">বাচ্চা</option>
@@ -168,7 +168,7 @@
                                         @error('a_type')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
-                                    </div>
+                                    </div> --}}
 
                                     <div class="form-group col-md-3">
                                         <label for="sire">Sire <span class="t_r">*</span></label>

@@ -1,5 +1,5 @@
 @extends('admin.layout.master')
-@section('title', 'Sales ledger Book')
+@section('title', 'BLRI Research Farm Stock Report')
 @section('content')
 @php $p='sales'; $sm="salesLedger"; @endphp
 <div class="main-panel">
@@ -10,7 +10,7 @@
                     <li class="nav-home">
                         <a href="{{ route('admin.dashboard')}}" title="Dashboard"><i class="flaticon-home"></i></a></li>
                     <li class="separator"><i class="flaticon-right-arrow"></i></li>
-                    {{-- <li class="nav-item"><a href="{{ route('purchaseLedgerBook.index') }}">Sales ledger Book</a></li> --}}
+                    {{-- <li class="nav-item"><a href="{{ route('purchaseLedgerBook.index') }}">BLRI Research Farm Stock Report</a></li> --}}
                     <li class="separator"><i class="flaticon-right-arrow"></i></li>
                     <li class="nav-item active">Select Date</li>
                 </ul>
@@ -29,7 +29,6 @@
                             <hr>
                             <form action="{{ route('researchStock.report') }}" method="get">
                                 @csrf
-                                {{-- <input type="hidden" name="customer_id" value="{{ $customer_id->id }}"> --}}
                                 <div class="row justify-content-center">
                                 <div class="col-md-7">
                                     <div class="form-group row">
@@ -48,7 +47,6 @@
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                 </div>
                                 </div>
-
                             </form>
                         </div>
                     </div>

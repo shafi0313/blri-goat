@@ -23,6 +23,8 @@ class CreateAnimalInfosTable extends Migration
             $table->foreign('animal_sub_cat_id')->references('id')->on('animal_cats')->cascadeOnUpdate();
             $table->integer('animal_tag');
             $table->enum('type',['1','2'])->comment('1=Goat,2=Sheep');
+            $table->tinyInteger('m_type')->comment('1=Patha,2=Khashi');
+            // $table->tinyInteger('a_type')->comment('Amimal Type');
             $table->integer('sire');
             $table->integer('dam');
             $table->string('color',80)->nullable();

@@ -22,6 +22,7 @@ class AnimalInfoController extends Controller
     {
         return Excel::download(new AnimalInfoExport, 'animal_information.xlsx');
     }
+
     public function index()
     {
         $animalInfos = AnimalInfo::all();
@@ -43,13 +44,46 @@ class AnimalInfoController extends Controller
      * @param  \App\Http\Requests\AnimalInfoStoreRequest  $animalInfoStoreRequest
      * @return Illuminate\Http\Response
      */
-    public function store(AnimalInfoStoreRequest $animalInfoStoreRequest)
+    public function store(Request $request)
     {
-        $animalInfo = $animalInfoStoreRequest->validated();
+        // return $request;
+
+        $animal_sub_cat_id = $request->animal_sub_cat_id;
+        if($animal_sub_cat_id==0){
+            $animal_sub_cat_id = null;
+        }else{
+            $animal_sub_cat_id = $request->animal_sub_cat_id;
+        }
+
+        $data = [
+            'farm_id' => $request->farm_id,
+            'community_id' => $request->community_id,
+            'animal_cat_id' => $request->animal_cat_id,
+            'animal_sub_cat_id' => $animal_sub_cat_id,
+            'type' => $request->type,
+            'm_type' => $request->m_type,
+            // 'a_type' => $request->a_type,
+            'sire' => $request->sire,
+            'dam' => $request->dam,
+            'animal_tag' => $request->animal_tag,
+            'color' => $request->color,
+            'sex' => $request->sex,
+            'birth_wt' => $request->birth_wt,
+            'litter_size' => $request->litter_size,
+            'generation' => $request->generation,
+            'paity' => $request->paity,
+            'dam_milk' => $request->dam_milk,
+            'd_o_b' => $request->d_o_b,
+            'season_d_o_b' => $request->season_d_o_b,
+            'death_date' => $request->death_date,
+            'remark' => $request->remark,
+        ];
+
+        // $animalInfo = $animalInfoStoreRequest->validated();
         DB::beginTransaction();
 
         try{
-            AnimalInfo::create($animalInfo);
+            AnimalInfo::create($data);
             DB::commit();
             toast('Success','success');
             return redirect()->route('animal-info.index');
