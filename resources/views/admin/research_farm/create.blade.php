@@ -1,5 +1,5 @@
 @extends('admin.layout.master')
-@section('title', 'Farm')
+@section('title', 'Research Farm')
 @section('content')
 @php $p='farmSett'; $sm="farm"; @endphp
 <div class="main-panel">
@@ -9,9 +9,9 @@
                 <ul class="breadcrumbs">
                     <li class="nav-home"><a href="{{ route('admin.dashboard')}}"><i class="flaticon-home"></i></a></li>
                     <li class="separator"><i class="flaticon-right-arrow"></i></li>
-                    <li class="nav-item"><a href="{{ route('farm.index')}}">Farm</a></li>
+                    <li class="nav-item"><a href="{{ route('farm.index')}}">Research Farm</a></li>
                     <li class="separator"><i class="flaticon-right-arrow"></i></li>
-                    <li class="nav-item active">Add Farm</li>
+                    <li class="nav-item active">Add Research Farm</li>
                 </ul>
             </div>
             <div class="divider1"></div>
@@ -21,7 +21,7 @@
                         {{-- Page Content Start --}}
                         <div class="card-header">
                             <div class="d-flex align-items-center">
-                                <h4 class="card-title">Add Farm</h4>
+                                <h4 class="card-title">Add Research Farm</h4>
                             </div>
                         </div>
                         <div class="card-body">
@@ -39,7 +39,7 @@
                                 <div class="row">
 
                                     <div class="form-group col-md-6">
-                                        <label for="name">Farm Name <span class="t_r">*</span></label>
+                                        <label for="name">Research Farm Name <span class="t_r">*</span></label>
                                         <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{old('name')}}" required>
                                         @error('name')
                                             <div class="alert alert-danger">{{ $message }}</div>

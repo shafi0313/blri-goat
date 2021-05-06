@@ -1,5 +1,5 @@
 @extends('admin.layout.master')
-@section('title', 'Farm')
+@section('title', 'Research Farm')
 @section('content')
 @php $p = 'farmSett'; $sm='farm'; @endphp
 <div class="main-panel">
@@ -10,7 +10,7 @@
                     <li class="nav-home">
                     <a href="{{ route('admin.dashboard')}}"><i class="flaticon-home"></i></a></li>
                     <li class="separator"><i class="flaticon-right-arrow"></i></li>
-                    <li class="nav-item active">Farm</li>
+                    <li class="nav-item active">Research Farm</li>
                 </ul>
             </div>
             <div class="divider1"></div>
@@ -19,7 +19,7 @@
                     <div class="card">
                         <div class="card-header">
                             <div class="d-flex align-items-center">
-                                <h4 class="card-title">Farm</h4>
+                                <h4 class="card-title">Research Farm</h4>
                                 <a href="{{route('farm.create')}}" class="btn btn-primary btn-round ml-auto text-light"><i class="fa fa-plus"></i> Add New</a>
                             </div>
                         </div>
@@ -29,7 +29,7 @@
                                     <thead class="bg-secondary thw">
                                         <tr>
                                             <th style="width: 35px">SL</th>
-                                            <th>Name</th>
+                                            <th>Research Farm</th>
                                             <th>Contact Person</th>
                                             <th>Phone Number</th>
                                             <th>NID No.</th>

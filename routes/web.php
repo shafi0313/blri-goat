@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\CommunityCatController;
 use App\Http\Controllers\Admin\DistributionController;
 use App\Http\Controllers\Admin\MorphometricController;
 use App\Http\Controllers\Admin\ReproductionController;
+use App\Http\Controllers\Admin\ResearchFarmController;
 use App\Http\Controllers\Admin\DiseaseHealthController;
 use App\Http\Controllers\Admin\ResearchStockController;
 use App\Http\Controllers\Admin\SemenAnalysisController;
@@ -64,7 +65,7 @@ Route::middleware(['auth','admin'])->prefix('admin')->group(function(){
     Route::post('/farmer/user-file-store', [AdminUserController::class, 'userFileStore'])->name('farmer.userFileStore');
     Route::post('/farmer/file/destroy/{id}', [AdminUserController::class, 'userFileDestroy'])->name('farmer.userFileDestroy');
 
-    Route::resource('/farm', FarmController::class);
+    Route::resource('/farm', ResearchFarmController::class);
     Route::resource('/community-cat', CommunityCatController::class);
     Route::resource('/community', CommunityController::class);
 

@@ -1,5 +1,5 @@
 @extends('admin.layout.master')
-@section('title', 'Farm')
+@section('title', 'Research Farm')
 @php $p = 'farmSett'; $sm="farm"; @endphp
 @section('content')
 <div class="main-panel">
@@ -9,7 +9,7 @@
                 <ul class="breadcrumbs">
                     <li class="nav-home"><a href="{{ route('admin.dashboard')}}"><i class="flaticon-home"></i></a></li>
                     <li class="separator"><i class="flaticon-right-arrow"></i></li>
-                    <li class="nav-item"><a href="{{ route('farm.index')}}">Farm</a></li>
+                    <li class="nav-item"><a href="{{ route('farm.index')}}">Research Farm</a></li>
                     <li class="separator"><i class="flaticon-right-arrow"></i></li>
                     <li class="nav-item active">Edit</li>
                 </ul>
@@ -20,7 +20,7 @@
                     <div class="card">
                         <div class="card-header">
                             <div class="d-flex align-items-center">
-                                <h4 class="card-title">Edit License Farm</h4>
+                                <h4 class="card-title">Edit Research Farm</h4>
                             </div>
                         </div>
                         <div class="card-body">

@@ -50,99 +50,90 @@
                                             <tr style="margin-left: 10px">
                                                 <td>১</td>
                                                 <td>প্রজননক্ষম পাঁঠা</td>
+                                                <td>{{ $pBlackBengalPatha }}</td>
+                                                <td>{{ $pJamunapariPatha }}</td>
+                                                <td>{{ $pBoerPatha + $pJCBPatha + $pBCJPatha}}</td>
                                                 <td></td>
                                                 <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
+                                                <td>{{ $pPthaTotal = $pBlackBengalPatha + $pJamunapariPatha + $pBoerPatha + $pJCBPatha + $pBCJPatha  }}</td>
                                             </tr>
                                             <tr>
                                                 <td>২</td>
                                                 <td>বাড়ন্ত পাঁঠা</td>
+                                                <td>{{ $bBlackBengalPatha }}</td>
+                                                <td>{{ $bJamunapariPatha }}</td>
+                                                <td>{{ $bBoerPatha + $bJCBPatha + $bBCJPatha }}</td>
                                                 <td></td>
                                                 <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
+                                                <td>{{ $bPathaTotal = $bBlackBengalPatha + $bJamunapariPatha + $bBoerPatha + $bJCBPatha + $bBCJPatha  }}</td>
                                             </tr>
                                             <tr>
                                                 <td>৩</td>
                                                 <td>খাঁসী</td>
+                                                <td>{{ $blackBengalKhasi = $animals->where('animal_cat_id',1)->where('sex', 'M')->where('m_type',2)->count() }}</td>
+                                                <td>{{ $jamunapariKhasi = $animals->where('animal_cat_id',7)->where('sex', 'M')->where('m_type',2)->count() }}</td>
+                                                <td>{{ $boerKhasi = $animals->where('animal_cat_id',8)->where('sex', 'M')->where('m_type',2)->count() + $jCBKhasi = $animals->where('animal_cat_id',9)->where('sex', 'M')->where('m_type',2)->count() + $bCJKhasi = $animals->where('animal_cat_id',10)->where('sex', 'M')->where('m_type',2)->count() }}</td>
                                                 <td></td>
                                                 <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
+                                                <td>{{ $khasiTotal = $blackBengalKhasi + $jamunapariKhasi + $boerKhasi + $jCBKhasi + $bCJKhasi }}</td>
                                             </tr>
                                             <tr>
                                                 <td>৪</td>
                                                 <td>পাঁঠা বাচ্চা</td>
+                                                <td>{{ $babyBlackBengalPatha }}</td>
+                                                <td>{{ $babyJamunapariPatha }}</td>
+                                                <td>{{ $babyBoerPatha + $babyJCBPatha + $babyBCJPatha }}</td>
                                                 <td></td>
                                                 <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
+                                                <td>{{ $babyPathaTotal = $babyBlackBengalPatha + $babyJamunapariPatha + $babyBoerPatha + $babyJCBPatha + $babyBCJPatha  }}</td>
                                             </tr>
                                             <tr>
-                                                <td></td>
+                                                <td>৫</td>
                                                 <td>প্রজননক্ষম ছাগী</td>
+                                                <td>{{ $pBlackBengalGasi }}</td>
+                                                <td>{{ $pJamunapariGasi }}</td>
+                                                <td>{{ $pBoerGasi + $pJCBGasi + $pBCJGasi }}</td>
                                                 <td></td>
                                                 <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
+                                                <td>{{ $pGasiTotal = $pBlackBengalGasi + $pJamunapariGasi + $pBoerGasi + $pJCBGasi + $pBCJGasi }}</td>
                                             </tr>
                                             <tr>
-                                                <td></td>
+                                                <td>৬</td>
                                                 <td>বাড়ন্ত ছাগী</td>
+                                                <td>{{ $bBlackBengalGasi }}</td>
+                                                <td>{{ $bJamunapariGasi }}</td>
+                                                <td>{{ $bBoerGasi + $bJCBGasi + $bBCJGasi }}</td>
                                                 <td></td>
                                                 <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
+                                                <td>{{ $bGasiTotal = $bBlackBengalGasi + $bJamunapariGasi + $bBoerGasi + $bJCBGasi + $bBCJGasi }}</td>
                                             </tr>
                                             <tr>
-                                                <td></td>
+                                                <td>৭</td>
                                                 <td>ছাগী বাচ্চা</td>
+                                                <td>{{ $babyBlackBengalGasi }}</td>
+                                                <td>{{ $babyJamunapariGasi }}</td>
+                                                <td>{{ $babyBoerGasi + $babyJCBGasi + $babyBCJGasi }}</td>
                                                 <td></td>
                                                 <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
+                                                <td>{{ $babyGasiTotal = $babyBlackBengalGasi + $babyJamunapariGasi + $babyBoerGasi + $babyJCBGasi + $babyBCJGasi }}</td>
                                             </tr>
                                             <tr>
                                                 <td colspan="2" class="text-right font-weight-bold">সর্বমোট ছাগল</td>
+                                                <td>{{ $totalBlackBengal = $pBlackBengalPatha + $bBlackBengalPatha + $blackBengalKhasi + $babyBlackBengalPatha + $totalGasiBlack = $pBlackBengalGasi + $bBlackBengalGasi + $babyBlackBengalGasi }}</td>
+                                                <td>{{ $totalJamunapar = $totalJamunapariPatha = $pJamunapariPatha + $bJamunapariPatha + $jamunapariKhasi + $babyJamunapariPatha + $totalJamunapariGasi = $pJamunapariGasi + $bJamunapariGasi +  $babyJamunapariGasi }}</td>
+                                                <td>{{ $totalCrossBrid = $pBoerPatha + $pJCBPatha + $pBCJPatha + $bBoerPatha + $bJCBPatha + $bBCJPatha + $boerKhasi + $jCBKhasi + $bCJKhasi + $babyBoerPatha + $babyJCBPatha + $babyBCJPatha + $pBoerGasi + $pJCBGasi + $pBCJGasi + $bBoerGasi + $bJCBGasi + $bBCJGasi + $babyBoerGasi + $babyJCBGasi + $babyBCJGasi }}</td>
                                                 <td></td>
                                                 <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
+                                                <td>{{ $totalBlackBengal + $totalJamunapar + $totalCrossBrid }}</td>
                                             </tr>
                                             <tr>
                                                 <td colspan="2" class="text-right font-weight-bold">পূর্বের স্টক</td>
+                                                <td>{{ $preTotalBcack = $preAnimalStocks->where('animal_cat_id',1)->count() }}</td>
+                                                <td>{{ $preTotalJamunapari = $preAnimalStocks->where('animal_cat_id',7)->count() }}</td>
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <td colspan="2" class="text-right font-weight-bold">পূর্বের স্টক</td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
+                                                <td>{{ $preTotalBcack + $preTotalJamunapari }}</td>
                                             </tr>
                                             <tr>
                                                 <td colspan="2" class="text-right font-weight-bold">চলতি মাসে মোট জন্ম (পাঁঠা + ছাগী)</td>

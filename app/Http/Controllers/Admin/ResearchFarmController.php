@@ -6,17 +6,17 @@ use App\Models\Farm;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class FarmController extends Controller
+class ResearchFarmController extends Controller
 {
     public function index()
     {
         $farms = Farm::all();
-        return view('admin.farm.index', compact('farms'));
+        return view('admin.research_farm.index', compact('farms'));
     }
 
     public function create()
     {
-        return view('admin.farm.create');
+        return view('admin.research_farm.create');
     }
 
     public function store(Request $request)
@@ -32,7 +32,7 @@ class FarmController extends Controller
         try{
             Farm::create($data);
             toast('Farm Added','success');
-            return redirect()->route('farm.index');
+            return redirect()->route('research_farm.index');
         }catch(\Exception $ex){
             toast('Farm Added Failed','error');
             return redirect()->back();
@@ -42,7 +42,7 @@ class FarmController extends Controller
     public function edit($id)
     {
         $farm = Farm::find($id);
-        return view('admin.farm.edit', compact('farm'));
+        return view('admin.research_farm.edit', compact('farm'));
     }
 
     public function update(Request $request, $id)
@@ -58,7 +58,7 @@ class FarmController extends Controller
         try{
             Farm::find($id)->update($data);
             toast('Farm Updated','success');
-            return redirect()->route('farm.index');
+            return redirect()->route('research_farm.index');
         }catch(\Exception $ex){
             toast('Farm Update Failed','error');
             return redirect()->back();

@@ -31,6 +31,16 @@
                                 @csrf
                                 {{-- <input type="hidden" name="customer_id" value="{{ $customer_id->id }}"> --}}
                                 <div class="row justify-content-center">
+                                    <div class="form-group col-md-6">
+                                        <label for="">Select Community <span class="t_r">*</span></label>
+                                        <select name="community_cat_id" id="" class="form-control">
+                                            <option value="">Select</option>
+                                            @foreach ($communityCats as $communityCat)
+                                            <option value="">{{$communityCat->name}}</option>
+                                            @endforeach
+
+                                        </select>
+                                    </div>
                                 <div class="col-md-7">
                                     <div class="form-group row">
                                         <label for="form_date" class="col-sm-2 col-form-label">Form Date:</label>
@@ -44,7 +54,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-2" style="margin-top: 10px">
+                                <div class="col-md-12 text-center" style="margin-top: 10px">
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                 </div>
                                 </div>

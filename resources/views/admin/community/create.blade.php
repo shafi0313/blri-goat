@@ -1,5 +1,5 @@
 @extends('admin.layout.master')
-@section('title', 'Community')
+@section('title', 'Farm')
 @section('content')
 @php $p='farmSett'; $sm='comm'; @endphp
 <div class="main-panel">
@@ -9,9 +9,9 @@
                 <ul class="breadcrumbs">
                     <li class="nav-home"><a href="{{ route('admin.dashboard')}}"><i class="flaticon-home"></i></a></li>
                     <li class="separator"><i class="flaticon-right-arrow"></i></li>
-                    <li class="nav-item"><a href="{{ route('community.index')}}">Community</a></li>
+                    <li class="nav-item"><a href="{{ route('community.index')}}">Farm</a></li>
                     <li class="separator"><i class="flaticon-right-arrow"></i></li>
-                    <li class="nav-item active">Add Community</li>
+                    <li class="nav-item active">Add Farm</li>
                 </ul>
             </div>
             <div class="divider1"></div>
@@ -21,7 +21,7 @@
                         {{-- Page Content Start --}}
                         <div class="card-header">
                             <div class="d-flex align-items-center">
-                                <h4 class="card-title">Add Community</h4>
+                                <h4 class="card-title">Add Farm</h4>
                             </div>
                         </div>
                         <div class="card-body">
@@ -39,7 +39,7 @@
                                 <div class="row">
 
                                     <div class="form-group col-md-6">
-                                        <label for="community_cat_id">Community Name <span class="t_r">*</span></label>
+                                        <label for="community_cat_id">Farm Name <span class="t_r">*</span></label>
                                         <select name="community_cat_id" id="" class="form-control @error('community_cat_id') is-invalid @enderror">
                                             <option selected disabled value>Select</option>
                                             @foreach ($communityCats as $communityCat)

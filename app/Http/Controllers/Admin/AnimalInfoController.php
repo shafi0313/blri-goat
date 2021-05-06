@@ -57,6 +57,7 @@ class AnimalInfoController extends Controller
 
         $data = [
             'farm_id' => $request->farm_id,
+            'community_cat_id' => $request->community_cat_id,
             'community_id' => $request->community_id,
             'animal_cat_id' => $request->animal_cat_id,
             'animal_sub_cat_id' => $animal_sub_cat_id,

@@ -41,11 +41,11 @@
 										<label>Select <span class="t_r">*</span></label><br>
 										<label class="form-radio-label" id="farm">
 											<input class="form-radio-input" type="radio" name="optionsRadios" value="" >
-											<span class="form-radio-sign">Farm</span>
+											<span class="form-radio-sign">Research Farm</span>
 										</label>
 										<label class="form-radio-label ml-3" id="community">
 											<input class="form-radio-input" type="radio" name="optionsRadios" value="">
-											<span class="form-radio-sign">Community</span>
+											<span class="form-radio-sign">Community Farm</span>
 										</label>
 									</div>
 
@@ -65,7 +65,7 @@
 
                                     <div class="form-group col-md-3 community" style="display: none">
                                         <label for="community_id">Community Name <span class="t_r">*</span></label>
-                                        <select name="community_id" id="community_cat" class="form-control @error('name') is-invalid @enderror">
+                                        <select name="community_cat_id" id="community_cat" class="form-control @error('name') is-invalid @enderror">
                                             <option value="">Select</option>
                                             @foreach ($communityCats as $communityCat)
                                             <option value="{{$communityCat->id}}">{{$communityCat->name}}</option>
@@ -78,7 +78,7 @@
 
                                     <div class="form-group col-md-3 community" style="display: none">
                                         <label for="name">Sub Farm <span class="t_r">*</span></label>
-                                        <select name="" id="comm" class="form-control"></select>
+                                        <select name="community_id" id="comm" class="form-control"></select>
                                     </div>
                                 </div>
 
