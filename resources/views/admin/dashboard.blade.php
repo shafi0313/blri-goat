@@ -32,7 +32,7 @@
                 }
             </style>
 
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-sm-6 col-md-3">
                     <div class="card card-stats card-primary card-round">
                         <div class="card-body">
@@ -115,7 +115,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
 
             <div class="row">
                 {{-- <div class="col-sm-6 col-md-4">

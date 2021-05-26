@@ -1,7 +1,7 @@
 @extends('admin.layout.master')
-@section('title', 'Production Record')
+@section('title', 'Body Weight')
 @section('content')
-@php $p='animalForm'; $sm="proRecord"; @endphp
+@php $p='animalRecord'; $sm="production"; @endphp
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">
@@ -9,9 +9,9 @@
                 <ul class="breadcrumbs">
                     <li class="nav-home"><a href="{{ route('admin.dashboard')}}"><i class="flaticon-home"></i></a></li>
                     <li class="separator"><i class="flaticon-right-arrow"></i></li>
-                    <li class="nav-item"><a href="{{ route('animal-info.index')}}">Production Record</a></li>
+                    <li class="nav-item"><a href="{{ route('animal-info.index')}}">Body Weight</a></li>
                     <li class="separator"><i class="flaticon-right-arrow"></i></li>
-                    <li class="nav-item active">Add Production Record</li>
+                    <li class="nav-item active">Add Body Weight</li>
                 </ul>
             </div>
             <div class="divider1"></div>

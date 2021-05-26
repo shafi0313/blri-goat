@@ -25,7 +25,7 @@
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table id="multi-filter-select" class="display table table-striped table-hover" >
+                                <table id="multi-filter-select" class="display table table-bordered table-hover" >
                                     <thead class="bg-secondary thw">
                                         <tr>
                                             <th style="width: 35px">SL</th>
@@ -43,7 +43,7 @@
                                     <tbody>
                                         @php $x=1; @endphp
                                         @foreach ($animalCats as $animalCat)
-                                        <tr>
+                                        <tr class="bg-light">
                                             <td class="text-center">{{ $x++ }} </td>
                                             <td>{{ ($animalCat->type==1)?'Goat':'Sheep' }} </td>
                                             <td>{{ $animalCat->name }} </td>
@@ -78,7 +78,7 @@
                                         <tr>
                                             <td class="text-center">{{ $x++ }} </td>
                                             <td>{{ ($animalCat->type==1)?'Goat':'Sheep' }} </td>
-                                            <td ><span style="margin-right: 40px"></span>{{$animalSubCat->name}}</td>
+                                            <td ><span style="margin-right: 45px"></span><i class="fas fa-hand-point-right"></i> {{$animalSubCat->name}}</td>
                                             {{-- <td align="center">
                                                 <i class="btn btn-sm btn-info fa fa-edit edit" data-toggle="modal" data-target="#edit" data-url="" data-name="{{$animalSubCat->name}}" data-name="{{$animalSubCat->name}}"></i>
                                                 <a href="" onclick="return confirm('are you sure?')" class="btn btn-sm btn-danger fa fa-trash-alt"></a>

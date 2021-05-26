@@ -19,7 +19,7 @@ class CommunityCatController extends Controller
 
     public function create()
     {
-        $districts = District::all();
+        $districts = District::orderBy('name')->get();
         return view('admin.community_cat.create', compact('districts'));
     }
 
@@ -27,15 +27,17 @@ class CommunityCatController extends Controller
     {
         $data = $this->validate($request, [
             'name' => 'required|max:100',
+            'district_id' => 'required',
+            'upazila_id' => 'required',
             'address' => 'required',
         ]);
 
         try{
             CommunityCat::create($data);
-            toast('Community Category Added','success');
+            toast('Success','success');
             return redirect()->route('community-cat.index');
         }catch(\Exception $ex){
-            toast('Community Category Add Failed','error');
+            toast('Failed','error');
             return redirect()->back();
         }
     }

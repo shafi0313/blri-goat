@@ -1,7 +1,7 @@
 @extends('admin.layout.master')
-@section('title', 'Service Record')
+@section('title', 'Service')
 @section('content')
-@php $p='animalForm'; $sm="serviceRec"; @endphp
+@php $p='animalRecord'; $sm="service"; @endphp
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">
@@ -10,7 +10,7 @@
                     <li class="nav-home">
                     <a href="{{ route('admin.dashboard')}}"><i class="flaticon-home"></i></a></li>
                     <li class="separator"><i class="flaticon-right-arrow"></i></li>
-                    <li class="nav-item active">Service Record</li>
+                    <li class="nav-item active">Service</li>
                 </ul>
             </div>
             <div class="divider1"></div>
@@ -19,7 +19,7 @@
                     <div class="card">
                         <div class="card-header">
                             <div class="d-flex align-items-center">
-                                <h4 class="card-title">Service Record</h4>
+                                <h4 class="card-title">Service</h4>
                                 <a href="{{route('service-record.create')}}" class="btn btn-primary btn-round ml-auto text-light"><i class="fa fa-plus"></i> Add New</a>
                             </div>
                         </div>

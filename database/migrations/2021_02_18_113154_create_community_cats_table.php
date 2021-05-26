@@ -15,6 +15,8 @@ class CreateCommunityCatsTable extends Migration
     {
         Schema::create('community_cats', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('district_id');
+            $table->unsignedBigInteger('upazila_id');
             $table->string('name',100);
             $table->string('address',100);
             $table->timestamps();

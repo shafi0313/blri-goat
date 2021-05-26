@@ -67,7 +67,7 @@
                                         @enderror
                                     </div>
                                     <div class="form-group col-md-12">
-                                        <label for="address">Farm Address <span class="t_r">*</span></label>
+                                        <label for="address">Research Farm Address <span class="t_r">*</span></label>
                                         <input type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{old('address')}}" required>
                                         @error('address')
                                             <div class="alert alert-danger">{{ $message }}</div>

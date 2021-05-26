@@ -1,7 +1,7 @@
 @extends('admin.layout.master')
 @section('title', 'Milk Production')
 @section('content')
-@php $p='animalForm'; $sm="reProRecord"; @endphp
+@php $p='animalRecord'; $sm="milkProduction"; @endphp
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">

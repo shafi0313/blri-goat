@@ -118,25 +118,25 @@
                     </div>
                 </li>
 
-                <li class="nav-item {{$p=='animalForm'?'active':''}}">
+                <li class="nav-item {{$p=='animalRecord'?'active':''}}">
                     <a data-toggle="collapse" href="#animal">
                         <i class="fas fa-info-circle"></i>
                         <p>Animal Record</p>
                         <span class="caret"></span>
                     </a>
-                    <div class="collapse {{$p=='animalForm'?'show':''}}" id="animal">
+                    <div class="collapse {{$p=='animalRecord'?'show':''}}" id="animal">
                         <ul class="nav nav-collapse">
                             <li class="{{$sm=='animalInfo'?'active':''}}">
                                 <a href="{{ route('animal-info.index') }}">
                                     <span class="sub-item">Animal Info.</span>
                                 </a>
                             </li>
-                            <li class="{{$sm=='animalInfo'?'active':''}}">
+                            <li class="{{$sm=='morphometric'?'active':''}}">
                                 <a href="{{ route('morphometric.index') }}">
                                     <span class="sub-item">Morphometric</span>
                                 </a>
                             </li>
-                            <li class="{{$sm=='proRecord'?'active':''}}">
+                            <li class="{{$sm=='production'?'active':''}}">
                                 <a href="{{ route('production-record.index') }}">
                                     <span class="sub-item">Body Weight</span>
                                 </a>
@@ -147,22 +147,22 @@
                                 </a>
                             </li>
 
-                            <li class="{{$sm=='reProRecord'?'active':''}}">
+                            <li class="{{$sm=='milkProduction'?'active':''}}">
                                 <a href="{{ route('milk-production.index') }}">
                                     <span class="sub-item">Milk Production</span>
                                 </a>
                             </li>
-                            <li class="{{$sm=='reProRecord'?'active':''}}">
+                            <li class="{{$sm=='semenAnalysis'?'active':''}}">
                                 <a href="{{ route('semen-analysis.index') }}">
                                     <span class="sub-item">Semen Analysis</span>
                                 </a>
                             </li>
-                            <li class="{{$sm=='serviceRec'?'active':''}}">
+                            <li class="{{$sm=='service'?'active':''}}">
                                 <a href="{{ route('service-record.index') }}">
                                     <span class="sub-item">Service</span>
                                 </a>
                             </li>
-                            <li class="{{$sm=='serviceRec'?'active':''}}">
+                            <li class="{{$sm=='distribution'?'active':''}}">
                                 <a href="{{ route('distribution.index') }}">
                                     <span class="sub-item">Distribution</span>
                                 </a>
@@ -182,13 +182,13 @@
                 </li>
 
 
-                <li class="nav-item {{$p=='farmSett'?'active submenu':''}}">
+                <li class="nav-item {{$p=='healthM'?'active submenu':''}}">
                     <a data-toggle="collapse" href="#hm">
                         <i class="fas fa-heartbeat"></i>
                         <p>Health Management</p>
                         <span class="caret"></span>
                     </a>
-                    <div class="collapse {{$p=='farmSett'?'show':''}}" id="hm">
+                    <div class="collapse {{$p=='healthM'?'show':''}}" id="hm">
                         <ul class="nav nav-collapse">
                             <li class="{{$sm=='farm'?'active':''}}">
                                 <a href="">
@@ -225,13 +225,13 @@
                 </li>
 
                 {{-- Report  --}}
-                <li class="nav-item {{$p=='farmSett'?'active submenu':''}}">
+                <li class="nav-item {{$p=='report'?'active submenu':''}}">
                     <a data-toggle="collapse" href="#report">
                         <i class="fas fa-file"></i>
                         <p>Report</p>
                         <span class="caret"></span>
                     </a>
-                    <div class="collapse {{$p=='farmSett'?'show':''}}" id="report">
+                    <div class="collapse {{$p=='report'?'show':''}}" id="report">
                         <ul class="nav nav-collapse">
                             <li class="{{$sm=='farm'?'active':''}}">
                                 <a href="{{ route('researchStock.selectDate') }}">

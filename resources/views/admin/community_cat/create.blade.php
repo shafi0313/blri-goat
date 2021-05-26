@@ -1,5 +1,5 @@
 @extends('admin.layout.master')
-@section('title', 'Community Category')
+@section('title', 'Community Farm')
 @section('content')
 @php $p='farmSett'; $sm='commCat'; @endphp
 <div class="main-panel">
@@ -9,9 +9,9 @@
                 <ul class="breadcrumbs">
                     <li class="nav-home"><a href="{{ route('admin.dashboard')}}"><i class="flaticon-home"></i></a></li>
                     <li class="separator"><i class="flaticon-right-arrow"></i></li>
-                    <li class="nav-item"><a href="{{ route('farm.index')}}">Community Category</a></li>
+                    <li class="nav-item"><a href="{{ route('farm.index')}}">Community Farm</a></li>
                     <li class="separator"><i class="flaticon-right-arrow"></i></li>
-                    <li class="nav-item active">Add Community Category</li>
+                    <li class="nav-item active">Add Community Farm</li>
                 </ul>
             </div>
             <div class="divider1"></div>
@@ -21,7 +21,7 @@
                         {{-- Page Content Start --}}
                         <div class="card-header">
                             <div class="d-flex align-items-center">
-                                <h4 class="card-title">Add Community Category</h4>
+                                <h4 class="card-title">Add Community Farm</h4>
                             </div>
                         </div>
                         <div class="card-body">
@@ -39,7 +39,7 @@
                                 <div class="row">
 
                                     <div class="form-group col-md-6">
-                                        <label for="name">Community Name <span class="t_r">*</span></label>
+                                        <label for="name">Community Farm Name <span class="t_r">*</span></label>
                                         <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{old('name')}}" required>
                                         @error('name')
                                             <div class="alert alert-danger">{{ $message }}</div>
@@ -58,7 +58,7 @@
 
                                     <div class="form-group col-md-6">
                                         <label for="name">Upazila <span class="t_r">*</span></label>
-                                        <select name="district_id" id="upazila" class="form-control">
+                                        <select name="upazila_id" id="upazila" class="form-control">
                                         </select>
                                     </div>
                                     <div class="form-group col-md-12">

@@ -1,7 +1,7 @@
 @extends('admin.layout.master')
-@section('title', 'Service Record')
+@section('title', 'Service')
 @section('content')
-@php $p='animalForm'; $sm="serviceRec"; @endphp
+@php $p='animalRecord'; $sm="service"; @endphp
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">
@@ -9,9 +9,9 @@
                 <ul class="breadcrumbs">
                     <li class="nav-home"><a href="{{ route('admin.dashboard')}}"><i class="flaticon-home"></i></a></li>
                     <li class="separator"><i class="flaticon-right-arrow"></i></li>
-                    <li class="nav-item"><a href="{{ route('service-record.index')}}">Service Record</a></li>
+                    <li class="nav-item"><a href="{{ route('service-record.index')}}">Service</a></li>
                     <li class="separator"><i class="flaticon-right-arrow"></i></li>
-                    <li class="nav-item active">Add Service Record</li>
+                    <li class="nav-item active">Add Service</li>
                 </ul>
             </div>
             <div class="divider1"></div>

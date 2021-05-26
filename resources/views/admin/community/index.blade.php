@@ -29,7 +29,7 @@
                                     <thead class="bg-secondary thw">
                                         <tr>
                                             <th style="width: 35px">SL</th>
-                                            <th>Community Name</th>
+                                            <th>Community Farm Name</th>
                                             <th>Farm Name</th>
                                             <th>Contact Person</th>
                                             <th>Phone Number</th>

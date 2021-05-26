@@ -7,6 +7,7 @@ use App\Models\Community;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\CommunityCat;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class CommunityController extends Controller
 {
