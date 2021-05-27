@@ -22,6 +22,7 @@ use App\Http\Controllers\Admin\SemenAnalysisController;
 use App\Http\Controllers\Admin\ServiceRecordController;
 use App\Http\Controllers\Admin\CommunityStockController;
 use App\Http\Controllers\Admin\MilkProductionController;
+use App\Http\Controllers\Admin\DiseaseTreatmentController;
 use App\Http\Controllers\Admin\ProductionRecordController;
 
 /*
@@ -86,6 +87,10 @@ Route::middleware(['auth','admin'])->prefix('admin')->group(function(){
 
     // Distribution
     Route::resource('/distribution', DistributionController::class);
+
+
+    // Disease Treatment
+    Route::resource('/disease-and-treatment', DiseaseTreatmentController::class);
 
     // Report
     Route::get('/research/selectDate', [ResearchStockController::class, 'selectDate'])->name('researchStock.selectDate');

@@ -1,7 +1,7 @@
 @extends('admin.layout.master')
-@section('title', 'Distribution')
+@section('title', 'Farm')
 @section('content')
-@php $p='animalRecord'; $sm="distribution"; @endphp
+@php $p='animalForm'; $sm="proRecord"; @endphp
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">
@@ -9,7 +9,7 @@
                 <ul class="breadcrumbs">
                     <li class="nav-home"><a href="{{ route('admin.dashboard')}}"><i class="flaticon-home"></i></a></li>
                     <li class="separator"><i class="flaticon-right-arrow"></i></li>
-                    <li class="nav-item"><a href="{{ route('distribution.index')}}">Distribution</a></li>
+                    <li class="nav-item"><a href="{{ route('farm.index')}}">Farm</a></li>
                     <li class="separator"><i class="flaticon-right-arrow"></i></li>
                     <li class="nav-item active">Edit</li>
                 </ul>
@@ -20,7 +20,7 @@
                     <div class="card">
                         <div class="card-header">
                             <div class="d-flex align-items-center">
-                                <h4 class="card-title">Edit License Distribution</h4>
+                                <h4 class="card-title">Edit License Farm</h4>
                             </div>
                         </div>
                         <div class="card-body">
@@ -33,7 +33,7 @@
                                     </ul>
                                 </div>
                             @endif
-                            <form action="{{ route('distribution.update', $productionRecord->id)}}" method="post">
+                            <form action="{{ route('production-record.update', $productionRecord->id)}}" method="post">
                                 @csrf
                                 @method('PUT')
                                 <div class="row">
@@ -56,6 +56,7 @@
                                         <label for="">Birth Wt. (Kg) <span class="t_r">*</span></label>
                                         <input type="text" class="form-control" value="{{$productionRecord->animalInfo->color}}" readonly>
                                     </div>
+
 
                                     <div class="form-group col-md-3">
                                         <label for="month_1">1 months body wt. (kg)</label>

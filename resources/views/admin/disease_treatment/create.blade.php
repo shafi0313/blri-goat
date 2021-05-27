@@ -1,7 +1,7 @@
 @extends('admin.layout.master')
-@section('title', 'Morphometric')
+@section('title', 'Disease and Treatment')
 @section('content')
-@php $p='animalRecord'; $sm="morphometric"; @endphp
+@php $p='animalRecord'; $sm="production"; @endphp
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">
@@ -9,9 +9,9 @@
                 <ul class="breadcrumbs">
                     <li class="nav-home"><a href="{{ route('admin.dashboard')}}"><i class="flaticon-home"></i></a></li>
                     <li class="separator"><i class="flaticon-right-arrow"></i></li>
-                    <li class="nav-item"><a href="{{ route('morphometric.index')}}">Morphometric</a></li>
+                    <li class="nav-item"><a href="{{ route('animal-info.index')}}">Disease and Treatment</a></li>
                     <li class="separator"><i class="flaticon-right-arrow"></i></li>
-                    <li class="nav-item active">Add Morphometric</li>
+                    <li class="nav-item active">Add Disease and Treatment</li>
                 </ul>
             </div>
             <div class="divider1"></div>
@@ -34,7 +34,7 @@
                                     </ul>
                                 </div>
                             @endif
-                            <form action="{{ route('morphometric.store')}}" method="post">
+                            <form action="{{ route('disease-and-treatment.store')}}" method="post">
                                 @csrf
                                 <input type="hidden" name="type" id="type">
                                 <div class="row">
@@ -68,82 +68,50 @@
 
 
                                     <div class="form-group col-md-3">
-                                        <label for="age">Age</label>
-                                        <input name="age" type="text" class="form-control @error('age') is-invalid @enderror" value="{{old('age')}}">
-                                        @error('age')
+                                        <label for="breed">Breed <span class="t_r">*</span></label>
+                                        <input type="text" class="form-control @error('breed') is-invalid @enderror" name="breed" value="{{old('breed')}}">
+                                        @error('breed')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
-                                    
+
+
                                     <div class="form-group col-md-3">
-                                        <label for="body_lenght">Body length (cm) <span class="t_r">*</span></label>
-                                        <input name="body_lenght" type="number" step="any" class="form-control @error('body_lenght') is-invalid @enderror" value="{{old('body_lenght')}}">
-                                        @error('body_lenght')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                    <div class="form-group col-md-3">
-                                        <label for="weither_height">Weither height <span class="t_r">*</span></label>
-                                        <input name="weither_height" type="number" step="any" class="form-control @error('weither_height') is-invalid @enderror" value="{{old('weither_height')}}">
-                                        @error('weither_height')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                    <div class="form-group col-md-3">
-                                        <label for="horn_pattern">Horn pattern </label>
-                                        <input name="horn_pattern" type="text" class="form-control @error('horn_pattern') is-invalid @enderror" value="{{old('horn_pattern')}}">
-                                        @error('horn_pattern')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                    <div class="form-group col-md-3">
-                                        <label for="horn_length">Horn length </label>
-                                        <input name="horn_length" type="number" step="any" class="form-control @error('horn_length') is-invalid @enderror" value="{{old('horn_length')}}">
-                                        @error('horn_length')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                    <div class="form-group col-md-3">
-                                        <label for="tail_length">Tail length <span class="t_r">*</span></label>
-                                        <input name="tail_length" type="number" step="any" class="form-control @error('tail_length') is-invalid @enderror" value="{{old('tail_length')}}">
-                                        @error('tail_length')
+                                        <label for="disease_name">Name of Disease <span class="t_r">*</span></label>
+                                        <input type="text" class="form-control @error('disease_name') is-invalid @enderror" name="disease_name" value="{{old('disease_name')}}">
+                                        @error('disease_name')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
 
                                     <div class="form-group col-md-3">
-                                        <label for="ear_length">Ear length <span class="t_r">*</span></label>
-                                        <input name="ear_length" type="number" step="any" class="form-control @error('ear_length') is-invalid @enderror" value="{{old('ear_length')}}">
-                                        @error('ear_length')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                    <div class="form-group col-md-3">
-                                        <label for="h_girth_length">H.girth length <span class="t_r">*</span></label>
-                                        <input name="h_girth_length" type="number" step="any" class="form-control @error('h_girth_length') is-invalid @enderror" value="{{old('h_girth_length')}}">
-                                        @error('h_girth_length')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                    <div class="form-group col-md-3">
-                                        <label for="height_of_rump">Height of rump <span class="t_r">*</span></label>
-                                        <input name="height_of_rump" type="number" step="any" class="form-control @error('height_of_rump') is-invalid @enderror" value="{{old('height_of_rump')}}">
-                                        @error('height_of_rump')
+                                        <label for="clinical_sign">Clinical Sign</label>
+                                        <input type="text" class="form-control @error('clinical_sign') is-invalid @enderror" name="clinical_sign" value="{{old('clinical_sign')}}">
+                                        @error('clinical_sign')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
 
                                     <div class="form-group col-md-3">
-                                        <label for="head_length">Head length <span class="t_r">*</span></label>
-                                        <input name="head_length" type="number" step="any" class="form-control @error('head_length') is-invalid @enderror" value="{{old('head_length')}}">
-                                        @error('head_length')
+                                        <label for="disease_season">Season of Disease <span class="t_r">*</span></label>
+                                        <input type="text" class="form-control @error('disease_season') is-invalid @enderror" name="disease_season" value="{{old('disease_season')}}">
+                                        @error('disease_season')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
+
                                     <div class="form-group col-md-3">
-                                        <label for="eye_to_eye_length">Eye to eye length <span class="t_r">*</span></label>
-                                        <input name="eye_to_eye_length" type="number" step="any" class="form-control @error('eye_to_eye_length') is-invalid @enderror" value="{{old('eye_to_eye_length')}}">
-                                        @error('eye_to_eye_length')
+                                        <label for="medicine_prescribed">Medicine Prescribed</label>
+                                        <input type="text" class="form-control @error('medicine_prescribed') is-invalid @enderror" name="medicine_prescribed" value="{{old('medicine_prescribed')}}">
+                                        @error('medicine_prescribed')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+
+                                    <div class="form-group col-md-3">
+                                        <label for="recovered_dead">Recovered/ Dead <span class="t_r">*</span></label>
+                                        <input type="text" class="form-control @error('recovered_dead') is-invalid @enderror" name="recovered_dead" value="{{old('recovered_dead')}}">
+                                        @error('recovered_dead')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>

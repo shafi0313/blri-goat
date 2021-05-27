@@ -163,11 +163,11 @@
                                 </a>
                             </li>
                             <li class="{{$sm=='distribution'?'active':''}}">
-                                <a href="{{ route('distribution.index') }}">
+                                <a href="{{ ('distributiorouten.index') }}">
                                     <span class="sub-item">Distribution</span>
                                 </a>
                             </li>
-                            <li class="{{$sm=='serviceRec'?'active':''}}">
+                            {{-- <li class="{{$sm=='serviceRec'?'active':''}}">
                                 <a href="">
                                     <span class="sub-item">Dead/Culled</span>
                                 </a>
@@ -176,7 +176,7 @@
                                 <a href="{{ route('disease-and-health.index') }}">
                                     <span class="sub-item">Omit from Animal record</span>
                                 </a>
-                            </li>
+                            </li> --}}
                         </ul>
                     </div>
                 </li>
@@ -190,13 +190,13 @@
                     </a>
                     <div class="collapse {{$p=='healthM'?'show':''}}" id="hm">
                         <ul class="nav nav-collapse">
-                            <li class="{{$sm=='farm'?'active':''}}">
+                            {{-- <li class="{{$sm=='farm'?'active':''}}">
                                 <a href="">
                                     <span class="sub-item">Health Management</span>
                                 </a>
-                            </li>
-                            <li class="{{$sm=='farm'?'active':''}}">
-                                <a href="">
+                            </li> --}}
+                            <li class="{{$sm=='diseaseTreatment'?'active':''}}">
+                                <a href="{{ route('disease-and-treatment.index') }}">
                                     <span class="sub-item">Disease and Treatment</span>
                                 </a>
                             </li>

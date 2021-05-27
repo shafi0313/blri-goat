@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDistributionsTable extends Migration
+class CreateDiseaseTreatmentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,16 @@ class CreateDistributionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('distributions', function (Blueprint $table) {
+        Schema::create('disease_treatments', function (Blueprint $table) {
             $table->id();
             $table->foreignId('animal_info_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->enum('type',['1','2'])->comment('1=Goat,2=Sheep');
-            $table->string('breed');
-            $table->string('age');
-            $table->date('dis_date');
-            $table->string('address_of_rec');
+            $table->string('breed',50);
+            $table->string('disease_name',155);
+            $table->string('clinical_sign',155)->nullable();
+            $table->string('disease_season',155);
+            $table->text('medicine_prescribed')->nullable();
+            $table->string('recovered_dead',155)->nullable();
             $table->timestamps();
         });
     }
@@ -32,6 +34,6 @@ class CreateDistributionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('distributions');
+        Schema::dropIfExists('disease_treatments');
     }
 }
