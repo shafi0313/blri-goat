@@ -16,11 +16,11 @@ class CreateDistributionsTable extends Migration
         Schema::create('distributions', function (Blueprint $table) {
             $table->id();
             $table->foreignId('animal_info_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
-            $table->enum('type',['1','2'])->comment('1=Goat,2=Sheep');
-            $table->string('breed');
-            $table->string('age');
-            $table->date('dis_date');
-            $table->string('address_of_rec');
+            // $table->string('breed')->nullable();
+            // $table->string('age')->nullable();
+            $table->date('dis_date')->nullable();
+            $table->string('address_of_rec')->nullable();
+            $table->string('purpose')->nullable();
             $table->timestamps();
         });
     }

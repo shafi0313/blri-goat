@@ -16,9 +16,13 @@ class CreateMilkProductionsTable extends Migration
         Schema::create('milk_productions', function (Blueprint $table) {
             $table->id();
             $table->foreignId('animal_info_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
-            $table->enum('type',['1','2'])->comment('1=Goat,2=Sheep');
-            $table->date('date_of_milking');
-            $table->float('milk_production');
+            $table->float('parity_number');
+            $table->float('litter_size');
+            $table->date('date_of_milking')->nullable() ;
+            $table->float('milk_production')->nullable() ;
+            $table->float('average_milk_production')->nullable();
+            $table->string('lactation_length',100)->nullable();
+            $table->string('milk_yield',100)->nullable();
             $table->timestamps();
         });
     }

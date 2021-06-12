@@ -30,7 +30,6 @@ class SemenAnalysisController extends Controller
 
         $data = [
             'animal_info_id' => $request->animal_info_id,
-            'type' => $request->type,
             'coll_date' => $request->coll_date,
             'volume' => $request->volume,
             's_color' => $request->s_color,

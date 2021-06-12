@@ -68,12 +68,13 @@
 
 
                                     <div class="form-group col-md-3">
-                                        <label for="puberty_age">Age at Puberty	<span class="t_r">*</span></label>
-                                        <input name="puberty_age" max="3" type="number" class="form-control @error('puberty_age') is-invalid @enderror" value="{{old('puberty_age')}}">
+                                        <label for="puberty_age">Age at Puberty	(Months)<span class="t_r">*</span></label>
+                                        <input name="puberty_age" type="number" class="form-control @error('puberty_age') is-invalid @enderror" value="{{old('puberty_age')}}">
                                         @error('puberty_age')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
+
                                     <div class="form-group col-md-3">
                                         <label for="service_1st_date">Date at 1st service <span class="t_r">*</span></label>
                                         <input name="service_1st_date" type="date" class="form-control @error('service_1st_date') is-invalid @enderror" value="{{old('service_1st_date')}}">
@@ -88,17 +89,35 @@
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
+
                                     <div class="form-group col-md-3">
-                                        <label for="kidding_1st_age">Age at 1st kidding <span class="t_r">*</span></label>
-                                        <input name="kidding_1st_age" max="3" type="number" class="form-control @error('kidding_1st_age') is-invalid @enderror" value="{{old('kidding_1st_age')}}">
-                                        @error('kidding_1st_age')
+                                        <label for="ges_lenght_1st_kidding">Gestation length at 1st kidding <span class="t_r">*</span></label>
+                                        <input name="ges_lenght_1st_kidding" type="date" class="form-control @error('ges_lenght_1st_kidding') is-invalid @enderror" value="{{old('ges_lenght_1st_kidding')}}">
+                                        @error('ges_lenght_1st_kidding')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+
+                                    <div class="form-group col-md-3">
+                                        <label for="ges_lenght_1st_kidding">Gestation length at 1st kidding <span class="t_r">*</span></label>
+                                        <input name="ges_lenght_1st_kidding" type="date" class="form-control @error('ges_lenght_1st_kidding') is-invalid @enderror" value="{{old('ges_lenght_1st_kidding')}}">
+                                        @error('ges_lenght_1st_kidding')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+
+
+                                    <div class="form-group col-md-3">
+                                        <label for="age_1st_kidding">Age at 1st kidding <span class="t_r">*</span></label>
+                                        <input name="age_1st_kidding" max="3" type="number" class="form-control @error('age_1st_kidding') is-invalid @enderror" value="{{old('age_1st_kidding')}}">
+                                        @error('age_1st_kidding')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
                                     <div class="form-group col-md-3">
-                                        <label for="kidding_1st_liter">Litter size at 1st kidding <span class="t_r">*</span></label>
-                                        <input name="kidding_1st_liter" type="number" class="form-control @error('kidding_1st_liter') is-invalid @enderror" value="{{old('kidding_1st_liter')}}">
-                                        @error('kidding_1st_liter')
+                                        <label for="litter_size_1st_kidding">Litter size at 1st kidding <span class="t_r">*</span></label>
+                                        <input name="litter_size_1st_kidding" type="number" class="form-control @error('litter_size_1st_kidding') is-invalid @enderror" value="{{old('litter_size_1st_kidding')}}">
+                                        @error('litter_size_1st_kidding')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
@@ -220,9 +239,9 @@
                                         @enderror
                                     </div>
                                     <div class="form-group col-md-3">
-                                        <label for="report">Date of Culling/ Death <span class="t_r">*</span></label>
-                                        <input name="report" type="text" class="form-control @error('report') is-invalid @enderror" value="{{old('report')}}">
-                                        @error('report')
+                                        <label for="remarks">Date of Culling/ Death <span class="t_r">*</span></label>
+                                        <input name="remarks" type="text" class="form-control @error('remarks') is-invalid @enderror" value="{{old('remarks')}}">
+                                        @error('remarks')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>

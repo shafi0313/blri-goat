@@ -16,13 +16,14 @@ class CreateReproductionsTable extends Migration
         Schema::create('reproductions', function (Blueprint $table) {
             $table->id();
             $table->foreignId('animal_info_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
-            $table->enum('type',['1','2'])->comment('1=Goat,2=Sheep');
-            $table->integer('puberty_age');
-            $table->date('service_1st_date');
-            $table->date('kidding_1st_date');
-            $table->integer('kidding_1st_age');
-            $table->float('kidding_1st_liter');
-            $table->float('milk_production');
+            $table->integer('puberty_age')->nullable();
+            $table->date('service_1st_date')->nullable();
+            $table->date('kidding_1st_date')->nullable();
+
+            $table->float('ges_lenght_1st_kidding')->nullable();
+            $table->float('age_1st_kidding')->nullable();
+            $table->float('litter_size_1st_kidding')->nullable();
+            $table->float('milk_production')->nullable();
 
             $table->date('service_2nd_date')->nullable();
             $table->date('kidding_2nd_date')->nullable();
@@ -43,7 +44,7 @@ class CreateReproductionsTable extends Migration
             $table->date('service_6th_date')->nullable();
             $table->date('kidding_6th_date')->nullable();
             $table->float('kidding_6th_liter')->nullable();
-            $table->string('report',50)->nullable();
+            $table->string('remarks',50)->nullable();
             $table->timestamps();
         });
     }

@@ -25,13 +25,14 @@ class ReproductionStoreRequest extends FormRequest
     {
         return [
             'animal_info_id' => 'required',
-            'type' => 'required',
-            'puberty_age' => 'required',
-            'service_1st_date' => 'required|date',
-            'kidding_1st_date' => 'required|date',
-            'kidding_1st_age' => 'required|numeric',
-            'kidding_1st_liter' => 'required|numeric',
-            'milk_production' => 'required|numeric',
+            'puberty_age' => 'nullable',
+            'service_1st_date' => 'nullable|date',
+            'kidding_1st_date' => 'nullable|date',
+
+            'ges_lenght_1st_kidding'  => 'nullable|numeric',
+            'age_1st_kidding'  => 'nullable|numeric',
+            'litter_size_1st_kidding'  => 'nullable|numeric',
+            'milk_production' => 'nullable|numeric',
 
             'service_2nd_date' => 'nullable|date',
             'kidding_2nd_date' => 'nullable|date',
@@ -48,7 +49,7 @@ class ReproductionStoreRequest extends FormRequest
             'service_6th_date' => 'nullable|date',
             'kidding_6th_date' => 'nullable|date',
             'kidding_6th_liter' => 'nullable|numeric',
-            'report' => 'sometimes',
+            'remarks' => 'sometimes',
         ];
     }
 }

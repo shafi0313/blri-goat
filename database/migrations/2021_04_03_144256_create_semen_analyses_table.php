@@ -16,7 +16,6 @@ class CreateSemenAnalysesTable extends Migration
         Schema::create('semen_analyses', function (Blueprint $table) {
             $table->id();
             $table->foreignId('animal_info_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
-            $table->enum('type',['1','2'])->comment('1=Goat,2=Sheep');
             $table->date('coll_date');
             $table->float('volume');
             $table->string('s_color');

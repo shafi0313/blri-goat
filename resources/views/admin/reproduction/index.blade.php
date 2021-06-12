@@ -30,14 +30,33 @@
                                         <tr class="text-center">
                                             <th style="width: 35px">SL</th>
                                             <th>Animal Tag</th>
+                                            <th>Coat color</th>
                                             <th>Sex</th>
-                                            <th>Birth Wt.(kg)</th>
-                                            <th>1 m. body wt.(kg)</th>
-                                            <th>2 m. body wt.(kg)</th>
-                                            <th>3 m. body wt.(kg)</th>
-                                            <th>4 m. body wt.(kg)</th>
-                                            <th>5 m. body wt.(kg)</th>
-                                            <th>6 m. body wt.(kg)</th>
+                                            <th>Age at Puberty (Months)	</th>
+                                            <th>Date at 1st service</th>
+                                            <th>Date of 1st kidding</th>
+                                            <th>gestation length at 1st kidding</th>
+                                            <th>Age at 1st kidding</th>
+                                            <th>Litter size at 1st kidding</th>
+                                            <th>Milk production (ml)</th>
+                                            <th>Date at 2nd service</th>
+                                            <th>Date of 2nd kidding</th>
+                                            <th>Litter size at 2nd kidding</th>
+                                            <th>Date at 3rd service</th>
+                                            <th>Date of 3rd kidding</th>
+                                            <th>Litter size at 3rd kidding</th>
+                                            <th>Date at 4th service</th>
+                                            <th>Date of 4th kidding</th>
+                                            <th>Litter size at 4th kidding</th>
+                                            <th>Date at 5th service</th>
+                                            <th>Date of 5th kidding</th>
+                                            <th>Litter size at 5th kidding</th>
+                                            <th>Date at 6th service</th>
+                                            <th>Date of 6th kidding</th>
+                                            <th>Litter size at 6th kidding</th>
+                                            <th>Remarks</th>
+
+
                                             <th class="no-sort" style="text-align:center;width:80px" >Action</th>
                                         </tr>
                                     </thead>
@@ -56,13 +75,30 @@
                                             <td>{{ $x++ }} </td>
                                             <td>{{ $reproduction->animalInfo->animal_tag }} </td>
                                             <td>{{ $reproduction->animalInfo->sex }} </td>
-                                            <td>{{ $reproduction->animalInfo->birth_wt }} </td>
-                                            <td>{{ $reproduction->month_1 }} </td>
-                                            <td>{{ $reproduction->month_2 }} </td>
-                                            <td>{{ $reproduction->month_3 }} </td>
-                                            <td>{{ $reproduction->month_4 }} </td>
-                                            <td>{{ $reproduction->month_5 }} </td>
-                                            <td>{{ $reproduction->month_6 }} </td>
+                                            <td>{{ $reproduction->animalInfo->color }} </td>
+                                            <td>{{ $reproduction->puberty_age }}</td>
+                                            <td>{{ $reproduction->service_1st_date }}</td>
+                                            <td>{{ $reproduction->kidding_1st_date }}</td>
+                                            <td>{{ $reproduction->ges_lenght_1st_kidding }}</td>
+                                            <td>{{ $reproduction->age_1st_kidding }}</td>
+                                            <td>{{ $reproduction->litter_size_1st_kidding }}</td>
+                                            <td>{{ $reproduction->milk_production }}</td>
+                                            <td>{{ $reproduction->service_2nd_date }}</td>
+                                            <td>{{ $reproduction->kidding_2nd_date }}</td>
+                                            <td>{{ $reproduction->kidding_2nd_liter }}</td>
+                                            <td>{{ $reproduction->service_3rd_date }}</td>
+                                            <td>{{ $reproduction->kidding_3rd_date }}</td>
+                                            <td>{{ $reproduction->kidding_3rd_liter }}</td>
+                                            <td>{{ $reproduction->service_4th_date }}</td>
+                                            <td>{{ $reproduction->kidding_4th_date }}</td>
+                                            <td>{{ $reproduction->kidding_4th_liter }}</td>
+                                            <td>{{ $reproduction->service_5th_date }}</td>
+                                            <td>{{ $reproduction->kidding_5th_date }}</td>
+                                            <td>{{ $reproduction->kidding_5th_liter }}</td>
+                                            <td>{{ $reproduction->service_6th_date }}</td>
+                                            <td>{{ $reproduction->kidding_6th_date }}</td>
+                                            <td>{{ $reproduction->kidding_6th_liter }}</td>
+                                            <td>{{ $reproduction->remarks }}</td>
                                             <td>
                                                 <div class="form-button-action">
                                                     <a href="{{route('reproduction-record.edit',$reproduction->id)}}" title="Edit" class="btn btn-link btn-primary btn-lg">

@@ -30,9 +30,9 @@ class DistributionController extends Controller
 
         $data = [
             'animal_info_id' => $request->animal_info_id,
-            'type' => $request->type,
             'dis_date' => $request->dis_date,
             'address_of_rec' => $request->address_of_rec,
+            'purpose' => $request->purpose,
         ];
 
         DB::beginTransaction();
@@ -40,7 +40,7 @@ class DistributionController extends Controller
             Distribution::create($data);
             DB::commit();
             toast('Success','success');
-            return redirect()->route('semen-analysis.index');
+            return redirect()->route('distribution.index');
         }catch(\Exception $ex){
             DB::rollBack();
             toast('Error', 'error');
@@ -50,7 +50,7 @@ class DistributionController extends Controller
 
     public function destroy($id)
     {
-        SemenAnalysis::find($id)->delete();
+        Distribution::find($id)->delete();
         toast('Successfully Deleted','success');
         return redirect()->back();
     }

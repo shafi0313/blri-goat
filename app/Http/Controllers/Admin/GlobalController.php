@@ -35,7 +35,8 @@ class GlobalController extends Controller
             $d_o_b = Carbon::parse($animalInfo->d_o_b)->format('Y-m-d');
             $paity = $animalInfo->paity;
             $litter_size = $animalInfo->litter_size;
+            $breed = $animalInfo->breed;
         }
-        return json_encode(['sex'=>$sex, 'color'=>$color, 'birth_wt'=>$birth_wt, 'type'=>$type, 'd_o_b'=>$d_o_b, 'paity'=>$paity, 'litter_size'=>$litter_size]);
+        return json_encode(['sex'=>$sex, 'color'=>$color, 'birth_wt'=>$birth_wt, 'type'=>$type, 'd_o_b'=>$d_o_b, 'paity'=>$paity, 'litter_size'=>$litter_size, 'breed'=>$breed]);
     }
 }

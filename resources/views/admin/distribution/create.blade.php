@@ -52,6 +52,11 @@
                                     </div>
 
                                     <div class="form-group col-md-3">
+                                        <label for="">Breed <span class="t_r">*</span></label>
+                                        <input type="text" class="form-control" id="breed"  value="" readonly>
+                                    </div>
+
+                                    <div class="form-group col-md-3">
                                         <label for="">Sex <span class="t_r">*</span></label>
                                         <input type="text" class="form-control" id="sex"  value="" readonly>
                                     </div>
@@ -80,10 +85,17 @@
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
-                                    <div class="form-group col-md-6">
+                                    <div class="form-group col-md-4">
                                         <label for="address_of_rec">Address of recipient <span class="t_r">*</span></label>
                                         <input name="address_of_rec" type="text" class="form-control @error('address_of_rec') is-invalid @enderror" value="{{old('address_of_rec')}}" required>
                                         @error('address_of_rec')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="purpose">Purpose <span class="t_r">*</span></label>
+                                        <input name="purpose" type="text" class="form-control @error('purpose') is-invalid @enderror" value="{{old('purpose')}}" required>
+                                        @error('purpose')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
@@ -122,6 +134,7 @@
                 $('#paity').val(res.paity);
                 $('#litter_size').val(res.litter_size);
                 $('#d_o_b').val(res.d_o_b);
+                $('#breed').val(res.breed);
 
                 var userinput = res.d_o_b;
                 var dob = new Date(userinput);

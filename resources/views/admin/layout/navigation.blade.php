@@ -163,7 +163,7 @@
                                 </a>
                             </li>
                             <li class="{{$sm=='distribution'?'active':''}}">
-                                <a href="{{ ('distributiorouten.index') }}">
+                                <a href="{{ route('distribution.index') }}">
                                     <span class="sub-item">Distribution</span>
                                 </a>
                             </li>

@@ -30,18 +30,25 @@
                                         <tr class="text-center">
                                             <th style="width: 35px">SL</th>
                                             <th>Animal Tag</th>
-                                            <th>Sex</th>
-                                            <th>Birth Wt.(kg)</th>
-                                            <th>Coat color</th>
                                             <th>Parity number</th>
                                             <th>Litter Size</th>
                                             <th>Date of Milking</th>
                                             <th>Milk Production (ml)</th>
+                                            <th>Average milk production (ml)</th>
+                                            <th>Lactation length (day)</th>
+                                            <th>Milk yield/ lactation</th>
                                             <th class="no-sort" style="text-align:center;width:80px" >Action</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
                                             <th></th>
                                             <th></th>
                                             <th></th>
@@ -54,14 +61,15 @@
                                         <tr class="text-center">
                                             <td>{{ $x++ }} </td>
                                             <td>{{ $milkProduction->animalInfo->animal_tag }} </td>
-                                            <td>{{ $milkProduction->animalInfo->sex }} </td>
-                                            <td>{{ $milkProduction->animalInfo->birth_wt }} </td>
-                                            <td>{{ $milkProduction->animalInfo->color }} </td>
-                                            <td>{{ $milkProduction->animalInfo->paity }} </td>
-                                            <td>{{ $milkProduction->animalInfo->litter_size }} </td>
-
+                                            {{-- <td>{{ $milkProduction->animalInfo->paity }} </td>
+                                            <td>{{ $milkProduction->animalInfo->litter_size }} </td> --}}
+                                            <td>{{ $milkProduction->parity_number }}</td>
+                                            <td>{{ $milkProduction->litter_size }}</td>
                                             <td>{{ \Carbon\Carbon::parse($milkProduction->date_of_milking)->format('d/m/Y') }} </td>
                                             <td>{{ $milkProduction->milk_production }} </td>
+                                            <td>{{ $milkProduction->average_milk_production }}</td>
+                                            <td>{{ $milkProduction->lactation_length }}</td>
+                                            <td>{{ $milkProduction->milk_yield }}</td>
                                             <td>
                                                 <div class="form-button-action">
                                                     {{-- <a href="{{route('reproduction-record.edit',$milkProduction->id)}}" title="Edit" class="btn btn-link btn-primary btn-lg">

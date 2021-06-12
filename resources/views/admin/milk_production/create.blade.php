@@ -66,14 +66,30 @@
                                         <input type="text" class="form-control" id="birth_wt" readonly>
                                     </div> --}}
 
-                                    <div class="form-group col-md-3">
+                                    {{-- <div class="form-group col-md-3">
                                         <label for="">Parity number <span class="t_r">*</span></label>
                                         <input type="text" class="form-control" id="paity" readonly>
+                                    </div> --}}
+
+                                    {{-- <div class="form-group col-md-3">
+                                        <label for="">Litter Size <span class="t_r">*</span></label>
+                                        <input type="text" class="form-control" id="litter_size" readonly>
+                                    </div> --}}
+
+                                    <div class="form-group col-md-3">
+                                        <label for="parity_number">Parity number <span class="t_r">*</span></label>
+                                        <input name="parity_number" type="number" class="form-control @error('parity_number') is-invalid @enderror" value="{{old('parity_number')}}" required>
+                                        @error('parity_number')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
 
                                     <div class="form-group col-md-3">
-                                        <label for="">Litter Size <span class="t_r">*</span></label>
-                                        <input type="text" class="form-control" id="litter_size" readonly>
+                                        <label for="litter_size">Litter Size <span class="t_r">*</span></label>
+                                        <input name="litter_size" type="number" class="form-control @error('litter_size') is-invalid @enderror" value="{{old('litter_size')}}" required>
+                                        @error('litter_size')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
 
                                     <div class="form-group col-md-3">
@@ -83,10 +99,35 @@
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
+
                                     <div class="form-group col-md-3">
                                         <label for="milk_production">Milk Production (ml) <span class="t_r">*</span></label>
                                         <input name="milk_production" type="number" step="any" class="form-control @error('milk_production') is-invalid @enderror" value="{{old('milk_production')}}" required>
                                         @error('milk_production')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+
+                                    <div class="form-group col-md-3">
+                                        <label for="average_milk_production">Average milk production (ml) <span class="t_r">*</span></label>
+                                        <input name="average_milk_production" type="number" step="any" class="form-control @error('average_milk_production') is-invalid @enderror" value="{{old('average_milk_production')}}" required>
+                                        @error('average_milk_production')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+
+                                    <div class="form-group col-md-3">
+                                        <label for="lactation_length">Lactation length (day) <span class="t_r">*</span></label>
+                                        <input name="lactation_length" type="number" step="any" class="form-control @error('lactation_length') is-invalid @enderror" value="{{old('lactation_length')}}" required>
+                                        @error('lactation_length')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+
+                                    <div class="form-group col-md-3">
+                                        <label for="milk_yield">Milk yield/ lactation <span class="t_r">*</span></label>
+                                        <input name="milk_yield" type="number" step="any" class="form-control @error('milk_yield') is-invalid @enderror" value="{{old('milk_yield')}}" required>
+                                        @error('milk_yield')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
