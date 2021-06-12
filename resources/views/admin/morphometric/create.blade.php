@@ -36,7 +36,6 @@
                             @endif
                             <form action="{{ route('morphometric.store')}}" method="post">
                                 @csrf
-                                <input type="hidden" name="type" id="type">
                                 <div class="row">
                                     <div class="form-group col-md-3">
                                         <label for="name">Animal Tag <span class="t_r">*</span></label>
@@ -74,7 +73,7 @@
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
-                                    
+
                                     <div class="form-group col-md-3">
                                         <label for="body_lenght">Body length (cm) <span class="t_r">*</span></label>
                                         <input name="body_lenght" type="number" step="any" class="form-control @error('body_lenght') is-invalid @enderror" value="{{old('body_lenght')}}">

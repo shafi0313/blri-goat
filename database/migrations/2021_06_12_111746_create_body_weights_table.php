@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProductionRecordsTable extends Migration
+class CreateBodyWeightsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,20 +13,26 @@ class CreateProductionRecordsTable extends Migration
      */
     public function up()
     {
-        Schema::create('production_records', function (Blueprint $table) {
+        Schema::create('body_weights', function (Blueprint $table) {
             $table->id();
             $table->foreignId('animal_info_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
-            $table->enum('type',['1','2'])->comment('1=Goat,2=Sheep');
             $table->float('month_1')->nullable();
             $table->float('month_2')->nullable();
             $table->float('month_3')->nullable();
             $table->float('month_4')->nullable();
             $table->float('month_5')->nullable();
             $table->float('month_6')->nullable();
+            $table->float('month_7')->nullable();
+            $table->float('month_8')->nullable();
+            $table->float('month_9')->nullable();
+            $table->float('month_10')->nullable();
+            $table->float('month_11')->nullable();
+            $table->float('month_12')->nullable();
             $table->float('g_rate_month_3')->nullable();
             $table->float('g_rate_month_6')->nullable();
+            $table->float('g_rate_month_9')->nullable();
+            $table->float('g_rate_month_12')->nullable();
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -37,6 +43,6 @@ class CreateProductionRecordsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('production_records');
+        Schema::dropIfExists('body_weights');
     }
 }

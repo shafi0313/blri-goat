@@ -30,7 +30,6 @@ class MorphometricController extends Controller
 
         $data = [
             'animal_info_id' => $request->animal_info_id,
-            'type' => $request->type,
             'age' => $request->age,
             'body_lenght' => $request->body_lenght,
             'weither_height' => $request->weither_height,

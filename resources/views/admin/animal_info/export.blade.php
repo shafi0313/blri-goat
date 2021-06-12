@@ -34,7 +34,7 @@
             <td>{{ $animalInfo->paity }} </td>
             <td>{{ $animalInfo->dam_milk }} </td>
             <td>{{ $animalInfo->d_o_b }} </td>
-            <td>{{ $animalInfo->season_d_o_b }} </td>
+            <td>{{ $animalInfo->season_o_birth }} </td>
             <td>{{ $animalInfo->death_date }} </td>
             <td>{{ $animalInfo->remark }} </td>
         </tr>

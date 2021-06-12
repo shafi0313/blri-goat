@@ -32,6 +32,7 @@
                                             <th style="width: 35px">SL</th>
                                             <th>Sire</th>
                                             <th>Dam</th>
+                                            <th>Breed</th>
                                             <th>Animal Tag</th>
                                             <th>Coat color</th>
                                             <th>Sex</th>
@@ -41,7 +42,7 @@
                                             <th>Paity</th>
                                             <th>Dam Milk</th>
                                             <th>Date of Birth</th>
-                                            <th>Season Date of Birth</th>
+                                            <th>Season of Birth</th>
                                             <th>Death Date</th>
                                             <th>Remark</th>
                                             <th class="no-sort" style="text-align:center;width:80px" >Action</th>
@@ -60,6 +61,7 @@
                                             <td class="text-center">{{ $x++ }} </td>
                                             <td>{{ $animalInfo->sire }} </td>
                                             <td>{{ $animalInfo->dam }} </td>
+                                            <td>{{ $animalInfo->breed }} </td>
                                             <td>{{ $animalInfo->animal_tag }} </td>
                                             <td>{{ $animalInfo->color }} </td>
                                             <td>{{ $animalInfo->sex }} </td>
@@ -69,14 +71,14 @@
                                             <td>{{ $animalInfo->paity }} </td>
                                             <td>{{ $animalInfo->dam_milk }} </td>
                                             <td>{{ $animalInfo->d_o_b }} </td>
-                                            <td>{{ $animalInfo->season_d_o_b }} </td>
+                                            <td>{{ $animalInfo->season_o_birth }} </td>
                                             <td>{{ $animalInfo->death_date }} </td>
                                             <td>{{ $animalInfo->remark }} </td>
-                                            <td>
+                                            <td class="text-center">
                                                 <div class="form-button-action">
-                                                    <a href="{{ route('farm.edit', $animalInfo->id) }}" title="Edit" class="btn btn-link btn-primary btn-lg">
+                                                    {{-- <a href="{{ route('farm.edit', $animalInfo->id) }}" title="Edit" class="btn btn-link btn-primary btn-lg">
                                                         <i class="fa fa-edit"></i>
-                                                    </a>
+                                                    </a> --}}
                                                     <form action="{{ route('farm.destroy', $animalInfo->id) }}" method="POST">
                                                         @csrf
                                                         @method('DELETE')

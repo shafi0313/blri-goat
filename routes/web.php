@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\AnimalCatController;
 use App\Http\Controllers\Admin\CommunityController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\AnimalInfoController;
+use App\Http\Controllers\Admin\BodyWeightController;
 use App\Http\Controllers\Admin\CommunityCatController;
 use App\Http\Controllers\Admin\DistributionController;
 use App\Http\Controllers\Admin\MorphometricController;
@@ -106,7 +107,9 @@ Route::middleware(['auth','admin'])->prefix('admin')->group(function(){
     Route::get('animal-sub-sub-cat/{id}', [AnimalCatController::class, 'subEdit'])->name('animalCat.subEdit');
     Route::post('animal-sub-sub-cat/{id}', [AnimalCatController::class, 'subUpdate'])->name('animalCat.subUpdate');
 
-    Route::resource('/production-record', ProductionRecordController::class);
+    Route::resource('/body-weight', BodyWeightController::class);
+
+    
     Route::resource('/reproduction-record', ReproductionController::class);
 
 

@@ -137,7 +137,7 @@
                                 </a>
                             </li>
                             <li class="{{$sm=='production'?'active':''}}">
-                                <a href="{{ route('production-record.index') }}">
+                                <a href="{{ route('body-weight.index') }}">
                                     <span class="sub-item">Body Weight</span>
                                 </a>
                             </li>

@@ -16,7 +16,6 @@ class CreateMorphometricsTable extends Migration
         Schema::create('morphometrics', function (Blueprint $table) {
             $table->id();
             $table->foreignId('animal_info_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
-            $table->enum('type',['1','2'])->comment('1=Goat,2=Sheep');
             $table->string('age');
             $table->float('body_lenght');
             $table->float('weither_height');

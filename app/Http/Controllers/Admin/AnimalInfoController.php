@@ -63,9 +63,9 @@ class AnimalInfoController extends Controller
             'animal_sub_cat_id' => $animal_sub_cat_id,
             'type' => $request->type,
             'm_type' => $request->m_type,
-            // 'a_type' => $request->a_type,
             'sire' => $request->sire,
             'dam' => $request->dam,
+            'breed' => $request->breed,
             'animal_tag' => $request->animal_tag,
             'color' => $request->color,
             'sex' => $request->sex,
@@ -75,8 +75,9 @@ class AnimalInfoController extends Controller
             'paity' => $request->paity,
             'dam_milk' => $request->dam_milk,
             'd_o_b' => $request->d_o_b,
-            'season_d_o_b' => $request->season_d_o_b,
+            'season_o_birth' => $request->season_o_birth,
             'death_date' => $request->death_date,
+            'castrated' => $request->castrated,
             'remark' => $request->remark,
         ];
 

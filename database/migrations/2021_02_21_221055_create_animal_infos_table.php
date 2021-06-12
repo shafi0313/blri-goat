@@ -20,7 +20,7 @@ class CreateAnimalInfosTable extends Migration
             $table->foreignId('community_id')->nullable()->constrained()->cascadeOnUpdate();
             $table->unsignedBigInteger('animal_cat_id');
             $table->foreign('animal_cat_id')->references('id')->on('animal_cats')->cascadeOnUpdate();
-            $table->unsignedBigInteger('animal_sub_cat_id');
+            $table->unsignedBigInteger('animal_sub_cat_id')->nullable();
             $table->foreign('animal_sub_cat_id')->references('id')->on('animal_cats')->cascadeOnUpdate();
             $table->integer('animal_tag');
             $table->enum('type',['1','2'])->comment('1=Goat,2=Sheep');
@@ -28,19 +28,20 @@ class CreateAnimalInfosTable extends Migration
             // $table->tinyInteger('a_type')->comment('Amimal Type');
             $table->integer('sire');
             $table->integer('dam');
+            $table->string('breed')->nullable();
             $table->string('color',80)->nullable();
             $table->enum('sex', ['M','F']);
             $table->double('birth_wt',4,2);
-            $table->integer('litter_size');
+            $table->string('litter_size');
             $table->integer('generation');
             $table->integer('paity')->nullable();
             $table->integer('dam_milk')->nullable();
             $table->date('d_o_b');
-            $table->date('season_d_o_b')->nullable();
+            $table->string('season_o_birth',50)->nullable();
             $table->date('death_date')->nullable();
-            $table->string('remark')->nullable();
+            $table->string('remark',100)->nullable();
+            $table->string('castrated',100)->nullable();
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 

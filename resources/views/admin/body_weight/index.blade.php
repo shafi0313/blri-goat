@@ -20,7 +20,7 @@
                         <div class="card-header">
                             <div class="d-flex align-items-center">
                                 <h4 class="card-title">Body Weight</h4>
-                                <a href="{{route('production-record.create')}}" class="btn btn-primary btn-round ml-auto text-light"><i class="fa fa-plus"></i> Add New</a>
+                                <a href="{{route('body-weight.create')}}" class="btn btn-primary btn-round ml-auto text-light"><i class="fa fa-plus"></i> Add New</a>
                             </div>
                         </div>
                         <div class="card-body">
@@ -65,7 +65,7 @@
                                             <td>{{ $productionRecord->month_6 }} </td>
                                             <td>
                                                 <div class="form-button-action">
-                                                    <a href="{{route('production-record.edit',$productionRecord->id)}}" title="Edit" class="btn btn-link btn-primary btn-lg">
+                                                    <a href="{{route('body-weight.edit',$productionRecord->id)}}" title="Edit" class="btn btn-link btn-primary btn-lg">
                                                         <i class="fa fa-edit"></i>
                                                     </a>
                                                     {{-- <form action="{{ route('farm.destroy', $productionRecord->id) }}" method="POST">

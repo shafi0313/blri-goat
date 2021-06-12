@@ -33,7 +33,7 @@
                                     </ul>
                                 </div>
                             @endif
-                            <form action="{{ route('production-record.update', $productionRecord->id)}}" method="post">
+                            <form action="{{ route('body-weight.update', $productionRecord->id)}}" method="post">
                                 @csrf
                                 @method('PUT')
                                 <div class="row">

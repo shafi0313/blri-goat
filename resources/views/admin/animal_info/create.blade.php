@@ -40,7 +40,7 @@
                                     <div class="form-check">
 										<label>Select <span class="t_r">*</span></label><br>
 										<label class="form-radio-label" id="farm">
-											<input class="form-radio-input" type="radio" name="optionsRadios" value="" >
+											<input class="form-radio-input" type="radio" name="optionsRadios" value="">
 											<span class="form-radio-sign">Research Farm</span>
 										</label>
 										<label class="form-radio-label ml-3" id="community">
@@ -187,6 +187,14 @@
                                     </div>
 
                                     <div class="form-group col-md-3">
+                                        <label for="breed">Breed </label>
+                                        <input name="breed" type="text" class="form-control @error('breed') is-invalid @enderror" value="{{old('breed')}}">
+                                        @error('breed')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+
+                                    <div class="form-group col-md-3">
                                         <label for="animal_tag">Animal Tag <span class="t_r">*</span></label>
                                         <input name="animal_tag" type="text" class="form-control @error('animal_tag') is-invalid @enderror" value="{{old('animal_tag')}}" required>
                                         @error('animal_tag')
@@ -251,9 +259,9 @@
                                     </div>
 
                                     <div class="form-group col-md-3">
-                                        <label for="season_d_o_b">Season of Birth </label>
-                                        <input name="season_d_o_b" id="season_d_o_b" type="text" class="form-control @error('season_d_o_b') is-invalid @enderror" readonly>
-                                        @error('season_d_o_b')
+                                        <label for="season_o_birth">Season of Birth </label>
+                                        <input name="season_o_birth" id="season_o_birth" type="text" class="form-control @error('season_o_birth') is-invalid @enderror" readonly>
+                                        @error('season_o_birth')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
@@ -267,7 +275,16 @@
                                     </div>
 
 
-                                    <div class="form-group col-md-8">
+                                    <div class="form-group col-md-3">
+                                        <label for="castrated">Castrated</label>
+                                        <input name="castrated" type="text" class="form-control @error('castrated') is-invalid @enderror" value="{{old('castrated')}}" required>
+                                        @error('castrated')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+
+
+                                    <div class="form-group col-md-3">
                                         <label for="remark">Remarks <span class="t_r">*</span></label>
                                         <input name="remark" type="text" class="form-control @error('remark') is-invalid @enderror" value="{{old('remark')}}" required>
                                         @error('remark')
@@ -370,21 +387,19 @@
         })
     });
 
+    // Session of birth Calculation
     $("#d_o_b").on('change', function(){
         var sessionBirthCal;
         var sessionBirth = new Date($("#d_o_b").val()).getMonth()+1;
         if(sessionBirth==3 || sessionBirth==4 || sessionBirth==5 || sessionBirth==6){
             sessionBirthCal = 'Summer';
         }else if(sessionBirth==7 || sessionBirth==8 || sessionBirth==9 || sessionBirth==10){
-            sessionBirthCal = 'Raing';
+            sessionBirthCal = 'Rainy';
         }else{
             sessionBirthCal = 'Winter';
         }
-        $('#season_d_o_b').val(sessionBirthCal);
-
-
-
-    })
+        $('#season_o_birth').val(sessionBirthCal);
+    });
 
 </script>
 @endpush

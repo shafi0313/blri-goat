@@ -4,32 +4,32 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\AnimalInfo;
 use Illuminate\Http\Request;
-use App\Models\ProductionRecord;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\PrductionRecordStoreRequest;
-use App\Http\Requests\ProductionRecordUpdateRequest;
+use App\Http\Requests\BodyWeightStoreRequest;
+use App\Http\Requests\BodyWeightUpdateRequest;
+use App\Models\BodyWeight;
 
-class ProductionRecordController extends Controller
+class BodyWeightController extends Controller
 {
     public function index()
     {
-        $productionRecords = ProductionRecord::all();
-        return view('admin.production_record.index', compact('productionRecords'));
+        $productionRecords = BodyWeight::all();
+        return view('admin.body_weight.index', compact('productionRecords'));
     }
 
     public function create()
     {
         $animalInfos = AnimalInfo::all();
-        return view('admin.production_record.create', compact('animalInfos'));
+        return view('admin.body_weight.create', compact('animalInfos'));
     }
 
-    public function store(PrductionRecordStoreRequest $productionRecordStore)
+    public function store(BodyWeightStoreRequest $productionRecordStore)
     {
         $productionRecord = $productionRecordStore->validated();
         DB::beginTransaction();
         try{
-            ProductionRecord::create($productionRecord);
+            BodyWeight::create($productionRecord);
             DB::commit();
             toast('Success','success');
             return redirect()->route('production-record.index');
@@ -42,11 +42,11 @@ class ProductionRecordController extends Controller
 
     public function edit($id)
     {
-        $productionRecord = ProductionRecord::find($id);
-        return view('admin.production_record.edit', compact('productionRecord'));
+        $productionRecord = BodyWeight::find($id);
+        return view('admin.body_weight.edit', compact('productionRecord'));
     }
 
-    public function update(ProductionRecordUpdateRequest $request, ProductionRecord $ProductionRecord)
+    public function update(BodyWeightUpdateRequest $request, BodyWeight $ProductionRecord)
     {
         $data = $request->validated();
 
