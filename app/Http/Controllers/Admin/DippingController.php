@@ -2,24 +2,24 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Dipping;
 use App\Models\AnimalInfo;
 use Illuminate\Http\Request;
-use App\Models\DiseaseTreatment;
 use App\Http\Controllers\Controller;
 
-class DiseaseTreatmentController extends Controller
+class DippingController extends Controller
 {
     public function index()
     {
-        $diseaseTreatments = DiseaseTreatment::all();
-        return view('admin.disease_treatment.index', compact('diseaseTreatments'));
+        $dippings = Dipping::all();
+        return view('admin.dipping.index', compact('dippings'));
     }
 
 
     public function create()
     {
         $animalInfos = AnimalInfo::all();
-        return view('admin.disease_treatment.create', compact('animalInfos'));
+        return view('admin.dipping.create', compact('animalInfos'));
     }
 
 
@@ -27,18 +27,15 @@ class DiseaseTreatmentController extends Controller
     {
         $data = $this->validate($request, [
             'animal_info_id' => 'required',
-            'disease_name' => 'required|max:155',
-            'clinical_sign' => 'nullable|max:155',
-            'disease_season' => 'required|max:155',
-            'medicine_prescribed' => 'nullable',
-            'recovered_dead' => 'required|max:155',
+            'medicine_name'  => 'required|max:100',
+            'dipping_date'  => 'required|date',
         ]);
 
 
         try{
-            DiseaseTreatment::create($data);
+            Dipping::create($data);
             toast('Success','success');
-            return redirect()->route('disease-and-treatment.index');
+            return redirect()->route('dipping.index');
         }catch(\Exception $ex){
             toast('Failed','error');
             return redirect()->back();
@@ -47,7 +44,7 @@ class DiseaseTreatmentController extends Controller
 
     public function destroy($id)
     {
-        DiseaseTreatment::find($id)->delete();
+        Dipping::find($id)->delete();
         toast('Success','success');
         return redirect()->back();
     }

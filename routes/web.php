@@ -6,12 +6,15 @@ use App\Http\Controllers\Admin\FarmController;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\FarmerController;
 use App\Http\Controllers\Admin\GlobalController;
+use App\Http\Controllers\Admin\DippingController;
 use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\AnimalCatController;
 use App\Http\Controllers\Admin\CommunityController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\DewormingController;
 use App\Http\Controllers\Admin\AnimalInfoController;
 use App\Http\Controllers\Admin\BodyWeightController;
+use App\Http\Controllers\Admin\VaccinationController;
 use App\Http\Controllers\Admin\CommunityCatController;
 use App\Http\Controllers\Admin\DistributionController;
 use App\Http\Controllers\Admin\MorphometricController;
@@ -93,6 +96,15 @@ Route::middleware(['auth','admin'])->prefix('admin')->group(function(){
     // Disease Treatment
     Route::resource('/disease-and-treatment', DiseaseTreatmentController::class);
 
+    // Vaccination
+    Route::resource('/vaccination', VaccinationController::class);
+
+    // Deworming
+    Route::resource('/deworming', DewormingController::class);
+
+    // Dipping
+    Route::resource('/dipping', DippingController::class);
+
     // Report
     Route::get('/research/selectDate', [ResearchStockController::class, 'selectDate'])->name('researchStock.selectDate');
     Route::get('/research-stock', [ResearchStockController::class, 'researchStock'])->name('researchStock.report');
@@ -109,7 +121,7 @@ Route::middleware(['auth','admin'])->prefix('admin')->group(function(){
 
     Route::resource('/body-weight', BodyWeightController::class);
 
-    
+
     Route::resource('/reproduction-record', ReproductionController::class);
 
 

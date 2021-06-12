@@ -1,7 +1,7 @@
 @extends('admin.layout.master')
-@section('title', 'Disease and Treatment')
+@section('title', 'Deworming')
 @section('content')
-@php $p='healthM'; $sm="diseaseTreatment"; @endphp
+@php $p='healthM'; $sm="deworming"; @endphp
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">
@@ -10,7 +10,7 @@
                     <li class="nav-home">
                     <a href="{{ route('admin.dashboard')}}"><i class="flaticon-home"></i></a></li>
                     <li class="separator"><i class="flaticon-right-arrow"></i></li>
-                    <li class="nav-item active">Disease and Treatment</li>
+                    <li class="nav-item active">Deworming</li>
                 </ul>
             </div>
             <div class="divider1"></div>
@@ -19,8 +19,8 @@
                     <div class="card">
                         <div class="card-header">
                             <div class="d-flex align-items-center">
-                                <h4 class="card-title">Disease and Treatment</h4>
-                                <a href="{{route('disease-and-treatment.create')}}" class="btn btn-primary btn-round ml-auto text-light"><i class="fa fa-plus"></i> Add New</a>
+                                <h4 class="card-title">Deworming</h4>
+                                <a href="{{route('deworming.create')}}" class="btn btn-primary btn-round ml-auto text-light"><i class="fa fa-plus"></i> Add New</a>
                             </div>
                         </div>
                         <div class="card-body">
@@ -32,11 +32,9 @@
                                             <th>Animal Tag</th>
                                             <th>Sex</th>
                                             <th>Breed</th>
-                                            <th>Name of Disease</th>
-                                            <th>Clinical Sign</th>
-                                            <th>Season of Disease</th>
-                                            <th>Medicine Prescribed</th>
-                                            <th>Recovered/ Dead</th>
+                                            <th>Name of Medicine</th>
+                                            <th>Date of Deworming</th>
+                                            <th>Dose</th>
                                             <th class="no-sort" style="text-align:center;width:80px" >Action</th>
                                         </tr>
                                     </thead>
@@ -48,30 +46,25 @@
                                             <th></th>
                                             <th></th>
                                             <th></th>
-                                            <th></th>
-                                            <th></th>
-                                            <th></th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
                                         @php $x=1; @endphp
-                                        @foreach ($diseaseTreatments as $diseaseTreatment)
+                                        @foreach ($dewormings as $deworming)
                                         <tr class="text-center">
                                             <td>{{ $x++ }} </td>
-                                            <td>{{ $diseaseTreatment->animalInfo->animal_tag }} </td>
-                                            <td>{{ $diseaseTreatment->animalInfo->sex }} </td>
-                                            <td>{{ $diseaseTreatment->breed }} </td>
-                                            <td>{{ $diseaseTreatment->disease_name }} </td>
-                                            <td>{{ $diseaseTreatment->clinical_sign }} </td>
-                                            <td>{{ $diseaseTreatment->disease_season }} </td>
-                                            <td>{{ $diseaseTreatment->medicine_prescribed }} </td>
-                                            <td>{{ $diseaseTreatment->recovered_dead }} </td>
+                                            <td>{{ $deworming->animalInfo->animal_tag }} </td>
+                                            <td>{{ $deworming->animalInfo->sex }} </td>
+                                            <td>{{ $deworming->animalInfo->breed }} </td>
+                                            <td>{{ $deworming->medicine_name }}</td>
+                                            <td>{{ $deworming->deworming_date }}</td>
+                                            <td>{{ $deworming->dose }}</td>
                                             <td>
                                                 <div class="form-button-action">
                                                     {{-- <a href="{{route('disease-and-treatment.edit',$diseaseTreatment->id)}}" title="Edit" class="btn btn-link btn-primary btn-lg">
                                                         <i class="fa fa-edit"></i>
                                                     </a> --}}
-                                                    <form action="{{ route('disease-and-treatment.destroy', $diseaseTreatment->id) }}" method="POST">
+                                                    <form action="{{ route('deworming.destroy', $deworming->id) }}" method="POST">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" title="Delete" class="btn btn-link btn-danger" onclick="return confirm('Are you sure?')">

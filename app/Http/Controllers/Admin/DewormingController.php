@@ -2,24 +2,24 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Deworming;
 use App\Models\AnimalInfo;
 use Illuminate\Http\Request;
-use App\Models\DiseaseTreatment;
 use App\Http\Controllers\Controller;
 
-class DiseaseTreatmentController extends Controller
+class DewormingController extends Controller
 {
     public function index()
     {
-        $diseaseTreatments = DiseaseTreatment::all();
-        return view('admin.disease_treatment.index', compact('diseaseTreatments'));
+        $dewormings = Deworming::all();
+        return view('admin.deworming.index', compact('dewormings'));
     }
 
 
     public function create()
     {
         $animalInfos = AnimalInfo::all();
-        return view('admin.disease_treatment.create', compact('animalInfos'));
+        return view('admin.deworming.create', compact('animalInfos'));
     }
 
 
@@ -27,18 +27,16 @@ class DiseaseTreatmentController extends Controller
     {
         $data = $this->validate($request, [
             'animal_info_id' => 'required',
-            'disease_name' => 'required|max:155',
-            'clinical_sign' => 'nullable|max:155',
-            'disease_season' => 'required|max:155',
-            'medicine_prescribed' => 'nullable',
-            'recovered_dead' => 'required|max:155',
+            'medicine_name'  => 'required|max:100',
+            'deworming_date'  => 'required|date',
+            'dose'  => 'required|max:100',
         ]);
 
 
         try{
-            DiseaseTreatment::create($data);
+            Deworming::create($data);
             toast('Success','success');
-            return redirect()->route('disease-and-treatment.index');
+            return redirect()->route('deworming.index');
         }catch(\Exception $ex){
             toast('Failed','error');
             return redirect()->back();
@@ -47,7 +45,7 @@ class DiseaseTreatmentController extends Controller
 
     public function destroy($id)
     {
-        DiseaseTreatment::find($id)->delete();
+        Deworming::find($id)->delete();
         toast('Success','success');
         return redirect()->back();
     }

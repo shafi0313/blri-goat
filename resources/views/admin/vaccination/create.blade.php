@@ -1,7 +1,7 @@
 @extends('admin.layout.master')
-@section('title', 'Disease and Treatment')
+@section('title', 'Vaccination')
 @section('content')
-@php $p='healthM'; $sm="production"; @endphp
+@php $p='healthM'; $sm="vaccination"; @endphp
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">
@@ -9,9 +9,9 @@
                 <ul class="breadcrumbs">
                     <li class="nav-home"><a href="{{ route('admin.dashboard')}}"><i class="flaticon-home"></i></a></li>
                     <li class="separator"><i class="flaticon-right-arrow"></i></li>
-                    <li class="nav-item"><a href="{{ route('animal-info.index')}}">Disease and Treatment</a></li>
+                    <li class="nav-item"><a href="{{ route('animal-info.index')}}">Vaccination</a></li>
                     <li class="separator"><i class="flaticon-right-arrow"></i></li>
-                    <li class="nav-item active">Add Disease and Treatment</li>
+                    <li class="nav-item active">Add Vaccination</li>
                 </ul>
             </div>
             <div class="divider1"></div>
@@ -34,7 +34,7 @@
                                     </ul>
                                 </div>
                             @endif
-                            <form action="{{ route('disease-and-treatment.store')}}" method="post">
+                            <form action="{{ route('vaccination.store')}}" method="post">
                                 @csrf
                                 <input type="hidden" name="type" id="type">
                                 <div class="row">
@@ -67,41 +67,33 @@
                                     </div>
 
                                     <div class="form-group col-md-3">
-                                        <label for="disease_name">Name of Disease <span class="t_r">*</span></label>
-                                        <input type="text" class="form-control @error('disease_name') is-invalid @enderror" name="disease_name" value="{{old('disease_name')}}">
-                                        @error('disease_name')
+                                        <label for="vaccine_name">Name of Vaccine <span class="t_r">*</span></label>
+                                        <input type="text" class="form-control @error('vaccine_name') is-invalid @enderror" name="vaccine_name" value="{{old('vaccine_name')}}">
+                                        @error('vaccine_name')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
 
                                     <div class="form-group col-md-3">
-                                        <label for="clinical_sign">Clinical Sign</label>
-                                        <input type="text" class="form-control @error('clinical_sign') is-invalid @enderror" name="clinical_sign" value="{{old('clinical_sign')}}">
-                                        @error('clinical_sign')
+                                        <label for="vaccine_date">Date of Vaccination</label>
+                                        <input type="date" class="form-control @error('vaccine_date') is-invalid @enderror" name="vaccine_date" value="{{old('vaccine_date')}}">
+                                        @error('vaccine_date')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
 
                                     <div class="form-group col-md-3">
-                                        <label for="disease_season">Season of Disease <span class="t_r">*</span></label>
-                                        <input type="text" class="form-control @error('disease_season') is-invalid @enderror" name="disease_season" value="{{old('disease_season')}}">
-                                        @error('disease_season')
+                                        <label for="dose">Dose</label>
+                                        <input type="text" class="form-control @error('dose') is-invalid @enderror" name="dose" value="{{old('dose')}}">
+                                        @error('dose')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
 
                                     <div class="form-group col-md-3">
-                                        <label for="medicine_prescribed">Medicine Prescribed</label>
-                                        <input type="text" class="form-control @error('medicine_prescribed') is-invalid @enderror" name="medicine_prescribed" value="{{old('medicine_prescribed')}}">
-                                        @error('medicine_prescribed')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-
-                                    <div class="form-group col-md-3">
-                                        <label for="recovered_dead">Recovered/ Dead <span class="t_r">*</span></label>
-                                        <input type="text" class="form-control @error('recovered_dead') is-invalid @enderror" name="recovered_dead" value="{{old('recovered_dead')}}">
-                                        @error('recovered_dead')
+                                        <label for="total_vaccinated">Total animal vaccinated</label>
+                                        <input type="text" class="form-control @error('total_vaccinated') is-invalid @enderror" name="total_vaccinated" value="{{old('total_vaccinated')}}">
+                                        @error('total_vaccinated')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>

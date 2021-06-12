@@ -200,18 +200,18 @@
                                     <span class="sub-item">Disease and Treatment</span>
                                 </a>
                             </li>
-                            <li class="{{$sm=='farm'?'active':''}}">
-                                <a href="">
+                            <li class="{{$sm=='vaccination'?'active':''}}">
+                                <a href="{{ route('vaccination.index') }}">
                                     <span class="sub-item">Vaccination</span>
                                 </a>
                             </li>
-                            <li class="{{$sm=='farm'?'active':''}}">
-                                <a href="">
+                            <li class="{{$sm=='deworming'?'active':''}}">
+                                <a href="{{ route('deworming.index') }}">
                                     <span class="sub-item">Deworming</span>
                                 </a>
                             </li>
-                            <li class="{{$sm=='farm'?'active':''}}">
-                                <a href="">
+                            <li class="{{$sm=='dipping'?'active':''}}">
+                                <a href="{{ route('dipping.index') }}">
                                     <span class="sub-item">Dipping</span>
                                 </a>
                             </li>

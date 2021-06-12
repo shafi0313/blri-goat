@@ -1,7 +1,7 @@
 @extends('admin.layout.master')
-@section('title', 'Disease and Treatment')
+@section('title', 'Dipping')
 @section('content')
-@php $p='healthM'; $sm="production"; @endphp
+@php $p='healthM'; $sm="dipping"; @endphp
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">
@@ -9,9 +9,9 @@
                 <ul class="breadcrumbs">
                     <li class="nav-home"><a href="{{ route('admin.dashboard')}}"><i class="flaticon-home"></i></a></li>
                     <li class="separator"><i class="flaticon-right-arrow"></i></li>
-                    <li class="nav-item"><a href="{{ route('animal-info.index')}}">Disease and Treatment</a></li>
+                    <li class="nav-item"><a href="{{ route('animal-info.index')}}">Dipping</a></li>
                     <li class="separator"><i class="flaticon-right-arrow"></i></li>
-                    <li class="nav-item active">Add Disease and Treatment</li>
+                    <li class="nav-item active">Add Dipping</li>
                 </ul>
             </div>
             <div class="divider1"></div>
@@ -34,7 +34,7 @@
                                     </ul>
                                 </div>
                             @endif
-                            <form action="{{ route('disease-and-treatment.store')}}" method="post">
+                            <form action="{{ route('dipping.store')}}" method="post">
                                 @csrf
                                 <input type="hidden" name="type" id="type">
                                 <div class="row">
@@ -67,41 +67,17 @@
                                     </div>
 
                                     <div class="form-group col-md-3">
-                                        <label for="disease_name">Name of Disease <span class="t_r">*</span></label>
-                                        <input type="text" class="form-control @error('disease_name') is-invalid @enderror" name="disease_name" value="{{old('disease_name')}}">
-                                        @error('disease_name')
+                                        <label for="medicine_name">Name of Medicine <span class="t_r">*</span></label>
+                                        <input type="text" class="form-control @error('medicine_name') is-invalid @enderror" name="medicine_name" value="{{old('medicine_name')}}">
+                                        @error('medicine_name')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
 
                                     <div class="form-group col-md-3">
-                                        <label for="clinical_sign">Clinical Sign</label>
-                                        <input type="text" class="form-control @error('clinical_sign') is-invalid @enderror" name="clinical_sign" value="{{old('clinical_sign')}}">
-                                        @error('clinical_sign')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-
-                                    <div class="form-group col-md-3">
-                                        <label for="disease_season">Season of Disease <span class="t_r">*</span></label>
-                                        <input type="text" class="form-control @error('disease_season') is-invalid @enderror" name="disease_season" value="{{old('disease_season')}}">
-                                        @error('disease_season')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-
-                                    <div class="form-group col-md-3">
-                                        <label for="medicine_prescribed">Medicine Prescribed</label>
-                                        <input type="text" class="form-control @error('medicine_prescribed') is-invalid @enderror" name="medicine_prescribed" value="{{old('medicine_prescribed')}}">
-                                        @error('medicine_prescribed')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-
-                                    <div class="form-group col-md-3">
-                                        <label for="recovered_dead">Recovered/ Dead <span class="t_r">*</span></label>
-                                        <input type="text" class="form-control @error('recovered_dead') is-invalid @enderror" name="recovered_dead" value="{{old('recovered_dead')}}">
-                                        @error('recovered_dead')
+                                        <label for="dipping_date">Date of Dipping <span class="t_r">*</span></label>
+                                        <input type="date" class="form-control @error('dipping_date') is-invalid @enderror" name="dipping_date" value="{{old('dipping_date')}}">
+                                        @error('dipping_date')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
