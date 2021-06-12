@@ -244,7 +244,7 @@
 
                                     <div class="form-group col-md-3">
                                         <label for="d_o_b">Date of Birth <span class="t_r">*</span></label>
-                                        <input  name="d_o_b" type="date" class="form-control @error('d_o_b') is-invalid @enderror" value="{{old('d_o_b')}}" required>
+                                        <input  name="d_o_b" id="d_o_b" type="date" class="form-control @error('d_o_b') is-invalid @enderror" value="{{old('d_o_b')}}" required>
                                         @error('d_o_b')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
@@ -252,7 +252,7 @@
 
                                     <div class="form-group col-md-3">
                                         <label for="season_d_o_b">Season of Birth </label>
-                                        <input name="season_d_o_b" type="date" class="form-control @error('season_d_o_b') is-invalid @enderror" value="{{old('season_d_o_b')}}">
+                                        <input name="season_d_o_b" id="season_d_o_b" type="text" class="form-control @error('season_d_o_b') is-invalid @enderror" readonly>
                                         @error('season_d_o_b')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
@@ -369,6 +369,23 @@
             }
         })
     });
+
+    $("#d_o_b").on('change', function(){
+        var sessionBirthCal;
+        var sessionBirth = new Date($("#d_o_b").val()).getMonth()+1;
+        if(sessionBirth==3 || sessionBirth==4 || sessionBirth==5 || sessionBirth==6){
+            sessionBirthCal = 'Summer';
+        }else if(sessionBirth==7 || sessionBirth==8 || sessionBirth==9 || sessionBirth==10){
+            sessionBirthCal = 'Raing';
+        }else{
+            sessionBirthCal = 'Winter';
+        }
+        $('#season_d_o_b').val(sessionBirthCal);
+
+
+
+    })
+
 </script>
 @endpush
 @endsection

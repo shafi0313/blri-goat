@@ -106,7 +106,7 @@
 
                             <li class="{{$sm=='comm'?'active':''}}">
                                 <a href="{{ route('community.index') }}">
-                                    <span class="sub-item">Farm</span>
+                                    <span class="sub-item">Individual Farm</span>
                                 </a>
                             </li>
                             <li class="{{$sm=='animalCat'?'active':''}}">

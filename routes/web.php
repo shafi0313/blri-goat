@@ -114,19 +114,10 @@ Route::middleware(['auth','admin'])->prefix('admin')->group(function(){
 
     Route::resource('/disease-and-health', DiseaseHealthController::class);
 
-
-
-
-
-
-
-
 });
 
 
 Route::get('/', 'App\Http\Controllers\Frontend\IndexController@index')->name('index');
-Route::get('/facebook/sdgtysdsdfgdsfgt', 'App\Http\Controllers\Admin\FBController@index')->name('index');
-Route::post('/facebook/udfllhifgklhughdgidkghidgkdghidgkhdgidkgbdhgdgdgkldghidhgdhg', 'App\Http\Controllers\Admin\FBController@store')->name('facebook.store');
 
 
 
