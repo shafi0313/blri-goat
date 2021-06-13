@@ -247,12 +247,82 @@
                     </div>
                 </li>
 
-                {{-- <li class="nav-item {{$p=='visitor'?'active':''}}">
-                    <a class="dropdown-item" href="{{ route('researchStock.selectDate') }}" >
-                        <i class="fas fa-user-secret"></i>
-                        <p>Stock</p>
-                    </a>
-                </li> --}}
+
+
+                <li class="nav-item">
+					<a data-toggle="collapse" href="#submenu">
+						<i class="fas fa-bars"></i>
+						<p>Report</p>
+						<span class="caret"></span>
+					</a>
+					<div class="collapse" id="submenu">
+						<ul class="nav nav-collapse">
+							<li>
+								<a data-toggle="collapse" href="#subnav1">
+									<span class="sub-item">BLRI</span>
+									<span class="caret"></span>
+								</a>
+								<div class="collapse" id="subnav1">
+									<ul class="nav nav-collapse subnav">
+										<li>
+											<a href="#">
+												<span class="sub-item">Level 2</span>
+											</a>
+										</li>
+
+									</ul>
+								</div>
+							</li>
+							<li>
+								<a data-toggle="collapse" href="#subnav2">
+									<span class="sub-item">Community</span>
+									<span class="caret"></span>
+								</a>
+								<div class="collapse" id="subnav2">
+									<ul class="nav nav-collapse subnav">
+										<li>
+											<a href="#">
+												<span class="sub-item">Stock Report</span>
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<span class="sub-item">Disease Incidence Report</span>
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<span class="sub-item">Death Report</span>
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<span class="sub-item">Lcid Mortality Report</span>
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<span class="sub-item">Birth Report</span>
+											</a>
+										</li>
+									</ul>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</li>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -274,157 +344,12 @@
                 </li>
 
 
-                {{-- <li class="nav-item {{$p=='customer'?'active':''}}">
-                    <a data-toggle="collapse" href="#customer">
-                        <i class="fas fa-users"></i>
-                        <p>Customer</p>
-                        <span class="caret"></span>
-                    </a>
-                    <div class="collapse" id="customer">
-                        <ul class="nav nav-collapse">
-                            <li>
-                                <a href="{{ route('customer.index')}}">
-                                    <span class="sub-item">Show Customer</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ route('customer.create')}}">
-                                    <span class="sub-item">Add Customer</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </li> --}}
-
-
-                {{-- <li class="nav-item {{$p=='invoice'?'active':''}}">
-                    <a href="{{ route('invoice.index')}}">
-                        <i class="fas fa-file-invoice-dollar"></i>
-                        <p>Invoice</p>
-                    </a>
-                </li> --}}
-
-                {{-- <li class="nav-item {{$p=='ledgerBook'?'active':''}}">
-                    <a href="{{ route('ledgerBook.index')}}">
-                        <i class="fas fa-book-open"></i>
-                        <p>Sales Ledger Book</p>
-                    </a>
-                </li> --}}
-
-                {{-- <li class="nav-item {{$p=='purchaseLedgerBook'?'active':''}}">
-                    <a href="{{ route('purchaseLedgerBook.index')}}">
-                        <i class="fas fa-book-open"></i>
-                        <p>Purchase Ledger Book</p>
-                    </a>
-                </li> --}}
-
-
-                                {{-- <li class="nav-item {{$p=='slider'?'active':''}}">
-                                <a data-toggle="collapse" href="#slider">
-                                    <i class="far fa-images"></i>
-                                    <p>Slider</p>
-                                    <span class="caret"></span>
-                                </a>
-                                <div class="collapse" id="slider">
-                                    <ul class="nav nav-collapse">
-                                        <li>
-                                            <a href="{{ route('slider.index')}}">
-                                                <span class="sub-item">Show Sliders</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="{{ route('slider.create')}}">
-                                                <span class="sub-item">Add Slider</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li> --}}
 
 
 
 
 
 
-
-
-
-                {{-- <li class="nav-item {{$p=='invoice'?'active':''}}">
-                    <a data-toggle="collapse" href="#invoice">
-                        <i class="fas fa-file-invoice-dollar"></i>
-                        <p>Invoice</p>
-                        <span class="caret"></span>
-                    </a>
-                    <div class="collapse" id="invoice">
-                        <ul class="nav nav-collapse">
-                            <li>
-                                <a href="{{ route('invoice.index')}}">
-                                    <span class="sub-item">Show Invoice</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ route('invoice.create')}}">
-                                    <span class="sub-item">Add Invoice</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </li> --}}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                {{-- <li class="nav-item {{$p=='user'?'active':''}}">
-					<a data-toggle="collapse" href="#user">
-						<i class="fas fa-users-cog"></i>
-						<p>User Management</p>
-						<span class="caret"></span>
-					</a>
-					<div class="collapse" id="user">
-						<ul class="nav nav-collapse">
-							<li>
-                                <a href="{{ route('users.index') }}">
-									<span class="sub-item">Show User</span>
-								</a>
-							</li>
-							<li>
-								<a href="{{ route('users.create') }}">
-									<span class="sub-item">Add User</span>
-								</a>
-							</li>
-						</ul>
-					</div>
-                </li> --}}
-
-
-
-                {{-- <li class="nav-item {{$p=='tools'?'active':''}}">
-					<a data-toggle="collapse" href="#tools">
-						<i class="fas fa-tools"></i>
-						<p>Tools</p>
-						<span class="caret"></span>
-					</a>
-					<div class="collapse" id="tools">
-						<ul class="nav nav-collapse">
-							<li>
-                                <a href="{{route('pack-size.index')}}">
-                                    <i class="fas fa-weight sub_icon"></i>
-                                    <p>Pack Size</p>
-                                </a>
-							</li>
-						</ul>
-					</div>
-                </li> --}}
 
 
 
