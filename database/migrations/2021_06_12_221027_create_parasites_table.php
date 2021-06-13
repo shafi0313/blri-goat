@@ -18,7 +18,8 @@ class CreateParasitesTable extends Migration
             $table->foreignId('animal_info_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->date('feces_collection_date');
             $table->string('fecal_egg_count');
-            $table->string('season_parasite_name');
+            $table->string('season');
+            $table->string('parasite_name');
             $table->timestamps();
         });
     }

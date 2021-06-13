@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\FarmerController;
 use App\Http\Controllers\Admin\GlobalController;
 use App\Http\Controllers\Admin\DippingController;
+use App\Http\Controllers\Admin\ParasiteController;
 use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\AnimalCatController;
 use App\Http\Controllers\Admin\CommunityController;
@@ -104,6 +105,9 @@ Route::middleware(['auth','admin'])->prefix('admin')->group(function(){
 
     // Dipping
     Route::resource('/dipping', DippingController::class);
+
+    // Parasite
+    Route::resource('/parasite', ParasiteController::class);
 
     // Report
     Route::get('/research/selectDate', [ResearchStockController::class, 'selectDate'])->name('researchStock.selectDate');

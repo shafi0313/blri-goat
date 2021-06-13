@@ -215,8 +215,8 @@
                                     <span class="sub-item">Dipping</span>
                                 </a>
                             </li>
-                            <li class="{{$sm=='farm'?'active':''}}">
-                                <a href="">
+                            <li class="{{$sm=='parasite'?'active':''}}">
+                                <a href="{{ route('parasite.index') }}">
                                     <span class="sub-item">Parasite</span>
                                 </a>
                             </li>

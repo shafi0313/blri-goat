@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Parasite extends Model
 {
     use HasFactory;
+
+    protected $guarded = ['id'];
+
+    public function animalInfo()
+    {
+        return $this->belongsTo(AnimalInfo::class);
+    }
 }
