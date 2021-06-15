@@ -1,7 +1,7 @@
 @extends('admin.layout.master')
 @section('title', 'Disease and Treatment')
 @section('content')
-@php $p='healthM'; $sm="production"; @endphp
+@php $p='healthM'; $sm="diseaseTreatment"; @endphp
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">
@@ -68,8 +68,13 @@
 
                                     <div class="form-group col-md-3">
                                         <label for="disease_name">Name of Disease <span class="t_r">*</span></label>
-                                        <input type="text" class="form-control @error('disease_name') is-invalid @enderror" name="disease_name" value="{{old('disease_name')}}">
-                                        @error('disease_name')
+                                        <select name="disease_id"  class="form-control @error('disease_name') is-invalid @enderror">
+                                            <option selected value disabled>Select Disease Name</option>
+                                            @foreach ($diseases as $disease)
+                                                <option value="{{ $disease->id }}">{{ $disease->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('disease_id')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>

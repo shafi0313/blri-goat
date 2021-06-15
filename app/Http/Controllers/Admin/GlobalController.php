@@ -8,6 +8,7 @@ use App\Models\District;
 use App\Models\AnimalInfo;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\AnimalCat;
 
 class GlobalController extends Controller
 {
@@ -38,5 +39,19 @@ class GlobalController extends Controller
             $breed = $animalInfo->breed;
         }
         return json_encode(['sex'=>$sex, 'color'=>$color, 'birth_wt'=>$birth_wt, 'type'=>$type, 'd_o_b'=>$d_o_b, 'paity'=>$paity, 'litter_size'=>$litter_size, 'breed'=>$breed]);
+    }
+
+
+
+    public function animalSubCat(Request $request)
+    {
+        $p_id = $request->animal_cat_id;
+        $animalCats = AnimalCat::where('parent_id', $p_id)->get();
+        $name = '';
+        $name .= '<option value="0">Select</option>';
+        foreach($animalCats as $animalCat){
+            $name .= '<option value="'.$animalCat->id.'">'.$animalCat->name.'</option>';
+        }
+        return json_encode(['name'=>$name]);
     }
 }

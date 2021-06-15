@@ -6,6 +6,7 @@ use App\Models\AnimalInfo;
 use Illuminate\Http\Request;
 use App\Models\DiseaseTreatment;
 use App\Http\Controllers\Controller;
+use App\Models\Disease;
 
 class DiseaseTreatmentController extends Controller
 {
@@ -19,7 +20,8 @@ class DiseaseTreatmentController extends Controller
     public function create()
     {
         $animalInfos = AnimalInfo::all();
-        return view('admin.disease_treatment.create', compact('animalInfos'));
+        $diseases = Disease::all();
+        return view('admin.disease_treatment.create', compact('animalInfos','diseases'));
     }
 
 
@@ -27,7 +29,7 @@ class DiseaseTreatmentController extends Controller
     {
         $data = $this->validate($request, [
             'animal_info_id' => 'required',
-            'disease_name' => 'required|max:155',
+            'disease_id' => 'required|max:155',
             'clinical_sign' => 'nullable|max:155',
             'disease_season' => 'required|max:155',
             'medicine_prescribed' => 'nullable',

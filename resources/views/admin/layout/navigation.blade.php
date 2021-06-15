@@ -286,7 +286,7 @@
 											</a>
 										</li>
 										<li>
-											<a href="#">
+											<a href="{{route('report.disease.selectDate')}}">
 												<span class="sub-item">Disease Incidence Report</span>
 											</a>
 										</li>

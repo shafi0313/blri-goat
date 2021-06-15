@@ -16,7 +16,8 @@ class CreateDiseaseTreatmentsTable extends Migration
         Schema::create('disease_treatments', function (Blueprint $table) {
             $table->id();
             $table->foreignId('animal_info_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
-            $table->string('disease_name',155);
+            $table->foreignId('disease_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+            // $table->string('disease_name',155);
             $table->string('clinical_sign',155)->nullable();
             $table->string('disease_season',155);
             $table->text('medicine_prescribed')->nullable();

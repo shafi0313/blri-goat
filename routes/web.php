@@ -17,6 +17,7 @@ use App\Http\Controllers\Admin\AnimalInfoController;
 use App\Http\Controllers\Admin\BodyWeightController;
 use App\Http\Controllers\Admin\VaccinationController;
 use App\Http\Controllers\Admin\CommunityCatController;
+use App\Http\Controllers\Admin\DiseaseIncidenceReport;
 use App\Http\Controllers\Admin\DistributionController;
 use App\Http\Controllers\Admin\MorphometricController;
 use App\Http\Controllers\Admin\ReproductionController;
@@ -132,6 +133,16 @@ Route::middleware(['auth','admin'])->prefix('admin')->group(function(){
     Route::resource('/service-record', ServiceRecordController::class);
 
     Route::resource('/disease-and-health', DiseaseHealthController::class);
+
+
+    Route::prefix('report')->group(function(){
+        Route::prefix('disease-incidence')->group(function(){
+            Route::get('/select', [DiseaseIncidenceReport::class, 'selectDate'])->name('report.disease.selectDate');
+            Route::post('/report', [DiseaseIncidenceReport::class, 'report'])->name('report.disease.report');
+        });
+    });
+
+    Route::get('/animal-sub-cat', [GlobalController::class, 'animalSubCat'])->name('animalSubCat');
 
 });
 
