@@ -80,16 +80,29 @@
                                     </div>
 
                                     <div class="form-group col-md-3">
-                                        <label for="clinical_sign">Clinical Sign</label>
-                                        <input type="text" class="form-control @error('clinical_sign') is-invalid @enderror" name="clinical_sign" value="{{old('clinical_sign')}}">
-                                        @error('clinical_sign')
+                                        <label for="disease_name">Clinical Sign <span class="t_r">*</span></label>
+                                        <select name="clinical_sign_id"  class="form-control @error('clinical_sign_id') is-invalid @enderror">
+                                            <option selected value disabled>Select Clinical Sign</option>
+                                            @foreach ($clinicalSigns as $clinicalSign)
+                                                <option value="{{ $clinicalSign->id }}">{{ $clinicalSign->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('clinical_sign_id')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+
+                                    <div class="form-group col-md-3">
+                                        <label for="disease_date">Date of Disease <span class="t_r">*</span></label>
+                                        <input type="date" id="disease_date" class="form-control @error('disease_date') is-invalid @enderror" name="disease_date" value="{{old('disease_date')}}">
+                                        @error('disease_date')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
 
                                     <div class="form-group col-md-3">
                                         <label for="disease_season">Season of Disease <span class="t_r">*</span></label>
-                                        <input type="text" class="form-control @error('disease_season') is-invalid @enderror" name="disease_season" value="{{old('disease_season')}}">
+                                        <input type="text" id="season_o_birth" class="form-control @error('disease_season') is-invalid @enderror" name="disease_season" value="{{old('disease_season')}}" readonly>
                                         @error('disease_season')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
@@ -105,7 +118,12 @@
 
                                     <div class="form-group col-md-3">
                                         <label for="recovered_dead">Recovered/ Dead <span class="t_r">*</span></label>
-                                        <input type="text" class="form-control @error('recovered_dead') is-invalid @enderror" name="recovered_dead" value="{{old('recovered_dead')}}">
+                                        <select name="recovered_dead"  class="form-control @error('recovered_dead') is-invalid @enderror">
+                                            <option value="">Select</option>
+                                            <option value="Recovered">Recovered</option>
+                                            <option value="Dead">Dead</option>
+                                        </select>
+                                        {{-- <input type="text" class="form-control @error('recovered_dead') is-invalid @enderror" name="recovered_dead" value="{{old('recovered_dead')}}"> --}}
                                         @error('recovered_dead')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
@@ -195,6 +213,21 @@
                 }
             }
         })
+    });
+
+
+    // Session of birth Calculation
+    $("#disease_date").on('change', function(){
+        var sessionBirthCal;
+        var sessionBirth = new Date($("#disease_date").val()).getMonth()+1;
+        if(sessionBirth==3 || sessionBirth==4 || sessionBirth==5 || sessionBirth==6){
+            sessionBirthCal = 'Summer';
+        }else if(sessionBirth==7 || sessionBirth==8 || sessionBirth==9 || sessionBirth==10){
+            sessionBirthCal = 'Rainy';
+        }else{
+            sessionBirthCal = 'Winter';
+        }
+        $('#season_o_birth').val(sessionBirthCal);
     });
 </script>
 @endpush

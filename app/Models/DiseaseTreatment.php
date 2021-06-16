@@ -15,4 +15,14 @@ class DiseaseTreatment extends Model
     {
         return $this->belongsTo(AnimalInfo::class);
     }
+    
+    public function disease()
+    {
+        return $this->belongsTo(Disease::class, 'disease_id');
+    }
+
+    public function clinicalSign()
+    {
+        return $this->belongsTo(ClinicalSign::class, 'clinical_sign_id');
+    }
 }

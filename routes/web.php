@@ -30,6 +30,8 @@ use App\Http\Controllers\Admin\CommunityStockController;
 use App\Http\Controllers\Admin\MilkProductionController;
 use App\Http\Controllers\Admin\DiseaseTreatmentController;
 use App\Http\Controllers\Admin\ProductionRecordController;
+use App\Http\Controllers\Admin\Category\ClinicalSignController;
+use App\Http\Controllers\Admin\Report\DiseaseIncidenceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,6 +63,10 @@ Route::middleware(['auth','admin'])->prefix('admin')->group(function(){
 
     Route::get('/get-upazila', [GlobalController::class, 'upazila'])->name('get.upazila');
     Route::get('/get-animal-info', [GlobalController::class, 'getAnimalInfo'])->name('get.getAnimalInfo');
+
+    Route::prefix('category')->group(function(){
+        Route::resource('/clinical-sign', ClinicalSignController::class);
+    });
 
     // User Start________________________________________________________________________________________________________________
     Route::resource('/admin-user', AdminUserController::class);
@@ -137,8 +143,8 @@ Route::middleware(['auth','admin'])->prefix('admin')->group(function(){
 
     Route::prefix('report')->group(function(){
         Route::prefix('disease-incidence')->group(function(){
-            Route::get('/select', [DiseaseIncidenceReport::class, 'selectDate'])->name('report.disease.selectDate');
-            Route::post('/report', [DiseaseIncidenceReport::class, 'report'])->name('report.disease.report');
+            Route::get('/select', [DiseaseIncidenceController::class, 'selectDate'])->name('report.disease.selectDate');
+            Route::post('/report', [DiseaseIncidenceController::class, 'report'])->name('report.disease.report');
         });
     });
 

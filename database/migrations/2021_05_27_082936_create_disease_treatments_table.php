@@ -17,9 +17,11 @@ class CreateDiseaseTreatmentsTable extends Migration
             $table->id();
             $table->foreignId('animal_info_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreignId('disease_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId('clinical_sign_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             // $table->string('disease_name',155);
-            $table->string('clinical_sign',155)->nullable();
-            $table->string('disease_season',155);
+            // $table->string('clinical_sign',155)->nullable();
+            $table->string('disease_season',80);
+            $table->date('disease_date');
             $table->text('medicine_prescribed')->nullable();
             $table->string('recovered_dead',155)->nullable();
             $table->timestamps();

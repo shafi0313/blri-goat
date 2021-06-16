@@ -54,6 +54,34 @@
 
                                 <div class="row justify-content-center">
                                     <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="">Name of Disease</label>
+                                            <select name="disease_id" class="form-control">
+                                              <option value="">Select</option>
+                                              @foreach ($diseases as $disease)
+                                                <option value="{{ $disease->id }}">{{ $disease->name }}</option>
+                                              @endforeach
+                                            </select>
+                                          </div>
+                                    </div>
+                                </div>
+
+                                <div class="row justify-content-center">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="disease_season">Season of Disease</label>
+                                            <select name="disease_season" class="form-control">
+                                                <option value="">All</option>
+                                                <option value="Rainy">Rainy</option>
+                                                <option value="Winter">Winter</option>
+                                                <option value="Summer">Summer</option>
+                                            </select>
+                                          </div>
+                                    </div>
+                                </div>
+
+                                <div class="row justify-content-center">
+                                    <div class="col-md-6">
                                         <div class="form-group row">
                                             <label for="form_date" class="col-sm-2 col-form-label">Form Date:</label>
                                             <div class="col-sm-4">
