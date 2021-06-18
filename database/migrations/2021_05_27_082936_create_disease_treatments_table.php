@@ -16,10 +16,13 @@ class CreateDiseaseTreatmentsTable extends Migration
         Schema::create('disease_treatments', function (Blueprint $table) {
             $table->id();
             $table->foreignId('animal_info_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+            $table->unsignedBigInteger('animal_cat_id');
+            $table->foreign('animal_cat_id')->references('id')->on('animal_cats')->cascadeOnUpdate();
+            $table->unsignedBigInteger('animal_sub_cat_id')->nullable();
+            $table->foreign('animal_sub_cat_id')->references('id')->on('animal_cats')->cascadeOnUpdate();
+            $table->enum('type',['1','2'])->comment('1=Goat,2=Sheep');
             $table->foreignId('disease_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreignId('clinical_sign_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
-            // $table->string('disease_name',155);
-            // $table->string('clinical_sign',155)->nullable();
             $table->string('disease_season',80);
             $table->date('disease_date');
             $table->text('medicine_prescribed')->nullable();

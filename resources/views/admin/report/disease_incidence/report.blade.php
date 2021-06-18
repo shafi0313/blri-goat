@@ -33,10 +33,10 @@
                                 </div>
                                 <div class="table-responsive">
                                     <table class="table table-striped table-hover table-bordered">
-                                        <thead class="">
+                                        {{-- <thead class="">
                                             <tr class="text-center">
-                                                {{-- <th style="width: 35px">ক্রমিক নং</th>
-                                                <th>গ্রুপ</th> --}}
+                                                <th style="width: 35px">ক্রমিক নং</th>
+                                                <th>গ্রুপ</th>
                                                 <th></th>
                                                 <th>ব্লাক বেঙ্গল</th>
                                                 <th>যমুনাপাড়ি</th>
@@ -45,29 +45,54 @@
                                                 <th>বোয়ার × যমুনাপাড়ি</th>
                                                 <th>সর্বমোট</th>
                                             </tr>
+                                        </thead> --}}
+                                        <thead class="thw bg-secondary">
+                                            <tr>
+                                                <th>Animal Type</th>
+                                                <th>Disease</th>
+                                                <th>Infected</th>
+                                            </tr>
                                         </thead>
 
                                         <tbody>
-                                            @foreach ($diseaseTreatments->with('animalInfo'=>function($q){$q->where('animal_cat_id',1)}) as $diseaseTreatment)
+                                            @foreach ($diseaseTreatments->groupBy('animal_cat_id') as $diseaseTreatment)
                                             <tr>
-                                                <td>Pneumonia</td>
-                                                <td>{{(100*$diseaseTreatment->count())/$diseaseTreatment->animalInfo->count() }}</td>
+                                                <td class="font-weight-bold">{{$diseaseTreatment->first()->animalCat->name}}</td>
                                             </tr>
+
+                                            @foreach ($diseaseTreatment->groupBy('disease_id') as $diseaseTreatmentsub)
+                                            <tr>
+                                                <td></td>
+                                                <td>{{$diseaseTreatmentsub->first()->disease->name}}</td>
+                                                <td>{{ number_format((100*$diseaseTreatmentsub->count()) / $animals->count(),2) }} %</td>
+                                            </tr>
+
                                             @endforeach
+                                            @endforeach
+                                        </tbody>
 
 
-                                            <tr>
-                                                <td>Fever</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Blot</td>
-                                            </tr>
+
+
+
+
                                             {{-- @foreach ($diseaseTreatments as $diseaseTreatment)
                                             <tr>
-                                                <td>{{(100*$diseaseTreatment->count())/$diseaseTreatment->animalInfo->count() }}</td>
+                                                <td></td>
+                                                <td>{{$diseaseTreatment->animalInfo->animalCat->name}}</td>
+                                                <td>{{(100*$diseaseTreatments->count()) / $diseaseTreatment->first()->count() }}</td>
                                             </tr>
-                                            @endforeach --}}
-                                        </tbody>
+                                            <tr>
+                                                <td></td>
+                                                <td>{{$diseaseTreatment->disease->name}}</td>
+                                                <td>{{$diseaseTreatment->first()->count()}}</td>
+                                            </tr>
+                                            <tr>
+
+                                            </tr> --}}
+
+
+
                                     </table>
                                 </div>
                             </div>

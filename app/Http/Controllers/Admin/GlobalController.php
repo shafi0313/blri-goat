@@ -29,6 +29,8 @@ class GlobalController extends Controller
         $animalInfoId = $request->animalInfoId;
         $animalInfos = AnimalInfo::where('id', $animalInfoId)->get();
         foreach($animalInfos as $animalInfo){
+            $animal_cat_id = $animalInfo->animal_cat_id;
+            $animal_sub_cat_id = $animalInfo->animal_sub_cat_id;
             $sex = $animalInfo->sex;
             $color = $animalInfo->color;
             $birth_wt = $animalInfo->birth_wt;
@@ -38,7 +40,7 @@ class GlobalController extends Controller
             $litter_size = $animalInfo->litter_size;
             $breed = $animalInfo->breed;
         }
-        return json_encode(['sex'=>$sex, 'color'=>$color, 'birth_wt'=>$birth_wt, 'type'=>$type, 'd_o_b'=>$d_o_b, 'paity'=>$paity, 'litter_size'=>$litter_size, 'breed'=>$breed]);
+        return json_encode(['sex'=>$sex, 'color'=>$color, 'birth_wt'=>$birth_wt, 'type'=>$type, 'd_o_b'=>$d_o_b, 'paity'=>$paity, 'litter_size'=>$litter_size, 'breed'=>$breed, 'animal_cat_id'=>$animal_cat_id, 'animal_sub_cat_id'=>$animal_sub_cat_id]);
     }
 
 

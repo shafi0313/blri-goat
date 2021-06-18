@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\DiseaseTreatment;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Models\AnimalInfo;
 use App\Models\Disease;
 
 class DiseaseIncidenceController extends Controller
@@ -24,13 +25,7 @@ class DiseaseIncidenceController extends Controller
         $to_date = $request->get('to_date');
         $animal_cat_id = $request->get('animal_cat_id');
         $animal_sub_cat_id = $request->get('animal_sub_cat_id');
-        if($animal_sub_cat_id==0){
-            $animalCat = $animal_cat_id;
-            $animalCatDb = 'animal_cat_id';
-        }else{
-            $animalCat = $animal_sub_cat_id;
-            $animalCatDb = 'animal_cat_sub_id';
-        }
+
         // return$diseaseTreatments = DiseaseTreatment::with(['animalInfo' => function($q,$animalCatDb,$animalCat){
         //     $q->where($animalCatDb, $animalCat);
         // }])->whereBetween('created_at', [$form_date,$to_date])->get();
@@ -52,8 +47,23 @@ class DiseaseIncidenceController extends Controller
         //         // ->whereBetween('disease_treatments.created_at', [$form_date,$to_date])
         //         ->get();
 
+        if(!$animal_cat_id){
+            $animalCatDb = 'animal_cat_id';
+            $animalCat = AnimalCat::select('id')->get()->pluck('id');
+        }
+        else if($animal_sub_cat_id==0){
+            $getAnimalCat = $animal_cat_id;
+            $animalCat = explode(',', $getAnimalCat);
+            $animalCatDb = 'animal_cat_id';
+        }else{
+            $getAnimalCat = $animal_sub_cat_id;
+            $animalCat = explode(',', $getAnimalCat);
+            $animalCatDb = 'animal_cat_sub_id';
+        }
+
         if($request->disease_season){
-            $disease_season = $request->disease_season;
+            $get_disease_season = $request->disease_season;
+            $disease_season = explode(',', $get_disease_season);
 
         }else{
             $get_disease_season = 'Rainy,Winter,Summer';
@@ -61,15 +71,24 @@ class DiseaseIncidenceController extends Controller
         }
 
         if($request->disease_id){
-            $disease = $request->disease_id;
+            $getDisease = $request->disease_id;
+            $disease = [explode(',', $getDisease)];
 
         }else{
             $disease = Disease::select('id')->get()->pluck('id');
         }
 
         $diseaseTreatments = DiseaseTreatment::with(['animalInfo' => function($q)use($animalCatDb,$animalCat) {
-            $q->where($animalCatDb, $animalCat);
-        }])->whereIn('disease_season', $disease_season)->whereIn('disease_id', $disease)->whereBetween('disease_date', [$form_date,$to_date])->get();
-        return view('admin.report.disease_incidence.report', compact('diseaseTreatments','form_date','to_date'));
+                    $q->whereIn($animalCatDb, $animalCat);
+                }])
+                ->whereIn('disease_season', $disease_season)
+                ->whereIn('disease_id', $disease)
+                ->whereBetween('disease_date', [$form_date,$to_date])
+                ->get();
+
+        $animals = AnimalInfo::whereIn($animalCatDb, $animalCat)
+                ->get();
+
+        return view('admin.report.disease_incidence.report', compact('diseaseTreatments','animals','form_date','to_date'));
     }
 }

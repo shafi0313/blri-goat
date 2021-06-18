@@ -22,4 +22,9 @@ class AnimalInfo extends Model
     {
         return $this->belongsTo(AnimalCat::class, 'animal_cat_id');
     }
+
+    public function diseaseTreatment()
+    {
+        return $this->hasOne(DiseaseTreatment::class, 'animal_info_id');
+    }
 }

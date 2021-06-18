@@ -31,6 +31,9 @@ class DiseaseTreatmentController extends Controller
     {
         $data = $this->validate($request, [
             'animal_info_id' => 'required',
+            'animal_cat_id' => 'required',
+            'animal_sub_cat_id' => 'sometimes',
+            'type' => 'required',
             'disease_id' => 'required|max:155',
             'clinical_sign_id' => 'nullable|max:155',
             'disease_season' => 'required|max:155',
@@ -44,7 +47,7 @@ class DiseaseTreatmentController extends Controller
             toast('Success','success');
             return redirect()->route('disease-and-treatment.index');
         }catch(\Exception $ex){
-            toast('Failed','error');
+            toast($ex->getMessage().'Failed','error');
             return redirect()->back();
         }
     }

@@ -34,7 +34,7 @@
                                         <div class="form-group">
                                             <label for="">Animal Category</label>
                                             <select name="animal_cat_id" class="form-control" id="animal_cat_id">
-                                              <option>Select</option>
+                                              <option value="">All</option>
                                               @foreach ($animalCats as $animalCat)
                                                 <option value="{{ $animalCat->id }}">{{ $animalCat->name }}</option>
                                               @endforeach
@@ -57,7 +57,7 @@
                                         <div class="form-group">
                                             <label for="">Name of Disease</label>
                                             <select name="disease_id" class="form-control">
-                                              <option value="">Select</option>
+                                              <option value="">All</option>
                                               @foreach ($diseases as $disease)
                                                 <option value="{{ $disease->id }}">{{ $disease->name }}</option>
                                               @endforeach

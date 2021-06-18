@@ -36,6 +36,8 @@
                             @endif
                             <form action="{{ route('disease-and-treatment.store')}}" method="post">
                                 @csrf
+                                <input type="hidden" name="animal_cat_id" id="animal_cat_id">
+                                <input type="hidden" name="animal_sub_cat_id" id="animal_sub_cat_id">
                                 <input type="hidden" name="type" id="type">
                                 <div class="row">
                                     <div class="form-group col-md-3">
@@ -81,7 +83,7 @@
 
                                     <div class="form-group col-md-3">
                                         <label for="disease_name">Clinical Sign <span class="t_r">*</span></label>
-                                        <select name="clinical_sign_id"  class="form-control @error('clinical_sign_id') is-invalid @enderror">
+                                        <select name="clinical_sign_id"  class="form-control @error('clinical_sign_id') is-invalid @enderror" required>
                                             <option selected value disabled>Select Clinical Sign</option>
                                             @foreach ($clinicalSigns as $clinicalSign)
                                                 <option value="{{ $clinicalSign->id }}">{{ $clinicalSign->name }}</option>
@@ -159,6 +161,9 @@
                 $('#sex').val(res.sex);
                 $('#d_o_b').val(res.d_o_b);
                 $('#breed').val(res.breed);
+                $('#animal_cat_id').val(res.animal_cat_id);
+                $('#animal_sub_cat_id').val(res.animal_sub_cat_id);
+                $('#type').val(res.type);
 
                 var userinput = res.d_o_b;
                 var dob = new Date(userinput);
