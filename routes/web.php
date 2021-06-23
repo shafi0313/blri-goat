@@ -20,6 +20,7 @@ use App\Http\Controllers\Admin\CommunityCatController;
 use App\Http\Controllers\Admin\DiseaseIncidenceReport;
 use App\Http\Controllers\Admin\DistributionController;
 use App\Http\Controllers\Admin\MorphometricController;
+use App\Http\Controllers\Admin\Report\BirthController;
 use App\Http\Controllers\Admin\ReproductionController;
 use App\Http\Controllers\Admin\ResearchFarmController;
 use App\Http\Controllers\Admin\DiseaseHealthController;
@@ -146,6 +147,11 @@ Route::middleware(['auth','admin'])->prefix('admin')->group(function(){
             Route::get('/select', [DiseaseIncidenceController::class, 'selectDate'])->name('report.disease.selectDate');
             Route::post('/report', [DiseaseIncidenceController::class, 'report'])->name('report.disease.report');
         });
+        Route::prefix('birth')->group(function(){
+            Route::get('/select', [BirthController::class, 'selectDate'])->name('report.bitrh.selectDate');
+            Route::post('/report', [BirthController::class, 'report'])->name('report.bitrh.report');
+        });
+
     });
 
     Route::get('/animal-sub-cat', [GlobalController::class, 'animalSubCat'])->name('animalSubCat');

@@ -125,7 +125,6 @@
                                             <option value="Recovered">Recovered</option>
                                             <option value="Dead">Dead</option>
                                         </select>
-                                        {{-- <input type="text" class="form-control @error('recovered_dead') is-invalid @enderror" name="recovered_dead" value="{{old('recovered_dead')}}"> --}}
                                         @error('recovered_dead')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror

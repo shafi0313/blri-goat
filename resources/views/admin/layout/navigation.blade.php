@@ -230,7 +230,7 @@
                 </li>
 
                 {{-- Report  --}}
-                <li class="nav-item {{$p=='report'?'active submenu':''}}">
+                {{-- <li class="nav-item {{$p=='report'?'active submenu':''}}">
                     <a data-toggle="collapse" href="#report">
                         <i class="fas fa-file"></i>
                         <p>Report</p>
@@ -250,7 +250,7 @@
                             </li>
                         </ul>
                     </div>
-                </li>
+                </li> --}}
 
 
 
@@ -306,7 +306,7 @@
 											</a>
 										</li>
 										<li>
-											<a href="#">
+											<a href="{{ route('report.bitrh.selectDate') }}">
 												<span class="sub-item">Birth Report</span>
 											</a>
 										</li>
