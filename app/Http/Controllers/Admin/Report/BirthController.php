@@ -66,28 +66,17 @@ class BirthController extends Controller
             $season_o_birth = explode(',', $get_season_o_birth);
         }
 
-        $getAnimalDOBs = AnimalInfo::all();
-
-        $animalDOB = 0;
-        foreach($getAnimalDOBs as $getAnimalDOB){
-            $data = \Carbon\Carbon::parse($getAnimalDOB->d_o_b)->diff($to_date)->format('%y%m');
-            print_r($data.' ');
-            if($data < 4){
-                $animalDOB++;
-            };
-        }
-        return$animalDOB;
-
-
         $diseaseTreatments = AnimalInfo::whereIn($animalCatDb, $animalCat)
                 ->whereIn('season_o_birth', $season_o_birth)
-                ->whereIn('d_o_b', $animalDOB)
+                ->whereIn('id', d_o_b($to_date))
                 ->whereBetween('d_o_b', [$form_date,$to_date])
                 ->get();
 
-        // $animals = AnimalInfo::whereIn($animalCatDb, $animalCat)
-        //         ->get();
+        $animals = AnimalInfo::whereIn('id', d_o_b($to_date))
+                ->whereIn($animalCatDb, $animalCat)
+                ->whereBetween('d_o_b', [$form_date,$to_date])
+                ->get();
 
-        return view('admin.report.birth.report', compact('diseaseTreatments','form_date','to_date'));
+        return view('admin.report.birth.report', compact('diseaseTreatments','form_date','to_date','animals'));
     }
 }

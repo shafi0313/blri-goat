@@ -49,21 +49,21 @@
                                         <thead class="thw bg-secondary">
                                             <tr>
                                                 <th>Animal Type</th>
-                                                <th>Disease</th>
-                                                <th>Infected</th>
+                                                <th>Season</th>
+                                                <th>Percentage</th>
                                             </tr>
                                         </thead>
 
                                         <tbody>
                                             @foreach ($diseaseTreatments->groupBy('animal_cat_id') as $diseaseTreatment)
                                             <tr>
-                                                <td class="font-weight-bold">{{$diseaseTreatment->first()->animalCat->name}}</td>
+                                                <td style="background: #dfdffe" colspan="3" class="font-weight-bold">{{$diseaseTreatment->first()->animalCat->name}}</td>
                                             </tr>
 
-                                            @foreach ($diseaseTreatment->groupBy('disease_id') as $diseaseTreatmentsub)
+                                            @foreach ($diseaseTreatment->groupBy('season_o_birth') as $diseaseTreatmentsub)
                                             <tr>
                                                 <td></td>
-                                                <td>{{$diseaseTreatmentsub->first()->disease->name}}</td>
+                                                <td>{{$diseaseTreatmentsub->first()->season_o_birth}}</td>
                                                 <td>{{ number_format((100*$diseaseTreatmentsub->count()) / $animals->count(),2) }} %</td>
                                             </tr>
 

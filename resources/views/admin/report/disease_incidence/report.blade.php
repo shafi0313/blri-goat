@@ -57,7 +57,7 @@
                                         <tbody>
                                             @foreach ($diseaseTreatments->groupBy('animal_cat_id') as $diseaseTreatment)
                                             <tr>
-                                                <td class="font-weight-bold">{{$diseaseTreatment->first()->animalCat->name}}</td>
+                                                <td style="background: #dfdffe" colspan="3" class="font-weight-bold">{{$diseaseTreatment->first()->animalCat->name}}</td>
                                             </tr>
 
                                             @foreach ($diseaseTreatment->groupBy('disease_id') as $diseaseTreatmentsub)
