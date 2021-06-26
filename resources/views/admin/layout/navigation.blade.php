@@ -296,7 +296,7 @@
 											</a>
 										</li>
 										<li>
-											<a href="#">
+											<a href="{{ route('report.death.selectDate') }}">
 												<span class="sub-item">Death Report</span>
 											</a>
 										</li>

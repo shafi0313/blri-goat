@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AuthController;
-use App\Http\Controllers\Admin\FarmController;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\FarmerController;
 use App\Http\Controllers\Admin\GlobalController;
@@ -17,10 +16,10 @@ use App\Http\Controllers\Admin\AnimalInfoController;
 use App\Http\Controllers\Admin\BodyWeightController;
 use App\Http\Controllers\Admin\VaccinationController;
 use App\Http\Controllers\Admin\CommunityCatController;
-use App\Http\Controllers\Admin\DiseaseIncidenceReport;
 use App\Http\Controllers\Admin\DistributionController;
 use App\Http\Controllers\Admin\MorphometricController;
 use App\Http\Controllers\Admin\Report\BirthController;
+use App\Http\Controllers\Admin\Report\DeathController;
 use App\Http\Controllers\Admin\ReproductionController;
 use App\Http\Controllers\Admin\ResearchFarmController;
 use App\Http\Controllers\Admin\DiseaseHealthController;
@@ -30,7 +29,6 @@ use App\Http\Controllers\Admin\ServiceRecordController;
 use App\Http\Controllers\Admin\CommunityStockController;
 use App\Http\Controllers\Admin\MilkProductionController;
 use App\Http\Controllers\Admin\DiseaseTreatmentController;
-use App\Http\Controllers\Admin\ProductionRecordController;
 use App\Http\Controllers\Admin\Category\ClinicalSignController;
 use App\Http\Controllers\Admin\Report\DiseaseIncidenceController;
 
@@ -150,6 +148,11 @@ Route::middleware(['auth','admin'])->prefix('admin')->group(function(){
         Route::prefix('birth')->group(function(){
             Route::get('/select', [BirthController::class, 'selectDate'])->name('report.bitrh.selectDate');
             Route::post('/report', [BirthController::class, 'report'])->name('report.bitrh.report');
+        });
+
+        Route::prefix('death')->group(function(){
+            Route::get('/select', [DeathController::class, 'selectDate'])->name('report.death.selectDate');
+            Route::post('/report', [DeathController::class, 'report'])->name('report.death.report');
         });
 
     });

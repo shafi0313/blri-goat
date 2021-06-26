@@ -22,27 +22,6 @@ class BirthController extends Controller
         $animal_cat_id = $request->get('animal_cat_id');
         $animal_sub_cat_id = $request->get('animal_sub_cat_id');
 
-        // return$diseaseTreatments = DiseaseTreatment::with(['animalInfo' => function($q,$animalCatDb,$animalCat){
-        //     $q->where($animalCatDb, $animalCat);
-        // }])->whereBetween('created_at', [$form_date,$to_date])->get();
-
-        // $getSalesInvoice = DB::table('sales_invoices')
-        //         ->join('products', 'sales_invoices.product_id', '=', 'products.id')
-        //         ->orderBy('products.name')
-        //         ->join('product_pack_sizes', 'sales_invoices.size', '=', 'product_pack_sizes.id')
-        //         ->orderBy('product_pack_sizes.size')
-        //         ->select('sales_invoices.*','products.id','products.name','product_pack_sizes.id','product_pack_sizes.size')
-        //         ->whereBetween('invoice_date',[$form_date, $to_date])
-        //         ->get()
-        //         ->where('type', 1);
-
-        // return$diseaseTreatments = DB::table('disease_treatments')
-        //         ->join('animal_infos', 'disease_treatments.animal_info_id', '=', 'animal_infos.id')
-        //         ->where($animalCatDb, $animalCat)
-        //         ->select('disease_treatments.*','animal_infos.*')
-        //         // ->whereBetween('disease_treatments.created_at', [$form_date,$to_date])
-        //         ->get();
-
         if(!$animal_cat_id){
             $animalCatDb = 'animal_cat_id';
             $animalCat = AnimalCat::select('id')->get()->pluck('id');
@@ -68,11 +47,11 @@ class BirthController extends Controller
 
         $diseaseTreatments = AnimalInfo::whereIn($animalCatDb, $animalCat)
                 ->whereIn('season_o_birth', $season_o_birth)
-                ->whereIn('id', d_o_b($to_date))
+                ->whereIn('id', animalKid($to_date))
                 ->whereBetween('d_o_b', [$form_date,$to_date])
                 ->get();
 
-        $animals = AnimalInfo::whereIn('id', d_o_b($to_date))
+        $animals = AnimalInfo::whereIn('id', animalKid($to_date))
                 ->whereIn($animalCatDb, $animalCat)
                 ->whereBetween('d_o_b', [$form_date,$to_date])
                 ->get();
