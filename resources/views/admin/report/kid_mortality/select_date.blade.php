@@ -1,7 +1,7 @@
 @extends('admin.layout.master')
-@section('title', 'Death Report')
+@section('title', 'Kid Mortality Report')
 @section('content')
-@php $p='report'; $sm="community"; $ssm="birthReport" @endphp
+@php $p='report'; $sm="community"; $ssm="kidMorReport" @endphp
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">
@@ -10,7 +10,7 @@
                     <li class="nav-home">
                         <a href="{{ route('admin.dashboard')}}" title="Dashboard"><i class="flaticon-home"></i></a></li>
                     <li class="separator"><i class="flaticon-right-arrow"></i></li>
-                    {{-- <li class="nav-item"><a href="{{ route('purchaseLedgerBook.index') }}">Death Report</a></li> --}}
+                    {{-- <li class="nav-item"><a href="{{ route('purchaseLedgerBook.index') }}">Kid Mortality Report</a></li> --}}
                     <li class="separator"><i class="flaticon-right-arrow"></i></li>
                     <li class="nav-item active">Select Date</li>
                 </ul>
@@ -27,7 +27,7 @@
                         <div class="card-body" >
                             <h1 class="text-center mr-5 mb-3">Select the date and show the report</h1>
                             <hr>
-                            <form action="{{ route('report.bitrh.report') }}" method="post">
+                            <form action="{{ route('report.kidMortality.report') }}" method="post">
                                 @csrf
                                 <div class="row justify-content-center">
                                     <div class="col-md-6">
@@ -43,14 +43,14 @@
                                     </div>
                                 </div>
 
-                                <div class="row justify-content-center">
+                                {{-- <div class="row justify-content-center">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="">Breed Sub Category</label>
+                                            <label for="">Animal Sub Category</label>
                                             <select name="animal_sub_cat_id" class="form-control" id="animal_sub_cat"></select>
                                           </div>
                                     </div>
-                                </div>
+                                </div> --}}
 
                                 {{-- <div class="row justify-content-center">
                                     <div class="col-md-6">
@@ -66,7 +66,7 @@
                                     </div>
                                 </div> --}}
 
-                                <div class="row justify-content-center">
+                                {{-- <div class="row justify-content-center">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="disease_season">Season of Disease</label>
@@ -78,7 +78,7 @@
                                             </select>
                                           </div>
                                     </div>
-                                </div>
+                                </div> --}}
 
                                 <div class="row justify-content-center">
                                     <div class="col-md-6">

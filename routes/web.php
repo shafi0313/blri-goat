@@ -29,6 +29,7 @@ use App\Http\Controllers\Admin\ServiceRecordController;
 use App\Http\Controllers\Admin\CommunityStockController;
 use App\Http\Controllers\Admin\MilkProductionController;
 use App\Http\Controllers\Admin\DiseaseTreatmentController;
+use App\Http\Controllers\Admin\Report\KidMortalityController;
 use App\Http\Controllers\Admin\Category\ClinicalSignController;
 use App\Http\Controllers\Admin\Report\DiseaseIncidenceController;
 
@@ -154,6 +155,12 @@ Route::middleware(['auth','admin'])->prefix('admin')->group(function(){
             Route::get('/select', [DeathController::class, 'selectDate'])->name('report.death.selectDate');
             Route::post('/report', [DeathController::class, 'report'])->name('report.death.report');
         });
+
+        Route::prefix('kid-mortality')->group(function(){
+            Route::get('/select', [KidMortalityController::class, 'selectDate'])->name('report.kidMortality.selectDate');
+            Route::post('/report', [KidMortalityController::class, 'report'])->name('report.kidMortality.report');
+        });
+
 
     });
 

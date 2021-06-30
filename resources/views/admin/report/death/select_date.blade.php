@@ -1,7 +1,7 @@
 @extends('admin.layout.master')
-@section('title', 'Disease Incidence Report')
+@section('title', 'Death Report')
 @section('content')
-@php $p='sales'; $sm="salesLedger"; @endphp
+@php $p='report'; $sm="community"; $ssm="deathReport" @endphp
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">
@@ -10,7 +10,7 @@
                     <li class="nav-home">
                         <a href="{{ route('admin.dashboard')}}" title="Dashboard"><i class="flaticon-home"></i></a></li>
                     <li class="separator"><i class="flaticon-right-arrow"></i></li>
-                    {{-- <li class="nav-item"><a href="{{ route('purchaseLedgerBook.index') }}">Disease Incidence Report</a></li> --}}
+                    {{-- <li class="nav-item"><a href="{{ route('purchaseLedgerBook.index') }}">Death Report</a></li> --}}
                     <li class="separator"><i class="flaticon-right-arrow"></i></li>
                     <li class="nav-item active">Select Date</li>
                 </ul>
@@ -32,7 +32,7 @@
                                 <div class="row justify-content-center">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="">Animal Category</label>
+                                            <label for="">Breed</label>
                                             <select name="animal_cat_id" class="form-control" id="animal_cat_id">
                                               <option value="">All</option>
                                               @foreach ($animalCats as $animalCat)

@@ -1,7 +1,7 @@
 @extends('admin.layout.master')
 @section('title', 'Disease Incidence Report')
 @section('content')
-@php $p='sales'; $sm="salesLedger"; @endphp
+@php $p='report'; $sm="community"; $ssm="diseaseIn" @endphp
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">
@@ -32,7 +32,7 @@
                                 <div class="row justify-content-center">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="">Animal Category</label>
+                                            <label for="">Breed</label>
                                             <select name="animal_cat_id" class="form-control" id="animal_cat_id">
                                               <option value="">All</option>
                                               @foreach ($animalCats as $animalCat)
@@ -46,7 +46,7 @@
                                 <div class="row justify-content-center">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="">Animal Sub Category</label>
+                                            <label for="">Breed Sub Category</label>
                                             <select name="animal_sub_cat_id" class="form-control" id="animal_sub_cat"></select>
                                           </div>
                                     </div>

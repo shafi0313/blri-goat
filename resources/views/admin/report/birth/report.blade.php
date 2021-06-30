@@ -1,7 +1,7 @@
 @extends('admin.layout.master')
-@section('title', 'BLRI Research Farm Stock Report')
+@section('title', 'Death Report')
 @section('content')
-@php $p='animalForm'; $sm="proRecord"; @endphp
+@php $p='report'; $sm="community"; $ssm="birthReport" @endphp
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">
@@ -10,7 +10,7 @@
                     <li class="nav-home">
                     <a href="{{ route('admin.dashboard')}}"><i class="flaticon-home"></i></a></li>
                     <li class="separator"><i class="flaticon-right-arrow"></i></li>
-                    <li class="nav-item active">BLRI Research Farm Stock Report</li>
+                    <li class="nav-item active">Death Report</li>
                 </ul>
             </div>
             <div class="divider1"></div>
@@ -48,7 +48,7 @@
                                         </thead> --}}
                                         <thead class="thw bg-secondary">
                                             <tr>
-                                                <th>Animal Type</th>
+                                                <th>Breed</th>
                                                 <th>Season</th>
                                                 <th>Percentage</th>
                                             </tr>

@@ -6,6 +6,11 @@
     }
 </style>
 {{-- @php $sm="balkPurchasesdf"; @endphp --}}
+@isset($ssm)
+@php $ssm = $ssm; @endphp
+@else
+@php $ssm = ''; @endphp
+@endisset
 <div class="sidebar">
 	<div class="sidebar-background"></div>
 	<div class="sidebar-wrapper scrollbar-inner">
@@ -254,13 +259,13 @@
 
 
 
-                <li class="nav-item">
+                <li class="nav-item {{$p=='report'?'active':''}}">
 					<a data-toggle="collapse" href="#submenu">
 						<i class="fas fa-bars"></i>
 						<p>Report</p>
 						<span class="caret"></span>
 					</a>
-					<div class="collapse" id="submenu">
+					<div class="collapse {{$p=='report'?'show':''}}" id="submenu">
 						<ul class="nav nav-collapse">
 							<li>
 								<a data-toggle="collapse" href="#subnav1">
@@ -283,29 +288,29 @@
 									<span class="sub-item">Community</span>
 									<span class="caret"></span>
 								</a>
-								<div class="collapse" id="subnav2">
+								<div class="collapse {{$sm=='community'?'show':''}}" id="subnav2">
 									<ul class="nav nav-collapse subnav">
 										<li>
 											<a href="#">
 												<span class="sub-item">Stock Report</span>
 											</a>
 										</li>
-										<li>
+										<li class="{{$ssm=='diseaseIn'?'active':''}}">
 											<a href="{{route('report.disease.selectDate')}}">
 												<span class="sub-item">Disease Incidence Report</span>
 											</a>
 										</li>
-										<li>
+										<li class="{{$ssm=='deathReport'?'active':''}}">
 											<a href="{{ route('report.death.selectDate') }}">
 												<span class="sub-item">Death Report</span>
 											</a>
 										</li>
-										<li>
-											<a href="#">
-												<span class="sub-item">Lcid Mortality Report</span>
+										<li class="{{$ssm=='kidMorReport'?'active':''}}">
+											<a href="{{ route('report.kidMortality.selectDate') }}">
+												<span class="sub-item">Kid Mortality Report</span>
 											</a>
 										</li>
-										<li>
+										<li class="{{$ssm=='birthReport'?'active':''}}">
 											<a href="{{ route('report.bitrh.selectDate') }}">
 												<span class="sub-item">Birth Report</span>
 											</a>
@@ -331,12 +336,12 @@
 
 
 
-                <li class="nav-item {{$p=='visitor'?'active':''}}">
+                {{-- <li class="nav-item {{$p=='visitor'?'active':''}}">
                     <a class="dropdown-item" href="{{ route('VisitorInfo') }}" >
                         <i class="fas fa-user-secret"></i>
                         <p>Visitor Info</p>
                     </a>
-                </li>
+                </li> --}}
 
                 <li class="nav-item">
                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

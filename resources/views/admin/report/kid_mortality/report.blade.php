@@ -1,7 +1,7 @@
 @extends('admin.layout.master')
-@section('title', 'Disease Incidence Report')
+@section('title', 'Kid Mortality Report')
 @section('content')
-@php $p='report'; $sm="community"; $ssm="diseaseIn" @endphp
+@php $p='report'; $sm="community"; $ssm="kidMorReport" @endphp
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">
@@ -10,7 +10,7 @@
                     <li class="nav-home">
                     <a href="{{ route('admin.dashboard')}}"><i class="flaticon-home"></i></a></li>
                     <li class="separator"><i class="flaticon-right-arrow"></i></li>
-                    <li class="nav-item active">Disease Incidence Report</li>
+                    <li class="nav-item active">Kid Mortality Report</li>
                 </ul>
             </div>
             <div class="divider1"></div>
@@ -46,53 +46,37 @@
                                                 <th>সর্বমোট</th>
                                             </tr>
                                         </thead> --}}
-                                        <thead class="thw bg-secondary">
+                                        <thead class="thw bg-secondary text-center">
                                             <tr>
-                                                <th>Breed</th>
-                                                <th>Disease</th>
-                                                <th>Infected</th>
+                                                <th rowspan="2">Breed</th>
+                                                <th colspan="2">Kid</th>
+                                            </tr>
+                                            <tr>
+                                                <th>M</th>
+                                                <th>F</th>
                                             </tr>
                                         </thead>
 
                                         <tbody>
-                                            @foreach ($diseaseTreatments->groupBy('animal_cat_id') as $diseaseTreatment)
-                                            <tr>
-                                                <td style="background: #dfdffe" colspan="3" class="font-weight-bold">{{$diseaseTreatment->first()->animalCat->name}}</td>
-                                            </tr>
+                                            @foreach ($deaths->groupBy('animal_cat_id') as $death)
+                                            <tr class="text-center">
+                                                <td>{{$death->first()->animalCat->name}}</td>
 
-                                            @foreach ($diseaseTreatment->groupBy('disease_id') as $diseaseTreatmentsub)
-                                            <tr>
-                                                <td></td>
-                                                <td>{{$diseaseTreatmentsub->first()->disease->name}}</td>
-                                                <td>{{ number_format((100*$diseaseTreatmentsub->count()) / $animals->count(),2) }} %</td>
-                                            </tr>
 
-                                            @endforeach
+                                                @if ($animals->where('sex','M')->whereIn('id',animalKid($to_date))->count() != 0)
+                                                    <td>{{ 100 * $death->where('sex','M')->whereIn('id',animalKid($to_date))->count() / $animals->where('sex','M')->whereIn('id',animalKid($to_date))->count() }}</td>
+                                                @else
+                                                    <td>0</td>
+                                                @endif
+
+                                                @if ($animals->where('sex','F')->whereIn('id',animalKid($to_date))->count() != 0)
+                                                    <td>{{ 100 * $death->where('sex','F')->whereIn('id',animalKid($to_date))->count() / $animals->where('sex','F')->whereIn('id',animalKid($to_date))->count() }}</td>
+                                                @else
+                                                    <td>0</td>
+                                                @endif
+                                            </tr>
                                             @endforeach
                                         </tbody>
-
-
-
-
-
-
-                                            {{-- @foreach ($diseaseTreatments as $diseaseTreatment)
-                                            <tr>
-                                                <td></td>
-                                                <td>{{$diseaseTreatment->animalInfo->animalCat->name}}</td>
-                                                <td>{{(100*$diseaseTreatments->count()) / $diseaseTreatment->first()->count() }}</td>
-                                            </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td>{{$diseaseTreatment->disease->name}}</td>
-                                                <td>{{$diseaseTreatment->first()->count()}}</td>
-                                            </tr>
-                                            <tr>
-
-                                            </tr> --}}
-
-
-
                                     </table>
                                 </div>
                             </div>
@@ -144,4 +128,6 @@
 @endpush
 
 @endsection
+
+
 
