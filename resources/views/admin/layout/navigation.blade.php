@@ -168,7 +168,7 @@
                                 </a>
                             </li>
                             <li class="{{$sm=='service'?'active':''}}">
-                                <a href="{{ route('service-record.index') }}">
+                                <a href="{{ route('service.index') }}">
                                     <span class="sub-item">Service</span>
                                 </a>
                             </li>
@@ -275,8 +275,8 @@
 								<div class="collapse" id="subnav1">
 									<ul class="nav nav-collapse subnav">
 										<li>
-											<a href="#">
-												<span class="sub-item">Level 2</span>
+											<a href="{{ route('researchStock.selectDate') }}">
+												<span class="sub-item">Stock Report</span>
 											</a>
 										</li>
 
@@ -291,7 +291,7 @@
 								<div class="collapse {{$sm=='community'?'show':''}}" id="subnav2">
 									<ul class="nav nav-collapse subnav">
 										<li>
-											<a href="#">
+											<a href="{{ route('communityStock.selectDate') }}">
 												<span class="sub-item">Stock Report</span>
 											</a>
 										</li>
@@ -322,20 +322,6 @@
 					</div>
 				</li>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                 {{-- <li class="nav-item {{$p=='visitor'?'active':''}}">
                     <a class="dropdown-item" href="{{ route('VisitorInfo') }}" >
                         <i class="fas fa-user-secret"></i>
@@ -352,72 +338,6 @@
                         @csrf
                     </form>
                 </li>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-				{{-- <li class="nav-item">
-					<a data-toggle="collapse" href="#submenu">
-						<i class="fas fa-bars"></i>
-						<p>Menu Levels</p>
-						<span class="caret"></span>
-					</a>
-					<div class="collapse" id="submenu">
-						<ul class="nav nav-collapse">
-							<li>
-								<a data-toggle="collapse" href="#subnav1">
-									<span class="sub-item">Level 1</span>
-									<span class="caret"></span>
-								</a>
-								<div class="collapse" id="subnav1">
-									<ul class="nav nav-collapse subnav">
-										<li>
-											<a href="#">
-												<span class="sub-item">Level 2</span>
-											</a>
-										</li>
-										<li>
-											<a href="#">
-												<span class="sub-item">Level 2</span>
-											</a>
-										</li>
-									</ul>
-								</div>
-							</li>
-							<li>
-								<a data-toggle="collapse" href="#subnav2">
-									<span class="sub-item">Level 1</span>
-									<span class="caret"></span>
-								</a>
-								<div class="collapse" id="subnav2">
-									<ul class="nav nav-collapse subnav">
-										<li>
-											<a href="#">
-												<span class="sub-item">Level 2</span>
-											</a>
-										</li>
-									</ul>
-								</div>
-							</li>
-							<li>
-								<a href="#">
-									<span class="sub-item">Level 1</span>
-								</a>
-							</li>
-						</ul>
-					</div>
-				</li> --}}
 			</ul>
 		</div>
 	</div>

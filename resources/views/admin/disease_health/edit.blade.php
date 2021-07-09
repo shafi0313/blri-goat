@@ -82,9 +82,9 @@
             </div>
         </div>
     </div>
+    @include('admin.layout.footer')
 </div>
 
-@include('sweetalert::alert')
 @push('custom_scripts')
 @endpush
 @endsection

@@ -125,6 +125,7 @@
             </div>
         </div>
     </div>
+    @include('admin.layout.footer')
 </div>
 
    <!--Add Cat Modal -->

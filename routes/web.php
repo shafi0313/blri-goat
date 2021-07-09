@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\FarmerController;
 use App\Http\Controllers\Admin\GlobalController;
 use App\Http\Controllers\Admin\DippingController;
+use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\ParasiteController;
 use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\AnimalCatController;
@@ -136,7 +137,7 @@ Route::middleware(['auth','admin'])->prefix('admin')->group(function(){
     Route::resource('/reproduction-record', ReproductionController::class);
 
 
-    Route::resource('/service-record', ServiceRecordController::class);
+    Route::resource('/service', ServiceController::class);
 
     Route::resource('/disease-and-health', DiseaseHealthController::class);
 

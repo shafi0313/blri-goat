@@ -20,7 +20,7 @@
                         <div class="card-header">
                             <div class="d-flex align-items-center">
                                 <h4 class="card-title">Service</h4>
-                                <a href="{{route('service-record.create')}}" class="btn btn-primary btn-round ml-auto text-light"><i class="fa fa-plus"></i> Add New</a>
+                                <a href="{{route('service.create')}}" class="btn btn-primary btn-round ml-auto text-light"><i class="fa fa-plus"></i> Add New</a>
                             </div>
                         </div>
                         <div class="card-body">
@@ -33,8 +33,9 @@
                                             <th>Doe Tag</th>
                                             <th>Date of Service</th>
                                             <th>Expected Date of Birth</th>
+                                            <th>Natural/AI</th>
                                             <th>Repeat Heat/not</th>
-                                            <th class="no-sort" style="text-align:center;width:80px" >Action</th>
+                                            {{-- <th class="no-sort" style="text-align:center;width:80px" >Action</th> --}}
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -47,18 +48,23 @@
                                     </tfoot>
                                     <tbody>
                                         @php $x=1; @endphp
-                                        {{-- @foreach ($productionRecords as $productionRecord)
+                                        @foreach ($services as $service)
                                         <tr class="text-center">
                                             <td>{{ $x++ }} </td>
-                                            <td>{{ $productionRecord->animalInfo->goat_tag }} </td>
-                                            <td>{{ $productionRecord->animalInfo->sex }} </td>
-                                            <td>{{ $productionRecord->animalInfo->birth_wt }} </td>
-                                            <td>
+                                            <td>{{ $service->animalInfo->animal_tag }} </td>
+                                            <td>{{ $service->doe_tag }} </td>
+                                            {{-- <td>{{ $service->animalInfo->sex }} </td>
+                                            <td>{{ $service->animalInfo->birth_wt }} </td> --}}
+                                            <td>{{ \Carbon\Carbon::parse($service->date_of_service)->format('d/m/Y') }} </td>
+                                            <td>{{ \Carbon\Carbon::parse($service->expected_d_o_b)->format('d/m/Y') }} </td>
+                                            <td>{{ $service->natural }} </td>
+                                            <td>{{ $service->repeat_heat }} </td>
+                                            {{-- <td>
                                                 <div class="form-button-action">
-                                                    <a href="{{ route('production.createId', $productionRecord->id) }}" title="Edit" class="btn btn-link btn-primary btn-lg">
+                                                    <a href="{{ route('production.createId', $service->id) }}" title="Edit" class="btn btn-link btn-primary btn-lg">
                                                         <i class="fa fa-edit">Input</i>
                                                     </a>
-                                                    <form action="{{ route('farm.destroy', $productionRecord->id) }}" method="POST">
+                                                    <form action="{{ route('farm.destroy', $service->id) }}" method="POST">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" title="Delete" class="btn btn-link btn-danger" data-original-title="Remove" onclick="return confirm('Are you sure?')">
@@ -66,9 +72,9 @@
                                                         </button>
                                                     </form>
                                                 </div>
-                                            </td>
+                                            </td> --}}
                                         </tr>
-                                        @endforeach --}}
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>

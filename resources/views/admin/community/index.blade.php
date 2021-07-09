@@ -85,6 +85,7 @@
             </div>
         </div>
     </div>
+    @include('admin.layout.footer')
 </div>
 
 

@@ -133,6 +133,7 @@
             </div>
         </div>
     </div>
+    @include('admin.layout.footer')
 </div>
 
 @include('sweetalert::alert')

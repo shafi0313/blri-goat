@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateServiceRecordsTable extends Migration
+class CreateServicesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,15 @@ class CreateServiceRecordsTable extends Migration
      */
     public function up()
     {
-        Schema::create('service_records', function (Blueprint $table) {
+        Schema::create('services', function (Blueprint $table) {
             $table->id();
             $table->foreignId('animal_info_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
-            $table->integer('buck_tag');
-            $table->integer('doe_tag');
+            $table->integer('buck_tag')->nullable();
+            $table->integer('doe_tag')->nullable();
             $table->date('date_of_service');
             $table->date('expected_d_o_b');
-            $table->string('repeat_heat');
+            $table->string('natural',100)->nullable();
+            $table->string('repeat_heat',50)->nullable();
             $table->timestamps();
         });
     }
@@ -32,6 +33,6 @@ class CreateServiceRecordsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('service_records');
+        Schema::dropIfExists('services');
     }
 }

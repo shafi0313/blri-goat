@@ -91,7 +91,11 @@
             </div>
         </div>
     </div>
+    @include('admin.layout.footer')
 </div>
+
+
+
 
 @push('custom_scripts')
 <script >
