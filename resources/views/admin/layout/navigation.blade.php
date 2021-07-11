@@ -80,6 +80,16 @@
                                     <span class="sub-item">User Management</span>
                                 </a>
                             </li>
+                            <li class="{{$sm=='slider'?'activeSub':''}}">
+                                <a href="{{ route('slider.index')}}">
+                                    <span class="sub-item">Slider</span>
+                                </a>
+                            </li>
+                            <li class="{{$sm=='about'?'activeSub':''}}">
+                                <a href="{{ url('admin/about/1/edit') }}">
+                                    <span class="sub-item">About</span>
+                                </a>
+                            </li>
                             {{-- <li class="{{$sm=='adminIndex'?'activeSub':''}}">
                                 <a href="{{ route('farmer.index')}}">
                                     <span class="sub-item">Farmer</span>

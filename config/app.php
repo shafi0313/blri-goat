@@ -167,6 +167,8 @@ return [
          */
         Maatwebsite\Excel\ExcelServiceProvider::class,
         \Torann\GeoIP\GeoIPServiceProvider::class,
+        Barryvdh\Debugbar\ServiceProvider::class,
+        
         // Barryvdh\DomPDF\ServiceProvider::class,
         /*
          * Application Service Providers...

@@ -2,9 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\AboutController;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\FarmerController;
 use App\Http\Controllers\Admin\GlobalController;
+use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\DippingController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\ParasiteController;
@@ -26,7 +28,6 @@ use App\Http\Controllers\Admin\ResearchFarmController;
 use App\Http\Controllers\Admin\DiseaseHealthController;
 use App\Http\Controllers\Admin\ResearchStockController;
 use App\Http\Controllers\Admin\SemenAnalysisController;
-use App\Http\Controllers\Admin\ServiceRecordController;
 use App\Http\Controllers\Admin\CommunityStockController;
 use App\Http\Controllers\Admin\MilkProductionController;
 use App\Http\Controllers\Admin\DiseaseTreatmentController;
@@ -68,6 +69,9 @@ Route::middleware(['auth','admin'])->prefix('admin')->group(function(){
     Route::prefix('category')->group(function(){
         Route::resource('/clinical-sign', ClinicalSignController::class);
     });
+
+    Route::resource('/slider', SliderController::class);
+    Route::resource('/about', AboutController::class);
 
     // User Start________________________________________________________________________________________________________________
     Route::resource('/admin-user', AdminUserController::class);
@@ -135,6 +139,7 @@ Route::middleware(['auth','admin'])->prefix('admin')->group(function(){
 
 
     Route::resource('/reproduction-record', ReproductionController::class);
+
 
 
     Route::resource('/service', ServiceController::class);

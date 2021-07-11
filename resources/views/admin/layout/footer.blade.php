@@ -1,5 +1,12 @@
 <footer class="footer">
     <div class="container-fluid">
+        <div class="copyright m-auto">
+            BLRI © 2021 All Rights Reserved Powered <i class="fa fa-heart heart text-danger"></i> by <a href="#">LS COMMUNICATIONS</a>
+        </div>
+    </div>
+</footer>
+{{-- <footer class="footer">
+    <div class="container-fluid">
         <nav class="pull-left">
             <ul class="nav">
                 <li class="nav-item">
@@ -23,4 +30,4 @@
             2018, made with <i class="fa fa-heart heart text-danger"></i> by <a href="https://www.themekita.com">ThemeKita</a>
         </div>
     </div>
-</footer>
+</footer> --}}
