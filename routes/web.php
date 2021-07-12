@@ -136,16 +136,14 @@ Route::middleware(['auth','admin'])->prefix('admin')->group(function(){
     Route::post('animal-sub-sub-cat/{id}', [AnimalCatController::class, 'subUpdate'])->name('animalCat.subUpdate');
 
     Route::resource('/body-weight', BodyWeightController::class);
+    Route::get('/get-body-weight', [BodyWeightController::class, 'getBodyWeight'])->name('get.bodyWeight');
 
 
     Route::resource('/reproduction-record', ReproductionController::class);
 
-
-
     Route::resource('/service', ServiceController::class);
 
     Route::resource('/disease-and-health', DiseaseHealthController::class);
-
 
     Route::prefix('report')->group(function(){
         Route::prefix('disease-incidence')->group(function(){

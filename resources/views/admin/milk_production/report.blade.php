@@ -34,63 +34,33 @@
                                             <th>Litter Size</th>
                                             <th>Date of Milking</th>
                                             <th>Milk Production (ml)</th>
-                                            <th>Average milk production (ml)</th>
+                                            {{-- <th>Average milk produ (ml)</th> --}}
                                             <th>Lactation length (day)</th>
                                             <th>Milk yield/ lactation</th>
-                                            <th class="no-sort" style="text-align:center;width:80px" >Action</th>
+                                            {{-- <th class="no-sort" style="text-align:center;width:80px" >Action</th> --}}
                                         </tr>
                                     </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th></th>
-                                            <th></th>
-                                            <th></th>
-                                            <th></th>
-                                            <th></th>
-                                            <th></th>
-                                            <th></th>
-                                            <th></th>
-                                            <th></th>
-                                            <th></th>
-                                            <th></th>
-                                        </tr>
-                                    </tfoot>
                                     <tbody>
                                         @php $x=1; @endphp
-                                        @foreach ($milkProductions->groupBy('animal_info_id') as $milkProducti)
-                                        @php
-                                            $milkProduction =$milkProducti->first()
-                                        @endphp
+                                        @foreach ($milkProductions as $milkProduction)
                                         <tr class="text-center">
                                             <td>{{ $x++ }} </td>
                                             <td>{{ $milkProduction->animalInfo->animal_tag }} </td>
-                                            {{-- <td>{{ $milkProduction->animalInfo->paity }} </td>
-                                            <td>{{ $milkProduction->animalInfo->litter_size }} </td> --}}
                                             <td>{{ $milkProduction->parity_number }}</td>
                                             <td>{{ $milkProduction->litter_size }}</td>
                                             <td>{{ \Carbon\Carbon::parse($milkProduction->date_of_milking)->format('d/m/Y') }} </td>
                                             <td>{{ $milkProduction->milk_production }} </td>
                                             {{-- <td>{{ $milkProduction->average_milk_production }}</td> --}}
-                                            <td>{{$milkProductions->where('animal_info_id',$milkProduction->animal_info_id)->sum('milk_production')/$milkProducti->count()}}</td>
                                             <td>{{ $milkProduction->lactation_length }}</td>
                                             <td>{{ $milkProduction->milk_yield }}</td>
-                                            <td>
-                                                <div class="form-button-action">
-                                                    <a href="{{route('milk-production.show',$milkProduction->animal_info_id)}}" title="Edit" class="btn btn-link btn-primary btn-lg">
-                                                        show
-                                                    </a>
-                                                    {{-- <form action="{{ route('milk-production.destroy', $milkProduction->id) }}" method="POST">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="submit" title="Delete" class="btn btn-link btn-danger" onclick="return confirm('Are you sure?')">
-                                                            <i class="fa fa-times"></i>
-                                                        </button>
-                                                    </form> --}}
-                                                </div>
-                                            </td>
                                         </tr>
                                         @endforeach
                                     </tbody>
+
+                                        <tr>
+                                            <th class="text-right" colspan="5">Average milk production (ml)</th>
+                                            <th class="text-center">{{$milkProductions->sum('milk_production')/$milkProductions->count()}}</th>
+                                        </tr>
                                 </table>
                             </div>
                         </div>

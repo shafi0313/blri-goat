@@ -38,7 +38,17 @@
                                             <th>4 m. body wt.(kg)</th>
                                             <th>5 m. body wt.(kg)</th>
                                             <th>6 m. body wt.(kg)</th>
-                                            <th class="no-sort" style="text-align:center;width:80px" >Action</th>
+                                            <th>7 m. body wt.(kg)</th>
+                                            <th>8 m. body wt.(kg)</th>
+                                            <th>9 m. body wt.(kg)</th>
+                                            <th>10 m. body wt.(kg)</th>
+                                            <th>11 m. body wt.(kg)</th>
+                                            <th>12 m. body wt.(kg)</th>
+                                            <th>Growth rate at 3 months (g/d)</th>
+                                            <th>Growth rate at 6 months (g/d)</th>
+                                            <th>Growth rate at 9 months (g/d)</th>
+                                            <th>Growth rate at 12 months (g/d)</th>
+                                            {{-- <th class="no-sort" style="text-align:center;width:80px" >Action</th> --}}
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -63,20 +73,30 @@
                                             <td>{{ $productionRecord->month_4 }} </td>
                                             <td>{{ $productionRecord->month_5 }} </td>
                                             <td>{{ $productionRecord->month_6 }} </td>
-                                            <td>
+                                            <td>{{ $productionRecord->month_7 }} </td>
+                                            <td>{{ $productionRecord->month_8 }} </td>
+                                            <td>{{ $productionRecord->month_9 }} </td>
+                                            <td>{{ $productionRecord->month_10 }} </td>
+                                            <td>{{ $productionRecord->month_11 }} </td>
+                                            <td>{{ $productionRecord->month_12 }} </td>
+                                            <td>{{ $productionRecord->g_rate_month_3 }} </td>
+                                            <td>{{ $productionRecord->g_rate_month_6 }} </td>
+                                            <td>{{ $productionRecord->g_rate_month_9 }} </td>
+                                            <td>{{ $productionRecord->g_rate_month_12 }} </td>
+                                            {{-- <td>
                                                 <div class="form-button-action">
                                                     <a href="{{route('body-weight.edit',$productionRecord->id)}}" title="Edit" class="btn btn-link btn-primary btn-lg">
                                                         <i class="fa fa-edit"></i>
                                                     </a>
-                                                    {{-- <form action="{{ route('farm.destroy', $productionRecord->id) }}" method="POST">
+                                                    <form action="{{ route('farm.destroy', $productionRecord->id) }}" method="POST">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" title="Delete" class="btn btn-link btn-danger" data-original-title="Remove" onclick="return confirm('Are you sure?')">
                                                             <i class="fa fa-times"></i>
                                                         </button>
-                                                    </form> --}}
+                                                    </form>
                                                 </div>
-                                            </td>
+                                            </td> --}}
                                         </tr>
                                         @endforeach
                                     </tbody>

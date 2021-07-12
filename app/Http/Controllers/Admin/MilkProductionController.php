@@ -30,7 +30,7 @@ class MilkProductionController extends Controller
             'litter_size' => 'required',
             'date_of_milking' => 'required',
             'milk_production' => 'required',
-            'average_milk_production' => 'required',
+            // 'average_milk_production' => 'required',
         ]);
 
         $data = [
@@ -55,6 +55,12 @@ class MilkProductionController extends Controller
             toast('Error', 'error');
             return redirect()->back();
         }
+    }
+
+    public function show($id)
+    {
+        $milkProductions = MilkProduction::where('animal_info_id',$id)->get();
+        return view('admin.milk_production.report', compact('milkProductions'));
     }
 
     public function destroy($id)

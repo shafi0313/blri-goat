@@ -78,7 +78,7 @@
 
                                     <div class="form-group col-md-3">
                                         <label for="parity_number">Parity number <span class="t_r">*</span></label>
-                                        <input name="parity_number" type="number" class="form-control @error('parity_number') is-invalid @enderror" value="{{old('parity_number')}}" required>
+                                        <input name="parity_number" type="number" class="form-control @error('parity_number') is-invalid @enderror" id="paity" required>
                                         @error('parity_number')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
@@ -86,7 +86,7 @@
 
                                     <div class="form-group col-md-3">
                                         <label for="litter_size">Litter Size <span class="t_r">*</span></label>
-                                        <input name="litter_size" type="number" class="form-control @error('litter_size') is-invalid @enderror" value="{{old('litter_size')}}" required>
+                                        <input name="litter_size" type="text" class="form-control @error('litter_size') is-invalid @enderror" id="litter_size" required>
                                         @error('litter_size')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
@@ -108,13 +108,13 @@
                                         @enderror
                                     </div>
 
-                                    <div class="form-group col-md-3">
+                                    {{-- <div class="form-group col-md-3">
                                         <label for="average_milk_production">Average milk production (ml) <span class="t_r">*</span></label>
                                         <input name="average_milk_production" type="number" step="any" class="form-control @error('average_milk_production') is-invalid @enderror" value="{{old('average_milk_production')}}" required>
                                         @error('average_milk_production')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
-                                    </div>
+                                    </div> --}}
 
                                     <div class="form-group col-md-3">
                                         <label for="lactation_length">Lactation length (day) <span class="t_r">*</span></label>
