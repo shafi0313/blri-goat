@@ -14,4 +14,9 @@ class Reproduction extends Model
     {
         return $this->belongsTo(AnimalInfo::class);
     }
+
+    public function milkProduction()
+    {
+        return $this->hasMany(Service::class,'animal_info_id','animal_info_id');
+    }
 }

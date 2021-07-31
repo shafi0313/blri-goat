@@ -27,7 +27,7 @@ class MilkProductionController extends Controller
         $this->validate($request, [
             'animal_info_id' => 'required',
             'parity_number' => 'required',
-            'litter_size' => 'required',
+            // 'litter_size' => 'required',
             'date_of_milking' => 'required',
             'milk_production' => 'required',
             // 'average_milk_production' => 'required',
@@ -36,7 +36,7 @@ class MilkProductionController extends Controller
         $data = [
             'animal_info_id' => $request->animal_info_id,
             'parity_number' => $request->parity_number,
-            'litter_size' => $request->litter_size,
+            // 'litter_size' => $request->litter_size,
             'date_of_milking' => $request->date_of_milking,
             'milk_production' => $request->milk_production,
             'average_milk_production' => $request->average_milk_production,

@@ -55,9 +55,7 @@
                                             <th>Date of 6th kidding</th>
                                             <th>Litter size at 6th kidding</th>
                                             <th>Remarks</th>
-
-
-                                            <th class="no-sort" style="text-align:center;width:80px" >Action</th>
+                                            {{-- <th class="no-sort" style="text-align:center;width:80px" >Action</th> --}}
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -69,7 +67,12 @@
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                        @php $x=1; @endphp
+                                        @php
+                                            $x=1;
+                                            $milkProduction = App\Models\MilkProduction::all();
+
+
+                                        @endphp
                                         @foreach ($reproductions as $reproduction)
                                         <tr class="text-center">
                                             <td>{{ $x++ }} </td>
@@ -79,10 +82,29 @@
                                             <td>{{ $reproduction->puberty_age }}</td>
                                             <td>{{ $reproduction->service_1st_date }}</td>
                                             <td>{{ $reproduction->kidding_1st_date }}</td>
-                                            <td>{{ $reproduction->ges_lenght_1st_kidding }}</td>
-                                            <td>{{ $reproduction->age_1st_kidding }}</td>
+                                            {{-- <td>{{ $reproduction->ges_lenght_1st_kidding }}</td> --}}
+
+
+                                            @isset($reproduction->kidding_1st_date)
+                                            <td>{{\Carbon\Carbon::parse($reproduction->service_1st_date)->diff($reproduction->kidding_1st_date)->format('%y Y %m M %d D')}}</td>
+                                            @else
+                                            <th></th>
+                                            @endisset
+
+                                            @isset($reproduction->kidding_1st_date)
+                                            <td>{{\Carbon\Carbon::parse($reproduction->animalInfo->d_o_b)->diff($reproduction->kidding_1st_date)->format('%y years %m months')}}</td>
+                                            @else
+                                            <th></th>
+                                            @endisset
+
                                             <td>{{ $reproduction->litter_size_1st_kidding }}</td>
-                                            <td>{{ $reproduction->milk_production }}</td>
+
+                                            @if($milkProduction->where('animal_info_id',$reproduction->animal_info_id)->count() > 0)
+                                            <td>{{ $milkProduction->where('animal_info_id',$reproduction->animal_info_id )->sum('milk_production') / $milkProduction->where('animal_info_id',$reproduction->animal_info_id)->count() }}</td>
+                                            @else
+                                            <th></th>
+                                            @endif
+
                                             <td>{{ $reproduction->service_2nd_date }}</td>
                                             <td>{{ $reproduction->kidding_2nd_date }}</td>
                                             <td>{{ $reproduction->kidding_2nd_liter }}</td>
@@ -99,20 +121,20 @@
                                             <td>{{ $reproduction->kidding_6th_date }}</td>
                                             <td>{{ $reproduction->kidding_6th_liter }}</td>
                                             <td>{{ $reproduction->remarks }}</td>
-                                            <td>
+                                            {{-- <td>
                                                 <div class="form-button-action">
                                                     <a href="{{route('reproduction-record.edit',$reproduction->id)}}" title="Edit" class="btn btn-link btn-primary btn-lg">
                                                         <i class="fa fa-edit"></i>
                                                     </a>
-                                                    {{-- <form action="{{ route('farm.destroy', $reproduction->id) }}" method="POST">
+                                                    <form action="{{ route('farm.destroy', $reproduction->id) }}" method="POST">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" title="Delete" class="btn btn-link btn-danger" data-original-title="Remove" onclick="return confirm('Are you sure?')">
                                                             <i class="fa fa-times"></i>
                                                         </button>
-                                                    </form> --}}
+                                                    </form>
                                                 </div>
-                                            </td>
+                                            </td> --}}
                                         </tr>
                                         @endforeach
                                     </tbody>

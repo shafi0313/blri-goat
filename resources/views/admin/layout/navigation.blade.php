@@ -129,11 +129,11 @@
                                     <span class="sub-item">Animal Category</span>
                                 </a>
                             </li>
-                            <li class="{{$sm=='clinicalSign'?'active':''}}">
+                            {{-- <li class="{{$sm=='clinicalSign'?'active':''}}">
                                 <a href="{{ route('clinical-sign.index') }}">
                                     <span class="sub-item">Clinical Sign</span>
                                 </a>
-                            </li>
+                            </li> --}}
                         </ul>
                     </div>
                 </li>
@@ -187,16 +187,16 @@
                                     <span class="sub-item">Distribution</span>
                                 </a>
                             </li>
-                            {{-- <li class="{{$sm=='serviceRec'?'active':''}}">
+                            <li class="{{$sm=='serviceRec'?'active':''}}">
                                 <a href="">
                                     <span class="sub-item">Dead/Culled</span>
                                 </a>
                             </li>
                             <li class="{{$sm=='DHRec'?'active':''}}">
                                 <a href="{{ route('disease-and-health.index') }}">
-                                    <span class="sub-item">Omit from Animal record</span>
+                                    <span class="sub-item">Castration Record</span>
                                 </a>
-                            </li> --}}
+                            </li>
                         </ul>
                     </div>
                 </li>

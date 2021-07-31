@@ -2,19 +2,20 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Excel;
 use App\Models\Farm;
+use App\Models\AnimalCat;
 use App\Models\Community;
 use App\Models\AnimalInfo;
 use App\Models\CommunityCat;
+use App\Models\Reproduction;
 use Illuminate\Http\Request;
 use App\Models\ProductionRecord;
+use App\Exports\AnimalInfoExport;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AnimalInfoStoreRequest;
 use App\Http\Requests\PrductionRecordStoreRequest;
-use App\Models\AnimalCat;
-use App\Exports\AnimalInfoExport;
-use Excel;
 
 class AnimalInfoController extends Controller
 {
@@ -47,7 +48,6 @@ class AnimalInfoController extends Controller
     public function store(Request $request)
     {
         // return $request;
-
         $animal_sub_cat_id = $request->animal_sub_cat_id;
         if($animal_sub_cat_id==0){
             $animal_sub_cat_id = null;
@@ -80,6 +80,40 @@ class AnimalInfoController extends Controller
             'castrated' => $request->castrated,
             'remark' => $request->remark,
         ];
+
+
+        // Reproduction kidding date create or update
+        $dbGetAnimalInfo = AnimalInfo::select(['id','dam','d_o_b'])->where('dam', $request->dam)->first();
+        $dbGetReproduction = Reproduction::where('animal_info_id', $dbGetAnimalInfo->id)->first();
+        // $data = \Carbon\Carbon::parse($dbGetAnimalInfo->d_o_b)->diff( $request->d_o_b)->format('%y years %m months');
+        if($dbGetReproduction==null || $dbGetReproduction->count() < 1 ){
+            $reproduction = [
+                'animal_info_id' => $dbGetAnimalInfo->id,
+                'kidding_1st_date' => $request->d_o_b,
+            ];
+            Reproduction::create($reproduction);
+        }else{
+            if($dbGetReproduction->kidding_1st_date == null){
+                $reproduction['kidding_1st_date'] = $request->d_o_b;
+                $reproduction['litter_size_1st_kidding'] = $request->litter_size;
+            }elseif($dbGetReproduction->kidding_2nd_date == null){
+                $reproduction['kidding_2nd_date'] = $request->d_o_b;
+                $reproduction['litter_size_2nd_kidding'] = $request->litter_size;
+            }elseif($dbGetReproduction->kidding_3rd_date == null){
+                $reproduction['kidding_3rd_date'] = $request->d_o_b;
+                $reproduction['litter_size_3rd_kidding'] = $request->litter_size;
+            }elseif($dbGetReproduction->kidding_4th_date == null){
+                $reproduction['kidding_4th_date'] = $request->d_o_b;
+                $reproduction['litter_size_4th_kidding'] = $request->litter_size;
+            }elseif($dbGetReproduction->kidding_5th_date == null){
+                $reproduction['kidding_5th_date'] = $request->d_o_b;
+                $reproduction['litter_size_5th_kidding'] = $request->litter_size;
+            }elseif($dbGetReproduction->kidding_6th_date == null){
+                $reproduction['kidding_6th_date'] = $request->d_o_b;
+                $reproduction['litter_size_6th_kidding'] = $request->litter_size;
+            }
+            Reproduction::where('id',$dbGetReproduction->id)->update($reproduction);
+        }
 
         // $animalInfo = $animalInfoStoreRequest->validated();
         DB::beginTransaction();
