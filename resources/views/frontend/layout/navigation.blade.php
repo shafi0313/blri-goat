@@ -40,7 +40,7 @@
                     </div>
                 </div>
                 <div class="header-button">
-                    <a href="#" class="btn btn-primary" style="width: 200px">Login</a>
+                    <a href="{{ route('login') }}" class="btn btn-primary" style="width: 200px">Login</a>
                 </div>
             </div>
 

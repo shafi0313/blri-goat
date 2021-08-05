@@ -187,13 +187,13 @@
                                     <span class="sub-item">Distribution</span>
                                 </a>
                             </li>
-                            <li class="{{$sm=='serviceRec'?'active':''}}">
-                                <a href="">
+                            <li class="{{$sm=='deadCulled'?'active':''}}">
+                                <a href="{{ route('dead-culled.index') }}">
                                     <span class="sub-item">Dead/Culled</span>
                                 </a>
                             </li>
-                            <li class="{{$sm=='DHRec'?'active':''}}">
-                                <a href="{{ route('disease-and-health.index') }}">
+                            <li class="{{$sm=='castrationRecord'?'active':''}}">
+                                <a href="{{ route('castration-record.index') }}">
                                     <span class="sub-item">Castration Record</span>
                                 </a>
                             </li>

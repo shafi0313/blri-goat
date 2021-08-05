@@ -75,7 +75,7 @@
                                         @enderror
                                     </div>
 
-                                    <div class="form-group col-md-3">
+                                    {{-- <div class="form-group col-md-3">
                                         <label for="service_1st_date">Date at 1st service <span class="t_r">*</span></label>
                                         <input name="service_1st_date" type="date" class="form-control @error('service_1st_date') is-invalid @enderror" value="{{old('service_1st_date')}}">
                                         @error('service_1st_date')
@@ -237,7 +237,7 @@
                                         @error('kidding_6th_liter')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
-                                    </div>
+                                    </div> --}}
                                     <div class="form-group col-md-3">
                                         <label for="remarks">Date of Culling/ Death <span class="t_r">*</span></label>
                                         <input name="remarks" type="text" class="form-control @error('remarks') is-invalid @enderror" value="{{old('remarks')}}">

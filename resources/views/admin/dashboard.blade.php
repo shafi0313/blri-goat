@@ -2,6 +2,24 @@
 @section('title', 'Dashboard')
 @section('content')
 <?php $p = 'da'; $sm='' ?>
+@php
+    $anumal = App\Models\AnimalInfo::count();
+    $totalAnimal = App\Models\AnimalInfo::count();
+    $goat = App\Models\AnimalInfo::where('type',1)->count();
+    $goatM = App\Models\AnimalInfo::where('sex','M')->where('type',1)->count();
+    $goatF = App\Models\AnimalInfo::where('sex','F')->where('type',1)->count();
+    $sheep = App\Models\AnimalInfo::where('type',2)->count();
+    $sheepM = App\Models\AnimalInfo::where('sex','M')->where('type',2)->count();
+    $sheepF = App\Models\AnimalInfo::where('sex','F')->where('type',2)->count();
+@endphp
+
+<input type="hidden" id="totalAnimal" value="{{ $totalAnimal }}">
+<input type="hidden" id="goat" value="{{ $goat }}">
+<input type="hidden" id="goatM" value="{{ $goatM }}">
+<input type="hidden" id="goatF" value="{{ $goatF }}">
+<input type="hidden" id="sheep" value="{{ $sheep }}">
+<input type="hidden" id="sheepM" value="{{ $sheepM }}">
+<input type="hidden" id="sheepF" value="{{ $sheepF }}">
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">
@@ -32,226 +50,171 @@
                 }
             </style>
 
-            {{-- <div class="row">
-                <div class="col-sm-6 col-md-3">
-                    <div class="card card-stats card-primary card-round">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-5">
-                                    <div class="icon-big text-center">
-                                        <i class="fas fa-user-tie"></i>
-                                    </div>
-                                </div>
-                                <div class="col col-stats">
-                                    <div class="numbers">
-                                        <p class="card-category">Author User</p>
-                                        <h4 class="card-title"></h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-3">
-                    <div class="card card-stats card-info card-round">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-5">
-                                    <div class="icon-big text-center">
-                                        <i class="fas fa-users"></i>
-                                    </div>
-                                </div>
-                                <div class="col col-stats">
-                                    <div class="numbers">
-                                        <a href="">
-                                            <p class="card-category">Total Farm</p>
-                                            <h4 class="card-title">{{$farms}}</h4>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-3">
-                    <div class="card card-stats card-success card-round">
-                        <div class="card-body ">
-                            <div class="row">
-                                <div class="col-5">
-                                    <div class="icon-big text-center">
-                                        <i class="fas fa-user-friends"></i>
-                                    </div>
-                                </div>
-                                <div class="col col-stats">
-                                    <div class="numbers">
-                                        <a href="">
-                                            <p class="card-category">Total Community</p>
-                                            <h4 class="card-title">{{$communities}}</h4>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-3">
-                    <div class="card card-stats card-secondary card-round">
-                        <div class="card-body ">
-                            <div class="row">
-                                <div class="col-5">
-                                    <div class="icon-big text-center">
-                                        <i class="fas fa-pills"></i>
-                                    </div>
-                                </div>
-                                <div class="col col-stats">
-                                    <div class="numbers">
-                                        <a href="">
-                                            <p class="card-category">Total Goat</p>
-                                            <h4 class="card-title"> 100</h4>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> --}}
-
             <div class="row">
-                {{-- <div class="col-sm-6 col-md-4">
-                    <div class="card card-stats card-primary card-round">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-4">
-                                    <div class="icon-big text-center">
-                                        <i class="fas fa-cart-plus"></i>
-                                    </div>
-                                </div>
-                                <div class="col col-stats">
-                                    <div class="numbers">
-                                        <p class="card-category">Total Purchase Amount</p>
-                                        <h4 class="card-title">{{ number_format($totalPurchase,2) }}</h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> --}}
-                {{-- <div class="col-sm-6 col-md-4">
-                    <div class="card card-stats card-info card-round">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-4">
-                                    <div class="icon-big text-center">
-                                        <i class="fas fa-shopping-cart"></i>
-                                    </div>
-                                </div>
-                                <div class="col col-stats">
-                                    <div class="numbers">
-                                        <a href="#">
-                                            <p class="card-category">Total Sales Amount</p>
-                                            <h4 class="card-title"></h4>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="col">
+                    <div id="total_animal" ></div>
                 </div>
-                <div class="col-sm-6 col-md-4"> --}}
-                    {{-- <div class="card card-stats card-info card-round">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-5">
-                                    <div class="icon-big text-center">
-                                        <i class="fas fa-calculator"></i>
-                                    </div>
-                                </div>
-                                <div class="col col-stats">
-                                    <div class="numbers">
-                                        <a href="#">
-                                            <p class="card-category">Profit</p>
-                                            <h4 class="card-title">{{ number_format($totalSales - $totalPurchase,2) }}</h4>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> --}}
+                <div class="col">
+                    <div id="total_goat"></div>
+                </div>
+                <div class="col">
+                    <div id="total_sheep" ></div>
                 </div>
             </div>
 
-            {{-- <div class="row">
-                <div class="col-sm-6 col-md-4">
-                    <div class="card card-stats card-success card-round">
-                        <div class="card-body ">
-                            <div class="row">
-                                <div class="col-5">
-                                    <div class="icon-big text-center">
-                                        <i class="fas fa-hand-holding-usd"></i>
-                                    </div>
-                                </div>
-                                <div class="col col-stats">
-                                    <div class="numbers">
-                                        <a href="#">
-                                            <p class="card-category">Total Credit</p>
-                                            <h4 class="card-title">{{ number_format($credit,2) }} </h4>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4">
-                    <div class="card card-stats card-secondary card-round">
-                        <div class="card-body ">
-                            <div class="row">
-                                <div class="col-5">
-                                    <div class="icon-big text-center">
-                                        <i class="fas fa-hand-holding-usd"></i>
-                                    </div>
-                                </div>
-                                <div class="col col-stats">
-                                    <div class="numbers">
-                                        <a href="#">
-                                            <p class="card-category">Total Debit</p>
-                                            <h4 class="card-title"> {{ number_format($debit,2) }} </h4>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4">
-                    <div class="card card-stats card-info card-round">
-                        <div class="card-body ">
-                            <div class="row">
-                                <div class="col-5">
-                                    <div class="icon-big text-center">
-                                        <i class="fas fa-calculator"></i>
-                                    </div>
-                                </div>
-                                <div class="col col-stats">
-                                    <div class="numbers">
-                                        <a href="#">
-                                            <p class="card-category">Profit</p>
-                                            <h4 class="card-title"> {{ number_format($credit - $debit,2) }} </h4>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> --}}
-
-
 
         </div>
-        @include('admin.layout.footer')
+
     </div>
+    @include('admin.layout.footer')
 </div>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+<script type="text/javascript">
+    google.charts.load("current", {
+        packages: ['corechart']
+    });
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+        var goat = Number($("#goat").val());
+        var sheep = Number($("#sheep").val());
+        var totalAnimal = Number($("#totalAnimal").val());
+        var data = google.visualization.arrayToDataTable([
+
+            ["Element", "Density", {
+                role: "style"
+            }],
+            ["Total Animal", totalAnimal, "#b87333"],
+            ["Goat", goat, "silver"],
+            ["Sheep", sheep, "gold"],
+            // ["Platinum", 21.45, "color: #e5e4e2"]
+        ]);
+
+        var view = new google.visualization.DataView(data);
+        view.setColumns([0, 1,
+            {
+                calc: "stringify",
+                sourceColumn: 1,
+                type: "string",
+                role: "annotation"
+            },
+            2
+        ]);
+
+        var options = {
+            title: "Animal Chart",
+            width: 400,
+            height: 400,
+            bar: {
+                groupWidth: "95%"
+            },
+            legend: {
+                position: "none"
+            },
+        };
+        var chart = new google.visualization.ColumnChart(document.getElementById("total_animal"));
+        chart.draw(view, options);
+    }
+</script>
+
+
+<script type="text/javascript">
+    google.charts.load("current", {
+        packages: ['corechart']
+    });
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+        var goat = Number($("#goat").val());
+        var goatM = Number($("#goatM").val());
+        var goatF = Number($("#goatF").val());
+        var data = google.visualization.arrayToDataTable([
+
+            ["Element", "Density", {
+                role: "style"
+            }],
+            ["Total Goat", goat, "#b87333"],
+            ["Male", goatM, "goatM"],
+            ["Female", goatF, "goatF"],
+            // ["Platinum", 21.45, "color: #e5e4e2"]
+        ]);
+
+        var view = new google.visualization.DataView(data);
+        view.setColumns([0, 1,
+            {
+                calc: "stringify",
+                sourceColumn: 1,
+                type: "string",
+                role: "annotation"
+            },
+            2
+        ]);
+
+        var options = {
+            title: "Goat",
+            width: 400,
+            height: 400,
+            bar: {
+                groupWidth: "95%"
+            },
+            legend: {
+                position: "none"
+            },
+        };
+        var chart = new google.visualization.ColumnChart(document.getElementById("total_goat"));
+        chart.draw(view, options);
+    }
+</script>
+
+<script type="text/javascript">
+    google.charts.load("current", {
+        packages: ['corechart']
+    });
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+        var sheep = Number($("#sheep").val());
+        var sheepM = Number($("#sheepM").val());
+        var sheepF = Number($("#sheepF").val());
+        var data = google.visualization.arrayToDataTable([
+
+            ["Element", "Density", {
+                role: "style"
+            }],
+            ["Total Sheep", sheep, "#b87333"],
+            ["Male", sheepM, "sheepM"],
+            ["Female", sheepF, "sheepF"],
+            // ["Platinum", 21.45, "color: #e5e4e2"]
+        ]);
+
+        var view = new google.visualization.DataView(data);
+        view.setColumns([0, 1,
+            {
+                calc: "stringify",
+                sourceColumn: 1,
+                type: "string",
+                role: "annotation"
+            },
+            2
+        ]);
+
+        var options = {
+            title: "Sheep",
+            width: 400,
+            height: 400,
+            bar: {
+                groupWidth: "95%"
+            },
+            legend: {
+                position: "none"
+            },
+        };
+        var chart = new google.visualization.ColumnChart(document.getElementById("total_sheep"));
+        chart.draw(view, options);
+    }
+</script>
+
 @endsection
 

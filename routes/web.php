@@ -17,6 +17,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DewormingController;
 use App\Http\Controllers\Admin\AnimalInfoController;
 use App\Http\Controllers\Admin\BodyWeightController;
+use App\Http\Controllers\Admin\DeadCulledController;
 use App\Http\Controllers\Admin\VaccinationController;
 use App\Http\Controllers\Admin\CommunityCatController;
 use App\Http\Controllers\Admin\DistributionController;
@@ -30,6 +31,7 @@ use App\Http\Controllers\Admin\ResearchStockController;
 use App\Http\Controllers\Admin\SemenAnalysisController;
 use App\Http\Controllers\Admin\CommunityStockController;
 use App\Http\Controllers\Admin\MilkProductionController;
+use App\Http\Controllers\Admin\CastrationRecordController;
 use App\Http\Controllers\Admin\DiseaseTreatmentController;
 use App\Http\Controllers\Admin\Report\KidMortalityController;
 use App\Http\Controllers\Admin\Category\ClinicalSignController;
@@ -120,6 +122,13 @@ Route::middleware(['auth','admin'])->prefix('admin')->group(function(){
 
     // Parasite
     Route::resource('/parasite', ParasiteController::class);
+
+
+    // Dead Culled
+    Route::resource('/dead-culled', DeadCulledController::class);
+
+    // Castration Record
+    Route::resource('/castration-record', CastrationRecordController::class);
 
     // Report
     Route::get('/research/selectDate', [ResearchStockController::class, 'selectDate'])->name('researchStock.selectDate');
