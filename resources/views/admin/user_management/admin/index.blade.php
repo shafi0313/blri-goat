@@ -66,7 +66,7 @@
                                                         <i class="fa fa-edit"></i>
                                                     </a>
 
-                                                    <a data-route="{{ route('admin.destroy', $adminUser->id) }}" class="_delete"></a>
+                                                    <a data-route="" class="_delete"></a>
 
                                                     {{-- <a href="admin/users/destroy/{{$adminUser->id}}" data-toggle="tooltip" title="" class="btn btn-link btn-danger delete" data-original-title="Remove">
                                                         <i class="fa fa-times"></i>

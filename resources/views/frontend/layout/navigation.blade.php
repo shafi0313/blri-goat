@@ -1,7 +1,7 @@
-
+<h1 class="text-center" style="text-transform: uppercase; padding: 8px">Bangladesh Livestock Research Institute</h1>
+{{--
 <nav class="navbar navbar-expand-lg">
     <div class="container">
-        {{-- <a class="navbar-brand" href="#">Navbar</a> --}}
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <i class="fas fa-align-left"></i>
@@ -24,9 +24,6 @@
 
 
             <div class="header-info d-flex align-items-center">
-                {{-- <div class="header-search">
-                    <span> <i class="fab fa-skype"></i> </span>
-                </div> --}}
                 <div class="header-search">
                     <i class="fas fa-envelope"></i>
                 </div>
@@ -46,4 +43,4 @@
 
         </div>
     </div>
-</nav>
+</nav> --}}
