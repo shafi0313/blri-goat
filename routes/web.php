@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\PurchaseInvoice;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\AboutController;
@@ -33,9 +34,13 @@ use App\Http\Controllers\Admin\CommunityStockController;
 use App\Http\Controllers\Admin\MilkProductionController;
 use App\Http\Controllers\Admin\CastrationRecordController;
 use App\Http\Controllers\Admin\DiseaseTreatmentController;
+use App\Http\Controllers\Admin\Report\BlriBirthController;
+use App\Http\Controllers\Admin\Report\BlriDeathController;
 use App\Http\Controllers\Admin\Report\KidMortalityController;
 use App\Http\Controllers\Admin\Category\ClinicalSignController;
+use App\Http\Controllers\Admin\Report\BlriKidMortalityController;
 use App\Http\Controllers\Admin\Report\DiseaseIncidenceController;
+use App\Http\Controllers\Admin\Report\BlriDiseaseIncidenceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -155,26 +160,47 @@ Route::middleware(['auth','admin'])->prefix('admin')->group(function(){
     Route::resource('/disease-and-health', DiseaseHealthController::class);
 
     Route::prefix('report')->group(function(){
-        Route::prefix('disease-incidence')->group(function(){
-            Route::get('/select', [DiseaseIncidenceController::class, 'selectDate'])->name('report.disease.selectDate');
-            Route::post('/report', [DiseaseIncidenceController::class, 'report'])->name('report.disease.report');
-        });
-        Route::prefix('birth')->group(function(){
-            Route::get('/select', [BirthController::class, 'selectDate'])->name('report.bitrh.selectDate');
-            Route::post('/report', [BirthController::class, 'report'])->name('report.bitrh.report');
+        Route::prefix('blri')->group(function(){
+            Route::prefix('disease-incidence')->group(function(){
+                Route::get('/select', [BlriDiseaseIncidenceController::class, 'selectDate'])->name('report.blri.disease.selectDate');
+                Route::post('/report', [BlriDiseaseIncidenceController::class, 'report'])->name('report.blri.disease.report');
+            });
+            Route::prefix('birth')->group(function(){
+                Route::get('/select', [BlriBirthController::class, 'selectDate'])->name('report.blri.bitrh.selectDate');
+                Route::post('/report', [BlriBirthController::class, 'report'])->name('report.blri.bitrh.report');
+            });
+
+            Route::prefix('death')->group(function(){
+                Route::get('/select', [BlriDeathController::class, 'selectDate'])->name('report.blri.death.selectDate');
+                Route::post('/report', [BlriDeathController::class, 'report'])->name('report.blri.death.report');
+            });
+
+            Route::prefix('kid-mortality')->group(function(){
+                Route::get('/select', [BlriKidMortalityController::class, 'selectDate'])->name('report.blri.kidMortality.selectDate');
+                Route::post('/report', [BlriKidMortalityController::class, 'report'])->name('report.blri.kidMortality.report');
+            });
         });
 
-        Route::prefix('death')->group(function(){
-            Route::get('/select', [DeathController::class, 'selectDate'])->name('report.death.selectDate');
-            Route::post('/report', [DeathController::class, 'report'])->name('report.death.report');
+        Route::prefix('community')->group(function(){
+            Route::prefix('disease-incidence')->group(function(){
+                Route::get('/select', [DiseaseIncidenceController::class, 'selectDate'])->name('report.disease.selectDate');
+                Route::post('/report', [DiseaseIncidenceController::class, 'report'])->name('report.disease.report');
+            });
+            Route::prefix('birth')->group(function(){
+                Route::get('/select', [BirthController::class, 'selectDate'])->name('report.bitrh.selectDate');
+                Route::post('/report', [BirthController::class, 'report'])->name('report.bitrh.report');
+            });
+
+            Route::prefix('death')->group(function(){
+                Route::get('/select', [DeathController::class, 'selectDate'])->name('report.death.selectDate');
+                Route::post('/report', [DeathController::class, 'report'])->name('report.death.report');
+            });
+
+            Route::prefix('kid-mortality')->group(function(){
+                Route::get('/select', [KidMortalityController::class, 'selectDate'])->name('report.kidMortality.selectDate');
+                Route::post('/report', [KidMortalityController::class, 'report'])->name('report.kidMortality.report');
+            });
         });
-
-        Route::prefix('kid-mortality')->group(function(){
-            Route::get('/select', [KidMortalityController::class, 'selectDate'])->name('report.kidMortality.selectDate');
-            Route::post('/report', [KidMortalityController::class, 'report'])->name('report.kidMortality.report');
-        });
-
-
     });
 
     Route::get('/animal-sub-cat', [GlobalController::class, 'animalSubCat'])->name('animalSubCat');

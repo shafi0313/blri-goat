@@ -282,14 +282,33 @@
 									<span class="sub-item">BLRI</span>
 									<span class="caret"></span>
 								</a>
-								<div class="collapse" id="subnav1">
+								<div class="collapse {{$sm=='blriReport'?'show':''}}" id="subnav1">
 									<ul class="nav nav-collapse subnav">
 										<li>
 											<a href="{{ route('researchStock.selectDate') }}">
 												<span class="sub-item">Stock Report</span>
 											</a>
 										</li>
-
+                                        <li class="{{$ssm=='blriDiseaseIn'?'active':''}}">
+											<a href="{{route('report.blri.disease.selectDate')}}">
+												<span class="sub-item">Disease Incidence Report</span>
+											</a>
+										</li>
+										<li class="{{$ssm=='BlriDeathReport'?'active':''}}">
+											<a href="{{ route('report.blri.death.selectDate') }}">
+												<span class="sub-item">Death Report</span>
+											</a>
+										</li>
+										<li class="{{$ssm=='BlriKidMorReport'?'active':''}}">
+											<a href="{{ route('report.blri.kidMortality.selectDate') }}">
+												<span class="sub-item">Kid Mortality Report</span>
+											</a>
+										</li>
+										<li class="{{$ssm=='BlriBirthReport'?'active':''}}">
+											<a href="{{ route('report.blri.bitrh.selectDate') }}">
+												<span class="sub-item">Birth Report</span>
+											</a>
+										</li>
 									</ul>
 								</div>
 							</li>
