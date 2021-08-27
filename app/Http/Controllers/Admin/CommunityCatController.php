@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Farm;
 use App\Models\Upazila;
 use App\Models\District;
 use App\Models\Community;
