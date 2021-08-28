@@ -7,6 +7,7 @@ use App\Models\AnimalCat;
 use App\Models\AnimalInfo;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class BlriDeathController extends Controller
 {
@@ -35,7 +36,7 @@ class BlriDeathController extends Controller
         }else{
             $getAnimalCat = $animal_sub_cat_id;
             $animalCat = explode(',', $getAnimalCat);
-            $animalCatDb = 'animal_cat_sub_id';
+            $animalCatDb = 'animal_sub_cat_id';
         }
 
         if($request->season_o_birth){
@@ -46,6 +47,10 @@ class BlriDeathController extends Controller
             $season_o_birth = explode(',', $get_season_o_birth);
         }
 
+        if(AnimalInfo::whereIn($animalCatDb, $animalCat)->count() < 1){
+            Alert::error('Data Not Found');
+            return back();
+        }
 
         // $allAnimal = animalKid($to_date).animalGrowing($to_date).animalAdult($to_date);
         $deaths = AnimalInfo::whereIn($animalCatDb, $animalCat)
@@ -56,6 +61,11 @@ class BlriDeathController extends Controller
                 // ->orWhereIn('id', animalAdult($to_date))
                 ->where('remark','Dead')
                 ->get();
+
+        if($deaths->count() < 1){
+            Alert::error('Data Not Found');
+            return back();
+        }
 
         $animals = AnimalInfo::whereIn($animalCatDb, $animalCat)
                 ->where('farm_id',$farm_id)

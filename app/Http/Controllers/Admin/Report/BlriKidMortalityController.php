@@ -8,6 +8,7 @@ use App\Models\AnimalInfo;
 use Illuminate\Http\Request;
 use App\Models\DiseaseTreatment;
 use App\Http\Controllers\Controller;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class BlriKidMortalityController extends Controller
 {
@@ -36,7 +37,12 @@ class BlriKidMortalityController extends Controller
         }else{
             $getAnimalCat = $animal_sub_cat_id;
             $animalCat = explode(',', $getAnimalCat);
-            $animalCatDb = 'animal_cat_sub_id';
+            $animalCatDb = 'animal_sub_cat_id';
+        }
+
+        if(AnimalInfo::whereIn($animalCatDb, $animalCat)->count() < 1){
+            Alert::error('Data Not Found');
+            return back();
         }
 
         // if($request->season_o_birth){
@@ -59,6 +65,11 @@ class BlriKidMortalityController extends Controller
         ->whereBetween('disease_date', [$form_date,$to_date])
         ->where('recovered_dead','Dead')
         ->get();
+
+        if($deaths->count() < 1){
+            Alert::error('Data Not Found');
+            return back();
+        }
 
 
         // $deaths = DiseaseTreatment::whereIn($animalCatDb, $animalCat)

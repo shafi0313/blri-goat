@@ -73,7 +73,7 @@
                         <p>Admin</p>
                         <span class="caret"></span>
                     </a>
-                    <div class="collapse" id="admin">
+                    <div class="collapse {{$p=='admin'?'show':''}}" id="admin">
                         <ul class="nav nav-collapse">
                             <li class="{{$sm=='adminIndex'?'activeSub':''}}">
                                 <a href="{{ route('admin-user.index')}}">
@@ -85,11 +85,11 @@
                                     <span class="sub-item">Slider</span>
                                 </a>
                             </li>
-                            <li class="{{$sm=='about'?'activeSub':''}}">
+                            {{-- <li class="{{$sm=='about'?'activeSub':''}}">
                                 <a href="{{ url('admin/about/1/edit') }}">
                                     <span class="sub-item">About</span>
                                 </a>
-                            </li>
+                            </li> --}}
                             {{-- <li class="{{$sm=='adminIndex'?'activeSub':''}}">
                                 <a href="{{ route('farmer.index')}}">
                                     <span class="sub-item">Farmer</span>

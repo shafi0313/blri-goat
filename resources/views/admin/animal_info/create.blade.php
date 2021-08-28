@@ -49,7 +49,6 @@
 										</label>
 									</div>
 
-
                                     <div class="form-group col-md-3" id="farmSelect" style="display: none">
                                         <label for="farm_id">Farm <span class="t_r">*</span></label>
                                         <select name="farm_id" class="form-control @error('name') is-invalid @enderror" id="farm_id">
@@ -171,16 +170,16 @@
                                     </div> --}}
 
                                     <div class="form-group col-md-3">
-                                        <label for="sire">Sire <span class="t_r">*</span></label>
-                                        <input name="sire" type="text" class="form-control @error('sire') is-invalid @enderror"  value="{{old('sire')}}" required>
+                                        <label for="sire">Sire</label>
+                                        <input name="sire" type="text" class="form-control @error('sire') is-invalid @enderror"  value="{{old('sire')}}">
                                         @error('sire')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
 
                                     <div class="form-group col-md-3">
-                                        <label for="dam">Dam <span class="t_r">*</span></label>
-                                        <input name="dam" type="text" class="form-control @error('dam') is-invalid @enderror" value="{{old('dam')}}" required>
+                                        <label for="dam">Dam</label>
+                                        <input name="dam" type="text" class="form-control @error('dam') is-invalid @enderror" value="{{old('dam')}}" >
                                         @error('dam')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
@@ -285,8 +284,8 @@
 
 
                                     <div class="form-group col-md-3">
-                                        <label for="remark">Remarks <span class="t_r">*</span></label>
-                                        <input name="remark" type="text" class="form-control @error('remark') is-invalid @enderror" value="{{old('remark')}}" required>
+                                        <label for="remark">Remarks</label>
+                                        <input name="remark" type="text" class="form-control @error('remark') is-invalid @enderror" value="{{old('remark')}}">
                                         @error('remark')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror

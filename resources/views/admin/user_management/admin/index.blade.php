@@ -66,11 +66,13 @@
                                                         <i class="fa fa-edit"></i>
                                                     </a>
 
-                                                    <a data-route="" class="_delete"></a>
-
-                                                    {{-- <a href="admin/users/destroy/{{$adminUser->id}}" data-toggle="tooltip" title="" class="btn btn-link btn-danger delete" data-original-title="Remove">
-                                                        <i class="fa fa-times"></i>
-                                                    </a> --}}
+                                                    <form action="{{ route('admin-user.destroy', $adminUser->id) }}" style="display: initial;" method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" title="Delete" class="btn btn-link btn-danger" onclick="return confirm('Are you sure?')">
+                                                            <i class="fa fa-times"></i>
+                                                        </button>
+                                                    </form>
                                                 </div>
                                             </td>
                                         </tr>
@@ -85,76 +87,9 @@
             </div>
         </div>
     </div>
-</div>
-
-{{-- <div class="modal fade" id="common-delete-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Confirm Password</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form method="POST" id="_delete_form">
-                    <input type="hidden" name="_token" value="d5wcmp10oTixwsYnMlNx9hlS5byikfrMPrROe4cK">
-                    <input type="hidden" name="_method" value="DELETE">
-                    <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">Password:</label>
-                        <input type="password" name="password" class="form-control">
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-success">Delete</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div> --}}
-
-
-
-<!-- Modal -->
-<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">
-                    <span class="fw-mediumbold">
-                    Delete</span>
-                    <span class="fw-light">
-                        User
-                    </span>
-                </h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <form action="" method="POST" id="_delete_form">
-                @csrf
-                <input type="hidden" name="_method" value="DELETE">
-                <div class="modal-body">
-                    {{-- <p class="small">Create a new row using this form, make sure you fill them all</p> --}}
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="form-group">
-                                <label>Password</label>
-                                <input type="password" name="password"  class="form-control" placeholder="">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer no-bd">
-                    <button type="submit" class="btn btn-primary">Delete</button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                </div>
-            </form>
-        </div>
-    </div>
     @include('admin.layout.footer')
 </div>
+
 
 @push('custom_scripts')
 <script >
@@ -203,31 +138,6 @@
         //     $('#deleteModal').modal('hide');
 
         // });
-    });
-</script>
-
-{{-- <script>
-    $(document).ready(function(){
-        $(".delete_link").on('click', function(){
-            var id = $(this).attr("rel");
-            var delete_url = "";
-            $(".modal_delete_link").attr("href", delete_url);
-            $("#deleteModal").modal('show');
-        });
-    });
-</script> --}}
-
-<script>
-    $(document).ready(function () {
-        $('._delete')
-            .addClass('fa fa-plus red')
-            .css({
-                "cursor" : "pointer"
-            }).click(function (event) {
-
-            $('#_delete_form').attr('action', $(event.target).data('route'));
-            $('#deleteModal').modal('show');
-        });
     });
 </script>
 

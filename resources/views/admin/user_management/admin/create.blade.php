@@ -1,7 +1,7 @@
 @extends('admin.layout.master')
 @section('title', 'Author')
 @section('content')
-@php $p='tools'; $sm="userCreate"; @endphp
+@php $p='admin'; $sm='adminIndex'; @endphp
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">

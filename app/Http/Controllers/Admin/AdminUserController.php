@@ -108,8 +108,12 @@ class AdminUserController extends Controller
             'gender' => $request->input('gender'),
             'address' => $request->input('address'),
             'profile_photo_path' => $image_name,
-            'password' => bcrypt($request->input('password')),
         ];
+
+        if(!empty($request->password)){
+            $data['password'] = bcrypt($request->input('password'));
+        }
+
 
         $permission = [
             'role_id' => $request->input('is')
@@ -128,15 +132,10 @@ class AdminUserController extends Controller
         }
     }
 
-    public function __construct()
+    public function destroy($id)
     {
-         $this->middleware('password.confirm')->only('destroy');
-    }
-
-    public function destroy(Request $request, $id)
-    {
-
-        return $request;
-
+        User::find($id)->delete();
+        toast('Success','success');
+        return redirect()->back();
     }
 }

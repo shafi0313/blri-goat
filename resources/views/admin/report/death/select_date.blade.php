@@ -43,14 +43,14 @@
                                     </div>
                                 </div>
 
-                                {{-- <div class="row justify-content-center">
+                                <div class="row justify-content-center">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="">Animal Sub Category</label>
                                             <select name="animal_sub_cat_id" class="form-control" id="animal_sub_cat"></select>
                                           </div>
                                     </div>
-                                </div> --}}
+                                </div>
 
                                 {{-- <div class="row justify-content-center">
                                     <div class="col-md-6">

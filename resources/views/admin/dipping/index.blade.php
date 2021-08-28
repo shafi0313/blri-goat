@@ -34,7 +34,7 @@
                                             <th>Breed</th>
                                             <th>Name of Medicine</th>
                                             <th>Date of Dipping</th>
-                                            <th>Dose</th>
+                                            {{-- <th>Dose</th> --}}
                                             <th class="no-sort" style="text-align:center;width:80px" >Action</th>
                                         </tr>
                                     </thead>

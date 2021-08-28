@@ -5,8 +5,9 @@ namespace App\Http\Controllers\Admin\Report;
 use App\Models\AnimalCat;
 use App\Models\AnimalInfo;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Models\DiseaseTreatment;
+use App\Http\Controllers\Controller;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class KidMortalityController extends Controller
 {
@@ -33,7 +34,12 @@ class KidMortalityController extends Controller
         }else{
             $getAnimalCat = $animal_sub_cat_id;
             $animalCat = explode(',', $getAnimalCat);
-            $animalCatDb = 'animal_cat_sub_id';
+            $animalCatDb = 'animal_sub_cat_id';
+        }
+
+        if(AnimalInfo::whereIn($animalCatDb, $animalCat)->count() < 1){
+            Alert::error('Data Not Found');
+            return back();
         }
 
         // if($request->season_o_birth){
@@ -54,6 +60,11 @@ class KidMortalityController extends Controller
                 // ->orWhereIn('id', animalAdult($to_date))
                 ->where('recovered_dead','Dead')
                 ->get();
+
+        if($deaths->count() < 1){
+            Alert::error('Data Not Found');
+            return back();
+        }
 
         $animals = AnimalInfo::whereIn($animalCatDb, $animalCat)
                 // ->whereBetween('d_o_b', [$form_date,$to_date])

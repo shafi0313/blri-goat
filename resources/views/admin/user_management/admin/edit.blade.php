@@ -1,7 +1,7 @@
 @extends('admin.layout.master')
 @section('title', 'Admin')
 @section('content')
-@php $p='tools'; $sm="userCreate"; @endphp
+@php $p='admin'; $sm='adminIndex'; @endphp
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">
@@ -77,15 +77,15 @@
 
                                     <div class="form-group col-sm-6">
                                         <label>Password <span class="t_r">*</span></label>
-                                        <input name="password" type="password" class="form-control @error('password') is-invalid @enderror" value="{{$adminUsers->password}}" required>
+                                        <input name="password" type="password" class="form-control @error('password') is-invalid @enderror">
                                         @error('password')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
 
                                     <div class="form-group col-sm-6">
-                                        <label>Confrim Password <span class="t_r">*</span></label>
-                                        <input name="password_confirmation" type="password" class="form-control @error('password_confirmation') is-invalid @enderror" value="{{$adminUsers->password}}" required>
+                                        <label>Confirm Password <span class="t_r">*</span></label>
+                                        <input name="password_confirmation" type="password" class="form-control @error('password_confirmation') is-invalid @enderror">
                                         @error('password_confirmation')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
@@ -119,26 +119,6 @@
                                 </div>
 
 
-                                {{-- File --}}
-                                <div class="row col-md-12"><h3 style="margin-left: 8px; font-weight:bold">Documents</h3></div>
-                                <table class="table table-bordered">
-                                    {{-- <h2>Documents</h2> --}}
-                                    <tr>
-                                        <th style="width:250px">File</th>
-                                        <th>Note</th>
-                                        <th style="width: 20px;text-align:center;">
-                                            <button class="btn btn-info btn-sm" style="padding: 4px 13px"><i class="fas fa-mouse"></i></button>
-                                        </th>
-                                    </tr>
-
-                                    <tr>
-                                        <td><input type="file" name="name[]" multiple id="document_1" class="form-control form-control-sm" style="width:250px"/></td>
-                                        <td><input type="text" name="note[]"          id="qty_1"           class="form-control form-control-sm" placeholder="Note"/></td>
-                                        <td style="width: 20px"><span class="btn btn-sm btn-success addrow"><i class="fa fa-plus" aria-hidden="true"></i></span></td>
-                                    </tr>
-                                    <tbody id="showItem"></tbody>
-                                </table>
-
                                 <div align="center" class="mr-auto card-action">
                                     <button type="submit" class="btn btn-success">Submit</button>
                                     <button type="reset" class="btn btn-danger">Reset</button>
@@ -155,11 +135,7 @@
 </div>
 
 @push('custom_scripts')
-<script>
-    $('#preCal').click(function(){
-        $('#cal').slideToggle()
-    })
-</script>
+
 @endpush
 @endsection
 

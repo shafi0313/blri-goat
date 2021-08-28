@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Admin\Report;
 
+use App\Models\Disease;
 use App\Models\AnimalCat;
+use App\Models\AnimalInfo;
 use Illuminate\Http\Request;
 use App\Models\DiseaseTreatment;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use App\Models\AnimalInfo;
-use App\Models\Disease;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class DiseaseIncidenceController extends Controller
 {
@@ -58,7 +59,12 @@ class DiseaseIncidenceController extends Controller
         }else{
             $getAnimalCat = $animal_sub_cat_id;
             $animalCat = explode(',', $getAnimalCat);
-            $animalCatDb = 'animal_cat_sub_id';
+            $animalCatDb = 'animal_sub_cat_id';
+        }
+
+        if(AnimalInfo::whereIn($animalCatDb, $animalCat)->count() < 1){
+            Alert::error('Data Not Found');
+            return back();
         }
 
         if($request->disease_season){
@@ -85,6 +91,11 @@ class DiseaseIncidenceController extends Controller
                 ->whereIn('disease_id', $disease)
                 ->whereBetween('disease_date', [$form_date,$to_date])
                 ->get();
+
+        if($diseaseTreatments->count() < 1){
+            Alert::error('Data Not Found');
+            return back();
+        }
 
         $animals = AnimalInfo::whereIn($animalCatDb, $animalCat)
                 ->get();

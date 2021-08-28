@@ -66,8 +66,8 @@
                                                 </div>
                                                 <div class="col col-stats">
                                                     <div class="numbers">
-                                                        <p class="card-category">Visitors</p>
-                                                        <h4 class="card-title">1,294</h4>
+                                                        <p class="card-category">Total animal stock </p>
+                                                        <h4 class="card-title">{{ $animalInfo  }}</h4>
                                                     </div>
                                                 </div>
                                             </div>
@@ -85,8 +85,8 @@
                                                 </div>
                                                 <div class="col col-stats">
                                                     <div class="numbers">
-                                                        <p class="card-category">Subscribers</p>
-                                                        <h4 class="card-title">1303</h4>
+                                                        <p class="card-category">Pregnant animal</p>
+                                                        <h4 class="card-title"></h4>
                                                     </div>
                                                 </div>
                                             </div>
@@ -104,8 +104,8 @@
                                                 </div>
                                                 <div class="col col-stats">
                                                     <div class="numbers">
-                                                        <p class="card-category">Sales</p>
-                                                        <h4 class="card-title">$ 1,345</h4>
+                                                        <p class="card-category">Flock mortality %</p>
+                                                        <h4 class="card-title">{{ ($animalInfo*$animalDade)/100 }}</h4>
                                                     </div>
                                                 </div>
                                             </div>
@@ -123,8 +123,27 @@
                                                 </div>
                                                 <div class="col col-stats">
                                                     <div class="numbers">
-                                                        <p class="card-category">Order</p>
-                                                        <h4 class="card-title">576</h4>
+                                                        <p class="card-category">Next deworming date</p>
+                                                        <h4 class="card-title"></h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-3">
+                                    <div class="card card-stats card-secondary card-round">
+                                        <div class="card-body ">
+                                            <div class="row">
+                                                <div class="col-5">
+                                                    <div class="icon-big text-center">
+                                                        <i class="flaticon-success"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="col col-stats">
+                                                    <div class="numbers">
+                                                        <p class="card-category">Next dipping date</p>
+                                                        <h4 class="card-title"></h4>
                                                     </div>
                                                 </div>
                                             </div>
