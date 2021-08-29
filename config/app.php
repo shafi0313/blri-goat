@@ -168,7 +168,7 @@ return [
         Maatwebsite\Excel\ExcelServiceProvider::class,
         \Torann\GeoIP\GeoIPServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
-        
+
         // Barryvdh\DomPDF\ServiceProvider::class,
         /*
          * Application Service Providers...
@@ -178,9 +178,6 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        App\Providers\FortifyServiceProvider::class,
-        App\Providers\JetstreamServiceProvider::class,
-
     ],
 
     /*

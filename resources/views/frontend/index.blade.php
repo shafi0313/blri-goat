@@ -34,7 +34,7 @@
             <br>
             <h4 class="text-center">Please sign in</h4>
             <br>
-            <form method="POST" action="{{ route('login') }}">
+            <form method="POST" action="{{ route('loginProcess') }}">
                 @csrf
                 <div class="form-row align-items-center">
                     <div class="col-auto">
@@ -55,6 +55,10 @@
                             <input type="password" value="12345678" name="password" required autocomplete="current-password" class="form-control" placeholder="Password">
                         </div>
                     </div>
+                    <div class="text-right m-2">
+                        <a href="{{ route('forgetPassword') }}">Forget Password ?</a>
+                    </div>
+
                     {{-- <div class="col-auto">
                         <div class="form-check mb-2">
                             <input class="form-check-input" type="checkbox" id="autoSizingCheck">

@@ -2,7 +2,7 @@
 
 use App\Models\PurchaseInvoice;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\AboutController;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\FarmerController;
@@ -62,13 +62,31 @@ Route::get('/t', function () {
 
 });
 
+Route::get('/login', [AuthController::class, 'login'])->name('login');
+// Route::get('/register', [AuthController::class, 'register'])->name('register');
+// Route::post('/register-store', [AuthController::class, 'registerStore'])->name('registerStore');
+Route::get('/register-verify/{token}', [AuthController::class, 'registerVerify'])->name('registerVerify');
+Route::get('/verify-notification', [AuthController::class, 'verifyNotification'])->name('verifyNotification');
+
+Route::post('/verify-resend', [AuthController::class, 'verifyResend'])->name('verifyResend');
+
+Route::get('/forget-password', [AuthController::class, 'forgetPassword'])->name('forgetPassword');
+Route::post('/forget-password-process', [AuthController::class, 'forgetPasswordProcess'])->name('forgetPasswordProcess');
+Route::get('/reset-password/{token}', [AuthController::class, 'resetPassword'])->name('resetPassword');
+Route::post('/reset-password-process', [AuthController::class, 'resetPasswordProcess'])->name('resetPasswordProcess');
+Route::get('/reset-verify-notification', [AuthController::class, 'resetVerifyNotification'])->name('resetVerifyNotification');
+
+Route::post('/login-process', [AuthController::class, 'loginProcess'])->name('loginProcess');
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+
+
 Route::middleware(['auth','admin'])->prefix('admin')->group(function(){
     Route::post('logged_in', [LoginController::class, 'authenticate']);
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
     Route::get('/visitor_info', [DashboardController::class, 'VisitorInfo'])->name('VisitorInfo');
 
-    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-    Route::get('/laraDashboard', [AuthController::class, 'laraDashboard'])->name('laraDashboard');
+    // Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+    // Route::get('/laraDashboard', [AuthController::class, 'laraDashboard'])->name('laraDashboard');
 
     Route::get('/get-upazila', [GlobalController::class, 'upazila'])->name('get.upazila');
     Route::get('/get-animal-info', [GlobalController::class, 'getAnimalInfo'])->name('get.getAnimalInfo');
