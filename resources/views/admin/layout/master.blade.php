@@ -75,38 +75,6 @@
         {{-- End Navigation --}}
 
         @yield('content')
-
-		<!-- Custom template | don't include it in your project! -->
-		<div class="custom-template">
-			{{-- <div class="title">Settings</div>
-			<div class="custom-content">
-				<div class="switcher">
-					<div class="switch-block">
-						<h4>Topbar</h4>
-						<div class="btnSwitch">
-							<button type="button" class="changeMainHeaderColor" data-color="blue"></button>
-							<button type="button" class="selected changeMainHeaderColor" data-color="purple"></button>
-							<button type="button" class="changeMainHeaderColor" data-color="light-blue"></button>
-							<button type="button" class="changeMainHeaderColor" data-color="green"></button>
-							<button type="button" class="changeMainHeaderColor" data-color="orange"></button>
-							<button type="button" class="changeMainHeaderColor" data-color="red"></button>
-						</div>
-					</div>
-					<div class="switch-block">
-						<h4>Background</h4>
-						<div class="btnSwitch">
-							<button type="button" class="changeBackgroundColor" data-color="bg2"></button>
-							<button type="button" class="changeBackgroundColor selected" data-color="bg1"></button>
-							<button type="button" class="changeBackgroundColor" data-color="bg3"></button>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="custom-toggle">
-				<i class="flaticon-settings"></i>
-			</div>
-		</div> --}}
-		<!-- End Custom template -->
 	</div>
 </div>
 
@@ -137,32 +105,12 @@
 <!-- Datatables -->
 <script src="{{ asset('backend/js/plugin/datatables/datatables.min.js') }}"></script>
 
-<!-- Bootstrap Notify -->
-{{-- <script src="{{ asset('backend/js/plugin/bootstrap-notify/bootstrap-notify.min.js') }}"></script> --}}
-
-<!-- Bootstrap Toggle -->
-{{-- <script src="{{ asset('backend/js/plugin/bootstrap-toggle/bootstrap-toggle.min.js') }}"></script> --}}
-
-<!-- jQuery Vector Maps -->
-{{-- <script src="{{ asset('backend/js/plugin/jqvmap/jquery.vmap.min.js') }}"></script>
-<script src="{{ asset('backend/js/plugin/jqvmap/maps/jquery.vmap.world.js') }}"></script> --}}
-
-<!-- Google Maps Plugin -->
-{{-- <script src="{{ asset('backend/js/plugin/gmaps/gmaps.js') }}"></script> --}}
 
 <!-- Azzara JS -->
 <script src="{{ asset('backend/js/ready.min.js') }}"></script>
 
 
 <script src="{{ asset('backend/datepicker/js/bootstrap-datepicker.min.js') }}"></script>
-
-{{-- <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script> --}}
-
-
-{{-- Presscription Medicine Search --}}
-{{-- <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script> --}}
-{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script> --}}
-
 
 @include('sweetalert::alert')
 

@@ -55,8 +55,8 @@
                             <input type="password" value="12345678" name="password" required autocomplete="current-password" class="form-control" placeholder="Password">
                         </div>
                     </div>
-                    <div class="text-right m-2">
-                        <a href="{{ route('forgetPassword') }}">Forget Password ?</a>
+                    <div style="float:right" class="mb-2">
+                        <a style="text-decoration: none" href="{{ route('forgetPassword') }}">Forget Password?</a>
                     </div>
 
                     {{-- <div class="col-auto">

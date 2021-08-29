@@ -6,7 +6,7 @@
     <!--Meta Tags-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--Meta Description Start-->
-    <meta name="keywords" content="Oasis It Professional Training Center, Oasis-It, oasis, It Training Center, Training Center, It">
+    <meta name="keywords" content="">
     <meta name="description" content="">
     <!--Meta Decription End-->
 
@@ -19,6 +19,7 @@
     <!-- Stylesheet-->
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     {{-- <link rel="stylesheet" href="{{ asset('frontend/vendor/bootstrap/css/bootstrap.min.css') }}"> --}}
     {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous"> --}}
     <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}">
@@ -126,7 +127,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <p class="copy">BLRI &copy; {{date('Y')}} All Rights Reserved &nbsp;&nbsp;||&nbsp;&nbsp; Powered  by <a href="https://www.lsccom.com/">LS COMMUNICATIONS</a><span></span></p>
+                            <p class="copy">BLRI &copy; {{date('Y')}} All Rights Reserved &nbsp;&nbsp;&nbsp;||&nbsp;&nbsp;&nbsp; Powered  by <a href="https://www.lsccom.com/">LS COMMUNICATIONS</a><span></span></p>
                         </div>
                     </div>
                 </div>

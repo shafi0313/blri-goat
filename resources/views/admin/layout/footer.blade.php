@@ -1,33 +1,14 @@
 <footer class="footer">
     <div class="container-fluid">
-        <div class="copyright m-auto">
-            BLRI © 2021 All Rights Reserved Powered <i class="fa fa-heart heart text-danger"></i> by <a href="#">LS COMMUNICATIONS</a>
-        </div>
-    </div>
-</footer>
-{{-- <footer class="footer">
-    <div class="container-fluid">
         <nav class="pull-left">
             <ul class="nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="https://www.themekita.com">
-                        ThemeKita
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        Help
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        Licenses
-                    </a>
+                    BLRI &copy; {{date('Y')}} All Rights Reserved
                 </li>
             </ul>
         </nav>
         <div class="copyright ml-auto">
-            2018, made with <i class="fa fa-heart heart text-danger"></i> by <a href="https://www.themekita.com">ThemeKita</a>
+            Powered <i class="fa fa-heart heart text-danger"></i> by <a href="#">LS COMMUNICATIONS</a>
         </div>
     </div>
-</footer> --}}
+</footer>

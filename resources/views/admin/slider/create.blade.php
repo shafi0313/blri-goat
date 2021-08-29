@@ -53,7 +53,7 @@
                                         <input id="link_name" name="link_name" type="text" class="form-control" value="{{old('link_name')}}" placeholder="Click">
                                     </div>
                                     <div class="form-group col-md-4">
-                                        <label for="image" class="placeholder">Image <span class="t_r">* Widht:1200px  Height:450px</span></label>
+                                        <label for="image" class="placeholder">Image <span class="t_r">* Weight:840px  Height:500px</span></label>
                                         <input id="image" name="image" type="file" class="form-control"required>
                                     </div>
                                 </div>
