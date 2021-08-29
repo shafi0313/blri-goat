@@ -8,7 +8,7 @@
     <!--Meta Description Start-->
     <meta name="keywords" content="">
     <meta name="description" content="">
-    <!--Meta Decription End-->
+    <!--Meta Description End-->
 
     <!-- CSRF Token -->
     {{-- <meta name="csrf-token" content="{{ csrf_token() }}"> --}}
@@ -39,85 +39,6 @@
             <!-- Footer Start -->
             <section class="footer">
                 <div class="container">
-                    {{-- <div class="row justify-content-center">
-                        <div class="col-md-3">
-                            <div class="footer_image wow slideInLeft" data-wow-duration="2s" data-wow-delay="">
-                                <img src="{{ asset('files/images/icon/f_logo.png') }}" alt="">
-                            </div>
-                            <div class="social">
-                                <a href="#" target="_blank"><i
-                                        class="fab fa-facebook-f"></i></a>
-                                <a href="#" target="_blank"><i
-                                        class="fab fa-youtube"></i></a>
-                                <a href="#" target="_blank"><i
-                                        class="fab fa-linkedin-in"></i></a>
-                                <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <h4 class="footer_title">Contact Us</h4>
-                            <div class="row">
-                                <div class="col-lg-2 col-md-2 footer_icon">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                </div>
-                                <div class="col-lg-10 col-md-10 address">
-                                    12 kawranbazar, BDBL Bhaban,6th floor,Dhaka-1215,Bangladesh
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-lg-2 col-md-2 footer_icon_2">
-                                    <i class="fas fa-phone-alt"></i>
-                                </div>
-                                <div class="col-lg-9 col-md-9 footer_icon_text">
-                                    <a href="tel:01735833470">01735833470</a><br>
-                                    <a href="tel:01723038913">01723038913</a>
-                                </div>
-                            </div>
-
-                            <div class="row">
-
-                                <div class="col-lg-2 col-md-2 footer_icon_2">
-                                    <i class="fas fa-envelope"></i>
-                                </div>
-                                <div class="col-lg-10 col-md-10 footer_icon_text">
-                                    <a href="mailto:contact@lg-communityservices.com" class="link_">contact@nexim.com</a><br>
-                                    <a href="mailto:info@lg-communityservices.com">info@nexim.com</a>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-lg-2 col-md-2 footer_icon_3">
-                                    <i class="fas fa-globe-americas"></i>
-                                </div>
-                                <div class="col-lg-10 col-md-10">
-                                    <p><a href="#">www.nexim.com</a></p>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="col-md-3">
-                            <h4 class="footer_title">Our Services</h4>
-                            <ul class="footer_link">
-                                <li><a href="#">Web Dsign & Development</a></li>
-                                <li><a href="#">UI/UX Design</a></li>
-                                <li><a href="#">Graphic Design</a></li>
-                                <li><a href="#">SEO</a></li>
-                                <li><a href="#">WordPress</a></li>
-                                <li><a href="#">Content Writing</a></li>
-                            </ul>
-                        </div>
-
-                        <div class="col-md-2">
-                            <h4 class="footer_title">Quick Links</h4>
-                            <ul class="footer_link">
-                                <li><a href="">Services</a></li>
-                                <li><a href="{{ url('about') }}">About Us</a></li>
-                                <li><a href="{{ route('allProducts')}}">privacy &amp; policy</a></li>
-                                <li><a href="">Contact Us</a></li>
-                            </ul>
-                        </div>
-                    </div> --}}
                 </div>
             </section>
             <!-- Footer End -->
