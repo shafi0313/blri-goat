@@ -28,47 +28,41 @@
                             <div class="table-responsive">
                                 <table id="multi-filter-select" class="display table table-striped table-hover" >
                                     <thead class="bg-secondary thw">
-                                        <tr>
+                                        <tr class="text-center">
                                             <th style="width: 35px">SL</th>
-                                            <th>Sire</th>
-                                            <th>Dam</th>
-                                            <th>Breed</th>
                                             <th>Animal Tag</th>
+                                            <th>Breed</th>
                                             <th>Coat color</th>
                                             <th>Sex</th>
                                             <th>Birth Wt. (kg)</th>
                                             <th>Litter Size</th>
                                             <th>Generation</th>
                                             <th>Paity</th>
+                                            <th>Sire</th>
+                                            <th>Dam</th>
                                             <th>Dam Milk</th>
                                             <th>Date of Birth</th>
                                             <th>Season of Birth</th>
                                             <th>Death Date</th>
                                             <th>Remark</th>
-                                            <th class="no-sort" style="text-align:center;width:80px" >Action</th>
+                                            <th class="no-sort" style="text-align:center;width:40px" >Action</th>
                                         </tr>
                                     </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th></th>
-                                            <th></th>
-                                        </tr>
-                                    </tfoot>
                                     <tbody>
                                         @php $x=1; @endphp
                                         @foreach ($animalInfos as $animalInfo)
-                                        <tr>
-                                            <td class="text-center">{{ $x++ }} </td>
-                                            <td>{{ $animalInfo->sire }} </td>
-                                            <td>{{ $animalInfo->dam }} </td>
-                                            <td>{{ $animalInfo->breed }} </td>
+                                        <tr class="text-center">
+                                            <td>{{ $x++ }} </td>
                                             <td>{{ $animalInfo->animal_tag }} </td>
+                                            <td>{{ $animalInfo->breed }} </td>
                                             <td>{{ $animalInfo->color }} </td>
                                             <td>{{ $animalInfo->sex }} </td>
                                             <td>{{ $animalInfo->birth_wt }} </td>
                                             <td>{{ $animalInfo->litter_size }} </td>
                                             <td>{{ $animalInfo->generation }} </td>
                                             <td>{{ $animalInfo->paity }} </td>
+                                            <td>{{ $animalInfo->sire }} </td>
+                                            <td>{{ $animalInfo->dam }} </td>
                                             <td>{{ $animalInfo->dam_milk }} </td>
                                             <td>{{ $animalInfo->d_o_b }} </td>
                                             <td>{{ $animalInfo->season_o_birth }} </td>

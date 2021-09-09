@@ -50,7 +50,7 @@
 									</div>
 
                                     <div class="form-group col-md-3" id="farmSelect" style="display: none">
-                                        <label for="farm_id">Farm <span class="t_r">*</span></label>
+                                        <label for="farm_id">Research Farm <span class="t_r">*</span></label>
                                         <select name="farm_id" class="form-control @error('name') is-invalid @enderror" id="farm_id">
                                             <option value="">Select</option>
                                             @foreach ($farms as $farm)
@@ -63,7 +63,7 @@
                                     </div>
 
                                     <div class="form-group col-md-3 community" style="display: none">
-                                        <label for="community_id">Community Name <span class="t_r">*</span></label>
+                                        <label for="community_id">Community Farm <span class="t_r">*</span></label>
                                         <select name="community_cat_id" id="community_cat" class="form-control @error('name') is-invalid @enderror">
                                             <option value="">Select</option>
                                             @foreach ($communityCats as $communityCat)
@@ -131,7 +131,16 @@
                                     </div>
                                 </div>
 
+
                                 <div class="row">
+                                    <div class="form-group col-md-3">
+                                        <label for="animal_tag">Animal Tag <span class="t_r">*</span></label>
+                                        <input name="animal_tag" type="text" class="form-control @error('animal_tag') is-invalid @enderror" onInput="this.value = this.value.replace(/[a-zA-z\-*/]/g,'');" value="{{old('animal_tag')}}" required>
+                                        @error('animal_tag')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+
                                     <div class="form-group col-md-3">
                                         <label for="sex">Sex <span class="t_r">*</span></label>
                                         <select name="sex" id="sex" class="form-control @error('sex') is-invalid @enderror" required>
@@ -171,7 +180,7 @@
 
                                     <div class="form-group col-md-3">
                                         <label for="sire">Sire</label>
-                                        <input name="sire" type="text" class="form-control @error('sire') is-invalid @enderror"  value="{{old('sire')}}">
+                                        <input name="sire" type="text" class="form-control @error('sire') is-invalid @enderror" onInput="this.value = this.value.replace(/[a-zA-z\-*/]/g,'');" value="{{old('sire')}}">
                                         @error('sire')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
@@ -179,7 +188,7 @@
 
                                     <div class="form-group col-md-3">
                                         <label for="dam">Dam</label>
-                                        <input name="dam" type="text" class="form-control @error('dam') is-invalid @enderror" value="{{old('dam')}}" >
+                                        <input name="dam" type="text" class="form-control @error('dam') is-invalid @enderror" onInput="this.value = this.value.replace(/[a-zA-z\-*/]/g,'');" value="{{old('dam')}}" >
                                         @error('dam')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
@@ -194,15 +203,7 @@
                                     </div>
 
                                     <div class="form-group col-md-3">
-                                        <label for="animal_tag">Animal Tag <span class="t_r">*</span></label>
-                                        <input name="animal_tag" type="text" class="form-control @error('animal_tag') is-invalid @enderror" value="{{old('animal_tag')}}" required>
-                                        @error('animal_tag')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-
-                                    <div class="form-group col-md-3">
-                                        <label for="color">Animal Color </label>
+                                        <label for="color">Coat Color </label>
                                         <input name="color" type="text" class="form-control @error('color') is-invalid @enderror" value="{{old('color')}}">
                                         @error('color')
                                             <div class="alert alert-danger">{{ $message }}</div>
@@ -211,7 +212,7 @@
 
                                     <div class="form-group col-md-3">
                                         <label for="birth_wt">Birth Weight (Kg) <span class="t_r">*</span></label>
-                                        <input name="birth_wt" type="text" class="form-control @error('birth_wt') is-invalid @enderror" value="{{old('birth_wt')}}" required>
+                                        <input name="birth_wt" type="text" class="form-control @error('birth_wt') is-invalid @enderror" onInput="this.value = this.value.replace(/[a-zA-z\-*/]/g,'');" value="{{old('birth_wt')}}" required>
                                         @error('birth_wt')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
@@ -219,7 +220,14 @@
 
                                     <div class="form-group col-md-3">
                                         <label for="litter_size">Litter Size <span class="t_r">*</span></label>
-                                        <input name="litter_size" type="text" class="form-control @error('litter_size') is-invalid @enderror" value="{{old('litter_size')}}" required>
+                                        {{-- <input name="litter_size" type="text" class="form-control @error('litter_size') is-invalid @enderror" value="{{old('litter_size')}}" required> --}}
+                                        <select name="litter_size" class="form-control @error('litter_size') is-invalid @enderror" required>
+                                            <option selected value disabled>Select</option>
+                                            <option value="single">Single</option>
+                                            <option value="twin">Twin</option>
+                                            <option value="triplet">Triplet</option>
+                                            <option value="quadruplet">Quadruplet</option>
+                                        </select>
                                         @error('litter_size')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
@@ -227,7 +235,14 @@
 
                                     <div class="form-group col-md-3">
                                         <label for="generation">Generation <span class="t_r">*</span></label>
-                                        <input name="generation" type="text" class="form-control @error('name') is-invalid @enderror" value="{{old('generation')}}" required>
+                                        {{-- <input name="generation" type="text" class="form-control @error('name') is-invalid @enderror" value="{{old('generation')}}" required> --}}
+                                        <select name="generation" class="form-control @error('generation') is-invalid @enderror" required>
+                                            <option selected value disabled>Select</option>
+                                            @for ($i=0; $i<=4; $i++)
+                                            <option value="{{$i}}">{{$i}}</option>
+
+                                            @endfor
+                                        </select>
                                         @error('generation')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
@@ -243,7 +258,7 @@
 
                                     <div class="form-group col-md-3">
                                         <label for="dam_milk">Dam milk production (ml) </label>
-                                        <input  name="dam_milk" type="text" class="form-control @error('dam_milk') is-invalid @enderror" value="{{old('dam_milk')}}">
+                                        <input  name="dam_milk" type="text" class="form-control @error('dam_milk') is-invalid @enderror" onInput="this.value = this.value.replace(/[a-zA-z\-*/]/g,'');" value="{{old('dam_milk')}}">
                                         @error('dam_milk')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
