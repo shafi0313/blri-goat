@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AnimalInfoStoreRequest;
 use App\Http\Requests\PrductionRecordStoreRequest;
+use Illuminate\Support\Facades\Auth;
 
 class AnimalInfoController extends Controller
 {
@@ -56,6 +57,7 @@ class AnimalInfoController extends Controller
         }
 
         $data = [
+            'user_id' => Auth::user()->id,
             'farm_id' => $request->farm_id,
             'community_cat_id' => $request->community_cat_id,
             'community_id' => $request->community_id,

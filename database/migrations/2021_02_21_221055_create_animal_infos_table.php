@@ -15,6 +15,7 @@ class CreateAnimalInfosTable extends Migration
     {
         Schema::create('animal_infos', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->cascadeOnUpdate();
             $table->foreignId('farm_id')->nullable()->constrained()->cascadeOnUpdate();
             $table->foreignId('community_cat_id')->nullable()->constrained()->cascadeOnUpdate();
             $table->foreignId('community_id')->nullable()->constrained()->cascadeOnUpdate();
