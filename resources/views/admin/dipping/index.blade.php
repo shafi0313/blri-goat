@@ -38,16 +38,6 @@
                                             <th class="no-sort" style="text-align:center;width:80px" >Action</th>
                                         </tr>
                                     </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th></th>
-                                            <th></th>
-                                            <th></th>
-                                            <th></th>
-                                            <th></th>
-                                            <th></th>
-                                        </tr>
-                                    </tfoot>
                                     <tbody>
                                         @php $x=1; @endphp
                                         @foreach ($dippings as $dipping)
