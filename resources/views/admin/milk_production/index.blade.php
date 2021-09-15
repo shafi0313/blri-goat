@@ -61,8 +61,8 @@
                                             <td>{{ $milkProduction->milk_yield }}</td>
                                             <td>
                                                 <div class="form-button-action">
-                                                    <a href="{{route('milk-production.show',$milkProduction->animal_info_id)}}" title="Edit" class="btn btn-link btn-primary btn-lg">
-                                                        show
+                                                    <a href="{{route('milk-production.show',$milkProduction->animal_info_id)}}" title="Show Details" class="btn btn-link btn-primary btn-lg">
+                                                        Show Details
                                                     </a>
                                                     {{-- <form action="{{ route('milk-production.destroy', $milkProduction->id) }}" method="POST">
                                                         @csrf

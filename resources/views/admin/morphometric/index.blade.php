@@ -31,11 +31,11 @@
                                             <th style="width: 35px">SL</th>
                                             <th>Animal Tag</th>
                                             <th>Sex</th>
-                                            <th>Birth Wt.(kg)</th>
-                                            <th>Coat color</th>
+                                            {{-- <th>Birth Wt.(kg)</th>
+                                            <th>Coat color</th> --}}
                                             <th>Age</th>
                                             <th>Body length (cm)</th>
-                                            <th>Weither height</th>
+                                            <th>Weigher height</th>
                                             <th>Horn pattern</th>
                                             <th>Horn length</th>
                                             <th>Tail length</th>
@@ -54,8 +54,8 @@
                                             <td>{{ $x++ }} </td>
                                             <td>{{ $morphometric->animalInfo->animal_tag }} </td>
                                             <td>{{ $morphometric->animalInfo->sex }} </td>
-                                            <td>{{ $morphometric->animalInfo->birth_wt }} </td>
-                                            <td>{{ $morphometric->animalInfo->color }} </td>
+                                            {{-- <td>{{ $morphometric->animalInfo->birth_wt }} </td>
+                                            <td>{{ $morphometric->animalInfo->color }} </td> --}}
                                             <td>{{ $morphometric->age }} </td>
                                             <td>{{ $morphometric->body_lenght }} </td>
                                             <td>{{ $morphometric->weither_height }} </td>

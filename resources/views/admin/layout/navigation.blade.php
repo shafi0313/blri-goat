@@ -148,7 +148,12 @@
                         <ul class="nav nav-collapse">
                             <li class="{{$sm=='animalInfo'?'active':''}}">
                                 <a href="{{ route('animal-info.index') }}">
-                                    <span class="sub-item">Animal Info.</span>
+                                    <span class="sub-item">Birth Record</span>
+                                </a>
+                            </li>
+                            <li class="{{$sm=='service'?'active':''}}">
+                                <a href="{{ route('service.index') }}">
+                                    <span class="sub-item">Service</span>
                                 </a>
                             </li>
                             <li class="{{$sm=='morphometric'?'active':''}}">
@@ -177,11 +182,7 @@
                                     <span class="sub-item">Semen Analysis</span>
                                 </a>
                             </li>
-                            <li class="{{$sm=='service'?'active':''}}">
-                                <a href="{{ route('service.index') }}">
-                                    <span class="sub-item">Service</span>
-                                </a>
-                            </li>
+
                             <li class="{{$sm=='distribution'?'active':''}}">
                                 <a href="{{ route('distribution.index') }}">
                                     <span class="sub-item">Distribution</span>

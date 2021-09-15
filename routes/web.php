@@ -117,6 +117,7 @@ Route::middleware(['auth','admin'])->prefix('admin')->group(function(){
     Route::get('/get-community', [AnimalInfoController::class, 'getCommunity'])->name('animalInfo.getCommunity');
     Route::get('/get-animal-sub-cat', [AnimalInfoController::class, 'getAnimalCat'])->name('animalInfo.getAnimalCat');
     Route::get('/animal-info-excel', [AnimalInfoController::class, 'exportIntoExcel'])->name('animalInfo.exportIntoExcel');
+    Route::get('/get-service', [AnimalInfoController::class, 'getService'])->name('getService');
 
     // Morphometric
     Route::resource('/morphometric', MorphometricController::class);
@@ -174,6 +175,8 @@ Route::middleware(['auth','admin'])->prefix('admin')->group(function(){
     Route::resource('/reproduction-record', ReproductionController::class);
 
     Route::resource('/service', ServiceController::class);
+
+
 
     Route::resource('/disease-and-health', DiseaseHealthController::class);
 

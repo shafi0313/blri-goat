@@ -20,7 +20,7 @@
                         <div class="card-header">
                             <div class="d-flex align-items-center">
                                 <h4 class="card-title">Service</h4>
-                                <a href="{{route('service.create')}}" class="btn btn-primary btn-round ml-auto text-light"><i class="fa fa-plus"></i> Add New</a>
+                                <a href="{{route('milk-production.create')}}" class="btn btn-primary btn-round ml-auto text-light"><i class="fa fa-plus"></i> Add New</a>
                             </div>
                         </div>
                         <div class="card-body">
@@ -35,28 +35,19 @@
                                             <th>Expected Date of Birth</th>
                                             <th>Natural/AI</th>
                                             <th>Repeat Heat/not</th>
-                                            <th class="no-sort" style="text-align:center;width:80px" >Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @php $x=1; @endphp
-                                        @foreach ($services->groupBy('animal_tag') as $servic)
-                                        @php $service = $servic->first() @endphp
+                                        @foreach ($services as $service)
                                         <tr class="text-center">
                                             <td>{{ $x++ }} </td>
                                             <td>{{ $service->buck_tag }} </td>
                                             <td>{{ $service->doe_tag }} </td>
-                                            {{-- <td>{{ $service->animalInfo->sex }} </td>
-                                            <td>{{ $service->animalInfo->birth_wt }} </td> --}}
                                             <td>{{ \Carbon\Carbon::parse($service->date_of_service)->format('d/m/Y') }} </td>
                                             <td>{{ \Carbon\Carbon::parse($service->expected_d_o_b)->format('d/m/Y') }} </td>
                                             <td>{{ $service->natural }} </td>
                                             <td>{{ $service->repeat_heat }} </td>
-                                            <td>
-                                                <a href="{{route('service.show', $service->doe_tag)}}" title="Show Details" class="btn btn-link btn-primary btn-lg">
-                                                    Show Details
-                                                </a>
-                                            </td>
                                         </tr>
                                         @endforeach
                                     </tbody>
@@ -68,6 +59,7 @@
             </div>
         </div>
     </div>
+    @include('admin.layout.footer')
 </div>
 
 @push('custom_scripts')

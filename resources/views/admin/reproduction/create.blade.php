@@ -51,13 +51,13 @@
                                         @enderror
                                     </div>
 
-                                    <div class="form-group col-md-3">
+                                    {{-- <div class="form-group col-md-3">
                                         <label for="">Sex <span class="t_r">*</span></label>
                                         <input type="text" class="form-control" id="sex"  value="" readonly>
-                                    </div>
+                                    </div> --}}
 
                                     <div class="form-group col-md-3">
-                                        <label for="">Goat Color <span class="t_r">*</span></label>
+                                        <label for="">Coat Color <span class="t_r">*</span></label>
                                         <input type="text" class="form-control"  id="color" value="" readonly>
                                     </div>
 
@@ -238,13 +238,13 @@
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div> --}}
-                                    <div class="form-group col-md-3">
+                                    {{-- <div class="form-group col-md-3">
                                         <label for="remarks">Date of Culling/ Death <span class="t_r">*</span></label>
                                         <input name="remarks" type="text" class="form-control @error('remarks') is-invalid @enderror" value="{{old('remarks')}}">
                                         @error('remarks')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
-                                    </div>
+                                    </div> --}}
                                 </div>
 
                                 <div align="center" class="mr-auto card-action">

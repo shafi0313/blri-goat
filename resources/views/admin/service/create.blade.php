@@ -1,6 +1,7 @@
 @extends('admin.layout.master')
 @section('title', 'Service')
 @section('content')
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 @php $p='animalRecord'; $sm="service"; @endphp
 <div class="main-panel">
     <div class="content">
@@ -37,7 +38,7 @@
                             <form action="{{ route('service.store')}}" method="post">
                                 @csrf
                                 <div class="row">
-                                    <div class="form-group col-md-3">
+                                    {{-- <div class="form-group col-md-3">
                                         <label for="name">Animal Tag <span class="t_r">*</span></label>
                                         <select name="animal_info_id" id="animalInfo" class="form-control @error('animal_info_id') is-invalid @enderror">
                                             <option value="">Select</option>
@@ -48,15 +49,35 @@
                                         @error('animal_info_id')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
+                                    </div> --}}
+
+                                    <div class="form-group col-md-3">
+                                        <label for="buck_tag">Buck Tag</label>
+                                        <select class="buck_tag form-control" id="" name="buck_tag">
+                                            <option >Select</option>
+                                            @foreach ($animalInfos->where('sex','M')->whereNotNull('sire') as $animalInf)
+                                                <option value="{{ $animalInf->sire }}">{{ $animalInf->sire }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
 
                                     <div class="form-group col-md-3">
+                                        <label for="doe_tag">Doe Tag</label>
+                                        <select class="doe_tag form-control" id="" name="doe_tag">
+                                            <option >Select</option>
+                                            @foreach ($animalInfos->where('sex','F')->whereNotNull('dam') as $animalInfo)
+                                                <option value="{{ $animalInfo->dam }}">{{ $animalInfo->dam }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
+                                    {{-- <div class="form-group col-md-3">
                                         <label for="">Sex <span class="t_r">*</span></label>
                                         <input type="text" class="form-control" id="sex"  value="" readonly>
-                                    </div>
+                                    </div> --}}
 
 
-                                    <div class="form-group col-md-3">
+                                    {{-- <div class="form-group col-md-3">
                                         <label for="name">Buck Tag</label>
                                         <input name="name" type="text" class="form-control @error('name') is-invalid @enderror" value="{{old('name')}}">
                                         @error('name')
@@ -65,12 +86,12 @@
                                     </div>
 
                                     <div class="form-group col-md-3">
-                                        <label for="name">Dou Tag</label>
+                                        <label for="name">Doe Tag</label>
                                         <input  name="name" type="text" class="form-control @error('name') is-invalid @enderror" value="{{old('name')}}">
                                         @error('name')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
-                                    </div>
+                                    </div> --}}
 
                                     <div class="form-group col-md-3">
                                         <label for="date_of_service">Date of Service</label>
@@ -95,7 +116,7 @@
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
-{{-- 
+{{--
                                     <div class="form-group col-md-3">
                                         <label for="repeat_heat">Repeat Heat/not</label>
                                         <input  name="repeat_heat" type="text" class="form-control @error('repeat_heat') is-invalid @enderror" value="{{old('repeat_heat')}}">
@@ -121,6 +142,17 @@
 
 
 @push('custom_scripts')
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.doe_tag').select2();
+        $('.buck_tag').select2();
+    });
+
+    // $(document).ready(function() {
+    //     $('.buck_tag').select2();
+    // });
+</script>
 <script>
     // var date_of_service = $("#date_of_service").val()
     $(document).ready(function () {

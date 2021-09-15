@@ -14,6 +14,7 @@
                     <li class="nav-item active">Add Animal Information</li>
                 </ul>
             </div>
+            <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
             <div class="divider1"></div>
             <div class="row">
                 <div class="col-md-12">
@@ -186,21 +187,36 @@
                                         @enderror
                                     </div>
 
-                                    <div class="form-group col-md-3">
+                                    <div class="form-group col-md-3 dam_form">
                                         <label for="dam">Dam</label>
-                                        <input name="dam" type="text" class="form-control @error('dam') is-invalid @enderror" onInput="this.value = this.value.replace(/[a-zA-z\-*/]/g,'');" value="{{old('dam')}}" >
-                                        @error('dam')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
+                                        <select class="dam_tag form-control" id="tt" name="dam">
+                                            <option>Select</option>
+                                            <option value="-1">Input</option>
+                                            @foreach ($animalInfos as $animalInfo)
+                                                <option value="{{ $animalInfo->doe_tag }}">{{ $animalInfo->doe_tag }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
 
-                                    <div class="form-group col-md-3">
+                                    <div class="form-group col-md-3 dam_input_form" style="display: none">
+                                        <label for="dam">Dam</label>
+                                        <input type="text" class="form-control" name="dam_input">
+                                        {{-- <select class="dam_tag form-control" id="tt" name="dam">
+                                            <option>Select</option>
+                                            <option value="-1">Input</option>
+                                            @foreach ($animalInfos as $animalInfo)
+                                                <option value="{{ $animalInfo->doe_tag }}">{{ $animalInfo->doe_tag }}</option>
+                                            @endforeach
+                                        </select> --}}
+                                    </div>
+
+                                    {{-- <div class="form-group col-md-3">
                                         <label for="breed">Breed </label>
                                         <input name="breed" type="text" class="form-control @error('breed') is-invalid @enderror" value="{{old('breed')}}">
                                         @error('breed')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
-                                    </div>
+                                    </div> --}}
 
                                     <div class="form-group col-md-3">
                                         <label for="color">Coat Color </label>
@@ -235,14 +251,14 @@
 
                                     <div class="form-group col-md-3">
                                         <label for="generation">Generation <span class="t_r">*</span></label>
-                                        {{-- <input name="generation" type="text" class="form-control @error('name') is-invalid @enderror" value="{{old('generation')}}" required> --}}
-                                        <select name="generation" class="form-control @error('generation') is-invalid @enderror" required>
+                                        <input name="generation" type="text" id="generation" class="form-control" required>
+                                        {{-- <select name="generation" class="form-control @error('generation') is-invalid @enderror" required>
                                             <option selected value disabled>Select</option>
                                             @for ($i=0; $i<=4; $i++)
                                             <option value="{{$i}}">{{$i}}</option>
 
                                             @endfor
-                                        </select>
+                                        </select> --}}
                                         @error('generation')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
@@ -319,11 +335,35 @@
             </div>
         </div>
     </div>
+
     @include('admin.layout.footer')
 </div>
 
 @push('custom_scripts')
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script>
+    $(document).ready(function() {
+        $('.dam_tag').select2();
+    });
+
+
+    $('#animalInfo').on('change',function(e) {
+        var animalInfoId = $(this).val();
+        $.ajax({
+            url:'{{ route("get.getAnimalInfo") }}',
+            type:"get",
+            data: {
+                animalInfoId: animalInfoId
+                },
+            success:function (res) {
+                res = $.parseJSON(res);
+                $('#sex').val(res.sex);
+                $('#color').val(res.color);
+                $('#birth_wt').val(res.birth_wt);
+                $('#type').val(res.type);
+            }
+        })
+    });
     // farm
     $('#farm').click(function(){
         $('#farmSelect').fadeIn()
@@ -362,6 +402,30 @@
                 $('#comm').html(res.com);
             }
         })
+    });
+
+    // Get service info
+    $('.dam_tag').on('change',function(e) {
+        var dam_tag = $(this).val();
+
+
+        $.ajax({
+            url:'{{ route("getService") }}',
+            type:"get",
+            data: {
+                dam_tag: dam_tag
+                },
+            success:function (res) {
+                res = $.parseJSON(res);
+                $('#d_o_b').val(res.expected_d_o_b);
+                $('#generation').val(res.generation);
+
+            }
+        })
+        if(dam_tag == -1){
+            $('.dam_form').hide()
+            $('.dam_input_form').show()
+        }
     });
 
     // Animal Cat
@@ -403,7 +467,7 @@
     });
 
     // Session of birth Calculation
-    $("#d_o_b").on('change', function(){
+    $(".dam_tag").on('change', function(){
         var sessionBirthCal;
         var sessionBirth = new Date($("#d_o_b").val()).getMonth()+1;
         if(sessionBirth==3 || sessionBirth==4 || sessionBirth==5 || sessionBirth==6){

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Excel;
 use App\Models\Farm;
+use App\Models\Service;
 use App\Models\AnimalCat;
 use App\Models\Community;
 use App\Models\AnimalInfo;
@@ -14,9 +15,9 @@ use App\Models\ProductionRecord;
 use App\Exports\AnimalInfoExport;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\AnimalInfoStoreRequest;
 use App\Http\Requests\PrductionRecordStoreRequest;
-use Illuminate\Support\Facades\Auth;
 
 class AnimalInfoController extends Controller
 {
@@ -37,7 +38,8 @@ class AnimalInfoController extends Controller
         $communityCats = CommunityCat::all();
         $goatCats = AnimalCat::where('type',1)->where('parent_id', 0)->get();
         $sheepCats = AnimalCat::where('type',2)->where('parent_id', 0)->get();
-        return view('admin.animal_info.create', compact('farms','communityCats','goatCats','sheepCats'));
+        $animalInfos = Service::all();
+        return view('admin.animal_info.create', compact('farms','communityCats','goatCats','sheepCats','animalInfos'));
     }
 
     /**
@@ -48,7 +50,6 @@ class AnimalInfoController extends Controller
      */
     public function store(Request $request)
     {
-        // return $request;
         $animal_sub_cat_id = $request->animal_sub_cat_id;
         if($animal_sub_cat_id==0){
             $animal_sub_cat_id = null;
@@ -56,7 +57,7 @@ class AnimalInfoController extends Controller
             $animal_sub_cat_id = $request->animal_sub_cat_id;
         }
 
-        $data = [
+       return $data = [
             'user_id' => Auth::user()->id,
             'farm_id' => $request->farm_id,
             'community_cat_id' => $request->community_cat_id,
@@ -66,14 +67,14 @@ class AnimalInfoController extends Controller
             'type' => $request->type,
             'm_type' => $request->m_type,
             'sire' => $request->sire,
-            'dam' => $request->dam,
+            // 'dam' => $request->dam,
             'breed' => $request->breed,
             'animal_tag' => $request->animal_tag,
             'color' => $request->color,
             'sex' => $request->sex,
             'birth_wt' => $request->birth_wt,
             'litter_size' => $request->litter_size,
-            'generation' => $request->generation,
+            // 'generation' => $request->generation,
             'paity' => $request->paity,
             'dam_milk' => $request->dam_milk,
             'd_o_b' => $request->d_o_b,
@@ -83,12 +84,22 @@ class AnimalInfoController extends Controller
             'remark' => $request->remark,
         ];
 
+        $getDam = AnimalInfo::where('dam',$request->dam)->count();
+        if($getDam > 0){
+            $data['dam'] = $request->dam;
+            $data['generation'] = $request->generation+1;
+            Service::whereDoe_tag($request->dam)->latest()->update(['is_giving_birth' => 1]);
+        }else{
+            $data['dam'] = $request->dam_input;
+            $data['generation'] = $request->generation;
+        }
+
         DB::beginTransaction();
+
         // Reproduction kidding date create or update
         if(!empty($request->dam)){
             $dbGetAnimalInfo = AnimalInfo::select(['id','dam','d_o_b'])->where('dam', $request->dam)->first();
             $dbGetReproduction = Reproduction::where('animal_info_id', $dbGetAnimalInfo->id)->first();
-            // $data = \Carbon\Carbon::parse($dbGetAnimalInfo->d_o_b)->diff( $request->d_o_b)->format('%y years %m months');
             if ($dbGetReproduction==null || $dbGetReproduction->count() < 1) {
                 $reproduction = [
                 'animal_info_id' => $dbGetAnimalInfo->id,
@@ -118,6 +129,8 @@ class AnimalInfoController extends Controller
                 Reproduction::where('id', $dbGetReproduction->id)->update($reproduction);
             }
         }
+
+
 
         try{
             AnimalInfo::create($data);
@@ -154,5 +167,17 @@ class AnimalInfoController extends Controller
             $animal .= '<option value="'.$animalCat->id.'">'.$animalCat->name.'</option>';
         }
         return json_encode(['animal'=>$animal]);
+    }
+
+    public function getService(Request $request)
+    {
+        // $animalInfoId = $request->animalInfoId;
+        $serviceInfos = Service::where('doe_tag', $request->dam_tag)->get();
+        foreach($serviceInfos as $serviceInfo){
+            $expected_d_o_b = $serviceInfo->expected_d_o_b;
+            $generation = $serviceInfo->generation;
+
+        }
+        return json_encode(['expected_d_o_b' => $expected_d_o_b, 'generation' => $generation]);
     }
 }
