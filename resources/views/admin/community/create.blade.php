@@ -57,13 +57,7 @@
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="contact_person">Contact Persone <span class="t_r">*</span></label>
-                                        <input type="text" class="form-control @error('contact_person') is-invalid @enderror" name="contact_person" value="{{old('contact_person')}}" required>
-                                        @error('contact_person')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
+                                    
                                     <div class="form-group col-md-6">
                                         <label for="phone">Phone Number <span class="t_r">*</span></label>
                                         <input type="text" maxlength="11" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{old('phone')}}" required>

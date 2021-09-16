@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Disease;
 use App\Models\AnimalInfo;
+use App\Models\ClinicalSign;
 use Illuminate\Http\Request;
 use App\Models\DiseaseTreatment;
 use App\Http\Controllers\Controller;
-use App\Models\ClinicalSign;
-use App\Models\Disease;
+use Illuminate\Support\Facades\Auth;
 
 class DiseaseTreatmentController extends Controller
 {
@@ -41,7 +42,7 @@ class DiseaseTreatmentController extends Controller
             'disease_date' => 'required|date',
             'recovered_dead' => 'required|max:155',
         ]);
-
+        $data['user_id'] = Auth::user()->id;
         try{
             DiseaseTreatment::create($data);
             toast('Success','success');

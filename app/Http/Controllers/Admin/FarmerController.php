@@ -51,6 +51,7 @@ class FarmerController extends Controller
             'profile_photo_path' => $image_name,
             'password' => bcrypt($request->input('password')),
         ];
+        
 
         DB::beginTransaction();
 

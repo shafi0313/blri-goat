@@ -6,6 +6,7 @@ use App\Models\Dipping;
 use App\Models\AnimalInfo;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class DippingController extends Controller
 {
@@ -30,7 +31,7 @@ class DippingController extends Controller
             'medicine_name'  => 'required|max:100',
             'dipping_date'  => 'required|date',
         ]);
-
+        $data['user_id'] = Auth::user()->id;
 
         try{
             Dipping::create($data);

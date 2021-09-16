@@ -7,6 +7,7 @@ use App\Models\Morphometric;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class MorphometricController extends Controller
 {
@@ -42,6 +43,7 @@ class MorphometricController extends Controller
             'head_length' => $request->head_length,
             'eye_to_eye_length' => $request->eye_to_eye_length,
         ];
+        $data['user_id'] = Auth::user()->id;
 
         DB::beginTransaction();
         try{

@@ -52,11 +52,6 @@
                                     </div>
 
                                     <div class="form-group col-md-3">
-                                        <label for="">Breed <span class="t_r">*</span></label>
-                                        <input type="text" class="form-control" id="breed"  value="" readonly>
-                                    </div>
-
-                                    <div class="form-group col-md-3">
                                         <label for="">Sex <span class="t_r">*</span></label>
                                         <input type="text" class="form-control" id="sex"  value="" readonly>
                                     </div>
@@ -65,18 +60,6 @@
                                         <label for="">Age <span class="t_r">*</span></label>
                                         <p style="color:#008CBA" id="result"></p>
                                     </div>
-
-
-
-                                    {{-- <div class="form-group col-md-3">
-                                        <label for="">Goat Color <span class="t_r">*</span></label>
-                                        <input type="text" class="form-control"  id="color" value="" readonly>
-                                    </div> --}}
-
-                                    {{-- <div class="form-group col-md-3">
-                                        <label for="">Birth Wt. (Kg) <span class="t_r">*</span></label>
-                                        <input type="text" class="form-control" id="birth_wt" readonly>
-                                    </div> --}}
 
                                     <div class="form-group col-md-3">
                                         <label for="dis_date">Distribution date <span class="t_r">*</span></label>
@@ -94,7 +77,11 @@
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label for="purpose">Purpose <span class="t_r">*</span></label>
-                                        <input name="purpose" type="text" class="form-control @error('purpose') is-invalid @enderror" value="{{old('purpose')}}" required>
+                                        <select name="purpose" type="text" class="form-control @error('purpose') is-invalid @enderror" value="{{old('purpose')}}" required>
+                                            <option>Select</option>
+                                            <option value="Purpose a farming">Purpose a farming</option>
+                                            <option value="Given to other organization">Given to other organization</option>
+                                        </select>
                                         @error('purpose')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror

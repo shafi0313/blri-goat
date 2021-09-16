@@ -7,6 +7,7 @@ use App\Models\Distribution;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class DistributionController extends Controller
 {
@@ -34,6 +35,7 @@ class DistributionController extends Controller
             'address_of_rec' => $request->address_of_rec,
             'purpose' => $request->purpose,
         ];
+        $data['user_id'] = Auth::user()->id;
 
         DB::beginTransaction();
         try{

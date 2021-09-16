@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\MilkProduction;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class MilkProductionController extends Controller
 {
@@ -43,6 +44,7 @@ class MilkProductionController extends Controller
             'lactation_length' => $request->lactation_length,
             'milk_yield' => $request->milk_yield,
         ];
+        $data['user_id'] = Auth::user()->id;
 
         DB::beginTransaction();
         try{

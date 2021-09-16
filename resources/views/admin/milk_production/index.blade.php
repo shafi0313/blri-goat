@@ -49,16 +49,13 @@
                                         <tr class="text-center">
                                             <td>{{ $x++ }} </td>
                                             <td>{{ $milkProduction->animalInfo->animal_tag }} </td>
-                                            {{-- <td>{{ $milkProduction->animalInfo->paity }} </td>
-                                            <td>{{ $milkProduction->animalInfo->litter_size }} </td> --}}
                                             <td>{{ $milkProduction->parity_number }}</td>
                                             <td>{{ $milkProduction->litter_size }}</td>
                                             <td>{{ \Carbon\Carbon::parse($milkProduction->date_of_milking)->format('d/m/Y') }} </td>
                                             <td>{{ $milkProduction->milk_production }} </td>
-                                            {{-- <td>{{ $milkProduction->average_milk_production }}</td> --}}
                                             <td>{{$milkProductions->where('animal_info_id',$milkProduction->animal_info_id)->sum('milk_production')/$milkProducti->count()}}</td>
                                             <td>{{ $milkProduction->lactation_length }}</td>
-                                            <td>{{ $milkProduction->milk_yield }}</td>
+                                            <td>{{ ($milkProductions->where('animal_info_id',$milkProduction->animal_info_id)->sum('milk_production')/$milkProducti->count()) *  $milkProduction->lactation_length }}</td>
                                             <td>
                                                 <div class="form-button-action">
                                                     <a href="{{route('milk-production.show',$milkProduction->animal_info_id)}}" title="Show Details" class="btn btn-link btn-primary btn-lg">

@@ -15,6 +15,7 @@ class CreateDippingsTable extends Migration
     {
         Schema::create('dippings', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->cascadeOnUpdate();
             $table->foreignId('animal_info_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->string('medicine_name',100);
             $table->date('dipping_date');

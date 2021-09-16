@@ -9,6 +9,7 @@ use App\Models\Reproduction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ReproductionStoreRequest;
 
 class ServiceController extends Controller
@@ -46,6 +47,7 @@ class ServiceController extends Controller
 
         $generation = AnimalInfo::where('dam', $request->doe_tag)->first()->generation;
         $data = [
+            'user_id' => Auth::user()->id,
             'buck_tag' => $request->buck_tag,
             'doe_tag' => $request->doe_tag,
             'date_of_service' => $request->date_of_service,
@@ -55,12 +57,14 @@ class ServiceController extends Controller
             'generation' => $generation,
         ];
 
+
         // $serviceForRepro = Service::where('animal_info_id', $animal_info_id)->first();
        $getReproduction = Reproduction::where('animal_info_id', $animal_info_id)->first();
     //    return $getReproduction->service_1st_date;
         // $reproduction[''] = '';
         if($getReproduction==null || $getReproduction->count() < 1 ){
             $reproduction = [
+                'user_id' => Auth::user()->id,
                 'animal_info_id' => $animal_info_id,
                 'service_1st_date' => $request->date_of_service,
             ];

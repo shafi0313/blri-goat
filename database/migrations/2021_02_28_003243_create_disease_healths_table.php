@@ -15,6 +15,7 @@ class CreateDiseaseHealthsTable extends Migration
     {
         Schema::create('disease_healths', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->cascadeOnUpdate();
             $table->foreignId('animal_info_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->enum('type',['1','2'])->comment('1=Goat,2=Sheep');
             $table->string('breed',80);

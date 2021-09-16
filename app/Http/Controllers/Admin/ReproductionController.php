@@ -7,6 +7,7 @@ use App\Models\Reproduction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ReproductionStoreRequest;
 
 class ReproductionController extends Controller
@@ -27,6 +28,7 @@ class ReproductionController extends Controller
     {
         $productionRecord = $request->validated();
         DB::beginTransaction();
+        $productionRecord['user_id'] = Auth::user()->id;
         // Reproduction::create($productionRecord);
         try{
             Reproduction::create($productionRecord);

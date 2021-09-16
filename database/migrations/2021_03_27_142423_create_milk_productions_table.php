@@ -15,6 +15,7 @@ class CreateMilkProductionsTable extends Migration
     {
         Schema::create('milk_productions', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->cascadeOnUpdate();
             $table->foreignId('animal_info_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->float('parity_number');
             $table->float('litter_size');

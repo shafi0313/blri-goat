@@ -264,13 +264,13 @@
                                         @enderror
                                     </div>
 
-                                    <div class="form-group col-md-3">
+                                    {{-- <div class="form-group col-md-3">
                                         <label for="paity">Parity </label>
                                         <input name="paity" type="text" class="form-control @error('paity') is-invalid @enderror" value="{{old('paity')}}">
                                         @error('paity')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
-                                    </div>
+                                    </div> --}}
 
                                     <div class="form-group col-md-3">
                                         <label for="dam_milk">Dam milk production (ml) </label>

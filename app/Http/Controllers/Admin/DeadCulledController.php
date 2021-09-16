@@ -6,6 +6,7 @@ use App\Models\AnimalInfo;
 use App\Models\DeadCulled;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class DeadCulledController extends Controller
 {
@@ -31,7 +32,7 @@ class DeadCulledController extends Controller
             'reason'  => 'required|max:255',
             'date_dead_culled'  => 'required|date',
         ]);
-
+        $data['user_id'] = Auth::user()->id;
 
         try{
             DeadCulled::create($data);

@@ -29,7 +29,6 @@ class CommunityController extends Controller
         $data = $this->validate($request, [
             'community_cat_id' => 'required',
             'name' => 'required|max:80',
-            'contact_person' => 'required|max:100',
             'phone' => 'required|numeric',
             'nid' => 'required|numeric',
             'address' => 'required',
@@ -59,7 +58,6 @@ class CommunityController extends Controller
         $data = $this->validate($request, [
             'community_cat_id' => 'required',
             'name' => 'required|max:80',
-            'contact_person' => 'required|max:100',
             'phone' => 'required|numeric',
             'nid' => 'required|numeric',
             'address' => 'required',

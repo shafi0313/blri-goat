@@ -17,7 +17,6 @@ class CreateCommunitiesTable extends Migration
             $table->id();
             $table->foreignId('community_cat_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->string('name',80);
-            $table->string('contact_person',100);
             $table->bigInteger('nid');
             $table->bigInteger('phone');
             $table->string('address');

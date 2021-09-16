@@ -15,6 +15,7 @@ class CreateDiseaseTreatmentsTable extends Migration
     {
         Schema::create('disease_treatments', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->cascadeOnUpdate();
             $table->foreignId('animal_info_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->unsignedBigInteger('animal_cat_id');
             $table->foreign('animal_cat_id')->references('id')->on('animal_cats')->cascadeOnUpdate();

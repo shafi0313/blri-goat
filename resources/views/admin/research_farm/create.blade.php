@@ -59,13 +59,6 @@
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="nid">NID No. <span class="t_r">*</span></label>
-                                        <input type="text" maxlength="20" class="form-control @error('nid') is-invalid @enderror" name="nid" value="{{old('nid')}}" required>
-                                        @error('nid')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
                                     <div class="form-group col-md-12">
                                         <label for="address">Research Farm Address <span class="t_r">*</span></label>
                                         <input type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{old('address')}}" required>

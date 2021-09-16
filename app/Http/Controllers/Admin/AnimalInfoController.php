@@ -57,7 +57,7 @@ class AnimalInfoController extends Controller
             $animal_sub_cat_id = $request->animal_sub_cat_id;
         }
 
-       return $data = [
+       $data = [
             'user_id' => Auth::user()->id,
             'farm_id' => $request->farm_id,
             'community_cat_id' => $request->community_cat_id,
@@ -75,7 +75,7 @@ class AnimalInfoController extends Controller
             'birth_wt' => $request->birth_wt,
             'litter_size' => $request->litter_size,
             // 'generation' => $request->generation,
-            'paity' => $request->paity,
+            // 'paity' => $request->paity,
             'dam_milk' => $request->dam_milk,
             'd_o_b' => $request->d_o_b,
             'season_o_birth' => $request->season_o_birth,
@@ -93,6 +93,12 @@ class AnimalInfoController extends Controller
             $data['dam'] = $request->dam_input;
             $data['generation'] = $request->generation;
         }
+        $paity = Service::where('is_giving_birth',1)->count();
+        $data['paity'] =  $paity + 1;
+
+        // return $data;
+
+
 
         DB::beginTransaction();
 
@@ -112,19 +118,19 @@ class AnimalInfoController extends Controller
                     $reproduction['litter_size_1st_kidding'] = $request->litter_size;
                 } elseif ($dbGetReproduction->kidding_2nd_date == null) {
                     $reproduction['kidding_2nd_date'] = $request->d_o_b;
-                    $reproduction['litter_size_2nd_kidding'] = $request->litter_size;
+                    $reproduction['kidding_2nd_liter'] = $request->litter_size;
                 } elseif ($dbGetReproduction->kidding_3rd_date == null) {
                     $reproduction['kidding_3rd_date'] = $request->d_o_b;
-                    $reproduction['litter_size_3rd_kidding'] = $request->litter_size;
+                    $reproduction['kidding_3nd_liter'] = $request->litter_size;
                 } elseif ($dbGetReproduction->kidding_4th_date == null) {
                     $reproduction['kidding_4th_date'] = $request->d_o_b;
-                    $reproduction['litter_size_4th_kidding'] = $request->litter_size;
+                    $reproduction['kidding_4nd_liter'] = $request->litter_size;
                 } elseif ($dbGetReproduction->kidding_5th_date == null) {
                     $reproduction['kidding_5th_date'] = $request->d_o_b;
-                    $reproduction['litter_size_5th_kidding'] = $request->litter_size;
+                    $reproduction['kidding_5nd_liter'] = $request->litter_size;
                 } elseif ($dbGetReproduction->kidding_6th_date == null) {
                     $reproduction['kidding_6th_date'] = $request->d_o_b;
-                    $reproduction['litter_size_6th_kidding'] = $request->litter_size;
+                    $reproduction['kidding_6nd_liter'] = $request->litter_size;
                 }
                 Reproduction::where('id', $dbGetReproduction->id)->update($reproduction);
             }

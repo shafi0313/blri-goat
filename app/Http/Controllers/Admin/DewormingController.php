@@ -6,6 +6,7 @@ use App\Models\Deworming;
 use App\Models\AnimalInfo;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class DewormingController extends Controller
 {
@@ -31,7 +32,7 @@ class DewormingController extends Controller
             'deworming_date'  => 'required|date',
             'dose'  => 'required|max:100',
         ]);
-
+        $data['user_id'] = Auth::user()->id;
 
         try{
             Deworming::create($data);

@@ -31,7 +31,6 @@
                                             <th style="width: 35px">SL</th>
                                             <th>Community Farm Name</th>
                                             <th>Farm Name</th>
-                                            <th>Contact Person</th>
                                             <th>Phone Number</th>
                                             <th>NID No.</th>
                                             <th>Address</th>
@@ -45,7 +44,6 @@
                                             <td class="text-center">{{ $x++ }} </td>
                                             <td>{{ $community->communityCat->name }} </td>
                                             <td>{{ $community->name }} </td>
-                                            <td>{{ $community->contact_person }} </td>
                                             <td>{{ $community->phone }} </td>
                                             <td>{{ $community->nid }} </td>
                                             <td>{{ $community->address }} </td>

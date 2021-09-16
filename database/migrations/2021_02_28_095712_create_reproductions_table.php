@@ -15,6 +15,7 @@ class CreateReproductionsTable extends Migration
     {
         Schema::create('reproductions', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->cascadeOnUpdate();
             $table->foreignId('animal_info_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->integer('puberty_age')->nullable();
             $table->date('service_1st_date')->nullable();
@@ -22,28 +23,28 @@ class CreateReproductionsTable extends Migration
 
             $table->float('ges_lenght_1st_kidding')->nullable();
             $table->float('age_1st_kidding')->nullable();
-            $table->float('litter_size_1st_kidding')->nullable();
+            $table->string('litter_size_1st_kidding',20)->nullable();
             $table->float('milk_production')->nullable();
 
             $table->date('service_2nd_date')->nullable();
             $table->date('kidding_2nd_date')->nullable();
-            $table->float('kidding_2nd_liter')->nullable();
+            $table->string('kidding_2nd_liter',20)->nullable();
 
             $table->date('service_3rd_date')->nullable();
             $table->date('kidding_3rd_date')->nullable();
-            $table->float('kidding_3rd_liter')->nullable();
+            $table->string('kidding_3rd_liter')->nullable();
 
             $table->date('service_4th_date')->nullable();
             $table->date('kidding_4th_date')->nullable();
-            $table->float('kidding_4th_liter')->nullable();
+            $table->string('kidding_4th_liter',20)->nullable();
 
             $table->date('service_5th_date')->nullable();
             $table->date('kidding_5th_date')->nullable();
-            $table->float('kidding_5th_liter')->nullable();
+            $table->string('kidding_5th_liter',20)->nullable();
 
             $table->date('service_6th_date')->nullable();
             $table->date('kidding_6th_date')->nullable();
-            $table->float('kidding_6th_liter')->nullable();
+            $table->string('kidding_6th_liter',20)->nullable();
             $table->string('remarks',50)->nullable();
             $table->timestamps();
         });

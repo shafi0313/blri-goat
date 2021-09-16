@@ -15,6 +15,7 @@ class CreateDeadReportsTable extends Migration
     {
         Schema::create('dead_reports', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->cascadeOnUpdate();
             $table->timestamps();
         });
     }

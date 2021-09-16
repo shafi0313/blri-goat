@@ -8,6 +8,7 @@ use App\Models\BodyWeight;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\BodyWeightStoreRequest;
 use App\Http\Requests\BodyWeightUpdateRequest;
 
@@ -32,6 +33,7 @@ class BodyWeightController extends Controller
         $birth_wt = $request->birth_wt;
         $animal_info_id = $request->animal_info_id;
         $data = [
+            'user_id' => Auth::user()->id,
             'animal_info_id' => $request->animal_info_id,
             'month_1' => $request->month_1,
             'month_2' => $request->month_2,

@@ -15,6 +15,7 @@ class CreateServicesTable extends Migration
     {
         Schema::create('services', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->cascadeOnUpdate();
             // $table->foreignId('animal_info_id')->comment('buck_tag')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             // $table->unsignedBigInteger('doe_tag')->comment('animal tag');
             // $table->foreign('doe_tag')->references('id')->on('animal_infos')->onUpdate('cascade')->onDelete('cascade');

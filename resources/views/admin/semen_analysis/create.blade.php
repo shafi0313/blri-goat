@@ -52,21 +52,6 @@
                                     </div>
 
                                     <div class="form-group col-md-3">
-                                        <label for="">Sex <span class="t_r">*</span></label>
-                                        <input type="text" class="form-control" id="sex"  value="" readonly>
-                                    </div>
-
-                                    {{-- <div class="form-group col-md-3">
-                                        <label for="">Goat Color <span class="t_r">*</span></label>
-                                        <input type="text" class="form-control"  id="color" value="" readonly>
-                                    </div> --}}
-
-                                    {{-- <div class="form-group col-md-3">
-                                        <label for="">Birth Wt. (Kg) <span class="t_r">*</span></label>
-                                        <input type="text" class="form-control" id="birth_wt" readonly>
-                                    </div> --}}
-
-                                    <div class="form-group col-md-3">
                                         <label for="coll_date">Semen collecting Date <span class="t_r">*</span></label>
                                         <input name="coll_date" type="date" class="form-control @error('coll_date') is-invalid @enderror" value="{{old('coll_date')}}" required>
                                         @error('coll_date')

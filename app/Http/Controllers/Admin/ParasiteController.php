@@ -6,6 +6,7 @@ use App\Models\Parasite;
 use App\Models\AnimalInfo;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class ParasiteController extends Controller
 {
@@ -32,6 +33,7 @@ class ParasiteController extends Controller
             'season'  => 'required|max:100',
             'parasite_name'  => 'required|max:100',
         ]);
+        $data['user_id'] = Auth::user()->id;
 
 
         try{

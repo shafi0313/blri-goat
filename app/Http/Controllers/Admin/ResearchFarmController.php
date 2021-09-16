@@ -25,7 +25,6 @@ class ResearchFarmController extends Controller
             'name' => 'required|max:80',
             'contact_person' => 'required|max:100',
             'phone' => 'required|numeric',
-            'nid' => 'required|numeric',
             'address' => 'required',
         ]);
 
@@ -51,7 +50,6 @@ class ResearchFarmController extends Controller
             'name' => 'required|max:80',
             'contact_person' => 'required|max:100',
             'phone' => 'required|numeric',
-            'nid' => 'required|numeric',
             'address' => 'required',
         ]);
 

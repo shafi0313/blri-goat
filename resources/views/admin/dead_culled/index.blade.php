@@ -31,7 +31,6 @@
                                             <th style="width: 35px">SL</th>
                                             <th>Animal Tag</th>
                                             <th>Sex</th>
-                                            <th>Breed</th>
                                             <th>Dead/Culled</th>
                                             <th>Reason</th>
                                             <th>Date of Death/Culled</th>
@@ -45,7 +44,6 @@
                                             <td>{{ $x++ }} </td>
                                             <td>{{$deadCulled->animalInfo->animal_tag }} </td>
                                             <td>{{$deadCulled->animalInfo->sex }} </td>
-                                            <td>{{$deadCulled->animalInfo->breed }} </td>
                                             <td>{{$deadCulled->dead_culled }}</td>
                                             <td>{{$deadCulled->reason }}</td>
                                             <td>{{$deadCulled->date_dead_culled }}</td>

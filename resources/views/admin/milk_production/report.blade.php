@@ -52,7 +52,7 @@
                                             <td>{{ $milkProduction->milk_production }} </td>
                                             {{-- <td>{{ $milkProduction->average_milk_production }}</td> --}}
                                             <td>{{ $milkProduction->lactation_length }}</td>
-                                            <td>{{ $milkProduction->milk_yield }}</td>
+                                            <td>{{ ($milkProductions->where('animal_info_id',$milkProduction->animal_info_id)->sum('milk_production')/$milkProducti->count()) *  $milkProduction->lactation_length }}</td>
                                         </tr>
                                         @endforeach
                                     </tbody>

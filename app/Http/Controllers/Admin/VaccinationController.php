@@ -6,6 +6,7 @@ use App\Models\AnimalInfo;
 use App\Models\Vaccination;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class VaccinationController extends Controller
 {
@@ -32,6 +33,7 @@ class VaccinationController extends Controller
             'dose' => 'nullable|max:155',
             'total_vaccinated' => 'nullable|max:155',
         ]);
+        $data['user_id'] = Auth::user()->id;
 
 
         try{

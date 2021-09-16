@@ -15,6 +15,7 @@ class CreateDistributionsTable extends Migration
     {
         Schema::create('distributions', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->cascadeOnUpdate();
             $table->foreignId('animal_info_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             // $table->string('breed')->nullable();
             // $table->string('age')->nullable();

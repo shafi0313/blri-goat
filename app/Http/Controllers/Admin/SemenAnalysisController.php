@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\SemenAnalysis;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class SemenAnalysisController extends Controller
 {
@@ -18,7 +19,7 @@ class SemenAnalysisController extends Controller
 
     public function create()
     {
-        $animalInfos = AnimalInfo::all();
+        $animalInfos = AnimalInfo::whereSex('M')->get();
         return view('admin.semen_analysis.create', compact('animalInfos'));
     }
 
@@ -35,6 +36,7 @@ class SemenAnalysisController extends Controller
             's_color' => $request->s_color,
             'number_of_straw' => $request->number_of_straw,
         ];
+        $data['user_id'] = Auth::user()->id;
 
         DB::beginTransaction();
         try{

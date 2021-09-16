@@ -57,13 +57,6 @@
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="nid">NID No. <span class="t_r">*</span></label>
-                                        <input type="text" maxlength="20" class="form-control @error('nid') is-invalid @enderror" name="nid" value="{{$farm->nid}}" required>
-                                        @error('nid')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
                                     <div class="form-group col-12">
                                         <label for="size" class="col-sm-2 control-label">Farm Address <span class="t_r">*</span></label>
                                         <div class="col-sm-12">

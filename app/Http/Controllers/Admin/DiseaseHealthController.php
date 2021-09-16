@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\DiseaseHealth;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\DiseaseHealthStoreRequest;
 
 class DiseaseHealthController extends Controller
@@ -26,6 +27,8 @@ class DiseaseHealthController extends Controller
     public function store(DiseaseHealthStoreRequest $request)
     {
         $data = $request->validated();
+        $data['user_id'] = Auth::user()->id;
+        
         DB::beginTransaction();
         try {
             DiseaseHealth::create($data);

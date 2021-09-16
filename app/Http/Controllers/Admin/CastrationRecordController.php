@@ -6,6 +6,7 @@ use App\Models\AnimalInfo;
 use Illuminate\Http\Request;
 use App\Models\CastrationRecord;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class CastrationRecordController extends Controller
 {
@@ -29,6 +30,8 @@ class CastrationRecordController extends Controller
             'animal_info_id' => 'required',
             'date'  => 'required|date',
         ]);
+
+        $data['user_id'] = Auth::user()->id;
 
 
         try{

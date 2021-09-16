@@ -32,7 +32,6 @@
                                             <th>Research Farm</th>
                                             <th>Contact Person</th>
                                             <th>Phone Number</th>
-                                            <th>NID No.</th>
                                             <th>Address</th>
                                             <th class="no-sort" style="text-align:center;width:80px" >Action</th>
                                         </tr>
@@ -45,7 +44,6 @@
                                             <td>{{ $farm->name }} </td>
                                             <td>{{ $farm->contact_person }} </td>
                                             <td>{{ $farm->phone }} </td>
-                                            <td>{{ $farm->nid }} </td>
                                             <td>{{ $farm->address }} </td>
                                             <td>
                                                 <div class="form-button-action">
