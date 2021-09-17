@@ -96,10 +96,6 @@ class AnimalInfoController extends Controller
         $paity = Service::where('is_giving_birth',1)->count();
         $data['paity'] =  $paity + 1;
 
-        // return $data;
-
-
-
         DB::beginTransaction();
 
         // Reproduction kidding date create or update
@@ -131,12 +127,16 @@ class AnimalInfoController extends Controller
                 } elseif ($dbGetReproduction->kidding_6th_date == null) {
                     $reproduction['kidding_6th_date'] = $request->d_o_b;
                     $reproduction['kidding_6nd_liter'] = $request->litter_size;
+                }elseif ($dbGetReproduction->kidding_7th_date == null) {
+                    $reproduction['kidding_7th_date'] = $request->d_o_b;
+                    $reproduction['kidding_7nd_liter'] = $request->litter_size;
+                }elseif ($dbGetReproduction->kidding_8th_date == null) {
+                    $reproduction['kidding_8th_date'] = $request->d_o_b;
+                    $reproduction['kidding_8nd_liter'] = $request->litter_size;
                 }
                 Reproduction::where('id', $dbGetReproduction->id)->update($reproduction);
             }
         }
-
-
 
         try{
             AnimalInfo::create($data);

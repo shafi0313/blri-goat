@@ -61,7 +61,7 @@
                                             <div class="row">
                                                 <div class="col-5">
                                                     <div class="icon-big text-center">
-                                                        <i class="flaticon-users"></i>
+                                                        <i class="fas fa-home"></i>
                                                     </div>
                                                 </div>
                                                 <div class="col col-stats">
@@ -124,7 +124,9 @@
                                                 <div class="col col-stats">
                                                     <div class="numbers">
                                                         <p class="card-category">Next deworming date</p>
-                                                        <h4 class="card-title"></h4>
+                                                        @isset($dewormingDate->deworming_date)
+                                                        <h4 class="card-title">{{ \Carbon\Carbon::parse($dewormingDate->deworming_date)->addMonths(3)->format('d/m/Y') }}</h4>
+                                                        @endisset
                                                     </div>
                                                 </div>
                                             </div>
@@ -143,7 +145,9 @@
                                                 <div class="col col-stats">
                                                     <div class="numbers">
                                                         <p class="card-category">Next dipping date</p>
-                                                        <h4 class="card-title"></h4>
+                                                        @isset($dippingDate->dipping_date)
+                                                        <h4 class="card-title">{{ \Carbon\Carbon::parse($dippingDate->dipping_date)->addMonths(1)->format('d/m/Y')}}</h4>
+                                                        @endisset
                                                     </div>
                                                 </div>
                                             </div>

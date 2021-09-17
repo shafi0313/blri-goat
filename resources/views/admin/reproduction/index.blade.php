@@ -54,6 +54,12 @@
                                             <th>Date at 6th service</th>
                                             <th>Date of 6th kidding</th>
                                             <th>Litter size at 6th kidding</th>
+                                            <th>Date at 7th service</th>
+                                            <th>Date of 7th kidding</th>
+                                            <th>Litter size at 7th kidding</th>
+                                            <th>Date at 8th service</th>
+                                            <th>Date of 8th kidding</th>
+                                            <th>Litter size at 8th kidding</th>
                                             <th>Remarks</th>
                                             {{-- <th class="no-sort" style="text-align:center;width:80px" >Action</th> --}}
                                         </tr>
@@ -112,6 +118,12 @@
                                             <td>{{ $reproduction->service_6th_date }}</td>
                                             <td>{{ $reproduction->kidding_6th_date }}</td>
                                             <td>{{ $reproduction->kidding_6th_liter }}</td>
+                                            <td>{{ $reproduction->service_7th_date }}</td>
+                                            <td>{{ $reproduction->kidding_7th_date }}</td>
+                                            <td>{{ $reproduction->kidding_7th_liter }}</td>
+                                            <td>{{ $reproduction->service_8th_date }}</td>
+                                            <td>{{ $reproduction->kidding_8th_date }}</td>
+                                            <td>{{ $reproduction->kidding_8th_liter }}</td>
                                             <td>{{ $reproduction->remarks }}</td>
                                             {{-- <td>
                                                 <div class="form-button-action">

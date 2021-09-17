@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Carbon\Carbon;
 use App\Models\Farm;
 use App\Models\User;
 use App\Models\Account;
+use App\Models\Dipping;
 use App\Models\Product;
 use App\Models\Community;
+use App\Models\Deworming;
 use App\Models\AnimalInfo;
 use App\Models\VisitorInfo;
 use App\Models\ProductStock;
@@ -23,7 +26,9 @@ class DashboardController extends Controller
         $communities = Community::count();
         $animalInfo = AnimalInfo::count();
         $animalDade = AnimalInfo::whereRemark('Dead')->count();
-        return view('admin.dashboard', compact('farms','communities','animalInfo','animalDade'));
+        $dewormingDate = Deworming::select(['deworming_date'])->latest()->first();
+        $dippingDate = Dipping::select(['dipping_date'])->latest()->first();
+        return view('admin.dashboard', compact('farms','communities','animalInfo','animalDade','dewormingDate','dippingDate'));
     }
 
     public function VisitorInfo()
