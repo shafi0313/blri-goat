@@ -26,24 +26,43 @@ class VaccinationController extends Controller
 
     public function store(Request $request)
     {
-        $data = $this->validate($request, [
-            'animal_info_id' => 'required',
+        $this->validate($request, [
+            // 'animal_info_id' => 'required',
             'vaccine_name' => 'required|max:155',
             'vaccine_date' => 'required|date',
-            'dose' => 'nullable|max:155',
-            'total_vaccinated' => 'nullable|max:155',
+            'dose' => 'required|max:155',
+            'total_vaccinated' => 'required|max:155',
         ]);
-        $data['user_id'] = Auth::user()->id;
 
+
+
+        $animals = AnimalInfo::whereBetween('id',[$request->to, $request->from])->get()->pluck('id');
+        foreach($animals as $key => $value){
+            $data = [
+                'animal_info_id' => $animals[$key],
+                'user_id' => Auth::user()->id,
+                'vaccine_name' => $request->vaccine_name,
+                'vaccine_date' => $request->vaccine_date,
+                'dose' => $request->dose,
+                'total_vaccinated' => $request->total_vaccinated,
+            ];
+            Vaccination::create($data);
+        }
 
         try{
-            Vaccination::create($data);
             toast('Success','success');
             return redirect()->route('vaccination.index');
         }catch(\Exception $ex){
+            return $ex->getMessage();
             toast('Failed','error');
             return redirect()->back();
         }
+    }
+
+    public function show($vaccine_date)
+    {
+        $vaccinations = Vaccination::whereVaccine_date($vaccine_date)->get();
+        return view('admin.vaccination.report', compact('vaccinations'));
     }
 
     public function destroy($id)

@@ -26,7 +26,7 @@ class AdminUserController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users,email',
             'phone' => 'required|numeric',
-            'is' => 'required',
+            // 'is' => 'required',
             'address' => 'required',
             'password' => 'required|confirmed|min:6',
         ]);
@@ -47,7 +47,7 @@ class AdminUserController extends Controller
             'age' => $request->input('age'),
             'gender' => $request->input('gender'),
             'type' => 1,
-            'is' => $request->input('is'),
+            // 'is' => $request->input('is'),
             'address' => $request->input('address'),
             'profile_photo_path' => $image_name,
             'password' => bcrypt($request->input('password')),
@@ -57,12 +57,12 @@ class AdminUserController extends Controller
 
         try {
             $user = User::create($data);
-            $permission = [
-                'role_id' => $request->input('is'),
-                'model_type' => "App\Models\User",
-                'model_id' =>  $user->id,
-            ];
-            DB::table('model_has_roles')->insert($permission);
+            // $permission = [
+            //     'role_id' => $request->input('is'),
+            //     'model_type' => "App\Models\User",
+            //     'model_id' =>  $user->id,
+            // ];
+            // DB::table('model_has_roles')->insert($permission);
             DB::commit();
             toast('User Successfully Inserted','success');
             return redirect()->route('admin-user.index');

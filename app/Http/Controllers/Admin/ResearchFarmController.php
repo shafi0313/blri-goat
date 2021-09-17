@@ -31,7 +31,7 @@ class ResearchFarmController extends Controller
         try{
             Farm::create($data);
             toast('Farm Added','success');
-            return redirect()->route('research_farm.index');
+            return redirect()->route('farm.index');
         }catch(\Exception $ex){
             toast('Farm Added Failed','error');
             return redirect()->back();
@@ -56,8 +56,9 @@ class ResearchFarmController extends Controller
         try{
             Farm::find($id)->update($data);
             toast('Farm Updated','success');
-            return redirect()->route('research_farm.index');
+            return redirect()->route('farm.index');
         }catch(\Exception $ex){
+            // return $ex->getMessage();
             toast('Farm Update Failed','error');
             return redirect()->back();
         }

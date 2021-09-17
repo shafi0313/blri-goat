@@ -34,12 +34,6 @@
                                             <th class="no-sort" style="text-align:center;width:200px" >Action</th>
                                         </tr>
                                     </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th></th>
-                                            <th></th>
-                                        </tr>
-                                    </tfoot>
                                     <tbody>
                                         @php $x=1; @endphp
                                         @foreach ($animalCats as $animalCat)
@@ -58,7 +52,7 @@
                                             <td>
                                                 <div class="form-button-action">
 
-                                                    <span class="btn btn-link btn-success btn-lg addSub" data-toggle="modal" data-target="#add-sub" data-id="{{$animalCat->id}}"><i class="fas fa-plus"></i></span>
+                                                    <span class="btn btn-link btn-success btn-lg addSub" data-toggle="modal" data-target="#add-sub" data-id="{{$animalCat->id}}" data-type="{{$animalCat->type}}"><i class="fas fa-plus"></i></span>
                                                     <a href="{{ route('animal-cat.edit', $animalCat->id) }}" title="Edit" class="btn btn-link btn-primary btn-lg">
                                                         <i class="fa fa-edit"></i>
                                                     </a>
@@ -98,8 +92,6 @@
                                                     </form>
                                                 </div>
                                             </td>
-                                            {{-- <td></td> --}}
-                                            {{-- <td></td> --}}
                                         </tr>
                                         @endforeach
                                         @endif
@@ -167,6 +159,8 @@
     <div class="modal-dialog modal-lg" role="document">
         <form action="{{ route('animalCat.SubCatStore')}}" method="post">
             @csrf
+            <input type="hidden" id="addType" name="type">
+            <input type="hidden" id="addId" name="parent_id">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="add-subLabel" style="color:red;">Add New Sub Category</h5>
@@ -176,26 +170,6 @@
                 </div>
                 <div class="modal-body">
                     <div class="row">
-                        <div class="form-check col-md-12">
-                            <label>Animal Type <span class="t_r">*</span></label><br>
-                            <label class="form-radio-label mr-5 type">
-                                <input class="form-radio-input" type="radio" name="type" value="1" required>
-                                <span class="form-radio-sign">Goat</span>
-                            </label>
-                            <label class="form-radio-label ml-3 type">
-                                <input class="form-radio-input " type="radio" name="type" value="2" required>
-                                <span class="form-radio-sign">Sheep</span>
-                            </label>
-                        </div>
-
-                        <div class="form-group col-md-6">
-                            <label for="name">Animal Category <span class="t_r">*</span></label>
-                            <select name="parent_id" id="cat" class="form-control"></select>
-                            @error('name')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                            @enderror
-                        </div>
-
                         <div class="form-group col-md-6">
                             <label for="name">Animal Name <span class="t_r">*</span></label>
                             <input name="name" type="text" class="form-control">
@@ -364,7 +338,8 @@
         $('#DataTable').DataTable();
     });
     $(".addSub").on('click', function(){
-        $('#categoryName').val($(this).data('id'));
+        $('#addId').val($(this).data('id'));
+        $('#addType').val($(this).data('type'));
     });
     $(".edit").on('click', function(){
         $('#editForm').attr('action',$(this).data('url'));

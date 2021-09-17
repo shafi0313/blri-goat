@@ -49,10 +49,10 @@
                                             <td>{{ $communityCat->address }} </td>
                                             <td>
                                                 <div class="form-button-action">
-                                                    <a href="{{ route('farm.edit', $communityCat->id) }}" title="Edit" class="btn btn-link btn-primary btn-lg">
+                                                    <a href="{{ route('community-cat.edit', $communityCat->id) }}" title="Edit" class="btn btn-link btn-primary btn-lg">
                                                         <i class="fa fa-edit"></i>
                                                     </a>
-                                                    <form action="{{ route('farm.destroy', $communityCat->id) }}" method="POST">
+                                                    <form action="{{ route('community-cat.destroy', $communityCat->id) }}" method="POST">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" title="Delete" class="btn btn-link btn-danger" data-original-title="Remove" onclick="return confirm('Are you sure?')">

@@ -71,11 +71,32 @@
                         <button type="submit" class="btn btn-primary btn-block mb-2" style="width: 100%;">Sign In</button>
                     </div>
                     <h6 style="border-bottom: 1px solid gray">Planing and Designing</h6>
-                    <div class="col-md-12">
-                        <div style="width: 70px; height:50px; display: inline-block">
-                            <img src="{{asset('files/images/user/head.jpg')}}" class="card-img-top" alt="...">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <div style="width: 70px; height:70px; display: inline-block">
+                                <img src="{{asset('files/images/user/head.jpg')}}" class="card-img-top">
+                            </div>
                         </div>
-                        <div style="display: inline-block">Dr. Sadek Ahmed</div>
+                        <div class="col-md-10 pl-5">
+                            <div style="display: inline-block; ">
+                                <span>Dr. Sadek Ahmed</span><br>
+                                <span style="font-size: 14px">Black bengal goat conservation & development project, BLRI, Savar, Dhaka</span>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <div style="width: 70px; height:70px; display: inline-block">
+                                <img src="{{asset('files/images/user/head.jp')}}" class="card-img-top">
+                            </div>
+                        </div>
+                        <div class="col-md-10 pl-5">
+                            <div style="display: inline-block; ">
+                                <span>Nure Hasina Desha</span><br>
+                                <span style="font-size: 14px">Goat $ sheep production research division, BLRI, Savar, Dhaka</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </form>

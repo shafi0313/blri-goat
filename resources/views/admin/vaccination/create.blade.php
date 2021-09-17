@@ -39,8 +39,8 @@
                                 <input type="hidden" name="type" id="type">
                                 <div class="row">
                                     <div class="form-group col-md-3">
-                                        <label for="name">Animal Tag <span class="t_r">*</span></label>
-                                        <select name="animal_info_id" id="animalInfo" class="form-control @error('animal_info_id') is-invalid @enderror">
+                                        <label for="name">Animal Tag From <span class="t_r">*</span></label>
+                                        <select name="to" id="" class="form-control @error('animal_info_id') is-invalid @enderror">
                                             <option value="">Select</option>
                                             @foreach ($animalInfos as $animalInfo)
                                             <option value="{{$animalInfo->id}}">{{$animalInfo->animal_tag}}</option>
@@ -52,6 +52,19 @@
                                     </div>
 
                                     <div class="form-group col-md-3">
+                                        <label for="name">Animal Tag To <span class="t_r">*</span></label>
+                                        <select name="from" id="" class="form-control @error('animal_info_id') is-invalid @enderror">
+                                            <option value="">Select</option>
+                                            @foreach ($animalInfos as $animalInfo)
+                                            <option value="{{$animalInfo->id}}">{{$animalInfo->animal_tag}}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('animal_info_id')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+
+                                    {{-- <div class="form-group col-md-3">
                                         <label for="">Breed <span class="t_r">*</span></label>
                                         <input type="text" class="form-control" id="breed"  value="" readonly>
                                     </div>
@@ -64,7 +77,7 @@
                                     <div class="form-group col-md-3">
                                         <label for="">Age <span class="t_r">*</span></label>
                                         <p style="color:#008CBA" id="result"></p>
-                                    </div>
+                                    </div> --}}
 
                                     <div class="form-group col-md-3">
                                         <label for="vaccine_name">Name of Vaccine <span class="t_r">*</span></label>
@@ -75,7 +88,7 @@
                                     </div>
 
                                     <div class="form-group col-md-3">
-                                        <label for="vaccine_date">Date of Vaccination</label>
+                                        <label for="vaccine_date">Date of Vaccination <span class="t_r">*</span></label>
                                         <input type="date" class="form-control @error('vaccine_date') is-invalid @enderror" name="vaccine_date" value="{{old('vaccine_date')}}">
                                         @error('vaccine_date')
                                             <div class="alert alert-danger">{{ $message }}</div>
@@ -83,7 +96,7 @@
                                     </div>
 
                                     <div class="form-group col-md-3">
-                                        <label for="dose">Dose</label>
+                                        <label for="dose">Dose <span class="t_r">*</span></label>
                                         <input type="text" class="form-control @error('dose') is-invalid @enderror" name="dose" value="{{old('dose')}}">
                                         @error('dose')
                                             <div class="alert alert-danger">{{ $message }}</div>
@@ -91,7 +104,7 @@
                                     </div>
 
                                     <div class="form-group col-md-3">
-                                        <label for="total_vaccinated">Total animal vaccinated</label>
+                                        <label for="total_vaccinated">Total animal vaccinated <span class="t_r">*</span></label>
                                         <input type="text" class="form-control @error('total_vaccinated') is-invalid @enderror" name="total_vaccinated" value="{{old('total_vaccinated')}}">
                                         @error('total_vaccinated')
                                             <div class="alert alert-danger">{{ $message }}</div>

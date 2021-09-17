@@ -29,9 +29,6 @@
                                     <thead class="bg-secondary thw">
                                         <tr class="text-center">
                                             <th style="width: 35px">SL</th>
-                                            <th>Animal Tag</th>
-                                            <th>Sex</th>
-                                            <th>Breed</th>
                                             <th>Name of Medicine</th>
                                             <th>Date of Deworming</th>
                                             <th>Dose</th>
@@ -40,27 +37,28 @@
                                     </thead>
                                     <tbody>
                                         @php $x=1; @endphp
-                                        @foreach ($dewormings as $deworming)
+                                        @foreach ($dewormings->groupBy('deworming_date') as $dewormin)
+                                        @php $deworming =  $dewormin->first() @endphp
                                         <tr class="text-center">
                                             <td>{{ $x++ }} </td>
-                                            <td>{{ $deworming->animalInfo->animal_tag }} </td>
+                                            {{-- <td>{{ $deworming->animalInfo->animal_tag }} </td>
                                             <td>{{ $deworming->animalInfo->sex }} </td>
-                                            <td>{{ $deworming->animalInfo->breed }} </td>
+                                            <td>{{ $deworming->animalInfo->breed }} </td> --}}
                                             <td>{{ $deworming->medicine_name }}</td>
                                             <td>{{ $deworming->deworming_date }}</td>
                                             <td>{{ $deworming->dose }}</td>
                                             <td>
                                                 <div class="form-button-action">
-                                                    {{-- <a href="{{route('disease-and-treatment.edit',$diseaseTreatment->id)}}" title="Edit" class="btn btn-link btn-primary btn-lg">
-                                                        <i class="fa fa-edit"></i>
-                                                    </a> --}}
-                                                    <form action="{{ route('deworming.destroy', $deworming->id) }}" method="POST">
+                                                    <a href="{{route('deworming.show',$deworming->deworming_date)}}" title="Show Details">
+                                                        Show Details
+                                                    </a>
+                                                    {{-- <form action="{{ route('deworming.destroy', $deworming->id) }}" method="POST">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" title="Delete" class="btn btn-link btn-danger" onclick="return confirm('Are you sure?')">
                                                             <i class="fa fa-times"></i>
                                                         </button>
-                                                    </form>
+                                                    </form> --}}
                                                 </div>
                                             </td>
                                         </tr>

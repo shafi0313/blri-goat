@@ -37,18 +37,18 @@
                             <form action="{{ route('admin-user.store')}}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
-                                    <div class="form-group col-sm-6">
+                                    {{-- <div class="form-group col-sm-6">
                                         <label for="business_name">Permission <span class="t_r">*</span></label>
                                         <select name="is" id="" class="form-control @error('is') is-invalid @enderror">
                                             <option selected value disabled>Select</option>
                                             <option value="1">Admin</option>
-                                            {{-- <option value="2">Editor</option>
-                                            <option value="3">Viewer</option> --}}
+                                            <option value="2">Editor</option>
+                                            <option value="3">Viewer</option>
                                         </select>
                                         @error('is_')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
-                                    </div>
+                                    </div> --}}
 
                                     <div class="form-group col-sm-6">
                                         <label for="name">Name <span class="t_r">*</span></label>

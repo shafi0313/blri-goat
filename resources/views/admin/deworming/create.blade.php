@@ -38,7 +38,7 @@
                                 @csrf
                                 <input type="hidden" name="type" id="type">
                                 <div class="row">
-                                    <div class="form-group col-md-3">
+                                    {{-- <div class="form-group col-md-3">
                                         <label for="name">Animal Tag <span class="t_r">*</span></label>
                                         <select name="animal_info_id" id="animalInfo" class="form-control @error('animal_info_id') is-invalid @enderror">
                                             <option value="">Select</option>
@@ -49,9 +49,9 @@
                                         @error('animal_info_id')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
-                                    </div>
+                                    </div> --}}
 
-                                    <div class="form-group col-md-3">
+                                    {{-- <div class="form-group col-md-3">
                                         <label for="">Breed <span class="t_r">*</span></label>
                                         <input type="text" class="form-control" id="breed"  value="" readonly>
                                     </div>
@@ -64,6 +64,31 @@
                                     <div class="form-group col-md-3">
                                         <label for="">Age <span class="t_r">*</span></label>
                                         <p style="color:#008CBA" id="result"></p>
+                                    </div> --}}
+                                    <div class="form-group col-md-3">
+                                        <label for="name">Animal Tag From <span class="t_r">*</span></label>
+                                        <select name="to" id="" class="form-control @error('animal_info_id') is-invalid @enderror">
+                                            <option value="">Select</option>
+                                            @foreach ($animalInfos as $animalInfo)
+                                            <option value="{{$animalInfo->id}}">{{$animalInfo->animal_tag}}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('animal_info_id')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+
+                                    <div class="form-group col-md-3">
+                                        <label for="name">Animal Tag To<span class="t_r">*</span></label>
+                                        <select name="from" id="" class="form-control @error('animal_info_id') is-invalid @enderror">
+                                            <option value="">Select</option>
+                                            @foreach ($animalInfos as $animalInfo)
+                                            <option value="{{$animalInfo->id}}">{{$animalInfo->animal_tag}}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('animal_info_id')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
 
                                     <div class="form-group col-md-3">

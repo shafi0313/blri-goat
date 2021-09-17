@@ -29,40 +29,39 @@
                                     <thead class="bg-secondary thw">
                                         <tr class="text-center">
                                             <th style="width: 35px">SL</th>
-                                            {{-- <th>Animal Tag</th>
+                                            <th>Animal Tag</th>
                                             <th>Sex</th>
-                                            <th>Breed</th> --}}
+                                            {{-- <th>Breed</th> --}}
                                             <th>Name of Medicine</th>
                                             <th>Date of Dipping</th>
                                             {{-- <th>Dose</th> --}}
-                                            <th class="no-sort" style="text-align:center;width:80px" >Action</th>
+                                            {{-- <th class="no-sort" style="text-align:center;width:80px" >Action</th> --}}
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @php $x=1; @endphp
-                                        @foreach ($dippings->groupBy('dipping_date') as $dippin)
-                                        @php $dipping =  $dippin->first() @endphp
+                                        @foreach ($dippings as $dipping)
                                         <tr class="text-center">
                                             <td>{{ $x++ }} </td>
-                                            {{-- <td>{{ $dipping->animalInfo->animal_tag }} </td>
+                                            <td>{{ $dipping->animalInfo->animal_tag }} </td>
                                             <td>{{ $dipping->animalInfo->sex }} </td>
-                                            <td>{{ $dipping->animalInfo->breed }} </td> --}}
+                                            {{-- <td>{{ $dipping->animalInfo->breed }} </td> --}}
                                             <td>{{ $dipping->medicine_name }}</td>
                                             <td>{{ $dipping->dipping_date }}</td>
-                                            <td>
+                                            {{-- <td>
                                                 <div class="form-button-action">
-                                                    <a href="{{route('dipping.show',$dipping->dipping_date)}}" title="Show Details">
-                                                        Show Details
+                                                    <a href="{{route('disease-and-treatment.edit',$diseaseTreatment->id)}}" title="Edit" class="btn btn-link btn-primary btn-lg">
+                                                        <i class="fa fa-edit"></i>
                                                     </a>
-                                                    {{-- <form action="{{ route('dipping.destroy', $dipping->id) }}" method="POST">
+                                                    <form action="{{ route('dipping.destroy', $dipping->id) }}" method="POST">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" title="Delete" class="btn btn-link btn-danger" onclick="return confirm('Are you sure?')">
                                                             <i class="fa fa-times"></i>
                                                         </button>
-                                                    </form> --}}
+                                                    </form>
                                                 </div>
-                                            </td>
+                                            </td> --}}
                                         </tr>
                                         @endforeach
                                     </tbody>

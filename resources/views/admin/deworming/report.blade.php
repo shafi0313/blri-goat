@@ -1,7 +1,7 @@
 @extends('admin.layout.master')
-@section('title', 'Dipping')
+@section('title', 'Deworming')
 @section('content')
-@php $p='healthM'; $sm="dipping"; @endphp
+@php $p='healthM'; $sm="deworming"; @endphp
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">
@@ -10,7 +10,7 @@
                     <li class="nav-home">
                     <a href="{{ route('admin.dashboard')}}"><i class="flaticon-home"></i></a></li>
                     <li class="separator"><i class="flaticon-right-arrow"></i></li>
-                    <li class="nav-item active">Dipping</li>
+                    <li class="nav-item active">Deworming</li>
                 </ul>
             </div>
             <div class="divider1"></div>
@@ -19,8 +19,8 @@
                     <div class="card">
                         <div class="card-header">
                             <div class="d-flex align-items-center">
-                                <h4 class="card-title">Dipping</h4>
-                                <a href="{{route('dipping.create')}}" class="btn btn-primary btn-round ml-auto text-light"><i class="fa fa-plus"></i> Add New</a>
+                                <h4 class="card-title">Deworming</h4>
+                                <a href="{{route('deworming.create')}}" class="btn btn-primary btn-round ml-auto text-light"><i class="fa fa-plus"></i> Add New</a>
                             </div>
                         </div>
                         <div class="card-body">
@@ -29,32 +29,32 @@
                                     <thead class="bg-secondary thw">
                                         <tr class="text-center">
                                             <th style="width: 35px">SL</th>
-                                            {{-- <th>Animal Tag</th>
+                                            <th>Animal Tag</th>
                                             <th>Sex</th>
-                                            <th>Breed</th> --}}
+                                            {{-- <th>Breed</th> --}}
                                             <th>Name of Medicine</th>
-                                            <th>Date of Dipping</th>
-                                            {{-- <th>Dose</th> --}}
-                                            <th class="no-sort" style="text-align:center;width:80px" >Action</th>
+                                            <th>Date of Deworming</th>
+                                            <th>Dose</th>
+                                            {{-- <th class="no-sort" style="text-align:center;width:80px" >Action</th> --}}
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @php $x=1; @endphp
-                                        @foreach ($dippings->groupBy('dipping_date') as $dippin)
-                                        @php $dipping =  $dippin->first() @endphp
+                                        @foreach ($dewormings as $deworming)
                                         <tr class="text-center">
                                             <td>{{ $x++ }} </td>
-                                            {{-- <td>{{ $dipping->animalInfo->animal_tag }} </td>
-                                            <td>{{ $dipping->animalInfo->sex }} </td>
-                                            <td>{{ $dipping->animalInfo->breed }} </td> --}}
-                                            <td>{{ $dipping->medicine_name }}</td>
-                                            <td>{{ $dipping->dipping_date }}</td>
+                                            <td>{{ $deworming->animalInfo->animal_tag }} </td>
+                                            <td>{{ $deworming->animalInfo->sex }} </td>
+                                            {{-- <td>{{ $deworming->animalInfo->breed }} </td> --}}
+                                            <td>{{ $deworming->medicine_name }}</td>
+                                            <td>{{ $deworming->deworming_date }}</td>
+                                            <td>{{ $deworming->dose }}</td>
                                             <td>
                                                 <div class="form-button-action">
-                                                    <a href="{{route('dipping.show',$dipping->dipping_date)}}" title="Show Details">
-                                                        Show Details
-                                                    </a>
-                                                    {{-- <form action="{{ route('dipping.destroy', $dipping->id) }}" method="POST">
+                                                    {{-- <a href="{{route('disease-and-treatment.edit',$diseaseTreatment->id)}}" title="Edit" class="btn btn-link btn-primary btn-lg">
+                                                        <i class="fa fa-edit"></i>
+                                                    </a> --}}
+                                                    {{-- <form action="{{ route('deworming.destroy', $deworming->id) }}" method="POST">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" title="Delete" class="btn btn-link btn-danger" onclick="return confirm('Are you sure?')">

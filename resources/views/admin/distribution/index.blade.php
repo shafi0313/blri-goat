@@ -30,13 +30,11 @@
                                         <tr class="text-center">
                                             <th style="width: 35px">SL</th>
                                             <th>Animal Tag</th>
-                                            <th>Breed</th>
                                             <th>Sex</th>
                                             <th>Birth Wt.(kg)</th>
-                                            <th>Semen collecting Date</th>
-                                            <th>Semen Volume</th>
-                                            <th>Semen color</th>
-                                            <th>Number of Straw made</th>
+                                            <th>Distribution date</th>
+                                            <th>Address of recipient</th>
+                                            <th>Purpose</th>
                                             <th class="no-sort" style="text-align:center;width:80px" >Action</th>
                                         </tr>
                                     </thead>
@@ -46,13 +44,11 @@
                                         <tr class="text-center">
                                             <td>{{ $x++ }} </td>
                                             <td>{{ $distribution->animalInfo->animal_tag }} </td>
-                                            <td>{{ $distribution->animalInfo->breed }} </td>
                                             <td>{{ $distribution->animalInfo->sex }} </td>
                                             <td>{{ $distribution->animalInfo->birth_wt }} </td>
-                                            <td>{{ \Carbon\Carbon::parse($distribution->coll_date)->format('d/m/Y') }} </td>
-                                            <td>{{ $distribution->volume }} </td>
-                                            <td>{{ $distribution->s_color }} </td>
-                                            <td>{{ $distribution->number_of_straw }} </td>
+                                            <td>{{ \Carbon\Carbon::parse($distribution->dis_date)->format('d/m/Y') }} </td>
+                                            <td>{{ $distribution->address_of_rec }} </td>
+                                            <td>{{ $distribution->purpose }} </td>
                                             <td>
                                                 <div class="form-button-action">
                                                     {{-- <a href="{{route('reproduction-record.edit',$distribution->id)}}" title="Edit" class="btn btn-link btn-primary btn-lg">
