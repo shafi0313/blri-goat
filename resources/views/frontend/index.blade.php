@@ -94,7 +94,7 @@
                         <div class="col-md-10 pl-5">
                             <div style="display: inline-block; ">
                                 <span>Nure Hasina Desha</span><br>
-                                <span style="font-size: 14px">Goat $ sheep production research division, BLRI, Savar, Dhaka</span>
+                                <span style="font-size: 14px">Goat & sheep production research division, BLRI, Savar, Dhaka</span>
                             </div>
                         </div>
                     </div>
