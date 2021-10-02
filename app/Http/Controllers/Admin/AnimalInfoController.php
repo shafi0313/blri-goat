@@ -117,22 +117,22 @@ class AnimalInfoController extends Controller
                     $reproduction['kidding_2nd_liter'] = $request->litter_size;
                 } elseif ($dbGetReproduction->kidding_3rd_date == null) {
                     $reproduction['kidding_3rd_date'] = $request->d_o_b;
-                    $reproduction['kidding_3nd_liter'] = $request->litter_size;
+                    $reproduction['kidding_3rd_liter'] = $request->litter_size;
                 } elseif ($dbGetReproduction->kidding_4th_date == null) {
                     $reproduction['kidding_4th_date'] = $request->d_o_b;
-                    $reproduction['kidding_4nd_liter'] = $request->litter_size;
+                    $reproduction['kidding_4th_liter'] = $request->litter_size;
                 } elseif ($dbGetReproduction->kidding_5th_date == null) {
                     $reproduction['kidding_5th_date'] = $request->d_o_b;
-                    $reproduction['kidding_5nd_liter'] = $request->litter_size;
+                    $reproduction['kidding_5th_liter'] = $request->litter_size;
                 } elseif ($dbGetReproduction->kidding_6th_date == null) {
                     $reproduction['kidding_6th_date'] = $request->d_o_b;
-                    $reproduction['kidding_6nd_liter'] = $request->litter_size;
+                    $reproduction['kidding_6th_liter'] = $request->litter_size;
                 }elseif ($dbGetReproduction->kidding_7th_date == null) {
                     $reproduction['kidding_7th_date'] = $request->d_o_b;
-                    $reproduction['kidding_7nd_liter'] = $request->litter_size;
+                    $reproduction['kidding_7th_liter'] = $request->litter_size;
                 }elseif ($dbGetReproduction->kidding_8th_date == null) {
                     $reproduction['kidding_8th_date'] = $request->d_o_b;
-                    $reproduction['kidding_8nd_liter'] = $request->litter_size;
+                    $reproduction['kidding_8th_liter'] = $request->litter_size;
                 }
                 Reproduction::where('id', $dbGetReproduction->id)->update($reproduction);
             }

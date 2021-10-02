@@ -201,13 +201,6 @@
                                     <div class="form-group col-md-3 dam_input_form" style="display: none">
                                         <label for="dam">Dam</label>
                                         <input type="text" class="form-control" name="dam_input">
-                                        {{-- <select class="dam_tag form-control" id="tt" name="dam">
-                                            <option>Select</option>
-                                            <option value="-1">Input</option>
-                                            @foreach ($animalInfos as $animalInfo)
-                                                <option value="{{ $animalInfo->doe_tag }}">{{ $animalInfo->doe_tag }}</option>
-                                            @endforeach
-                                        </select> --}}
                                     </div>
 
                                     {{-- <div class="form-group col-md-3">
@@ -236,7 +229,6 @@
 
                                     <div class="form-group col-md-3">
                                         <label for="litter_size">Litter Size <span class="t_r">*</span></label>
-                                        {{-- <input name="litter_size" type="text" class="form-control @error('litter_size') is-invalid @enderror" value="{{old('litter_size')}}" required> --}}
                                         <select name="litter_size" class="form-control @error('litter_size') is-invalid @enderror" required>
                                             <option selected value disabled>Select</option>
                                             <option value="single">Single</option>
@@ -252,13 +244,6 @@
                                     <div class="form-group col-md-3">
                                         <label for="generation">Generation <span class="t_r">*</span></label>
                                         <input name="generation" type="text" id="generation" class="form-control" required>
-                                        {{-- <select name="generation" class="form-control @error('generation') is-invalid @enderror" required>
-                                            <option selected value disabled>Select</option>
-                                            @for ($i=0; $i<=4; $i++)
-                                            <option value="{{$i}}">{{$i}}</option>
-
-                                            @endfor
-                                        </select> --}}
                                         @error('generation')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
