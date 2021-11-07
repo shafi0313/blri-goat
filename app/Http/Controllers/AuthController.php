@@ -31,7 +31,7 @@ class AuthController extends Controller
         ]);
 
         if (Auth::attempt($credentials)) {
-            if(Auth::user()->is == 1){
+            if(Auth::user()->is == 1 || Auth::user()->is == 2){
                 $request->session()->regenerate();
                 return redirect()->intended('admin/dashboard');
             }

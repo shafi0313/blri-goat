@@ -38,7 +38,7 @@
                             <form action="{{ route('animal-info.store')}}" method="post">
                                 @csrf
                                 <div class="row">
-                                    <div class="form-check">
+                                    {{-- <div class="form-check">
 										<label>Select <span class="t_r">*</span></label><br>
 										<label class="form-radio-label" id="farm">
 											<input class="form-radio-input" type="radio" name="optionsRadios" value="">
@@ -48,9 +48,9 @@
 											<input class="form-radio-input" type="radio" name="optionsRadios" value="">
 											<span class="form-radio-sign">Community Farm</span>
 										</label>
-									</div>
+									</div> --}}
 
-                                    <div class="form-group col-md-3" id="farmSelect" style="display: none">
+                                    {{-- <div class="form-group col-md-3" id="farmSelect" style="display: none">
                                         <label for="farm_id">Research Farm <span class="t_r">*</span></label>
                                         <select name="farm_id" class="form-control @error('name') is-invalid @enderror" id="farm_id">
                                             <option value="">Select</option>
@@ -61,14 +61,14 @@
                                         @error('farm_id')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
-                                    </div>
+                                    </div> --}}
 
-                                    <div class="form-group col-md-3 community" style="display: none">
+                                    <div class="form-group col-md-3 community" >
                                         <label for="community_id">Community Farm <span class="t_r">*</span></label>
-                                        <select name="community_cat_id" id="community_cat" class="form-control @error('name') is-invalid @enderror">
+                                        <select name="community_id" id="community_cat" class="form-control @error('name') is-invalid @enderror">
                                             <option value="">Select</option>
-                                            @foreach ($communityCats as $communityCat)
-                                            <option value="{{$communityCat->id}}">{{$communityCat->name}}</option>
+                                            @foreach ($communitys as $community)
+                                            <option value="{{$community->id}}">{{$community->name}}</option>
                                             @endforeach
                                         </select>
                                         @error('community_id')
@@ -76,13 +76,13 @@
                                         @enderror
                                     </div>
 
-                                    <div class="form-group col-md-3 community" style="display: none">
+                                    {{-- <div class="form-group col-md-3 community" style="display: none">
                                         <label for="name">Sub Farm <span class="t_r">*</span></label>
                                         <select name="community_id" id="comm" class="form-control"></select>
-                                    </div>
-                                </div>
+                                    </div> --}}
+                                {{-- </div>
 
-                                <div class="row">
+                                <div class="row"> --}}
                                     <div class="form-check col-md-3">
 										<label>Type <span class="t_r">*</span></label><br>
 										<label class="form-radio-label" id="goat">
@@ -248,6 +248,14 @@
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
+
+                                    {{-- <div class="form-group col-md-3">
+                                        <label for="paity">Parity </label>
+                                        <input name="paity" type="text" class="form-control @error('paity') is-invalid @enderror" value="{{old('paity')}}">
+                                        @error('paity')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div> --}}
 
                                     <div class="form-group col-md-3">
                                         <label for="dam_milk">Dam milk production (ml) </label>

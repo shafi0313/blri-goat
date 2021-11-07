@@ -23,8 +23,7 @@ class AdminMiddleware
 
     public function handle(Request $request, Closure $next)
     {
-
-        if(auth()->user()->is == 1){
+        if(auth()->user()->is == 1 || auth()->user()->is == 2){
             return $next($request);
         }else{
             Auth::logout();
