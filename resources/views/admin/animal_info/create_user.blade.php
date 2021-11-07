@@ -267,7 +267,7 @@
 
                                     <div class="form-group col-md-3">
                                         <label for="d_o_b">Date of Birth <span class="t_r">*</span></label>
-                                        <input  name="d_o_b" id="d_o_b" type="date" class="form-control @error('d_o_b') is-invalid @enderror" value="{{old('d_o_b')}}" required>
+                                        <input  name="d_o_b" id="d_o_b" id="d_o_b" type="date" class="form-control @error('d_o_b') is-invalid @enderror" value="{{old('d_o_b')}}" required>
                                         @error('d_o_b')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
@@ -350,20 +350,20 @@
         })
     });
     // farm
-    $('#farm').click(function(){
-        $('#farmSelect').fadeIn()
-        $('.community').fadeOut()
-        $('#farm_id').attr('required', true)
-        $("[name='community_id']").attr('required', false)
-        $("[name='name']").attr('required', false)
-    })
-    $('#community').click(function(){
-        $('#farmSelect').fadeOut()
-        $('.community').fadeIn()
-        $('#farm_id').attr('required', false)
-        $("[name='community_id']").attr('required', true)
-        $("#comm").attr('required', true)
-    })
+    // $('#farm').click(function(){
+    //     $('#farmSelect').fadeIn()
+    //     $('.community').fadeOut()
+    //     $('#farm_id').attr('required', true)
+    //     $("[name='community_id']").attr('required', false)
+    //     $("[name='name']").attr('required', false)
+    // })
+    // $('#community').click(function(){
+    //     $('#farmSelect').fadeOut()
+    //     $('.community').fadeIn()
+    //     $('#farm_id').attr('required', false)
+    //     $("[name='community_id']").attr('required', true)
+    //     $("#comm").attr('required', true)
+    // })
 
     $('#sex').on('change',function(e) {
         var sex = $(this).val();
@@ -392,8 +392,6 @@
     // Get service info
     $('.dam_tag').on('change',function(e) {
         var dam_tag = $(this).val();
-
-
         $.ajax({
             url:'{{ route("getService") }}',
             type:"get",
@@ -452,7 +450,7 @@
     });
 
     // Session of birth Calculation
-    $(".dam_tag").on('change', function(){
+    $("#d_o_b").on('change', function(){
         var sessionBirthCal;
         var sessionBirth = new Date($("#d_o_b").val()).getMonth()+1;
         if(sessionBirth==3 || sessionBirth==4 || sessionBirth==5 || sessionBirth==6){

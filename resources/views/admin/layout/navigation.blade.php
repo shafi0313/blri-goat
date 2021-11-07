@@ -67,6 +67,7 @@
 					<h4 class="text-section">Components</h4>
                 </li>
 
+                @if (auth()->user()->is==1)
                 <li class="nav-item {{$p=='admin'?'active':''}}">
                     <a data-toggle="collapse" href="#admin">
                         <i class="fas fa-users-cog"></i>
@@ -85,20 +86,9 @@
                                     <span class="sub-item">Slider</span>
                                 </a>
                             </li>
-                            {{-- <li class="{{$sm=='about'?'activeSub':''}}">
-                                <a href="{{ url('admin/about/1/edit') }}">
-                                    <span class="sub-item">About</span>
-                                </a>
-                            </li> --}}
-                            {{-- <li class="{{$sm=='adminIndex'?'activeSub':''}}">
-                                <a href="{{ route('farmer.index')}}">
-                                    <span class="sub-item">Farmer</span>
-                                </a>
-                            </li> --}}
                         </ul>
                     </div>
                 </li>
-
 
                 <li class="nav-item {{$p=='farmSett'?'active submenu':''}}">
                     <a data-toggle="collapse" href="#invoice">
@@ -129,14 +119,10 @@
                                     <span class="sub-item">Animal Category</span>
                                 </a>
                             </li>
-                            {{-- <li class="{{$sm=='clinicalSign'?'active':''}}">
-                                <a href="{{ route('clinical-sign.index') }}">
-                                    <span class="sub-item">Clinical Sign</span>
-                                </a>
-                            </li> --}}
                         </ul>
                     </div>
                 </li>
+                @endif
 
                 <li class="nav-item {{$p=='animalRecord'?'active':''}}">
                     <a data-toggle="collapse" href="#animal">

@@ -66,7 +66,6 @@
             {{-- Header --}}
             @include('admin.layout.header')
             {{-- End Header --}}
-
 		</div>
 
 

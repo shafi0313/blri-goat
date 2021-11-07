@@ -56,7 +56,7 @@
                                         <tr>
                                             <td class="text-center">{{ $x++ }}</td>
                                             <td>{{ $adminUser->name }}</td>
-                                            <td>{{ ($adminUser->is == 1) ? 'Admin':'Editor' }}</td>
+                                            <td>{{ ($adminUser->is == 1) ? 'Admin':'Community' }}</td>
                                             <td>{{ $adminUser->phone }}</td>
                                             <td>{{ $adminUser->email }}</td>
                                             <td>{{ $adminUser->address }}</td>

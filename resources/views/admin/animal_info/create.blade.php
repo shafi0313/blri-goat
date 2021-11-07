@@ -444,7 +444,7 @@
     });
 
     // Session of birth Calculation
-    $(".dam_tag").on('change', function(){
+    $("#d_o_b").on('change', function(){
         var sessionBirthCal;
         var sessionBirth = new Date($("#d_o_b").val()).getMonth()+1;
         if(sessionBirth==3 || sessionBirth==4 || sessionBirth==5 || sessionBirth==6){

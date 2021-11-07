@@ -6,17 +6,27 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class AdminUserController extends Controller
 {
     public function index()
     {
-        $adminUsers = User::where('type', 1)->get();
+        if (Auth::user()->is !=1) {
+            Alert::info('You have no permission');
+            return back();
+        }
+        $adminUsers = User::whereIn('type', [1,2])->get();
         return view('admin.user_management.admin.index', compact('adminUsers'));
     }
 
     public function create()
     {
+        if (Auth::user()->is!=1) {
+            Alert::info('You have no permission');
+            return back();
+        }
         return view('admin.user_management.admin.create');
     }
 
@@ -32,11 +42,11 @@ class AdminUserController extends Controller
         ]);
 
         $image_name = '';
-        if($request->hasFile('image')){
+        if ($request->hasFile('image')) {
             $image = $request->file('image');
-            $image_name = "user_".rand(0,1000).'.'.$image->getClientOriginalExtension();
-            $request->image->move('files/images/user/',$image_name);
-        }else{
+            $image_name = "user_".rand(0, 1000).'.'.$image->getClientOriginalExtension();
+            $request->image->move('files/images/user/', $image_name);
+        } else {
             $image_name = "company_logo.jpg";
         }
 
@@ -64,11 +74,11 @@ class AdminUserController extends Controller
             // ];
             // DB::table('model_has_roles')->insert($permission);
             DB::commit();
-            toast('User Successfully Inserted','success');
+            toast('User Successfully Inserted', 'success');
             return redirect()->route('admin-user.index');
         } catch (\Exception $ex) {
             DB::rollBack();
-            toast($ex->getMessage().'User Inserted Faild','error');
+            toast($ex->getMessage().'User Inserted Faild', 'error');
             return back();
         }
     }
@@ -89,12 +99,11 @@ class AdminUserController extends Controller
         ]);
 
         $image_name = '';
-        if($request->hasFile('image'))
-        {
+        if ($request->hasFile('image')) {
             $image = $request->file('image');
-            $image_name = "user_".rand(0,10000).'.'.$image->getClientOriginalExtension();
-            $request->image->move('files/images/user/',$image_name);
-        }else{
+            $image_name = "user_".rand(0, 10000).'.'.$image->getClientOriginalExtension();
+            $request->image->move('files/images/user/', $image_name);
+        } else {
             $image_name = $request->oldImage;
         }
 
@@ -110,7 +119,7 @@ class AdminUserController extends Controller
             'profile_photo_path' => $image_name,
         ];
 
-        if(!empty($request->password)){
+        if (!empty($request->password)) {
             $data['password'] = bcrypt($request->input('password'));
         }
 
@@ -123,11 +132,11 @@ class AdminUserController extends Controller
             User::find($id)->update($data);
             DB::table('model_has_roles')->where('model_id', $id)->update($permission);
             DB::commit();
-            toast('User Successfully Updated','success');
+            toast('User Successfully Updated', 'success');
             return redirect()->route('admin-user.index');
         } catch (\Exception $ex) {
             DB::rollBack();
-            toast($ex->getMessage().'User Updated Faild','error');
+            toast($ex->getMessage().'User Updated Faild', 'error');
             return back();
         }
     }
@@ -135,7 +144,7 @@ class AdminUserController extends Controller
     public function destroy($id)
     {
         User::find($id)->delete();
-        toast('Success','success');
+        toast('Success', 'success');
         return redirect()->back();
     }
 }

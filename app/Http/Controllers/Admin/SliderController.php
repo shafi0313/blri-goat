@@ -5,17 +5,27 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Slider;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class SliderController extends Controller
 {
     public function index()
     {
+        if (Auth::user()->is!=1) {
+            Alert::info('You have no permission');
+            return back();
+        }
         $sliders = Slider::all();
         return view('admin.slider.index', compact('sliders'));
     }
 
     public function create()
     {
+        if (Auth::user()->is!=1) {
+            Alert::info('You have no permission');
+            return back();
+        }
         return view('admin.slider.create');
     }
 
@@ -53,12 +63,21 @@ class SliderController extends Controller
 
     public function edit($id)
     {
+        if (Auth::user()->is!=1) {
+            Alert::info('You have no permission');
+            return back();
+        }
         $slider = Slider::find($id);
         return view('admin.slider.edit', compact('slider'));
     }
 
     public function update(Request $request, $id)
     {
+        if (Auth::user()->is!=1) {
+            Alert::info('You have no permission');
+            return back();
+        }
+
         if($request->hasFile('image'))
         {
             $image = $request->file('image');
@@ -91,6 +110,10 @@ class SliderController extends Controller
 
     public function destroy($id)
     {
+        if (Auth::user()->is!=1) {
+            Alert::info('You have no permission');
+            return back();
+        }
         $slider = Slider::find($id);
         $path =  public_path('files/images/slider/'.$slider->image);
         if(file_exists($path)){
