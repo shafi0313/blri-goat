@@ -12,14 +12,22 @@ class DippingController extends Controller
 {
     public function index()
     {
-        $dippings = Dipping::all();
+        if (Auth::user()->is==1) {
+            $dippings = Dipping::all();
+        }else{
+            $dippings = Dipping::whereUser_id(Auth::user()->id)->get();
+        }
         return view('admin.dipping.index', compact('dippings'));
     }
 
 
     public function create()
     {
-        $animalInfos = AnimalInfo::all();
+        if (Auth::user()->is==1) {
+            $animalInfos = AnimalInfo::all();
+        }else{
+            $animalInfos = AnimalInfo::whereUser_id(Auth::user()->id)->get();
+        }
         return view('admin.dipping.create', compact('animalInfos'));
     }
 

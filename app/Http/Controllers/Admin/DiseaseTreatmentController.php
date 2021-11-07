@@ -14,14 +14,22 @@ class DiseaseTreatmentController extends Controller
 {
     public function index()
     {
-        $diseaseTreatments = DiseaseTreatment::all();
+        if (Auth::user()->is==1) {
+            $diseaseTreatments = DiseaseTreatment::all();
+        }else{
+            $diseaseTreatments = DiseaseTreatment::whereUser_id(Auth::user()->id)->get();
+        }
         return view('admin.disease_treatment.index', compact('diseaseTreatments'));
     }
 
 
     public function create()
     {
-        $animalInfos = AnimalInfo::all();
+        if (Auth::user()->is==1) {
+            $animalInfos = AnimalInfo::all();
+        }else{
+            $animalInfos = AnimalInfo::whereUser_id(Auth::user()->id)->get();
+        }
         $diseases = Disease::all();
         $clinicalSigns = ClinicalSign::all();
         return view('admin.disease_treatment.create', compact('animalInfos','diseases','clinicalSigns'));

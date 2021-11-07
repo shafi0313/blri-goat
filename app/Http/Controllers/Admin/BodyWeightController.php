@@ -16,13 +16,21 @@ class BodyWeightController extends Controller
 {
     public function index()
     {
-        $productionRecords = BodyWeight::all();
+        if (Auth::user()->is==1) {
+            $productionRecords = BodyWeight::all();
+        }else{
+            $productionRecords = BodyWeight::whereUser_id(Auth::user()->id)->get();
+        }
         return view('admin.body_weight.index', compact('productionRecords'));
     }
 
     public function create()
     {
-        $animalInfos = AnimalInfo::all();
+        if (Auth::user()->is==1) {
+            $animalInfos = AnimalInfo::all();
+        }else{
+            $animalInfos = AnimalInfo::whereUser_id(Auth::user()->id)->get();
+        }
         return view('admin.body_weight.create', compact('animalInfos'));
     }
 

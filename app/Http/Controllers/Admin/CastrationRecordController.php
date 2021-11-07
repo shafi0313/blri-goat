@@ -12,14 +12,22 @@ class CastrationRecordController extends Controller
 {
     public function index()
     {
-        $castrationRecords = CastrationRecord::all();
+        if (Auth::user()->is==1) {
+            $castrationRecords = CastrationRecord::all();
+        }else{
+            $castrationRecords = CastrationRecord::whereUser_id(Auth::user()->id)->get();
+        }
         return view('admin.castration_record.index', compact('castrationRecords'));
     }
 
 
     public function create()
     {
-        $animalInfos = AnimalInfo::all();
+        if (Auth::user()->is==1) {
+            $animalInfos = AnimalInfo::all();
+        }else{
+            $animalInfos = AnimalInfo::whereUser_id(Auth::user()->id)->get();
+        }
         return view('admin.castration_record.create', compact('animalInfos'));
     }
 

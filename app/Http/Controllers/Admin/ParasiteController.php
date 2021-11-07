@@ -12,14 +12,22 @@ class ParasiteController extends Controller
 {
     public function index()
     {
-        $parasites = Parasite::all();
+        if (Auth::user()->is==1) {
+            $parasites = Parasite::all();
+        }else{
+            $parasites = Parasite::whereUser_id(Auth::user()->id)->get();
+        }
         return view('admin.parasite.index', compact('parasites'));
     }
 
 
     public function create()
     {
-        $animalInfos = AnimalInfo::all();
+        if (Auth::user()->is==1) {
+            $animalInfos = AnimalInfo::all();
+        }else{
+            $animalInfos = AnimalInfo::whereUser_id(Auth::user()->id)->get();
+        }
         return view('admin.parasite.create', compact('animalInfos'));
     }
 

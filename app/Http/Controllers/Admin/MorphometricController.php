@@ -13,13 +13,21 @@ class MorphometricController extends Controller
 {
     public function index()
     {
-        $morphometrics = Morphometric::all();
+        if (Auth::user()->is==1) {
+            $morphometrics = Morphometric::all();
+        }else{
+            $morphometrics = Morphometric::whereUser_id(Auth::user()->id)->get();
+        }
         return view('admin.morphometric.index', compact('morphometrics'));
     }
 
     public function create()
     {
-        $animalInfos = AnimalInfo::all();
+        if (Auth::user()->is==1) {
+            $animalInfos = AnimalInfo::all();
+        }else{
+            $animalInfos = AnimalInfo::whereUser_id(Auth::user()->id)->get();
+        }
         return view('admin.morphometric.create', compact('animalInfos'));
     }
 

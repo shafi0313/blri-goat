@@ -13,13 +13,21 @@ class MilkProductionController extends Controller
 {
     public function index()
     {
-        $milkProductions = MilkProduction::all();
+        if (Auth::user()->is==1) {
+            $milkProductions = MilkProduction::all();
+        }else{
+            $milkProductions = MilkProduction::whereUser_id(Auth::user()->id)->get();
+        }
         return view('admin.milk_production.index', compact('milkProductions'));
     }
 
     public function create()
     {
-        $animalInfos = AnimalInfo::all();
+        if (Auth::user()->is==1) {
+            $animalInfos = AnimalInfo::all();
+        }else{
+            $animalInfos = AnimalInfo::whereUser_id(Auth::user()->id)->get();
+        }
         return view('admin.milk_production.create', compact('animalInfos'));
     }
 

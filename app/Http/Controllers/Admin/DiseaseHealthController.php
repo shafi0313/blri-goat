@@ -14,13 +14,21 @@ class DiseaseHealthController extends Controller
 {
     public function index()
     {
-        $diseaseHealths = DiseaseHealth::all();
+        if (Auth::user()->is==1) {
+            $diseaseHealths = DiseaseHealth::all();
+        }else{
+            $diseaseHealths = DiseaseHealth::whereUser_id(Auth::user()->id)->get();
+        }
         return view('admin.disease_health.index', compact('diseaseHealths'));
     }
 
     public function create()
     {
-        $animalInfos = AnimalInfo::all();
+        if (Auth::user()->is==1) {
+            $animalInfos = AnimalInfo::all();
+        }else{
+            $animalInfos = AnimalInfo::whereUser_id(Auth::user()->id)->get();
+        }
         return view('admin.disease_health.create', compact('animalInfos'));
     }
 
@@ -28,7 +36,7 @@ class DiseaseHealthController extends Controller
     {
         $data = $request->validated();
         $data['user_id'] = Auth::user()->id;
-        
+
         DB::beginTransaction();
         try {
             DiseaseHealth::create($data);

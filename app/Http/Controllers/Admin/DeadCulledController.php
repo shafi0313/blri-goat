@@ -12,14 +12,22 @@ class DeadCulledController extends Controller
 {
     public function index()
     {
-        $deadCulleds = DeadCulled::all();
+        if (Auth::user()->is==1) {
+            $deadCulleds = DeadCulled::all();
+        }else{
+            $deadCulleds = DeadCulled::whereUser_id(Auth::user()->id)->get();
+        }
         return view('admin.dead_culled.index', compact('deadCulleds'));
     }
 
 
     public function create()
     {
-        $animalInfos = AnimalInfo::all();
+        if (Auth::user()->is==1) {
+            $animalInfos = AnimalInfo::all();
+        }else{
+            $animalInfos = AnimalInfo::whereUser_id(Auth::user()->id)->get();
+        }
         return view('admin.dead_culled.create', compact('animalInfos'));
     }
 

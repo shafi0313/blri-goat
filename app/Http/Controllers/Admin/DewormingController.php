@@ -12,14 +12,22 @@ class DewormingController extends Controller
 {
     public function index()
     {
-        $dewormings = Deworming::all();
+        if (Auth::user()->is==1) {
+            $dewormings = Deworming::all();
+        }else{
+            $dewormings = Deworming::whereUser_id(Auth::user()->id)->get();
+        }
         return view('admin.deworming.index', compact('dewormings'));
     }
 
 
     public function create()
     {
-        $animalInfos = AnimalInfo::all();
+        if (Auth::user()->is==1) {
+            $animalInfos = AnimalInfo::all();
+        }else{
+            $animalInfos = AnimalInfo::whereUser_id(Auth::user()->id)->get();
+        }
         return view('admin.deworming.create', compact('animalInfos'));
     }
 

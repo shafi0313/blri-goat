@@ -13,13 +13,21 @@ class DistributionController extends Controller
 {
     public function index()
     {
-        $distributions = Distribution::all();
+        if (Auth::user()->is==1) {
+             $distributions = Distribution::all();
+        }else{
+             $distributions = Distribution::whereUser_id(Auth::user()->id)->get();
+        }
         return view('admin.distribution.index', compact('distributions'));
     }
 
     public function create()
     {
-        $animalInfos = AnimalInfo::all();
+        if (Auth::user()->is==1) {
+            $animalInfos = AnimalInfo::all();
+        }else{
+            $animalInfos = AnimalInfo::whereUser_id(Auth::user()->id)->get();
+        }
         return view('admin.distribution.create', compact('animalInfos'));
     }
 

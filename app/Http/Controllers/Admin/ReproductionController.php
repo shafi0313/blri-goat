@@ -14,13 +14,21 @@ class ReproductionController extends Controller
 {
     public function index()
     {
-        $reproductions = Reproduction::all();
+        if (Auth::user()->is==1) {
+            $reproductions = Reproduction::all();
+        }else{
+            $reproductions = Reproduction::whereUser_id(Auth::user()->id)->get();
+        }
         return view('admin.reproduction.index', compact('reproductions'));
     }
 
     public function create()
     {
-        $animalInfos = AnimalInfo::all();
+        if (Auth::user()->is==1) {
+            $animalInfos = AnimalInfo::all();
+        }else{
+            $animalInfos = AnimalInfo::whereUser_id(Auth::user()->id)->get();
+        }
         return view('admin.reproduction.create', compact('animalInfos'));
     }
 

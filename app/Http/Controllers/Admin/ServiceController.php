@@ -16,14 +16,19 @@ class ServiceController extends Controller
 {
     public function index()
     {
-        $services = Service::all();
+        if (Auth::user()->is==1) {
+            $services = Service::all();
+        }else{
+            $services = Service::whereUser_id(Auth::user()->id)->get();
+        }
         return view('admin.service.index', compact('services'));
     }
 
     public function create()
     {
-        $animalInfos = AnimalInfo::all();
-        return view('admin.service.create', compact('animalInfos'));
+        $animalInfosM = AnimalInfo::whereUser_id(Auth::user()->id)->whereSex('M')->whereNotNull('sire')->get();
+        $animalInfosF = AnimalInfo::whereUser_id(Auth::user()->id)->whereSex('F')->whereNotNull('dam')->get();
+        return view('admin.service.create', compact('animalInfosM','animalInfosF'));
     }
 
     public function store(Request $request)
@@ -85,9 +90,6 @@ class ServiceController extends Controller
             }
             Reproduction::where('id', $getReproduction->id)->update($reproduction);
         }
-
-
-
 
 
         // if($getReproduction->count() < 1){

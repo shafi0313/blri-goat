@@ -55,8 +55,8 @@
                                         <label for="buck_tag">Buck Tag</label>
                                         <select class="buck_tag form-control" id="" name="buck_tag">
                                             <option >Select</option>
-                                            @foreach ($animalInfos->where('sex','M')->whereNotNull('sire') as $animalInf)
-                                                <option value="{{ $animalInf->sire }}">{{ $animalInf->sire }}</option>
+                                            @foreach ($animalInfosM as $animalInfoM)
+                                                <option value="{{ $animalInfoM->sire }}">{{ $animalInfoM->sire }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -65,8 +65,8 @@
                                         <label for="doe_tag">Doe Tag</label>
                                         <select class="doe_tag form-control" id="" name="doe_tag">
                                             <option >Select</option>
-                                            @foreach ($animalInfos->where('sex','F')->whereNotNull('dam') as $animalInfo)
-                                                <option value="{{ $animalInfo->dam }}">{{ $animalInfo->dam }}</option>
+                                            @foreach ($animalInfosF as $animalInfoF)
+                                                <option value="{{ $animalInfoF->dam }}">{{ $animalInfoF->dam }}</option>
                                             @endforeach
                                         </select>
                                     </div>

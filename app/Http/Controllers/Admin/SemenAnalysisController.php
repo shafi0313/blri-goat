@@ -13,13 +13,21 @@ class SemenAnalysisController extends Controller
 {
     public function index()
     {
-        $semenAnalyses = SemenAnalysis::all();
+        if (Auth::user()->is==1) {
+            $semenAnalyses = SemenAnalysis::all();
+        }else{
+            $semenAnalyses = SemenAnalysis::whereUser_id(Auth::user()->id)->get();
+        }
         return view('admin.semen_analysis.index', compact('semenAnalyses'));
     }
 
     public function create()
     {
-        $animalInfos = AnimalInfo::whereSex('M')->get();
+        if (Auth::user()->is==1) {
+            $animalInfos = AnimalInfo::whereSex('M')->get();
+        }else{
+            $animalInfos = AnimalInfo::whereSex('M')->whereUser_id(Auth::user()->id)->get();
+        }
         return view('admin.semen_analysis.create', compact('animalInfos'));
     }
 

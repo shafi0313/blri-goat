@@ -12,14 +12,22 @@ class VaccinationController extends Controller
 {
     public function index()
     {
-        $vaccinations = Vaccination::all();
+        if (Auth::user()->is==1) {
+            $vaccinations = Vaccination::all();
+        }else{
+            $vaccinations = Vaccination::whereUser_id(Auth::user()->id)->get();
+        }
         return view('admin.vaccination.index', compact('vaccinations'));
     }
 
 
     public function create()
     {
-        $animalInfos = AnimalInfo::all();
+        if (Auth::user()->is==1) {
+            $animalInfos = AnimalInfo::all();
+        }else{
+            $animalInfos = AnimalInfo::whereUser_id(Auth::user()->id)->get();
+        }
         return view('admin.vaccination.create', compact('animalInfos'));
     }
 
@@ -33,8 +41,6 @@ class VaccinationController extends Controller
             'dose' => 'required|max:155',
             'total_vaccinated' => 'required|max:155',
         ]);
-
-
 
         $animals = AnimalInfo::whereBetween('id',[$request->to, $request->from])->get()->pluck('id');
         foreach($animals as $key => $value){
