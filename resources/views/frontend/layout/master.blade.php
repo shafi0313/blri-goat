@@ -26,7 +26,6 @@
     <link rel="stylesheet" href="{{ asset('frontend/css/responsive.css') }}">
 </head>
 <body>
-    <div class="container main_area">
 
     <!-- Nav Bar Start-->
     @include('frontend.layout.navigation')
@@ -38,7 +37,7 @@
     <!-- Footer -->
             <!-- Footer Start -->
             <section class="footer">
-                <div class="container">
+                <div class="container-flued">
                 </div>
             </section>
             <!-- Footer End -->
@@ -48,7 +47,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <p class="copy">BLRI &copy; {{date('Y')}} All Rights Reserved &nbsp;&nbsp;&nbsp;||&nbsp;&nbsp;&nbsp; Powered  by <a href="https://www.lsccom.com/">LS COMMUNICATIONS</a><span></span></p>
+                            <p class="copy">BLRI &copy; {{date('Y')}} All Rights Reserved &nbsp;&nbsp;&nbsp;||&nbsp;&nbsp;&nbsp; Developed by: <a href="https://www.lsccom.com/">LS COMMUNICATIONS</a><span></span></p>
                         </div>
                     </div>
                 </div>
@@ -77,7 +76,6 @@
             <script>
                 new WOW().init();
             </script>
-    </div>
         </body>
       </html>
 
