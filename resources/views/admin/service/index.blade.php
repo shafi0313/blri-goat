@@ -40,7 +40,7 @@
                                     </thead>
                                     <tbody>
                                         @php $x=1; @endphp
-                                        @foreach ($services->groupBy('animal_tag') as $servic)
+                                        @foreach ($services->groupBy('doe_tag') as $servic)
                                         @php $service = $servic->first() @endphp
                                         <tr class="text-center">
                                             <td>{{ $x++ }} </td>

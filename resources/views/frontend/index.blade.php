@@ -34,6 +34,20 @@
             <br>
             <h4 class="text-center">Please sign in</h4>
             <br>
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+            @if(session()->has('message'))
+                <div class="alert alert-{{session('type')}}">
+                    {{session('message')}}
+                </div>
+            @endif
             <form method="POST" action="{{ route('loginProcess') }}">
                 @csrf
                 <div class="form-row align-items-center">
@@ -43,7 +57,7 @@
                             <div class="input-group-prepend">
                                 <div class="input-group-text"><i class="fas fa-user" style="padding:4px 0"></i></div>
                             </div>
-                            <input type="email" name="email" value="admin@shafi95.com" required autofocus class="form-control" placeholder="Email">
+                            <input type="email" name="email" required autofocus class="form-control" placeholder="Email">
                         </div>
                     </div>
                     <div class="col-auto">
@@ -52,7 +66,7 @@
                             <div class="input-group-prepend">
                                 <div class="input-group-text"><i class="fas fa-key" style="padding:4px 0"></i></div>
                             </div>
-                            <input type="password" value="12345678" name="password" required autocomplete="current-password" class="form-control" placeholder="Password">
+                            <input type="password" name="password" required autocomplete="current-password" class="form-control" placeholder="Password">
                         </div>
                     </div>
                     <div style="float:right" class="mb-2">
@@ -73,8 +87,8 @@
                     <h6 style="border-bottom: 1px solid gray">Planing and Designing</h6>
                     <div class="row">
                         <div class="col-md-2">
-                            <div style="width: 70px; height:70px; display: inline-block">
-                                <img src="{{asset('files/images/user/head.jpg')}}" class="card-img-top">
+                            <div style="display: inline-block">
+                                <img src="{{asset('files/images/user/head.jpg')}}" class="card-img-top" style="width:140%; height:140%">
                             </div>
                         </div>
                         <div class="col-md-10 pl-5">
@@ -87,8 +101,8 @@
                     <br>
                     <div class="row">
                         <div class="col-md-2">
-                            <div style="width: 70px; height:70px; display: inline-block">
-                                <img src="{{asset('files/images/user/head.jp')}}" class="card-img-top">
+                            <div style="display: inline-block">
+                                <img src="{{asset('files/images/user/head.jp')}}" class="card-img-top" style="width:140%; height:140%">
                             </div>
                         </div>
                         <div class="col-md-10 pl-5">

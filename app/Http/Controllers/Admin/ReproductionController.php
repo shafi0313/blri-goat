@@ -32,18 +32,28 @@ class ReproductionController extends Controller
         return view('admin.reproduction.create', compact('animalInfos'));
     }
 
-    public function store(ReproductionStoreRequest $request)
+    public function store(Request $request)
     {
-        $productionRecord = $request->validated();
         DB::beginTransaction();
-        $productionRecord['user_id'] = Auth::user()->id;
-        // Reproduction::create($productionRecord);
+
+        $data['animal_info_id'] = $request->animal_info_id;
+        $data['puberty_age'] = $request->puberty_age;
+        $data['user_id'] = Auth::user()->id;
+
+        $reproductions = Reproduction::whereAnimal_info_id($request->animal_info_id)->first();
+        if(!empty($reproductions)){
+            Reproduction::whereId($reproductions->id)->update($data);
+        }else{
+            Reproduction::create($data);
+        }
+
+
         try{
-            Reproduction::create($productionRecord);
             DB::commit();
             toast('Success','success');
             return redirect()->route('reproduction-record.index');
         }catch(\Exception $ex){
+            return $ex->getMessage();
             DB::rollBack();
             toast('Error', 'error');
             return redirect()->back();

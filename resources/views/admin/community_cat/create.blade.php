@@ -37,11 +37,34 @@
                             <form action="{{ route('community-cat.store')}}" method="post">
                                 @csrf
                                 <div class="row">
+                                    <div class="form-group col-sm-6">
+                                        <label for="name">Owner Name <span class="t_r">*</span></label>
+                                        <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{old('name')}}" placeholder="Enter Author Name" required>
+                                        @error('name')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+
+                                    <div class="form-group col-sm-6">
+                                        <label for="phone">Phone<span class="t_r">*</span></label>
+                                        <input type="number" name="phone" class="form-control @error('phone') is-invalid @enderror" oninput="this.value = this.value.replace(/[a-zA-z\-*/]/g,'');" value="{{old('phone')}}" placeholder="Enter Phone" required>
+                                        @error('phone')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+
+                                    <div class="form-group col-sm-6">
+                                        <label for="email">Email <span class="t_r">*</span></label>
+                                        <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" value="{{old('email')}}" placeholder="Enter Email" required>
+                                        @error('email')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
 
                                     <div class="form-group col-md-6">
-                                        <label for="name">Community Farm Name <span class="t_r">*</span></label>
-                                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{old('name')}}" required>
-                                        @error('name')
+                                        <label for="community_name">Community Farm Name <span class="t_r">*</span></label>
+                                        <input type="text" class="form-control @error('community_name') is-invalid @enderror" name="community_name" value="{{old('community_name')}}" required>
+                                        @error('community_name')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
@@ -67,6 +90,26 @@
                                         @error('address')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label>Password <span class="t_r">*</span></label>
+                                        <input name="password" type="password" class="form-control @error('email') is-invalid @enderror" value="{{old('password')}}" required>
+                                        @error('password')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+
+                                    <div class="form-group col-sm-6">
+                                        <label>Confirm Password <span class="t_r">*</span></label>
+                                        <input name="password_confirmation" type="password" class="form-control @error('email') is-invalid @enderror" value="{{old('password')}}" required>
+                                        @error('password_confirmation')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+
+                                    <div class="form-group col-md-3">
+                                        <label for="image" class="placeholder">Owner Photo</label>
+                                        <input id="image" name="image" type="file" class="form-control">
                                     </div>
                                 </div>
 

@@ -18,7 +18,7 @@ class CreateMilkProductionsTable extends Migration
             $table->foreignId('user_id')->constrained()->cascadeOnUpdate();
             $table->foreignId('animal_info_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->float('parity_number');
-            $table->float('litter_size');
+            $table->string('litter_size',50)->nullable();
             $table->date('date_of_milking')->nullable() ;
             $table->float('milk_production')->nullable() ;
             $table->float('average_milk_production')->nullable();

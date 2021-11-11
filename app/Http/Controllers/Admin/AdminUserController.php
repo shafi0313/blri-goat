@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Validation\Rules\Password;
 
 class AdminUserController extends Controller
 {
@@ -17,7 +18,7 @@ class AdminUserController extends Controller
             Alert::info('You have no permission');
             return back();
         }
-        $adminUsers = User::whereIn('type', [1,2])->get();
+        $adminUsers = User::whereIn('is', [1,2])->get();
         return view('admin.user_management.admin.index', compact('adminUsers'));
     }
 
@@ -38,7 +39,12 @@ class AdminUserController extends Controller
             'phone' => 'required|numeric',
             // 'is' => 'required',
             'address' => 'required',
-            'password' => 'required|confirmed|min:6',
+            'password' => ['required', 'confirmed', Password::min(6)
+                                                            ->letters()
+                                                            // ->mixedCase()
+                                                            ->numbers()
+                                                            ->symbols()
+                                                            ->uncompromised()],
         ]);
 
         $image_name = '';
@@ -57,7 +63,7 @@ class AdminUserController extends Controller
             'age' => $request->input('age'),
             'gender' => $request->input('gender'),
             'type' => 1,
-            // 'is' => $request->input('is'),
+            'is' => 1,
             'address' => $request->input('address'),
             'profile_photo_path' => $image_name,
             'password' => bcrypt($request->input('password')),
@@ -66,13 +72,7 @@ class AdminUserController extends Controller
         DB::beginTransaction();
 
         try {
-            $user = User::create($data);
-            // $permission = [
-            //     'role_id' => $request->input('is'),
-            //     'model_type' => "App\Models\User",
-            //     'model_id' =>  $user->id,
-            // ];
-            // DB::table('model_has_roles')->insert($permission);
+            User::create($data);
             DB::commit();
             toast('User Successfully Inserted', 'success');
             return redirect()->route('admin-user.index');
@@ -85,7 +85,7 @@ class AdminUserController extends Controller
 
     public function edit($id)
     {
-        $adminUsers = User::find($id);
+        $adminUsers = User::findOrFail($id);
         return view('admin.user_management.admin.edit', compact('adminUsers'));
     }
 
@@ -95,7 +95,12 @@ class AdminUserController extends Controller
             'name' => 'required',
             'phone' => 'required|numeric',
             'address' => 'required',
-            'password' => 'required|confirmed|min:6',
+            'password' => ['nullable', 'confirmed', Password::min(6)
+                                                            ->letters()
+                                                            // ->mixedCase()
+                                                            ->numbers()
+                                                            ->symbols()
+                                                            ->uncompromised()],
         ]);
 
         $image_name = '';
@@ -123,20 +128,14 @@ class AdminUserController extends Controller
             $data['password'] = bcrypt($request->input('password'));
         }
 
-
-        $permission = [
-            'role_id' => $request->input('is')
-        ];
-
         try {
             User::find($id)->update($data);
-            DB::table('model_has_roles')->where('model_id', $id)->update($permission);
             DB::commit();
             toast('User Successfully Updated', 'success');
             return redirect()->route('admin-user.index');
         } catch (\Exception $ex) {
             DB::rollBack();
-            toast($ex->getMessage().'User Updated Faild', 'error');
+            toast($ex->getMessage().'User Updated Failed', 'error');
             return back();
         }
     }

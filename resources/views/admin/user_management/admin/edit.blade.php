@@ -39,19 +39,6 @@
                                 @method('PUT')
                                 <div class="row">
                                     <div class="form-group col-sm-6">
-                                        <label for="business_name">Permission <span class="t_r">*</span></label>
-                                        <select name="is_" id="" class="form-control @error('is_') is-invalid @enderror">
-                                            {{-- <option selected value disabled>Select</option> --}}
-                                            <option value="1" {{($adminUsers->id=='1')?'selected':''}}>Admin</option>
-                                            {{-- <option value="2" {{($adminUsers->id=='2')?'selected':''}}>Editor</option>
-                                            <option value="3" {{($adminUsers->id=='3')?'selected':''}}>Viewer</option> --}}
-                                        </select>
-                                        @error('is_')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-
-                                    <div class="form-group col-sm-6">
                                         <label for="name">Name <span class="t_r">*</span></label>
                                         <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{$adminUsers->name}}" placeholder="Enter Admin Name" required>
                                         @error('name')

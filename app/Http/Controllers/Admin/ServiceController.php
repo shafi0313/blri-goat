@@ -49,6 +49,7 @@ class ServiceController extends Controller
         }else{
             $repeat_heat = 'Not';
         }
+        DB::beginTransaction();
 
         $generation = AnimalInfo::where('dam', $request->doe_tag)->first()->generation;
         $data = [
@@ -61,6 +62,7 @@ class ServiceController extends Controller
             'repeat_heat' => $repeat_heat,
             'generation' => $generation,
         ];
+        Service::create($data);
 
 
         // $serviceForRepro = Service::where('animal_info_id', $animal_info_id)->first();
@@ -92,39 +94,8 @@ class ServiceController extends Controller
         }
 
 
-        // if($getReproduction->count() < 1){
-        //     $reproduction = [
-        //         'animal_info_id' => $request->animal_info_id,
-        //         'service_1st_date' => $request->date_of_service,
-        //     ];
-        //     Reproduction::create($reproduction);
-        // }else{
-        //     switch($serviceForRepro->count() + 1){
-        //         case 1:
-        //             $reproduction['service_1st_date'] = $request->date_of_service;
-        //             break;
-        //         case 2:
-        //             $reproduction['service_2nd_date'] = $request->date_of_service;
-        //             break;
-        //         case 3:
-        //             $reproduction['service_3rd_date'] = $request->date_of_service;
-        //             break;
-        //         case 4:
-        //             $reproduction['service_4th_date'] = $request->date_of_service;
-        //             break;
-        //         case 5:
-        //             $reproduction['service_5th_date'] = $request->date_of_service;
-        //             break;
-        //         case 6:
-        //             $reproduction['service_6th_date'] = $request->date_of_service;
-        //             break;
-        //     }
-        //     Reproduction::where('animal_info_id', $animal_info_id)->update($reproduction);
-        // }
-
-        DB::beginTransaction();
         try{
-            Service::create($data);
+
             DB::commit();
             toast('Success','success');
             return redirect()->route('service.index');

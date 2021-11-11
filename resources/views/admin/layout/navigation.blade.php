@@ -119,6 +119,11 @@
                                     <span class="sub-item">Animal Category</span>
                                 </a>
                             </li>
+                            {{-- <li class="{{$sm=='animalCat'?'':''}}">
+                                <a href="{{ route('clinical-sign.index') }}">
+                                    <span class="sub-item">Clinical Sign Category</span>
+                                </a>
+                            </li> --}}
                         </ul>
                     </div>
                 </li>

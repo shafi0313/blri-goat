@@ -27,7 +27,7 @@ class AdminMiddleware
             return $next($request);
         }else{
             Auth::logout();
-            return redirect()->route('login');
+            return redirect()->route('index');
         }
     }
 }

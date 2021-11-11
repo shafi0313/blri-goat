@@ -243,7 +243,7 @@
 
                                     <div class="form-group col-md-3">
                                         <label for="generation">Generation <span class="t_r">*</span></label>
-                                        <input name="generation" type="text" id="generation" class="form-control" required>
+                                        <input name="generation" type="text" id="generation" class="form-control" onInput="this.value = this.value.replace(/[a-zA-z\-*/]/g,'');" required>
                                         @error('generation')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
