@@ -24,6 +24,9 @@ class ReproductionController extends Controller
 
     public function create()
     {
+        if ($error = $this->sendPermissionError('create')) {
+            return $error;
+        }
         if (Auth::user()->is==1) {
             $animalInfos = AnimalInfo::all();
         }else{
@@ -34,6 +37,9 @@ class ReproductionController extends Controller
 
     public function store(Request $request)
     {
+        if ($error = $this->sendPermissionError('create')) {
+            return $error;
+        }
         DB::beginTransaction();
 
         $data['animal_info_id'] = $request->animal_info_id;
@@ -46,7 +52,6 @@ class ReproductionController extends Controller
         }else{
             Reproduction::create($data);
         }
-
 
         try{
             DB::commit();

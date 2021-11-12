@@ -26,6 +26,9 @@ class BodyWeightController extends Controller
 
     public function create()
     {
+        if ($error = $this->sendPermissionError('create')) {
+            return $error;
+        }
         if (Auth::user()->is==1) {
             $animalInfos = AnimalInfo::all();
         }else{
@@ -36,6 +39,9 @@ class BodyWeightController extends Controller
 
     public function store(Request $request)
     {
+        if ($error = $this->sendPermissionError('create')) {
+            return $error;
+        }
         // $productionRecord = $query->validated();
 
         $birth_wt = $request->birth_wt;
@@ -78,12 +84,18 @@ class BodyWeightController extends Controller
 
     public function edit($id)
     {
+        if ($error = $this->sendPermissionError('edit')) {
+            return $error;
+        }
         $productionRecord = BodyWeight::find($id);
         return view('admin.body_weight.edit', compact('productionRecord'));
     }
 
     public function update(BodyWeightUpdateRequest $request, BodyWeight $ProductionRecord)
     {
+        if ($error = $this->sendPermissionError('edit')) {
+            return $error;
+        }
         $data = $request->validated();
 
         try{

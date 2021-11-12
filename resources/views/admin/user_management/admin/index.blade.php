@@ -56,7 +56,23 @@
                                         <tr>
                                             <td class="text-center">{{ $x++ }}</td>
                                             <td>{{ $adminUser->name }}</td>
-                                            <td>{{ ($adminUser->is == 1) ? 'Admin':'Community' }}</td>
+                                            @switch($adminUser->permission->role_id)
+                                                @case(1)
+                                                    @php $permission = 'Admin' @endphp
+                                                    @break
+                                                @case(2)
+                                                    @php $permission = 'Creator' @endphp
+                                                    @break
+                                                @case(3)
+                                                    @php $permission = 'Editor' @endphp
+                                                    @break
+                                                @case(4)
+                                                    @php $permission = 'viewer' @endphp
+                                                    @break
+                                                @default
+                                                    @php $permission = 'Community' @endphp
+                                            @endswitch
+                                            <td>{{ $permission }}</td>
                                             <td>{{ $adminUser->phone }}</td>
                                             <td>{{ $adminUser->email }}</td>
                                             <td>{{ $adminUser->address }}</td>

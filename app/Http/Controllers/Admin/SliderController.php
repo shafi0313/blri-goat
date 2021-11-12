@@ -22,6 +22,9 @@ class SliderController extends Controller
 
     public function create()
     {
+        if ($error = $this->sendPermissionError('create')) {
+            return $error;
+        }
         if (Auth::user()->is!=1) {
             Alert::info('You have no permission');
             return back();
@@ -31,6 +34,9 @@ class SliderController extends Controller
 
     public function store(Request $request)
     {
+        if ($error = $this->sendPermissionError('create')) {
+            return $error;
+        }
         $this->validate($request, [
             'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
         ]);
@@ -63,6 +69,9 @@ class SliderController extends Controller
 
     public function edit($id)
     {
+        if ($error = $this->sendPermissionError('edit')) {
+            return $error;
+        }
         if (Auth::user()->is!=1) {
             Alert::info('You have no permission');
             return back();
@@ -73,6 +82,9 @@ class SliderController extends Controller
 
     public function update(Request $request, $id)
     {
+        if ($error = $this->sendPermissionError('create')) {
+            return $error;
+        }
         if (Auth::user()->is!=1) {
             Alert::info('You have no permission');
             return back();
@@ -110,6 +122,9 @@ class SliderController extends Controller
 
     public function destroy($id)
     {
+        if ($error = $this->sendPermissionError('delete')) {
+            return $error;
+        }
         if (Auth::user()->is!=1) {
             Alert::info('You have no permission');
             return back();

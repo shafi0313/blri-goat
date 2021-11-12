@@ -38,6 +38,9 @@ class AnimalInfoController extends Controller
 
     public function create()
     {
+        if ($error = $this->sendPermissionError('create')) {
+            return $error;
+        }
         if (Auth::user()->is==1) {
             $farms = Farm::all();
             $communityCats = CommunityCat::all();
@@ -57,6 +60,9 @@ class AnimalInfoController extends Controller
 
     public function store(Request $request)
     {
+        if ($error = $this->sendPermissionError('create')) {
+            return $error;
+        }
         $animal_sub_cat_id = $request->animal_sub_cat_id;
         if ($animal_sub_cat_id==0) {
             $animal_sub_cat_id = null;

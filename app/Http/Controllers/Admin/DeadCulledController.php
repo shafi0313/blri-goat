@@ -23,6 +23,9 @@ class DeadCulledController extends Controller
 
     public function create()
     {
+        if ($error = $this->sendPermissionError('create')) {
+            return $error;
+        }
         if (Auth::user()->is==1) {
             $animalInfos = AnimalInfo::all();
         }else{
@@ -34,6 +37,9 @@ class DeadCulledController extends Controller
 
     public function store(Request $request)
     {
+        if ($error = $this->sendPermissionError('create')) {
+            return $error;
+        }
         $data = $this->validate($request, [
             'animal_info_id' => 'required',
             'dead_culled'  => 'required|max:20',
@@ -54,6 +60,9 @@ class DeadCulledController extends Controller
 
     public function destroy($id)
     {
+        if ($error = $this->sendPermissionError('delete')) {
+            return $error;
+        }
         DeadCulled::find($id)->delete();
         toast('Success','success');
         return redirect()->back();

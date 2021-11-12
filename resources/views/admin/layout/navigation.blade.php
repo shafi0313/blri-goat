@@ -68,6 +68,7 @@
                 </li>
 
                 @if (auth()->user()->is==1)
+                @role('admin')
                 <li class="nav-item {{$p=='admin'?'active':''}}">
                     <a data-toggle="collapse" href="#admin">
                         <i class="fas fa-users-cog"></i>
@@ -89,6 +90,7 @@
                         </ul>
                     </div>
                 </li>
+                @endrole
 
                 <li class="nav-item {{$p=='farmSett'?'active submenu':''}}">
                     <a data-toggle="collapse" href="#invoice">

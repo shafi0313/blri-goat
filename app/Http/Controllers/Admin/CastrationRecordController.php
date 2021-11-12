@@ -23,6 +23,9 @@ class CastrationRecordController extends Controller
 
     public function create()
     {
+        if ($error = $this->sendPermissionError('create')) {
+            return $error;
+        }
         if (Auth::user()->is==1) {
             $animalInfos = AnimalInfo::all();
         }else{
@@ -34,6 +37,9 @@ class CastrationRecordController extends Controller
 
     public function store(Request $request)
     {
+        if ($error = $this->sendPermissionError('create')) {
+            return $error;
+        }
         $data = $this->validate($request, [
             'animal_info_id' => 'required',
             'date'  => 'required|date',

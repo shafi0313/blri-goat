@@ -53,4 +53,9 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function permission()
+    {
+        return $this->hasOne(ModelHasRole::class,'model_id');
+    }
 }

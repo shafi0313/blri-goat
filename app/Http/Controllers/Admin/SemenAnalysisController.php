@@ -23,6 +23,9 @@ class SemenAnalysisController extends Controller
 
     public function create()
     {
+        if ($error = $this->sendPermissionError('create')) {
+            return $error;
+        }
         if (Auth::user()->is==1) {
             $animalInfos = AnimalInfo::whereSex('M')->get();
         }else{
@@ -33,6 +36,9 @@ class SemenAnalysisController extends Controller
 
     public function store(Request $request)
     {
+        if ($error = $this->sendPermissionError('create')) {
+            return $error;
+        }
         $this->validate($request, [
             'animal_info_id' => 'required',
         ]);
@@ -61,6 +67,9 @@ class SemenAnalysisController extends Controller
 
     public function destroy($id)
     {
+        if ($error = $this->sendPermissionError('delete')) {
+            return $error;
+        }
         SemenAnalysis::find($id)->delete();
         toast('Successfully Deleted','success');
         return redirect()->back();

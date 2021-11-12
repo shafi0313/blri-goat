@@ -23,6 +23,9 @@ class VaccinationController extends Controller
 
     public function create()
     {
+        if ($error = $this->sendPermissionError('create')) {
+            return $error;
+        }
         if (Auth::user()->is==1) {
             $animalInfos = AnimalInfo::all();
         }else{
@@ -34,6 +37,9 @@ class VaccinationController extends Controller
 
     public function store(Request $request)
     {
+        if ($error = $this->sendPermissionError('create')) {
+            return $error;
+        }
         $this->validate($request, [
             // 'animal_info_id' => 'required',
             'vaccine_name' => 'required|max:155',
@@ -73,6 +79,9 @@ class VaccinationController extends Controller
 
     public function destroy($id)
     {
+        if ($error = $this->sendPermissionError('delete')) {
+            return $error;
+        }
         Vaccination::find($id)->delete();
         toast('Success','success');
         return redirect()->back();

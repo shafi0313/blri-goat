@@ -19,6 +19,9 @@ class CommunityController extends Controller
 
     public function create()
     {
+        if ($error = $this->sendPermissionError('create')) {
+            return $error;
+        }
 
         $communityCats = CommunityCat::select(['id','name'])->get();
         return view('admin.community.create', compact('communityCats'));
@@ -26,6 +29,9 @@ class CommunityController extends Controller
 
     public function store(Request $request)
     {
+        if ($error = $this->sendPermissionError('create')) {
+            return $error;
+        }
         $data = $this->validate($request, [
             'community_cat_id' => 'required',
             'name' => 'required|max:80',
@@ -47,6 +53,9 @@ class CommunityController extends Controller
 
     public function edit($id)
     {
+        if ($error = $this->sendPermissionError('edit')) {
+            return $error;
+        }
         $community = Community::find($id);
         $farmSelect = Farm::where('id', $id)->first();
         $farms = Farm::select(['id','name'])->get();
@@ -55,6 +64,9 @@ class CommunityController extends Controller
 
     public function update(Request $request, $id)
     {
+        if ($error = $this->sendPermissionError('create')) {
+            return $error;
+        }
         $data = $this->validate($request, [
             'community_cat_id' => 'required',
             'name' => 'required|max:80',
@@ -75,6 +87,9 @@ class CommunityController extends Controller
 
     public function destroy($id)
     {
+        if ($error = $this->sendPermissionError('delete')) {
+            return $error;
+        }
         Community::find($id)->delete();
         toast('Community Successfully Deleted','success');
         return redirect()->back();

@@ -23,12 +23,18 @@ class CommunityCatController extends Controller
 
     public function create()
     {
+        if ($error = $this->sendPermissionError('create')) {
+            return $error;
+        }
         $districts = District::orderBy('name')->get();
         return view('admin.community_cat.create', compact('districts'));
     }
 
     public function store(Request $request)
     {
+        if ($error = $this->sendPermissionError('create')) {
+            return $error;
+        }
         $this->validate($request, [
             'name' => 'required',
             'email' => 'required|email|unique:users,email',
@@ -78,6 +84,13 @@ class CommunityCatController extends Controller
             'address' => $request->address,
         ];
 
+        $permission = [
+            'role_id' => 5,
+            'model_type' => "App\Models\User",
+            'model_id' =>  $user->id,
+        ];
+        DB::table('model_has_roles')->insert($permission);
+
         try{
             DB::commit();
             CommunityCat::create($community);
@@ -92,6 +105,9 @@ class CommunityCatController extends Controller
 
     public function edit($id)
     {
+        if ($error = $this->sendPermissionError('edit')) {
+            return $error;
+        }
         $districts = District::orderBy('name')->get();
         $communityCat = CommunityCat::find($id);
         return view('admin.community_cat.edit', compact('communityCat','districts'));
@@ -99,6 +115,9 @@ class CommunityCatController extends Controller
 
     public function update(Request $request, $id)
     {
+        if ($error = $this->sendPermissionError('edit')) {
+            return $error;
+        }
         $this->validate($request, [
             'name' => 'required',
             // 'email' => 'required|email|unique:users,email',
@@ -162,6 +181,9 @@ class CommunityCatController extends Controller
 
     public function destroy($id)
     {
+        if ($error = $this->sendPermissionError('delete')) {
+            return $error;
+        }
         CommunityCat::find($id)->delete();
         toast('Successfully Deleted','success');
         return redirect()->back();

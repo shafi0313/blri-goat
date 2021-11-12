@@ -38,6 +38,21 @@
                                 @csrf
                                 @method('PUT')
                                 <div class="row">
+                                    @if ($adminUsers->is==1)
+                                    <div class="form-group col-sm-6">
+                                        <label for="business_name">Permission <span class="t_r">*</span></label>
+                                        <select name="is" id="" class="form-control @error('is') is-invalid @enderror">
+                                            <option value="1" {{$adminUsers->permission->role_id==1?'selected':''}}>Admin</option>
+                                            <option value="2" {{$adminUsers->permission->role_id==2?'selected':''}}>Creator</option>
+                                            <option value="2" {{$adminUsers->permission->role_id==3?'selected':''}}>Editor</option>
+                                            <option value="3" {{$adminUsers->permission->role_id2==4?'selected':''}}>Viewer</option>
+                                        </select>
+                                        @error('is')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+
+                                    @endif
                                     <div class="form-group col-sm-6">
                                         <label for="name">Name <span class="t_r">*</span></label>
                                         <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{$adminUsers->name}}" placeholder="Enter Admin Name" required>

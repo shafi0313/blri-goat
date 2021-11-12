@@ -24,6 +24,9 @@ class AdminUserController extends Controller
 
     public function create()
     {
+        if ($error = $this->sendPermissionError('create')) {
+            return $error;
+        }
         if (Auth::user()->is!=1) {
             Alert::info('You have no permission');
             return back();
@@ -33,11 +36,14 @@ class AdminUserController extends Controller
 
     public function store(Request $request)
     {
+        if ($error = $this->sendPermissionError('create')) {
+            return $error;
+        }
         $this->validate($request, [
             'name' => 'required',
             'email' => 'required|email|unique:users,email',
             'phone' => 'required|numeric',
-            // 'is' => 'required',
+            'is' => 'required',
             'address' => 'required',
             'password' => ['required', 'confirmed', Password::min(6)
                                                             ->letters()
@@ -46,6 +52,7 @@ class AdminUserController extends Controller
                                                             ->symbols()
                                                             ->uncompromised()],
         ]);
+        DB::beginTransaction();
 
         $image_name = '';
         if ($request->hasFile('image')) {
@@ -68,29 +75,42 @@ class AdminUserController extends Controller
             'profile_photo_path' => $image_name,
             'password' => bcrypt($request->input('password')),
         ];
+        $user = User::create($data);
 
-        DB::beginTransaction();
+        if (Auth::user()->is ==1) {
+            $permission = [
+                'role_id' => $request->input('is'),
+                'model_type' => "App\Models\User",
+                'model_id' =>  $user->id,
+            ];
+            DB::table('model_has_roles')->insert($permission);
+        }
 
         try {
-            User::create($data);
             DB::commit();
             toast('User Successfully Inserted', 'success');
             return redirect()->route('admin-user.index');
         } catch (\Exception $ex) {
             DB::rollBack();
-            toast($ex->getMessage().'User Inserted Faild', 'error');
+            toast($ex->getMessage().'User Inserted Failed', 'error');
             return back();
         }
     }
 
     public function edit($id)
     {
+        if ($error = $this->sendPermissionError('edit')) {
+            return $error;
+        }
         $adminUsers = User::findOrFail($id);
         return view('admin.user_management.admin.edit', compact('adminUsers'));
     }
 
     public function update(Request $request, $id)
     {
+        if ($error = $this->sendPermissionError('edit')) {
+            return $error;
+        }
         $this->validate($request, [
             'name' => 'required',
             'phone' => 'required|numeric',
@@ -128,6 +148,13 @@ class AdminUserController extends Controller
             $data['password'] = bcrypt($request->input('password'));
         }
 
+        if (Auth::user()->is == 1) {
+            $permission = [
+                'role_id' => $request->input('is'),
+            ];
+            DB::table('model_has_roles')->whereModel_id($id)->update($permission);
+        }
+
         try {
             User::find($id)->update($data);
             DB::commit();
@@ -142,6 +169,9 @@ class AdminUserController extends Controller
 
     public function destroy($id)
     {
+        if ($error = $this->sendPermissionError('delete')) {
+            return $error;
+        }
         User::find($id)->delete();
         toast('Success', 'success');
         return redirect()->back();

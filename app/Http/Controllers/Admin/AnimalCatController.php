@@ -16,11 +16,17 @@ class AnimalCatController extends Controller
 
     public function create()
     {
+        if ($error = $this->sendPermissionError('create')) {
+            return $error;
+        }
         return view('admin.animal_cat.create');
     }
 
     public function store(Request $request)
     {
+        if ($error = $this->sendPermissionError('create')) {
+            return $error;
+        }
         // $data = $this->validate($request, [
         //     'type' => 'required',
         //     'name' => 'required',
@@ -45,6 +51,9 @@ class AnimalCatController extends Controller
 
     public function SubCatStore(Request $request)
     {
+        if ($error = $this->sendPermissionError('create')) {
+            return $error;
+        }
         // $data = $this->validate($request, [
         //     'type' => 'required',
         //     'name' => 'required',
@@ -69,6 +78,9 @@ class AnimalCatController extends Controller
 
     public function edit($id)
     {
+        if ($error = $this->sendPermissionError('edit')) {
+            return $error;
+        }
         $animalCat = AnimalCat::find($id);
         return view('admin.animal_cat.edit', compact('animalCat'));
     }
@@ -77,6 +89,9 @@ class AnimalCatController extends Controller
 
     public function update(Request $request, $id)
     {
+        if ($error = $this->sendPermissionError('edit')) {
+            return $error;
+        }
         $data = [
             'type' => $request->type,
             'name' => $request->name,
@@ -96,6 +111,9 @@ class AnimalCatController extends Controller
     // Animal Sub Category _________________________________________
     public function subEdit($id)
     {
+        if ($error = $this->sendPermissionError('edit')) {
+            return $error;
+        }
         $animalSubCat = AnimalCat::find($id);
         $goats = AnimalCat::where('type', 1)->where('parent_id','!=', 0)->get();
         $sheeps = AnimalCat::where('type', 2)->where('parent_id','!=', 0)->get();
@@ -104,6 +122,9 @@ class AnimalCatController extends Controller
 
     public function subUpdate(Request $request, $id)
     {
+        if ($error = $this->sendPermissionError('edit')) {
+            return $error;
+        }
         $data = [
             'type' => $request->type,
             'name' => $request->name,
@@ -121,6 +142,9 @@ class AnimalCatController extends Controller
     }
     public function destroy($id)
     {
+        if ($error = $this->sendPermissionError('delete')) {
+            return $error;
+        }
         AnimalCat::find($id)->delete();
         toast('Farm Successfully Deleted','success');
         return redirect()->back();

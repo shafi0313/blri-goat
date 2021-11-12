@@ -25,6 +25,9 @@ class DiseaseTreatmentController extends Controller
 
     public function create()
     {
+        if ($error = $this->sendPermissionError('create')) {
+            return $error;
+        }
         if (Auth::user()->is==1) {
             $animalInfos = AnimalInfo::all();
         }else{
@@ -38,6 +41,9 @@ class DiseaseTreatmentController extends Controller
 
     public function store(Request $request)
     {
+        if ($error = $this->sendPermissionError('create')) {
+            return $error;
+        }
         $data = $this->validate($request, [
             'animal_info_id' => 'required',
             'animal_cat_id' => 'required',
@@ -63,6 +69,9 @@ class DiseaseTreatmentController extends Controller
 
     public function destroy($id)
     {
+        if ($error = $this->sendPermissionError('delete')) {
+            return $error;
+        }
         DiseaseTreatment::find($id)->delete();
         toast('Success','success');
         return redirect()->back();

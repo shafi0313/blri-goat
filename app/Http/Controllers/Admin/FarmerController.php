@@ -17,11 +17,17 @@ class FarmerController extends Controller
 
     public function create()
     {
+        if ($error = $this->sendPermissionError('create')) {
+            return $error;
+        }
         return view('admin.user_management.farmer.create');
     }
 
     public function store(Request $request)
     {
+        if ($error = $this->sendPermissionError('create')) {
+            return $error;
+        }
         $this->validate($request, [
             'name' => 'required',
             'email' => 'required|email|unique:users,email',
@@ -51,7 +57,7 @@ class FarmerController extends Controller
             'profile_photo_path' => $image_name,
             'password' => bcrypt($request->input('password')),
         ];
-        
+
 
         DB::beginTransaction();
 
@@ -75,12 +81,18 @@ class FarmerController extends Controller
 
     public function edit($id)
     {
+        if ($error = $this->sendPermissionError('edit')) {
+            return $error;
+        }
         $adminUsers = User::find($id);
         return view('farmer.user_management.farmer.edit', compact('adminUsers'));
     }
 
     public function update(Request $request, $id)
     {
+        if ($error = $this->sendPermissionError('edit')) {
+            return $error;
+        }
         $this->validate($request, [
             'name' => 'required',
             'phone' => 'required|numeric',

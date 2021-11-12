@@ -23,6 +23,9 @@ class ParasiteController extends Controller
 
     public function create()
     {
+        if ($error = $this->sendPermissionError('create')) {
+            return $error;
+        }
         if (Auth::user()->is==1) {
             $animalInfos = AnimalInfo::all();
         }else{
@@ -34,6 +37,9 @@ class ParasiteController extends Controller
 
     public function store(Request $request)
     {
+        if ($error = $this->sendPermissionError('create')) {
+            return $error;
+        }
         $data = $this->validate($request, [
             'animal_info_id' => 'required',
             'feces_collection_date'  => 'required|date',
@@ -56,6 +62,9 @@ class ParasiteController extends Controller
 
     public function destroy($id)
     {
+        if ($error = $this->sendPermissionError('delete')) {
+            return $error;
+        }
         Parasite::find($id)->delete();
         toast('Success','success');
         return redirect()->back();

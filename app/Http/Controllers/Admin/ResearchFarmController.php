@@ -16,11 +16,17 @@ class ResearchFarmController extends Controller
 
     public function create()
     {
+        if ($error = $this->sendPermissionError('create')) {
+            return $error;
+        }
         return view('admin.research_farm.create');
     }
 
     public function store(Request $request)
     {
+        if ($error = $this->sendPermissionError('create')) {
+            return $error;
+        }
         $data = $this->validate($request, [
             'name' => 'required|max:80',
             'contact_person' => 'required|max:100',
@@ -40,12 +46,18 @@ class ResearchFarmController extends Controller
 
     public function edit($id)
     {
+        if ($error = $this->sendPermissionError('edit')) {
+            return $error;
+        }
         $farm = Farm::find($id);
         return view('admin.research_farm.edit', compact('farm'));
     }
 
     public function update(Request $request, $id)
     {
+        if ($error = $this->sendPermissionError('create')) {
+            return $error;
+        }
         $data = $this->validate($request, [
             'name' => 'required|max:80',
             'contact_person' => 'required|max:100',
@@ -66,6 +78,9 @@ class ResearchFarmController extends Controller
 
     public function destroy($id)
     {
+        if ($error = $this->sendPermissionError('delete')) {
+            return $error;
+        }
         Farm::find($id)->delete();
         toast('Farm Successfully Deleted','success');
         return redirect()->back();

@@ -26,6 +26,9 @@ class ServiceController extends Controller
 
     public function create()
     {
+        if ($error = $this->sendPermissionError('create')) {
+            return $error;
+        }
         $animalInfosM = AnimalInfo::whereUser_id(Auth::user()->id)->whereSex('M')->whereNotNull('sire')->get();
         $animalInfosF = AnimalInfo::whereUser_id(Auth::user()->id)->whereSex('F')->whereNotNull('dam')->get();
         return view('admin.service.create', compact('animalInfosM','animalInfosF'));
@@ -33,6 +36,9 @@ class ServiceController extends Controller
 
     public function store(Request $request)
     {
+        if ($error = $this->sendPermissionError('create')) {
+            return $error;
+        }
         $this->validate($request, [
             'buck_tag' => 'required',
             'doe_tag' => 'required',
@@ -95,7 +101,6 @@ class ServiceController extends Controller
 
 
         try{
-
             DB::commit();
             toast('Success','success');
             return redirect()->route('service.index');

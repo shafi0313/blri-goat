@@ -24,6 +24,9 @@ class DiseaseHealthController extends Controller
 
     public function create()
     {
+        if ($error = $this->sendPermissionError('create')) {
+            return $error;
+        }
         if (Auth::user()->is==1) {
             $animalInfos = AnimalInfo::all();
         }else{
@@ -34,6 +37,9 @@ class DiseaseHealthController extends Controller
 
     public function store(DiseaseHealthStoreRequest $request)
     {
+        if ($error = $this->sendPermissionError('create')) {
+            return $error;
+        }
         $data = $request->validated();
         $data['user_id'] = Auth::user()->id;
 

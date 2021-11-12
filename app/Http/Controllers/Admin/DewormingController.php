@@ -23,6 +23,9 @@ class DewormingController extends Controller
 
     public function create()
     {
+        if ($error = $this->sendPermissionError('create')) {
+            return $error;
+        }
         if (Auth::user()->is==1) {
             $animalInfos = AnimalInfo::all();
         }else{
@@ -34,6 +37,9 @@ class DewormingController extends Controller
 
     public function store(Request $request)
     {
+        if ($error = $this->sendPermissionError('create')) {
+            return $error;
+        }
         $this->validate($request, [
             'medicine_name'  => 'required|max:100',
             'deworming_date'  => 'required|date',
@@ -70,6 +76,9 @@ class DewormingController extends Controller
 
     public function destroy($id)
     {
+        if ($error = $this->sendPermissionError('delete')) {
+            return $error;
+        }
         Deworming::find($id)->delete();
         toast('Success','success');
         return redirect()->back();
