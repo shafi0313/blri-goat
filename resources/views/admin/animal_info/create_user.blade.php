@@ -76,13 +76,6 @@
                                         @enderror
                                     </div>
 
-                                    {{-- <div class="form-group col-md-3 community" style="display: none">
-                                        <label for="name">Sub Farm <span class="t_r">*</span></label>
-                                        <select name="community_id" id="comm" class="form-control"></select>
-                                    </div> --}}
-                                {{-- </div>
-
-                                <div class="row"> --}}
                                     <div class="form-check col-md-3">
 										<label>Type <span class="t_r">*</span></label><br>
 										<label class="form-radio-label" id="goat">
@@ -154,31 +147,6 @@
                                         @enderror
                                     </div>
 
-                                    <div class="form-check col-md-3" id="m_type" style="display: none">
-										<label>M Type <span class="t_r">*</span></label><br>
-										<label class="form-radio-label" id="patha">
-											<input class="form-radio-input" type="radio" name="m_type" value="1">
-											<span class="form-radio-sign">patha</span>
-										</label>
-										<label class="form-radio-label ml-3" id="khasi">
-											<input class="form-radio-input" type="radio" name="m_type" value="2">
-											<span class="form-radio-sign">Khasi</span>
-										</label>
-									</div>
-
-                                    {{-- <div class="form-group col-md-3">
-                                        <label for="a_type">Type <span class="t_r">*</span></label>
-                                        <select name="a_type" class="form-control @error('a_type') is-invalid @enderror">
-                                            <option selected disabled>Select</option>
-                                            <option value="1">প্রজননক্ষম</option>
-                                            <option value="2">বাড়ন্ত</option>
-                                            <option value="3">বাচ্চা</option>
-                                        </select>
-                                        @error('a_type')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div> --}}
-
                                     <div class="form-group col-md-3">
                                         <label for="sire">Sire</label>
                                         <input name="sire" type="text" class="form-control @error('sire') is-invalid @enderror" onInput="this.value = this.value.replace(/[a-zA-z\-*/]/g,'');" value="{{old('sire')}}">
@@ -202,14 +170,6 @@
                                         <label for="dam">Dam</label>
                                         <input type="text" class="form-control" name="dam_input">
                                     </div>
-
-                                    {{-- <div class="form-group col-md-3">
-                                        <label for="breed">Breed </label>
-                                        <input name="breed" type="text" class="form-control @error('breed') is-invalid @enderror" value="{{old('breed')}}">
-                                        @error('breed')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div> --}}
 
                                     <div class="form-group col-md-3">
                                         <label for="color">Coat Color </label>
@@ -250,20 +210,12 @@
                                     </div>
 
                                     {{-- <div class="form-group col-md-3">
-                                        <label for="paity">Parity </label>
-                                        <input name="paity" type="text" class="form-control @error('paity') is-invalid @enderror" value="{{old('paity')}}">
-                                        @error('paity')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div> --}}
-
-                                    <div class="form-group col-md-3">
                                         <label for="dam_milk">Dam milk production (ml) </label>
                                         <input  name="dam_milk" type="text" class="form-control @error('dam_milk') is-invalid @enderror" onInput="this.value = this.value.replace(/[a-zA-z\-*/]/g,'');" value="{{old('dam_milk')}}">
                                         @error('dam_milk')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
-                                    </div>
+                                    </div> --}}
 
                                     <div class="form-group col-md-3">
                                         <label for="d_o_b">Date of Birth <span class="t_r">*</span></label>
@@ -280,24 +232,6 @@
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
-
-                                    <div class="form-group col-md-3">
-                                        <label for="death_date">Date of Culling/ Death </label>
-                                        <input type="date" class="form-control @error('death_date') is-invalid @enderror" name="death_date" value="{{old('death_date')}}">
-                                        @error('death_date')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-
-
-                                    <div class="form-group col-md-3">
-                                        <label for="castrated">Castrated</label>
-                                        <input name="castrated" type="text" class="form-control @error('castrated') is-invalid @enderror" value="{{old('castrated')}}">
-                                        @error('castrated')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-
 
                                     <div class="form-group col-md-3">
                                         <label for="remark">Remarks</label>
@@ -365,15 +299,6 @@
     //     $("#comm").attr('required', true)
     // })
 
-    $('#sex').on('change',function(e) {
-        var sex = $(this).val();
-        if(sex=='M'){
-            $('#m_type').show()
-        }else{
-            $('#m_type').hide()
-        }
-    })
-
     $('#community_cat').on('change',function(e) {
         var communityCatId = $(this).val();
         $.ajax({
@@ -402,7 +327,16 @@
                 res = $.parseJSON(res);
                 $('#d_o_b').val(res.expected_d_o_b);
                 $('#generation').val(res.generation);
-
+                var sessionBirthCal;
+                var sessionBirth = new Date(res.expected_d_o_b).getMonth()+1;
+                if(sessionBirth==3 || sessionBirth==4 || sessionBirth==5 || sessionBirth==6){
+                    sessionBirthCal = 'Summer';
+                }else if(sessionBirth==7 || sessionBirth==8 || sessionBirth==9 || sessionBirth==10){
+                    sessionBirthCal = 'Rainy';
+                }else{
+                    sessionBirthCal = 'Winter';
+                }
+                $('#season_o_birth').val(sessionBirthCal);
             }
         })
         if(dam_tag == -1){

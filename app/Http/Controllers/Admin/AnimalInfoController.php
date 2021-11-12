@@ -72,28 +72,19 @@ class AnimalInfoController extends Controller
         DB::beginTransaction();
         $data = [
             'user_id' => Auth::user()->id,
-            // 'farm_id' => $request->farm_id,
-            // 'community_cat_id' => $request->community_cat_id,
-            // 'community_id' => $request->community_id,
             'animal_cat_id' => $request->animal_cat_id,
             'animal_sub_cat_id' => $animal_sub_cat_id,
             'type' => $request->type,
             'm_type' => $request->m_type,
             'sire' => $request->sire,
-            // 'dam' => $request->dam,
             'breed' => $request->breed,
             'animal_tag' => $request->animal_tag,
             'color' => $request->color,
             'sex' => $request->sex,
             'birth_wt' => $request->birth_wt,
             'litter_size' => $request->litter_size,
-            // 'generation' => $request->generation,
-            // 'paity' => $request->paity,
-            'dam_milk' => $request->dam_milk,
             'd_o_b' => $request->d_o_b,
             'season_o_birth' => $request->season_o_birth,
-            'death_date' => $request->death_date,
-            'castrated' => $request->castrated,
             'remark' => $request->remark,
         ];
 
