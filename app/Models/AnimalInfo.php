@@ -14,8 +14,7 @@ class AnimalInfo extends Model
 
     public static function getAnimalInfo()
     {
-        $datas = DB::table('animal_infos')->select(['animal_tag','type','sire','dam','color','sex','birth_wt','litter_size','generation','paity','dam_milk','d_o_b','season_d_o_b','death_date','remark'])->get();
-        return $datas;
+        return $datas = DB::table('animal_infos')->select(['animal_tag','type','sire','dam','color','sex','birth_wt','litter_size','generation','paity','dam_milk','d_o_b','season_d_o_b','remark'])->get();
     }
 
     public function animalCat()

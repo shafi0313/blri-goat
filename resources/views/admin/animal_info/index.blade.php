@@ -40,10 +40,10 @@
                                             <th>Paity</th>
                                             <th>Sire</th>
                                             <th>Dam</th>
-                                            <th>Dam Milk</th>
+                                            {{-- <th>Dam Milk</th> --}}
                                             <th>Date of Birth</th>
                                             <th>Season of Birth</th>
-                                            <th>Death Date</th>
+                                            {{-- <th>Death Date</th> --}}
                                             <th>Remark</th>
                                             <th class="no-sort" style="text-align:center;width:40px" >Action</th>
                                         </tr>
@@ -54,7 +54,7 @@
                                         <tr class="text-center">
                                             <td>{{ $x++ }} </td>
                                             <td>{{ $animalInfo->animal_tag }} </td>
-                                            <td>{{ $animalInfo->breed }} </td>
+                                            <td class="text-left">{{ $animalInfo->animalCat->name }} </td>
                                             <td>{{ $animalInfo->color }} </td>
                                             <td>{{ $animalInfo->sex }} </td>
                                             <td>{{ $animalInfo->birth_wt }} </td>
@@ -63,10 +63,10 @@
                                             <td>{{ $animalInfo->paity }} </td>
                                             <td>{{ $animalInfo->sire }} </td>
                                             <td>{{ $animalInfo->dam }} </td>
-                                            <td>{{ $animalInfo->dam_milk }} </td>
+                                            {{-- <td>{{ $animalInfo->dam_milk }} </td> --}}
                                             <td>{{ $animalInfo->d_o_b }} </td>
                                             <td>{{ $animalInfo->season_o_birth }} </td>
-                                            <td>{{ $animalInfo->death_date }} </td>
+                                            {{-- <td>{{ $animalInfo->death_date }} </td> --}}
                                             <td>{{ $animalInfo->remark }} </td>
                                             <td class="text-center">
                                                 <div class="form-button-action">
