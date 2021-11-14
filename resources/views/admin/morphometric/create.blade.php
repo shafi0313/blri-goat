@@ -55,11 +55,6 @@
                                         <input type="text" class="form-control" id="sex"  value="" readonly>
                                     </div>
 
-                                    {{-- <div class="form-group col-md-3">
-                                        <label for="">Age <span class="t_r">*</span></label>
-                                        <p style="color:#008CBA" id="result"></p>
-                                    </div> --}}
-
                                     <div class="form-group col-md-3">
                                         <label for="body_lenght">Body length (cm) <span class="t_r">*</span></label>
                                         <input name="body_lenght" type="number" step="any" class="form-control @error('body_lenght') is-invalid @enderror" value="{{old('body_lenght')}}">
@@ -76,11 +71,58 @@
                                     </div>
                                     <div class="form-group col-md-3">
                                         <label for="horn_pattern">Horn pattern </label>
-                                        <input name="horn_pattern" type="text" class="form-control @error('horn_pattern') is-invalid @enderror" value="{{old('horn_pattern')}}">
+                                       <select name="horn_pattern" class="form-control @error('horn_pattern') is-invalid @enderror">
+                                            <option value="">Select</option>
+                                            <option value="Strait">Strait</option>
+                                            <option value="Curved">Curved</option>
+                                            <option value="Spiral">Spiral</option>
+                                            <option value="Hornless">Hornless</option>
+                                        </select>
                                         @error('horn_pattern')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
+
+                                    <div class="form-group col-md-3">
+                                        <label for="scrotum_length">Scrotum length </label>
+                                        <input name="scrotum_length" type="number" step="any" class="form-control @error('scrotum_length') is-invalid @enderror" value="{{old('scrotum_length')}}">
+                                        @error('scrotum_length')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+
+                                    <div class="form-group col-md-3">
+                                        <label for="scrotum_diameter">Scrotum diameter </label>
+                                        <input name="scrotum_diameter" type="number" step="any" class="form-control @error('scrotum_diameter') is-invalid @enderror" value="{{old('scrotum_diameter')}}">
+                                        @error('scrotum_diameter')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+
+                                    <div class="form-group col-md-3">
+                                        <label for="rump_height">Rump height </label>
+                                        <input name="rump_height" type="number" step="any" class="form-control @error('rump_height') is-invalid @enderror" value="{{old('rump_height')}}">
+                                        @error('rump_height')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+
+                                    <div class="form-group col-md-3">
+                                        <label for="rump_weight">Rump weight </label>
+                                        <input name="rump_weight" type="number" step="any" class="form-control @error('rump_weight') is-invalid @enderror" value="{{old('rump_weight')}}">
+                                        @error('rump_weight')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+
+                                    <div class="form-group col-md-3">
+                                        <label for="rump_length">Rump length</label>
+                                        <input name="rump_length" type="number" step="any" class="form-control @error('rump_length') is-invalid @enderror" value="{{old('rump_length')}}">
+                                        @error('rump_length')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+
                                     <div class="form-group col-md-3">
                                         <label for="horn_length">Horn length </label>
                                         <input name="horn_length" type="number" step="any" class="form-control @error('horn_length') is-invalid @enderror" value="{{old('horn_length')}}">
@@ -88,6 +130,7 @@
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
+
                                     <div class="form-group col-md-3">
                                         <label for="tail_length">Tail length <span class="t_r">*</span></label>
                                         <input name="tail_length" type="number" step="any" class="form-control @error('tail_length') is-invalid @enderror" value="{{old('tail_length')}}">

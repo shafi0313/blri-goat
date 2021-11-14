@@ -31,7 +31,7 @@
                                             <th style="width: 35px">SL</th>
                                             <th>Animal Tag</th>
                                             <th>Sex</th>
-                                            <th>Breed</th>
+                                            {{-- <th>Breed</th> --}}
                                             <th>Name of Disease</th>
                                             <th>Clinical Sign</th>
                                             <th>Season of Disease</th>
@@ -47,9 +47,9 @@
                                             <td>{{ $x++ }} </td>
                                             <td>{{ $diseaseTreatment->animalInfo->animal_tag }} </td>
                                             <td>{{ $diseaseTreatment->animalInfo->sex }} </td>
-                                            <td>{{ $diseaseTreatment->animalInfo->breed }} </td>
-                                            <td>{{ $diseaseTreatment->disease->name }} </td>
-                                            <td>{{ $diseaseTreatment->clinicalSign->name }} </td>
+                                            {{-- <td>{{ $diseaseTreatment->animalInfo->breed }} </td> --}}
+                                            <td>{{ $diseaseTreatment->disease }} </td>
+                                            <td>{{ $diseaseTreatment->clinical_sign }} </td>
                                             <td>{{ $diseaseTreatment->disease_season }} </td>
                                             <td>{{ $diseaseTreatment->medicine_prescribed }} </td>
                                             <td>{{ $diseaseTreatment->recovered_dead }} </td>

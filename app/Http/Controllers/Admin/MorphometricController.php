@@ -49,6 +49,11 @@ class MorphometricController extends Controller
             'body_lenght' => $request->body_lenght,
             'weither_height' => $request->weither_height,
             'horn_pattern' => $request->horn_pattern,
+            'scrotum_length' => $request->scrotum_length,
+            'scrotum_diameter' => $request->scrotum_diameter,
+            'rump_height' => $request->rump_height,
+            'rump_weight' => $request->rump_weight,
+            'rump_length' => $request->rump_length,
             'horn_length' => $request->horn_length,
             'tail_length' => $request->tail_length,
             'ear_length' => $request->ear_length,
@@ -66,6 +71,7 @@ class MorphometricController extends Controller
             toast('Success','success');
             return redirect()->route('morphometric.index');
         }catch(\Exception $ex){
+            return $ex->getMessage();
             DB::rollBack();
             toast('Error', 'error');
             return redirect()->back();

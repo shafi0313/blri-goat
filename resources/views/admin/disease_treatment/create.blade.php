@@ -9,7 +9,7 @@
                 <ul class="breadcrumbs">
                     <li class="nav-home"><a href="{{ route('admin.dashboard')}}"><i class="flaticon-home"></i></a></li>
                     <li class="separator"><i class="flaticon-right-arrow"></i></li>
-                    <li class="nav-item"><a href="{{ route('animal-info.index')}}">Disease and Treatment</a></li>
+                    <li class="nav-item"><a href="{{ route('disease-and-treatment.index')}}">Disease and Treatment</a></li>
                     <li class="separator"><i class="flaticon-right-arrow"></i></li>
                     <li class="nav-item active">Add Disease and Treatment</li>
                 </ul>
@@ -54,11 +54,6 @@
                                     </div>
 
                                     <div class="form-group col-md-3">
-                                        <label for="">Breed <span class="t_r">*</span></label>
-                                        <input type="text" class="form-control" id="breed"  value="" readonly>
-                                    </div>
-
-                                    <div class="form-group col-md-3">
                                         <label for="">Sex <span class="t_r">*</span></label>
                                         <input type="text" class="form-control" id="sex"  value="" readonly>
                                     </div>
@@ -68,31 +63,57 @@
                                         <p style="color:#008CBA" id="result"></p>
                                     </div>
 
-                                    <div class="form-group col-md-3">
-                                        <label for="disease_name">Name of Disease <span class="t_r">*</span></label>
-                                        <select name="disease_id"  class="form-control @error('disease_name') is-invalid @enderror">
-                                            <option selected value disabled>Select Disease Name</option>
-                                            @foreach ($diseases as $disease)
-                                                <option value="{{ $disease->id }}">{{ $disease->name }}</option>
-                                            @endforeach
+                                    <div class="form-group col-md-3" id="disease_div">
+                                        <label for="disease">Name of Disease <span class="t_r">*</span></label>
+                                        <select name="disease" id="disease" class="form-control" required>
+                                            <option>Select</option>
+                                            <option value="Pneumonia">Pneumonia</option>
+                                            <option value="PPR">PPR</option>
+                                            <option value="Bloat">Bloat</option>
+                                            <option value="Urolithiasis">Urolithiasis</option>
+                                            <option value="Actinomycosis">Actinomycosis</option>
+                                            <option value="Skin disease">Skin disease</option>
+                                            <option value="Poisoning">Poisoning</option>
+                                            <option value="Mechanical">Mechanical</option>
+                                            <option value="Malnutrition">Malnutrition</option>
+                                            <option value="Ecthyma">Ecthyma</option>
+                                            <option value="Mastitis">Mastitis</option>
+                                            <option value="Abortion">Abortion</option>
+                                            <option value="Other">Other</option>
                                         </select>
-                                        @error('disease_id')
+                                        @error('disease')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
 
-                                    <div class="form-group col-md-3">
+                                    <div class="form-group col-md-3" style="display: none" id="disease_input">
+                                        <label for="disease">Disease <span class="t_r">*</span></label>
+                                        <input type="text" id="disease_inputt" class="form-control @error('disease') is-invalid @enderror" name="disease" value="{{old('disease')}}">
+                                        @error('disease')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+
+                                    <div class="form-group col-md-3" id="clinical_sign_div">
                                         <label for="disease_name">Clinical Sign <span class="t_r">*</span></label>
-                                        <select name="clinical_sign_id"  class="form-control @error('clinical_sign_id') is-invalid @enderror" required>
-                                            <option selected value disabled>Select Clinical Sign</option>
-                                            @foreach ($clinicalSigns as $clinicalSign)
-                                                <option value="{{ $clinicalSign->id }}">{{ $clinicalSign->name }}</option>
-                                            @endforeach
+                                        <select name="clinical_sign" id="clinical_sign" class="form-control @error('clinical_sign_id') is-invalid @enderror" required>
+                                            <option >Select</option>
+                                            <option value="Diarrhea">Diarrhea</option>
+                                            <option value="Other">Other</option>
                                         </select>
                                         @error('clinical_sign_id')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
+
+                                    <div class="form-group col-md-3" style="display: none" id="clinical_sign_in_div">
+                                        <label for="clinical_sign_id">Clinical Sign <span class="t_r">*</span></label>
+                                        <input type="text" id="clinical_sign_input" class="form-control @error('clinical_sign_id') is-invalid @enderror" name="clinical_sign" value="{{old('clinical_sign_id')}}">
+                                        @error('clinical_sign')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+
 
                                     <div class="form-group col-md-3">
                                         <label for="disease_date">Date of Disease <span class="t_r">*</span></label>
@@ -234,6 +255,33 @@
         }
         $('#season_o_birth').val(sessionBirthCal);
     });
+
+    $("#disease").on('change', function(){
+        var disease = $(this).val();
+        if(disease=='Other'){
+            $("#disease_input").show();
+            $("#disease_div").hide();
+            $("#disease").attr('disabled', true);
+            $("#disease_inputt").attr('disabled', false);
+        }else{
+            $("#disease_inputt").attr('disabled', true);
+            $("#disease").attr('disabled', false);
+        }
+    });
+
+    $("#clinical_sign").on('change', function(){
+        var clinical_sign = $(this).val();
+        if(clinical_sign=='Other'){
+            $("#clinical_sign_in_div").show();
+            $("#clinical_sign_div").hide();
+            $("#clinical_sign").attr('disabled', true);
+            $("#clinical_sign_input").attr('disabled', false);
+        }else{
+            $("#clinical_sign_input").attr('disabled', true);
+            $("#clinical_sign").attr('disabled', false);
+        }
+    });
+
 </script>
 @endpush
 @endsection
