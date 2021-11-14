@@ -123,8 +123,7 @@ class AnimalInfoController extends Controller
                 ];
                 Reproduction::create($reproduction);
             } else {
-                // $serviceData['is_giving_birth']=1;
-                Service::whereDoe_tag($request->dam)->latest()->first()->update(['is_giving_birth'=>1]);
+                Service::whereDoe_tag($request->dam)->latest()->first()->update(['is_giving_birth'=>1]) || null;
                 $dbGetAnimalInfo = AnimalInfo::select(['id','dam','d_o_b'])->where('dam', $request->dam)->first();
                 $dbGetReproduction = Reproduction::where('animal_info_id', $dbGetAnimalInfo->id)->first();
                 if ($dbGetReproduction->kidding_1st_date == null) {
