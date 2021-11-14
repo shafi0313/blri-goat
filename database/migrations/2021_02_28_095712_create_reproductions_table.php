@@ -53,6 +53,15 @@ class CreateReproductionsTable extends Migration
             $table->date('service_8th_date')->nullable();
             $table->date('kidding_8th_date')->nullable();
             $table->string('kidding_8th_liter',20)->nullable();
+
+            $table->date('service_9th_date')->nullable();
+            $table->date('kidding_9th_date')->nullable();
+            $table->string('kidding_9th_liter',20)->nullable();
+
+            $table->date('service_10th_date')->nullable();
+            $table->date('kidding_10th_date')->nullable();
+            $table->string('kidding_10th_liter',20)->nullable();
+
             $table->string('remarks',50)->nullable();
             $table->timestamps();
         });

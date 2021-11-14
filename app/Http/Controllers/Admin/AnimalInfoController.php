@@ -151,6 +151,12 @@ class AnimalInfoController extends Controller
                 } elseif ($dbGetReproduction->kidding_8th_date == null) {
                     $reproduction['kidding_8th_date'] = $request->d_o_b;
                     $reproduction['kidding_8th_liter'] = $request->litter_size;
+                }elseif ($dbGetReproduction->kidding_9th_date == null) {
+                    $reproduction['kidding_9th_date'] = $request->d_o_b;
+                    $reproduction['kidding_9th_liter'] = $request->litter_size;
+                }elseif ($dbGetReproduction->kidding_10th_date == null) {
+                    $reproduction['kidding_10th_date'] = $request->d_o_b;
+                    $reproduction['kidding_10th_liter'] = $request->litter_size;
                 }
                 Reproduction::where('id', $dbGetReproduction->id)->update($reproduction);
             }

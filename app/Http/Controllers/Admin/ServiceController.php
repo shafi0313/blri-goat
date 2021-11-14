@@ -77,14 +77,11 @@ class ServiceController extends Controller
         Service::create($data);
 
 
-        // $serviceForRepro = Service::where('animal_info_id', $animal_info_id)->first();
-       $getReproduction = Reproduction::where('animal_info_id', $animal_info_id->id)->first();
-    //    return $getReproduction->service_1st_date;
-        // $reproduction[''] = '';
+        $getReproduction = Reproduction::where('animal_info_id', $animal_info_id->id)->first();
         if($getReproduction==null || $getReproduction->count() < 1 ){
             $reproduction = [
                 'user_id' => Auth::user()->id,
-                'animal_info_id' => $animal_info_id,
+                'animal_info_id' => $animal_info_id->id,
                 'service_1st_date' => $request->date_of_service,
             ];
             Reproduction::create($reproduction);
@@ -101,6 +98,14 @@ class ServiceController extends Controller
                 $reproduction['service_5th_date'] = $request->date_of_service;
             }elseif($getReproduction->service_6th_date == null){
                 $reproduction['service_6th_date'] = $request->date_of_service;
+            }elseif($getReproduction->service_7th_date == null){
+                $reproduction['service_7th_date'] = $request->date_of_service;
+            }elseif($getReproduction->service_8th_date == null){
+                $reproduction['service_8th_date'] = $request->date_of_service;
+            }elseif($getReproduction->service_9th_date == null){
+                $reproduction['service_9th_date'] = $request->date_of_service;
+            }elseif($getReproduction->service_10th_date == null){
+                $reproduction['service_10th_date'] = $request->date_of_service;
             }
             Reproduction::where('id', $getReproduction->id)->update($reproduction);
         }

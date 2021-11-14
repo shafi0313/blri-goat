@@ -30,8 +30,6 @@
                                         <tr class="text-center">
                                             <th style="width: 35px">SL</th>
                                             <th>Animal Tag</th>
-                                            <th>Coat color</th>
-                                            <th>Sex</th>
                                             <th>Age at Puberty (Months)	</th>
                                             <th>Date at 1st service</th>
                                             <th>Date of 1st kidding</th>
@@ -60,6 +58,12 @@
                                             <th>Date at 8th service</th>
                                             <th>Date of 8th kidding</th>
                                             <th>Litter size at 8th kidding</th>
+                                            <th>Date at 9th service</th>
+                                            <th>Date of 9th kidding</th>
+                                            <th>Litter size at 9th kidding</th>
+                                            <th>Date at 10th service</th>
+                                            <th>Date of 10th kidding</th>
+                                            <th>Litter size at 10th kidding</th>
                                             <th>Remarks</th>
                                             {{-- <th class="no-sort" style="text-align:center;width:80px" >Action</th> --}}
                                         </tr>
@@ -75,13 +79,9 @@
                                         <tr class="text-center">
                                             <td>{{ $x++ }} </td>
                                             <td>{{ $reproduction->animalInfo->animal_tag }} </td>
-                                            <td>{{ $reproduction->animalInfo->sex }} </td>
-                                            <td>{{ $reproduction->animalInfo->color }} </td>
                                             <td>{{ $reproduction->puberty_age }}</td>
                                             <td>{{ $reproduction->service_1st_date }}</td>
                                             <td>{{ $reproduction->kidding_1st_date }}</td>
-                                            {{-- <td>{{ $reproduction->ges_lenght_1st_kidding }}</td> --}}
-
 
                                             @isset($reproduction->kidding_1st_date)
                                             <td>{{\Carbon\Carbon::parse($reproduction->service_1st_date)->diff($reproduction->kidding_1st_date)->format('%y Y %m M %d D')}}</td>
@@ -121,9 +121,19 @@
                                             <td>{{ $reproduction->service_7th_date }}</td>
                                             <td>{{ $reproduction->kidding_7th_date }}</td>
                                             <td>{{ $reproduction->kidding_7th_liter }}</td>
+
                                             <td>{{ $reproduction->service_8th_date }}</td>
                                             <td>{{ $reproduction->kidding_8th_date }}</td>
                                             <td>{{ $reproduction->kidding_8th_liter }}</td>
+
+                                            <td>{{ $reproduction->service_9th_date }}</td>
+                                            <td>{{ $reproduction->kidding_9th_date }}</td>
+                                            <td>{{ $reproduction->kidding_9th_liter }}</td>
+
+                                            <td>{{ $reproduction->service_10th_date }}</td>
+                                            <td>{{ $reproduction->kidding_10th_date }}</td>
+                                            <td>{{ $reproduction->kidding_10th_liter }}</td>
+
                                             <td>{{ $reproduction->remarks }}</td>
                                             {{-- <td>
                                                 <div class="form-button-action">

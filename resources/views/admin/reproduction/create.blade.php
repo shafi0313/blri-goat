@@ -9,7 +9,7 @@
                 <ul class="breadcrumbs">
                     <li class="nav-home"><a href="{{ route('admin.dashboard')}}"><i class="flaticon-home"></i></a></li>
                     <li class="separator"><i class="flaticon-right-arrow"></i></li>
-                    <li class="nav-item"><a href="{{ route('animal-info.index')}}">Reproduction Record</a></li>
+                    <li class="nav-item"><a href="{{ route('reproduction-record.index')}}">Reproduction Record</a></li>
                     <li class="separator"><i class="flaticon-right-arrow"></i></li>
                     <li class="nav-item active">Add Reproduction Record</li>
                 </ul>
