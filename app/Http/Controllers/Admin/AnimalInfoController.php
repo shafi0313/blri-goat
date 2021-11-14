@@ -115,7 +115,8 @@ class AnimalInfoController extends Controller
 
         // Reproduction kidding date create or update
         if (!empty($request->dam)) {
-            if ($request->dam_input != '') {
+
+            if ($request->dam_input != '' || $request->dam_input==0) {
                 $reproduction = [
                     'user_id' => Auth::user()->id,
                     'animal_info_id' => $animalInfo->id,
