@@ -29,10 +29,6 @@ class CreateBodyWeightsTable extends Migration
             $table->float('month_10')->nullable();
             $table->float('month_11')->nullable();
             $table->float('month_12')->nullable();
-            $table->float('g_rate_month_3')->nullable();
-            $table->float('g_rate_month_6')->nullable();
-            $table->float('g_rate_month_9')->nullable();
-            $table->float('g_rate_month_12')->nullable();
             $table->timestamps();
         });
     }

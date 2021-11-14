@@ -71,10 +71,30 @@
                                             <td>{{ $productionRecord->month_10 }} </td>
                                             <td>{{ $productionRecord->month_11 }} </td>
                                             <td>{{ $productionRecord->month_12 }} </td>
-                                            <td>{{ $productionRecord->g_rate_month_3 }} </td>
-                                            <td>{{ $productionRecord->g_rate_month_6 }} </td>
-                                            <td>{{ $productionRecord->g_rate_month_9 }} </td>
-                                            <td>{{ $productionRecord->g_rate_month_12 }} </td>
+
+                                            @isset($productionRecord->month_3)
+                                            <td>{{ float2(($productionRecord->month_3 - $productionRecord->animalInfo->birth_wt/90)*1000)}} </td>
+                                            @else
+                                            <td></td>
+                                            @endisset
+
+                                            @isset($productionRecord->month_6)
+                                            <td>{{ float2(($productionRecord->month_6 - $productionRecord->animalInfo->birth_wt/180)*1000)}} </td>
+                                            @else
+                                            <td></td>
+                                            @endisset
+
+                                            @isset($productionRecord->month_9)
+                                            <td>{{ float2(($productionRecord->month_9 - $productionRecord->animalInfo->birth_wt/270)*1000)}} </td>
+                                            @else
+                                            <td></td>
+                                            @endisset
+
+                                            @isset($productionRecord->month_12)
+                                            <td>{{ float2(($productionRecord->month_12 - $productionRecord->animalInfo->birth_wt/360))*1000}} </td>
+                                            @else
+                                            <td></td>
+                                            @endisset
                                             {{-- <td>
                                                 <div class="form-button-action">
                                                     <a href="{{route('body-weight.edit',$productionRecord->id)}}" title="Edit" class="btn btn-link btn-primary btn-lg">

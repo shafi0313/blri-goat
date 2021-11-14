@@ -61,10 +61,10 @@ class BodyWeightController extends Controller
             'month_10' => $request->month_10,
             'month_11' => $request->month_11,
             'month_12' => $request->month_12,
-            'g_rate_month_3' => ($request->month_3 - $birth_wt/90)*1000,
-            'g_rate_month_6' => ($request->month_6 - $birth_wt/180)*1000,
-            'g_rate_month_9' => ($request->month_9 - $birth_wt/270)*1000,
-            'g_rate_month_12' => ($request->month_12 - $birth_wt/360)*1000,
+            // 'g_rate_month_3' => ($request->month_3 - $birth_wt/90)*1000,
+            // 'g_rate_month_6' => ($request->month_6 - $birth_wt/180)*1000,
+            // 'g_rate_month_9' => ($request->month_9 - $birth_wt/270)*1000,
+            // 'g_rate_month_12' => ($request->month_12 - $birth_wt/360)*1000,
         ];
         // $request->month_3 ?? $data['g_rate_month_3'] =
 

@@ -2,6 +2,13 @@
 
 use App\Models\AnimalInfo;
 
+if (!function_exists('float2')) {
+    function float2($data)
+    {
+        return number_format($data,2);
+    }
+}
+
 if (!function_exists('animalKid')) {
     function animalKid($to_date)
     {
