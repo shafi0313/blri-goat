@@ -46,14 +46,14 @@ class AnimalInfoController extends Controller
             $communityCats = CommunityCat::all();
             $goatCats = AnimalCat::where('type', 1)->where('parent_id', 0)->get();
             $sheepCats = AnimalCat::where('type', 2)->where('parent_id', 0)->get();
-            $animalInfos = Service::all();
+            $animalInfos = Service::whereIs_giving_birth(0)->latest()->get()->groupBy('doe_tag');
             return view('admin.animal_info.create', compact('farms', 'communityCats', 'goatCats', 'sheepCats', 'animalInfos'));
         } else {
             $communityCats = CommunityCat::whereUser_id(Auth::user()->id)->first();
             $communitys = Community::whereCommunity_cat_id($communityCats->id);
             $goatCats = AnimalCat::where('type', 1)->where('parent_id', 0)->get();
             $sheepCats = AnimalCat::where('type', 2)->where('parent_id', 0)->get();
-            $animalInfos = Service::whereUser_id(Auth::user()->id);
+            $animalInfos = Service::whereUser_id(Auth::user()->id)->whereIs_giving_birth(0)->latest()->get()->groupBy('doe_tag');
             return view('admin.animal_info.create_user', compact('communitys', 'goatCats', 'sheepCats', 'animalInfos'));
         }
     }
@@ -102,7 +102,7 @@ class AnimalInfoController extends Controller
         if ($getDam > 0) {
             $data['dam'] = $request->dam;
             $data['generation'] = $request->generation+1;
-            Service::whereDoe_tag($request->dam)->latest()->update(['is_giving_birth' => 1]);
+            // Service::whereDoe_tag($request->dam)->latest()->update(['is_giving_birth' => 1]);
         } else {
             $data['dam'] = $request->dam_input;
             $data['generation'] = $request->generation;
@@ -123,6 +123,8 @@ class AnimalInfoController extends Controller
                 ];
                 Reproduction::create($reproduction);
             } else {
+                // $serviceData['is_giving_birth']=1;
+                Service::whereDoe_tag($request->dam)->latest()->first()->update(['is_giving_birth'=>1]);
                 $dbGetAnimalInfo = AnimalInfo::select(['id','dam','d_o_b'])->where('dam', $request->dam)->first();
                 $dbGetReproduction = Reproduction::where('animal_info_id', $dbGetAnimalInfo->id)->first();
                 if ($dbGetReproduction->kidding_1st_date == null) {
@@ -192,7 +194,6 @@ class AnimalInfoController extends Controller
 
     public function getService(Request $request)
     {
-        // $animalInfoId = $request->animalInfoId;
         $serviceInfos = Service::where('doe_tag', $request->dam_tag)->get();
         foreach ($serviceInfos as $serviceInfo) {
             $expected_d_o_b = $serviceInfo->expected_d_o_b;

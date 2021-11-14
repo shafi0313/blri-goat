@@ -17,9 +17,9 @@ class ServiceController extends Controller
     public function index()
     {
         if (Auth::user()->is==1) {
-            $services = Service::all();
+            $services = Service::latest()->get();
         }else{
-            $services = Service::whereUser_id(Auth::user()->id)->get();
+            $services = Service::whereUser_id(Auth::user()->id)->latest()->get();
         }
         return view('admin.service.index', compact('services'));
     }
@@ -54,7 +54,7 @@ class ServiceController extends Controller
         $animal_info_id = AnimalInfo::where('dam',$request->doe_tag)->first();
 
         $expected_d_o_b = Carbon::parse($request->date_of_service)->addDays(145)->format('Y-m-d');
-        return$service = Service::where('doe_tag', $animal_info_id->dam)->latest()->whereDate('expected_d_o_b','>=', $request->date_of_service)->first();
+        $service = Service::where('doe_tag', $animal_info_id->dam)->latest()->whereDate('expected_d_o_b','>=', $request->date_of_service)->first();
 
         if($service){
             $repeat_heat = 'Heat';
