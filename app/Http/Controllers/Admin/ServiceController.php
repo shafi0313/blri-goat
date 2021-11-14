@@ -29,8 +29,14 @@ class ServiceController extends Controller
         if ($error = $this->sendPermissionError('create')) {
             return $error;
         }
-        $animalInfosM = AnimalInfo::whereUser_id(Auth::user()->id)->whereSex('M')->whereNotNull('sire')->get();
-        $animalInfosF = AnimalInfo::whereUser_id(Auth::user()->id)->whereSex('F')->whereNotNull('dam')->get();
+
+        if (Auth::user()->is==1) {
+            $animalInfosM = AnimalInfo::whereSex('M')->whereNotNull('sire')->get();
+            $animalInfosF = AnimalInfo::whereSex('F')->whereNotNull('dam')->get();
+        }else{
+            $animalInfosM = AnimalInfo::whereUser_id(Auth::user()->id)->whereSex('M')->whereNotNull('sire')->get();
+            $animalInfosF = AnimalInfo::whereUser_id(Auth::user()->id)->whereSex('F')->whereNotNull('dam')->get();
+        }
         return view('admin.service.create', compact('animalInfosM','animalInfosF'));
     }
 
@@ -45,10 +51,10 @@ class ServiceController extends Controller
             'date_of_service' => 'required',
         ]);
 
-        $animal_info_id = AnimalInfo::where('dam',$request->doe_tag)->first()->id;
+        $animal_info_id = AnimalInfo::where('dam',$request->doe_tag)->first();
 
         $expected_d_o_b = Carbon::parse($request->date_of_service)->addDays(145)->format('Y-m-d');
-        $service = Service::where('doe_tag', $animal_info_id)->latest()->whereDate('expected_d_o_b','>=', $request->date_of_service)->first();
+        return$service = Service::where('doe_tag', $animal_info_id->dam)->latest()->whereDate('expected_d_o_b','>=', $request->date_of_service)->first();
 
         if($service){
             $repeat_heat = 'Heat';
@@ -72,7 +78,7 @@ class ServiceController extends Controller
 
 
         // $serviceForRepro = Service::where('animal_info_id', $animal_info_id)->first();
-       $getReproduction = Reproduction::where('animal_info_id', $animal_info_id)->first();
+       $getReproduction = Reproduction::where('animal_info_id', $animal_info_id->id)->first();
     //    return $getReproduction->service_1st_date;
         // $reproduction[''] = '';
         if($getReproduction==null || $getReproduction->count() < 1 ){

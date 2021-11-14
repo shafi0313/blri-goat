@@ -98,10 +98,10 @@ Route::middleware(['auth','admin'])->prefix('admin')->group(function(){
     Route::resource('/about', AboutController::class);
 
     // User Start________________________________________________________________________________________________________________
-    Route::resource('/admin-user', AdminUserController::class);
+    Route::resource('/admin-user', AdminUserController::class)->middleware(['role:admin']);
     // Route::post('/admin-user/destroy/{id}', [AdminUserController::class, 'destroy'])->name('admin.destroy');
-    Route::post('/admin-user/user-file-store', [AdminUserController::class, 'userFileStore'])->name('admin.userFileStore');
-    Route::post('/admin-user/file/destroy/{id}', [AdminUserController::class, 'userFileDestroy'])->name('admin.userFileDestroy');
+    Route::post('/admin-user/user-file-store', [AdminUserController::class, 'userFileStore'])->name('admin.userFileStore')->middleware(['role:admin']);
+    Route::post('/admin-user/file/destroy/{id}', [AdminUserController::class, 'userFileDestroy'])->name('admin.userFileDestroy')->middleware(['role:admin']);
 
     Route::resource('/farmer', FarmerController::class);
     Route::post('/farmer/user-file-store', [AdminUserController::class, 'userFileStore'])->name('farmer.userFileStore');

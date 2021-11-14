@@ -90,8 +90,7 @@
                         </ul>
                     </div>
                 </li>
-                @endrole
-
+                
                 <li class="nav-item {{$p=='farmSett'?'active submenu':''}}">
                     <a data-toggle="collapse" href="#invoice">
                         <i class="fas fa-tools"></i>
@@ -129,6 +128,7 @@
                         </ul>
                     </div>
                 </li>
+                @endrole
                 @endif
 
                 <li class="nav-item {{$p=='animalRecord'?'active':''}}">

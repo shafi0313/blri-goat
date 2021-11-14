@@ -71,28 +71,6 @@
                                         </select>
                                     </div>
 
-                                    {{-- <div class="form-group col-md-3">
-                                        <label for="">Sex <span class="t_r">*</span></label>
-                                        <input type="text" class="form-control" id="sex"  value="" readonly>
-                                    </div> --}}
-
-
-                                    {{-- <div class="form-group col-md-3">
-                                        <label for="name">Buck Tag</label>
-                                        <input name="name" type="text" class="form-control @error('name') is-invalid @enderror" value="{{old('name')}}">
-                                        @error('name')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-
-                                    <div class="form-group col-md-3">
-                                        <label for="name">Doe Tag</label>
-                                        <input  name="name" type="text" class="form-control @error('name') is-invalid @enderror" value="{{old('name')}}">
-                                        @error('name')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div> --}}
-
                                     <div class="form-group col-md-3">
                                         <label for="date_of_service">Date of Service</label>
                                         <input  name="date_of_service" type="date" id="date_of_service" class="form-control @error('date_of_service') is-invalid @enderror" value="{{old('date_of_service')}}">
@@ -101,29 +79,17 @@
                                         @enderror
                                     </div>
 
-                                    {{-- <div class="form-group col-md-3">
-                                        <label for="expected_d_o_b">Expected Date of Birth</label>
-                                        <input  name="expected_d_o_b" type="text" id="expected_d_o_b" class="form-control @error('expected_d_o_b') is-invalid @enderror" value="{{old('expected_d_o_b')}}">
-                                        @error('expected_d_o_b')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div> --}}
-
                                     <div class="form-group col-md-3">
                                         <label for="natural">Natural/AI</label>
-                                        <input  name="natural" type="text" class="form-control @error('natural') is-invalid @enderror" value="{{old('natural')}}">
+                                        <select name="natural" type="text" class="form-control @error('natural') is-invalid @enderror">
+                                            <option value="">Select</option>
+                                            <option value="Natural">Natural</option>
+                                            <option value="AI">AI</option>
+                                        </select>
                                         @error('natural')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
-{{--
-                                    <div class="form-group col-md-3">
-                                        <label for="repeat_heat">Repeat Heat/not</label>
-                                        <input  name="repeat_heat" type="text" class="form-control @error('repeat_heat') is-invalid @enderror" value="{{old('repeat_heat')}}">
-                                        @error('repeat_heat')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div> --}}
                                 </div>
 
                                 <div align="center" class="mr-auto card-action">
