@@ -27,11 +27,7 @@ class DiseaseHealthController extends Controller
         if ($error = $this->sendPermissionError('create')) {
             return $error;
         }
-        if (Auth::user()->is==1) {
-            $animalInfos = AnimalInfo::all();
-        }else{
-            $animalInfos = AnimalInfo::whereUser_id(Auth::user()->id)->get();
-        }
+        $animalInfos = getAnimalInfo();
         return view('admin.disease_health.create', compact('animalInfos'));
     }
 

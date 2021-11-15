@@ -27,9 +27,9 @@ class MilkProductionController extends Controller
             return $error;
         }
         if (Auth::user()->is==1) {
-            $animalInfos = AnimalInfo::all();
+            $animalInfos = AnimalInfo::whereSex('F')->whereStatus(0)->get();
         }else{
-            $animalInfos = AnimalInfo::whereUser_id(Auth::user()->id)->get();
+            $animalInfos = AnimalInfo::whereUser_id(Auth::user()->id)->whereSex('F')->whereStatus(0)->get();
         }
         return view('admin.milk_production.create', compact('animalInfos'));
     }

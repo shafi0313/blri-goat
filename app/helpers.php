@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\AnimalInfo;
+use Illuminate\Support\Facades\Auth;
 
 if (!function_exists('float2')) {
     function float2($data)
@@ -8,6 +9,18 @@ if (!function_exists('float2')) {
         return number_format($data,2);
     }
 }
+
+if (!function_exists('getAnimalInfo')) {
+    function getAnimalInfo(){
+        if (Auth::user()->is==1) {
+            return AnimalInfo::whereStatus(0)->get();
+        }else{
+            return AnimalInfo::whereUser_id(Auth::user()->id)->whereStatus(0)->get();
+        }
+    }
+}
+
+
 
 if (!function_exists('animalKid')) {
     function animalKid($to_date)

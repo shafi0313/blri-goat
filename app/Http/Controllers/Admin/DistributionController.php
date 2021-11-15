@@ -26,11 +26,7 @@ class DistributionController extends Controller
         if ($error = $this->sendPermissionError('create')) {
             return $error;
         }
-        if (Auth::user()->is==1) {
-            $animalInfos = AnimalInfo::all();
-        }else{
-            $animalInfos = AnimalInfo::whereUser_id(Auth::user()->id)->get();
-        }
+        $animalInfos = getAnimalInfo();
         return view('admin.distribution.create', compact('animalInfos'));
     }
 
@@ -42,16 +38,20 @@ class DistributionController extends Controller
         $this->validate($request, [
             'animal_info_id' => 'required',
         ]);
+        DB::beginTransaction();
 
         $data = [
+            'user_id' => Auth::user()->id,
             'animal_info_id' => $request->animal_info_id,
             'dis_date' => $request->dis_date,
             'address_of_rec' => $request->address_of_rec,
             'purpose' => $request->purpose,
         ];
-        $data['user_id'] = Auth::user()->id;
 
-        DB::beginTransaction();
+        AnimalInfo::whereId($request->animal_info_id)->first()->update([
+            'status' => 2,
+        ]);
+
         try{
             Distribution::create($data);
             DB::commit();

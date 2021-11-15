@@ -28,11 +28,7 @@ class DiseaseTreatmentController extends Controller
         if ($error = $this->sendPermissionError('create')) {
             return $error;
         }
-        if (Auth::user()->is==1) {
-            $animalInfos = AnimalInfo::all();
-        }else{
-            $animalInfos = AnimalInfo::whereUser_id(Auth::user()->id)->get();
-        }
+        $animalInfos = getAnimalInfo();
         // $diseases = Disease::all();
         // $clinicalSigns = ClinicalSign::all();
         return view('admin.disease_treatment.create', compact('animalInfos'));

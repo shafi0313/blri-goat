@@ -27,9 +27,9 @@ class SemenAnalysisController extends Controller
             return $error;
         }
         if (Auth::user()->is==1) {
-            $animalInfos = AnimalInfo::whereSex('M')->get();
+            $animalInfos = AnimalInfo::whereSex('M')->whereStatus(0)->get();
         }else{
-            $animalInfos = AnimalInfo::whereSex('M')->whereUser_id(Auth::user()->id)->get();
+            $animalInfos = AnimalInfo::whereSex('M')->whereUser_id(Auth::user()->id)->whereStatus(0)->get();
         }
         return view('admin.semen_analysis.create', compact('animalInfos'));
     }
