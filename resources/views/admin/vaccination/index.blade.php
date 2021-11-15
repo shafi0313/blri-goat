@@ -43,12 +43,12 @@
                                         <tr class="text-center">
                                             <td>{{ $x++ }} </td>
                                             <td>{{ $vaccination->vaccine_name }} </td>
-                                            <td>{{ $vaccination->vaccine_date }} </td>
+                                            <td>{{ bdDate($vaccination->vaccine_date) }} </td>
                                             <td>{{ $vaccination->dose }} </td>
-                                            <td>{{ $vaccination->total_vaccinated }} </td>
+                                            <td>{{ $vaccination->num_of_animal }} </td>
                                             <td>
                                                 <div class="form-button-action">
-                                                    <a href="{{route('vaccination.show',$vaccination->vaccine_date)}}" title="Show Details">
+                                                    <a href="{{route('vaccination.show',$vaccination->group)}}" title="Show Details">
                                                         Show Details
                                                     </a>
                                                     {{-- <form action="{{ route('vaccination.destroy', $vaccination->id) }}" method="POST">

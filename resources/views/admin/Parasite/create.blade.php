@@ -51,10 +51,10 @@
                                         @enderror
                                     </div>
 
-                                    <div class="form-group col-md-3">
+                                    {{-- <div class="form-group col-md-3">
                                         <label for="">Breed <span class="t_r">*</span></label>
                                         <input type="text" class="form-control" id="breed"  value="" readonly>
-                                    </div>
+                                    </div> --}}
 
                                     <div class="form-group col-md-3">
                                         <label for="">Sex <span class="t_r">*</span></label>
@@ -80,7 +80,7 @@
 
                                     <div class="form-group col-md-3">
                                         <label for="feces_collection_date">Date of Feces collection <span class="t_r">*</span></label>
-                                        <input name="feces_collection_date" type="date" class="form-control @error('feces_collection_date') is-invalid @enderror" value="{{old('feces_collection_date')}}" required>
+                                        <input name="feces_collection_date" type="date" id="date" class="form-control @error('feces_collection_date') is-invalid @enderror" value="{{old('feces_collection_date')}}" required>
                                         @error('feces_collection_date')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
@@ -93,8 +93,15 @@
                                         @enderror
                                     </div>
                                     <div class="form-group col-md-4">
+                                        <label for="fecal_test">Fecal test <span class="t_r">*</span></label>
+                                        <input name="fecal_test" type="text" class="form-control @error('fecal_test') is-invalid @enderror" value="{{old('fecal_test')}}" required>
+                                        @error('fecal_test')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group col-md-4">
                                         <label for="season">Season <span class="t_r">*</span></label>
-                                        <input name="season" type="text" class="form-control @error('season') is-invalid @enderror" value="{{old('season')}}" required>
+                                        <input name="season" type="text" class="form-control @error('season') is-invalid @enderror" value="{{old('season')}}" id="season" required>
                                         @error('season')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
@@ -197,6 +204,19 @@
                 }
             }
         })
+    });
+
+    $("#date").on('change', function(){
+        var sessionBirthCal;
+        var sessionBirth = new Date($("#date").val()).getMonth()+1;
+        if(sessionBirth==3 || sessionBirth==4 || sessionBirth==5 || sessionBirth==6){
+            sessionBirthCal = 'Summer';
+        }else if(sessionBirth==7 || sessionBirth==8 || sessionBirth==9 || sessionBirth==10){
+            sessionBirthCal = 'Rainy';
+        }else{
+            sessionBirthCal = 'Winter';
+        }
+        $('#season').val(sessionBirthCal);
     });
 
 

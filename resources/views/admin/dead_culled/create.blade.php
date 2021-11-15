@@ -64,7 +64,12 @@
 
                                     <div class="form-group col-md-3">
                                         <label for="dead_culled">Death/Culled <span class="t_r">*</span></label>
-                                        <input type="text" class="form-control @error('dead_culled') is-invalid @enderror" name="dead_culled" value="{{old('dead_culled')}}">
+                                        {{-- <input type="text" class="form-control @error('dead_culled') is-invalid @enderror" name="dead_culled" value="{{old('dead_culled')}}"> --}}
+                                        <select class="form-control @error('dead_culled') is-invalid @enderror" name="dead_culled">
+                                            <option value="">Select</option>
+                                            <option value="Death">Death</option>
+                                            <option value="Culled">Culled</option>
+                                        </select>
                                         @error('dead_culled')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror

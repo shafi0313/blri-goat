@@ -43,6 +43,10 @@ class DeadCulledController extends Controller
             'date_dead_culled'  => 'required|date',
         ]);
         $data['user_id'] = Auth::user()->id;
+        
+        AnimalInfo::whereId($request->animal_info_id)->first()->update([
+            'status' => 1,
+        ]);
 
         try{
             DeadCulled::create($data);

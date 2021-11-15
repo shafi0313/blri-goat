@@ -13,9 +13,9 @@ class DewormingController extends Controller
     public function index()
     {
         if (Auth::user()->is==1) {
-            $dewormings = Deworming::all();
+            $dewormings = Deworming::all()->groupBy('group');
         }else{
-            $dewormings = Deworming::whereUser_id(Auth::user()->id)->get();
+            $dewormings = Deworming::whereUser_id(Auth::user()->id)->get()->groupBy('group');
         }
         return view('admin.deworming.index', compact('dewormings'));
     }
@@ -37,21 +37,25 @@ class DewormingController extends Controller
             return $error;
         }
         $this->validate($request, [
+            'medicine_type'  => 'required',
             'medicine_name'  => 'required|max:100',
             'deworming_date'  => 'required|date',
             'dose'  => 'required|max:100',
         ]);
-        $data['user_id'] = Auth::user()->id;
 
+        $group = Deworming::max('group') + 1 ;
         $animals = AnimalInfo::whereBetween('id',[$request->to, $request->from])->get()->pluck('id');
         foreach($animals as $key => $value){
             $data = [
                 'animal_info_id' => $animals[$key],
                 'user_id' => Auth::user()->id,
+                'group' =>  $group,
+                'medicine_type' => $request->medicine_type,
                 'medicine_name' => $request->medicine_name,
                 'deworming_date' => $request->deworming_date,
                 'dose' => $request->dose,
             ];
+            $data['num_of_animal'] = count($data);
             Deworming::create($data);
         }
 
@@ -64,9 +68,9 @@ class DewormingController extends Controller
         }
     }
 
-    public function show($deworming_date)
+    public function show($group)
     {
-        $dewormings = Deworming::whereDeworming_date($deworming_date)->get();
+        $dewormings = Deworming::whereGroup($group)->get();
         return view('admin.deworming.report', compact('dewormings'));
     }
 

@@ -31,7 +31,6 @@
                                             <th style="width: 35px">SL</th>
                                             <th>Animal Tag</th>
                                             <th>Sex</th>
-                                            {{-- <th>Breed</th> --}}
                                             <th>Name of Vaccine</th>
                                             <th>Date of Vaccination</th>
                                             <th>Dose</th>
@@ -46,26 +45,24 @@
                                             <td>{{ $x++ }} </td>
                                             <td>{{ $vaccination->animalInfo->animal_tag }} </td>
                                             <td>{{ $vaccination->animalInfo->sex }} </td>
-                                            {{-- <td>{{ $vaccination->breed }} </td> --}}
-
                                             <td>{{ $vaccination->vaccine_name }} </td>
-                                            <td>{{ $vaccination->vaccine_date }} </td>
+                                            <td>{{ bdDate($vaccination->vaccine_date)}} </td>
                                             <td>{{ $vaccination->dose }} </td>
                                             {{-- <td>{{ $vaccination->total_vaccinated }} </td> --}}
-                                            <td>
+                                            {{-- <td>
                                                 <div class="form-button-action">
-                                                    {{-- <a href="{{route('disease-and-treatment.edit',$diseaseTreatment->id)}}" title="Edit" class="btn btn-link btn-primary btn-lg">
+                                                    <a href="{{route('disease-and-treatment.edit',$diseaseTreatment->id)}}" title="Edit" class="btn btn-link btn-primary btn-lg">
                                                         <i class="fa fa-edit"></i>
-                                                    </a> --}}
-                                                    {{-- <form action="{{ route('vaccination.destroy', $vaccination->id) }}" method="POST">
+                                                    </a>
+                                                    <form action="{{ route('vaccination.destroy', $vaccination->id) }}" method="POST">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" title="Delete" class="btn btn-link btn-danger" onclick="return confirm('Are you sure?')">
                                                             <i class="fa fa-times"></i>
                                                         </button>
-                                                    </form> --}}
+                                                    </form>
                                                 </div>
-                                            </td>
+                                            </td> --}}
                                         </tr>
                                         @endforeach
                                     </tbody>

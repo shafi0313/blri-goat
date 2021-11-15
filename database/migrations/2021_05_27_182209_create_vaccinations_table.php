@@ -17,10 +17,11 @@ class CreateVaccinationsTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnUpdate();
             $table->foreignId('animal_info_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+            $table->integer('group');
             $table->string('vaccine_name',155);
             $table->date('vaccine_date',155);
             $table->string('dose',155)->nullable();
-            $table->integer('total_vaccinated')->nullable();
+            $table->integer('num_of_animal');
             $table->timestamps();
         });
     }

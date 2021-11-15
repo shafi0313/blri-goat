@@ -21,6 +21,20 @@ if (!function_exists('getAnimalInfo')) {
 }
 
 
+if(!function_exists('bdDate'))
+{
+    function bdDate($bdDate)
+    {
+        return \Carbon\Carbon::parse($bdDate)->format('d/m/Y');
+    }
+}
+if(!function_exists('nextDate'))
+{
+    function nextDate($date,$add)
+    {
+        return \Carbon\Carbon::parse($date)->addDays($add)->format('d/m/Y');
+    }
+}
 
 if (!function_exists('animalKid')) {
     function animalKid($to_date)

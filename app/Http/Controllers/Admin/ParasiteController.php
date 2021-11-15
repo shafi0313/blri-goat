@@ -40,6 +40,7 @@ class ParasiteController extends Controller
             'animal_info_id' => 'required',
             'feces_collection_date'  => 'required|date',
             'fecal_egg_count'  => 'required',
+            'fecal_test'  => 'required',
             'season'  => 'required|max:100',
             'parasite_name'  => 'required|max:100',
         ]);

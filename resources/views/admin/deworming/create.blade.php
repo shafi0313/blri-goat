@@ -91,6 +91,18 @@
                                         @enderror
                                     </div>
 
+                                    <div class="form-check col-md-3">
+										<label>Type <span class="t_r">*</span></label><br>
+										<label class="form-radio-label" id="injectable">
+											<input class="form-radio-input" type="radio" name="medicine_type" value="1" required>
+											<span class="form-radio-sign">Injectable</span>
+										</label>
+										<label class="form-radio-label ml-3" id="oral">
+											<input class="form-radio-input" type="radio" name="medicine_type" value="2" required>
+											<span class="form-radio-sign">Oral</span>
+										</label>
+									</div>
+
                                     <div class="form-group col-md-3">
                                         <label for="medicine_name">Name of Medicine <span class="t_r">*</span></label>
                                         <input type="text" class="form-control @error('medicine_name') is-invalid @enderror" name="medicine_name" value="{{old('medicine_name')}}">

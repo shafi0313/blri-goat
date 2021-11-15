@@ -103,13 +103,13 @@
                                         @enderror
                                     </div>
 
-                                    <div class="form-group col-md-3">
+                                    {{-- <div class="form-group col-md-3">
                                         <label for="total_vaccinated">Total animal vaccinated <span class="t_r">*</span></label>
                                         <input type="text" class="form-control @error('total_vaccinated') is-invalid @enderror" name="total_vaccinated" value="{{old('total_vaccinated')}}">
                                         @error('total_vaccinated')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
-                                    </div>
+                                    </div> --}}
                                 </div>
 
                                 <div align="center" class="mr-auto card-action">

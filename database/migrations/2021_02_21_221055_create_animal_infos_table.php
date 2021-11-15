@@ -39,6 +39,7 @@ class CreateAnimalInfosTable extends Migration
             // $table->integer('dam_milk')->nullable();
             $table->date('d_o_b');
             $table->string('season_o_birth',50)->nullable();
+            $table->boolean('status')->default(0);
             // $table->date('death_date')->nullable();
             $table->string('remark',100)->nullable();
             // $table->string('castrated',100)->nullable();

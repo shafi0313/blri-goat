@@ -29,27 +29,28 @@
                                     <thead class="bg-secondary thw">
                                         <tr class="text-center">
                                             <th style="width: 35px">SL</th>
+                                            <th>Type</th>
                                             <th>Name of Medicine</th>
                                             <th>Date of Deworming</th>
+                                            <th>Next Date of Deworming</th>
                                             <th>Dose</th>
                                             <th class="no-sort" style="text-align:center;width:80px" >Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @php $x=1; @endphp
-                                        @foreach ($dewormings->groupBy('deworming_date') as $dewormin)
+                                        @foreach ($dewormings as $dewormin)
                                         @php $deworming =  $dewormin->first() @endphp
                                         <tr class="text-center">
                                             <td>{{ $x++ }} </td>
-                                            {{-- <td>{{ $deworming->animalInfo->animal_tag }} </td>
-                                            <td>{{ $deworming->animalInfo->sex }} </td>
-                                            <td>{{ $deworming->animalInfo->breed }} </td> --}}
+                                            <td>{{ $deworming->type==1?'Injectable':'Olar' }}</td>
                                             <td>{{ $deworming->medicine_name }}</td>
-                                            <td>{{ $deworming->deworming_date }}</td>
+                                            <td>{{ bdDate($deworming->deworming_date) }}</td>
+                                            <td>{{ nextDate($deworming->deworming_date,90) }}</td>
                                             <td>{{ $deworming->dose }}</td>
                                             <td>
                                                 <div class="form-button-action">
-                                                    <a href="{{route('deworming.show',$deworming->deworming_date)}}" title="Show Details">
+                                                    <a href="{{route('deworming.show',$deworming->group)}}" title="Show Details">
                                                         Show Details
                                                     </a>
                                                     {{-- <form action="{{ route('deworming.destroy', $deworming->id) }}" method="POST">
@@ -62,6 +63,7 @@
                                                 </div>
                                             </td>
                                         </tr>
+
                                         @endforeach
                                     </tbody>
                                 </table>

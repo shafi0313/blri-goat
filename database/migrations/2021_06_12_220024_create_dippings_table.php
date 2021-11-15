@@ -17,8 +17,10 @@ class CreateDippingsTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnUpdate();
             $table->foreignId('animal_info_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+            $table->integer('group');
             $table->string('medicine_name',100);
             $table->date('dipping_date');
+            $table->integer('num_of_animal');
             $table->timestamps();
         });
     }

@@ -41,14 +41,17 @@ class DippingController extends Controller
             'dipping_date'  => 'required|date',
         ]);
 
+        $group = Dipping::max('group') + 1 ;
         $animals = AnimalInfo::whereBetween('id',[$request->to, $request->from])->get()->pluck('id');
         foreach($animals as $key => $value){
             $data = [
                 'animal_info_id' => $animals[$key],
                 'user_id' => Auth::user()->id,
+                'group' =>  $group,
                 'medicine_name' => $request->medicine_name,
                 'dipping_date' => $request->dipping_date,
             ];
+            $data['num_of_animal'] = count($data);
             Dipping::create($data);
         }
 
@@ -61,9 +64,9 @@ class DippingController extends Controller
         }
     }
 
-    public function show($dipping_date)
+    public function show($group)
     {
-        $dippings = Dipping::wheredipping_date($dipping_date)->get();
+        $dippings = Dipping::whereGroup($group)->get();
         return view('admin.dipping.report', compact('dippings'));
     }
 

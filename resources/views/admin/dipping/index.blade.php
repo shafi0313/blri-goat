@@ -29,12 +29,9 @@
                                     <thead class="bg-secondary thw">
                                         <tr class="text-center">
                                             <th style="width: 35px">SL</th>
-                                            {{-- <th>Animal Tag</th>
-                                            <th>Sex</th>
-                                            <th>Breed</th> --}}
                                             <th>Name of Medicine</th>
                                             <th>Date of Dipping</th>
-                                            {{-- <th>Dose</th> --}}
+                                            <th>Next Date of Dipping</th>
                                             <th class="no-sort" style="text-align:center;width:80px" >Action</th>
                                         </tr>
                                     </thead>
@@ -44,14 +41,12 @@
                                         @php $dipping =  $dippin->first() @endphp
                                         <tr class="text-center">
                                             <td>{{ $x++ }} </td>
-                                            {{-- <td>{{ $dipping->animalInfo->animal_tag }} </td>
-                                            <td>{{ $dipping->animalInfo->sex }} </td>
-                                            <td>{{ $dipping->animalInfo->breed }} </td> --}}
                                             <td>{{ $dipping->medicine_name }}</td>
-                                            <td>{{ $dipping->dipping_date }}</td>
+                                            <td>{{ bdDate($dipping->dipping_date) }}</td>
+                                            <td>{{ nextDate($dipping->dipping_date,30) }}</td>
                                             <td>
                                                 <div class="form-button-action">
-                                                    <a href="{{route('dipping.show',$dipping->dipping_date)}}" title="Show Details">
+                                                    <a href="{{route('dipping.show',$dipping->group)}}" title="Show Details">
                                                         Show Details
                                                     </a>
                                                     {{-- <form action="{{ route('dipping.destroy', $dipping->id) }}" method="POST">

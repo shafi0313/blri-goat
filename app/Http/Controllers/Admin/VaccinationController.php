@@ -37,23 +37,27 @@ class VaccinationController extends Controller
             return $error;
         }
         $this->validate($request, [
-            // 'animal_info_id' => 'required',
+            'to' => 'required',
+            'from' => 'required',
             'vaccine_name' => 'required|max:155',
             'vaccine_date' => 'required|date',
             'dose' => 'required|max:155',
-            'total_vaccinated' => 'required|max:155',
+            // 'total_vaccinated' => 'required|max:155',
         ]);
 
         $animals = AnimalInfo::whereBetween('id',[$request->to, $request->from])->get()->pluck('id');
+        $group = Vaccination::max('group') + 1 ;
         foreach($animals as $key => $value){
             $data = [
                 'animal_info_id' => $animals[$key],
                 'user_id' => Auth::user()->id,
+                'group' =>  $group,
                 'vaccine_name' => $request->vaccine_name,
                 'vaccine_date' => $request->vaccine_date,
                 'dose' => $request->dose,
                 'total_vaccinated' => $request->total_vaccinated,
             ];
+            $data['num_of_animal'] = count($data);
             Vaccination::create($data);
         }
 
@@ -67,9 +71,9 @@ class VaccinationController extends Controller
         }
     }
 
-    public function show($vaccine_date)
+    public function show($group)
     {
-        $vaccinations = Vaccination::whereVaccine_date($vaccine_date)->get();
+        $vaccinations = Vaccination::whereGroup($group)->get();
         return view('admin.vaccination.report', compact('vaccinations'));
     }
 
