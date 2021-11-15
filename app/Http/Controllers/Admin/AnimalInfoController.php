@@ -46,15 +46,15 @@ class AnimalInfoController extends Controller
             $communityCats = CommunityCat::all();
             $goatCats = AnimalCat::where('type', 1)->where('parent_id', 0)->get();
             $sheepCats = AnimalCat::where('type', 2)->where('parent_id', 0)->get();
-            $animalInfos = Service::whereIs_giving_birth(0)->latest()->get()->groupBy('doe_tag');
-            return view('admin.animal_info.create', compact('farms', 'communityCats', 'goatCats', 'sheepCats', 'animalInfos'));
+            $services = Service::whereIs_giving_birth(0)->latest()->get();
+            return view('admin.animal_info.create', compact('farms', 'communityCats', 'goatCats', 'sheepCats', 'services'));
         } else {
             $communityCats = CommunityCat::whereUser_id(Auth::user()->id)->first();
             $communitys = Community::whereCommunity_cat_id($communityCats->id);
             $goatCats = AnimalCat::where('type', 1)->where('parent_id', 0)->get();
             $sheepCats = AnimalCat::where('type', 2)->where('parent_id', 0)->get();
-            $animalInfos = Service::whereUser_id(Auth::user()->id)->whereIs_giving_birth(0)->latest()->get()->groupBy('doe_tag');
-            return view('admin.animal_info.create_user', compact('communitys', 'goatCats', 'sheepCats', 'animalInfos'));
+            $services = Service::whereUser_id(Auth::user()->id)->whereIs_giving_birth(0)->latest()->get();
+            return view('admin.animal_info.create_user', compact('communitys', 'goatCats', 'sheepCats', 'services'));
         }
     }
 
@@ -102,7 +102,6 @@ class AnimalInfoController extends Controller
         if ($getDam > 0) {
             $data['dam'] = $request->dam;
             $data['generation'] = $request->generation+1;
-            // Service::whereDoe_tag($request->dam)->latest()->update(['is_giving_birth' => 1]);
         } else {
             $data['dam'] = $request->dam_input;
             $data['generation'] = $request->generation;
@@ -114,19 +113,21 @@ class AnimalInfoController extends Controller
         $animalInfo = AnimalInfo::create($data);
 
         // Reproduction kidding date create or update
-        if (!empty($request->dam)) {
+        // if (!empty($request->dam) || !empty($request->dam_input)) {
+            // if (!empty($request->dam_input) || $request->dam_input==0) {
+            //     $reproduction = [
+            //         'user_id' => Auth::user()->id,
+            //         'animal_info_id' => $animalInfo->id,
+            //         'kidding_1st_date' => $request->d_o_b,
+            //     ];
+            //     Reproduction::create($reproduction);
+            // }
 
-            if ($request->dam_input != '' || $request->dam_input==0) {
-                $reproduction = [
-                    'user_id' => Auth::user()->id,
-                    'animal_info_id' => $animalInfo->id,
-                    'kidding_1st_date' => $request->d_o_b,
-                ];
-                Reproduction::create($reproduction);
-            } else {
+            if(!empty($request->dam))
+            {
                 Service::whereDoe_tag($request->dam)->latest()->first()->update(['is_giving_birth'=>1]) || null;
-                $dbGetAnimalInfo = AnimalInfo::select(['id','dam','d_o_b'])->where('dam', $request->dam)->first();
-                $dbGetReproduction = Reproduction::where('animal_info_id', $dbGetAnimalInfo->id)->first();
+                // $dbGetAnimalInfo = AnimalInfo::select(['id','dam','d_o_b'])->whereId($request->dam)->first();
+                $dbGetReproduction = Reproduction::whereAnimal_info_id($request->dam)->first();
                 if ($dbGetReproduction->kidding_1st_date == null) {
                     $reproduction['kidding_1st_date'] = $request->d_o_b;
                     $reproduction['litter_size_1st_kidding'] = $request->litter_size;
@@ -151,16 +152,16 @@ class AnimalInfoController extends Controller
                 } elseif ($dbGetReproduction->kidding_8th_date == null) {
                     $reproduction['kidding_8th_date'] = $request->d_o_b;
                     $reproduction['kidding_8th_liter'] = $request->litter_size;
-                }elseif ($dbGetReproduction->kidding_9th_date == null) {
+                } elseif ($dbGetReproduction->kidding_9th_date == null) {
                     $reproduction['kidding_9th_date'] = $request->d_o_b;
                     $reproduction['kidding_9th_liter'] = $request->litter_size;
-                }elseif ($dbGetReproduction->kidding_10th_date == null) {
+                } elseif ($dbGetReproduction->kidding_10th_date == null) {
                     $reproduction['kidding_10th_date'] = $request->d_o_b;
                     $reproduction['kidding_10th_liter'] = $request->litter_size;
                 }
-                Reproduction::where('id', $dbGetReproduction->id)->update($reproduction);
+                Reproduction::whereAnimal_info_id($request->dam)->update($reproduction);
             }
-        }
+        // }
 
         try {
             DB::commit();

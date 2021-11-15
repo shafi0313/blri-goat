@@ -31,11 +31,11 @@ class ServiceController extends Controller
         }
 
         if (Auth::user()->is==1) {
-            $animalInfosM = AnimalInfo::whereSex('M')->whereNotNull('sire')->get();
-            $animalInfosF = AnimalInfo::whereSex('F')->whereNotNull('dam')->get();
+            $animalInfosM = AnimalInfo::whereSex('M')->get(['id','animal_tag']);
+            $animalInfosF = AnimalInfo::whereSex('F')->get();
         }else{
-            $animalInfosM = AnimalInfo::whereUser_id(Auth::user()->id)->whereSex('M')->whereNotNull('sire')->get();
-            $animalInfosF = AnimalInfo::whereUser_id(Auth::user()->id)->whereSex('F')->whereNotNull('dam')->get();
+            $animalInfosM = AnimalInfo::whereUser_id(Auth::user()->id)->whereSex('M')->get();
+            $animalInfosF = AnimalInfo::whereUser_id(Auth::user()->id)->whereSex('F')->get();
         }
         return view('admin.service.create', compact('animalInfosM','animalInfosF'));
     }
@@ -51,10 +51,10 @@ class ServiceController extends Controller
             'date_of_service' => 'required',
         ]);
 
-        $animal_info_id = AnimalInfo::where('dam',$request->doe_tag)->first();
+        $animal_info_id = AnimalInfo::whereId($request->doe_tag)->first();
 
         $expected_d_o_b = Carbon::parse($request->date_of_service)->addDays(145)->format('Y-m-d');
-        $service = Service::where('doe_tag', $animal_info_id->dam)->latest()->whereDate('expected_d_o_b','>=', $request->date_of_service)->first();
+        $service = Service::where('doe_tag', $request->doe_tag)->latest()->whereDate('expected_d_o_b','>=', $request->date_of_service)->first();
 
         if($service){
             $repeat_heat = 'Heat';
@@ -63,7 +63,7 @@ class ServiceController extends Controller
         }
         DB::beginTransaction();
 
-        $generation = AnimalInfo::where('dam', $request->doe_tag)->first()->generation;
+        // $generation = $animal_info_id->generation;
         $data = [
             'user_id' => Auth::user()->id,
             'buck_tag' => $request->buck_tag,
@@ -72,7 +72,7 @@ class ServiceController extends Controller
             'expected_d_o_b' => $expected_d_o_b,
             'natural' => $request->natural,
             'repeat_heat' => $repeat_heat,
-            'generation' => $generation,
+            'generation' => $animal_info_id->generation,
         ];
         Service::create($data);
 

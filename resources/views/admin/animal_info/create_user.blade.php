@@ -160,11 +160,8 @@
                                         <select class="dam_tag form-control" id="tt" name="dam">
                                             <option>Select</option>
                                             <option value="-1">Input</option>
-                                            @foreach ($animalInfos as $animalInf)
-                                            @php
-                                                $animalInfo = $animalInf->first()
-                                            @endphp
-                                                <option value="{{ $animalInfo->doe_tag }}">{{ $animalInfo->doe_tag }}</option>
+                                            @foreach ($services as $service)
+                                                <option value="{{ $service->doe_tag }}">{{ $service->doeTag->animal_tag }}</option>
                                             @endforeach
                                         </select>
                                     </div>

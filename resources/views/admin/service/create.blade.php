@@ -52,27 +52,27 @@
                                     </div> --}}
 
                                     <div class="form-group col-md-3">
-                                        <label for="buck_tag">Buck Tag</label>
+                                        <label for="buck_tag">Buck Tag <span class="t_r">*</span></label>
                                         <select class="buck_tag form-control" id="" name="buck_tag">
                                             <option >Select</option>
                                             @foreach ($animalInfosM as $animalInfoM)
-                                                <option value="{{ $animalInfoM->sire }}">{{ $animalInfoM->sire }}</option>
+                                                <option value="{{ $animalInfoM->id }}">{{ $animalInfoM->animal_tag }}</option>
                                             @endforeach
                                         </select>
                                     </div>
 
                                     <div class="form-group col-md-3">
-                                        <label for="doe_tag">Doe Tag</label>
+                                        <label for="doe_tag">Doe Tag <span class="t_r">*</span></label>
                                         <select class="doe_tag form-control" id="" name="doe_tag">
                                             <option >Select</option>
                                             @foreach ($animalInfosF as $animalInfoF)
-                                                <option value="{{ $animalInfoF->dam }}">{{ $animalInfoF->dam }}</option>
+                                                <option value="{{ $animalInfoF->id }}">{{ $animalInfoF->animal_tag }} => {{ $animalInfoF->dam }}</option>
                                             @endforeach
                                         </select>
                                     </div>
 
                                     <div class="form-group col-md-3">
-                                        <label for="date_of_service">Date of Service</label>
+                                        <label for="date_of_service">Date of Service <span class="t_r">*</span></label>
                                         <input  name="date_of_service" type="date" id="date_of_service" class="form-control @error('date_of_service') is-invalid @enderror" value="{{old('date_of_service')}}">
                                         @error('date_of_service')
                                             <div class="alert alert-danger">{{ $message }}</div>
@@ -80,7 +80,7 @@
                                     </div>
 
                                     <div class="form-group col-md-3">
-                                        <label for="natural">Natural/AI</label>
+                                        <label for="natural">Natural/AI <span class="t_r">*</span></label>
                                         <select name="natural" type="text" class="form-control @error('natural') is-invalid @enderror">
                                             <option value="">Select</option>
                                             <option value="Natural">Natural</option>

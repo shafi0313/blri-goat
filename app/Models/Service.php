@@ -14,6 +14,11 @@ class Service extends Model
         return $this->belongsTo(AnimalInfo::class);
     }
 
+    public function buckTag()
+    {
+        return $this->belongsTo(AnimalInfo::class, 'buck_tag');
+    }
+
     public function doeTag()
     {
         return $this->belongsTo(AnimalInfo::class, 'doe_tag');

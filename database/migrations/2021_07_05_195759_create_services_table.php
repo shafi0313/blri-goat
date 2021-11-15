@@ -17,10 +17,12 @@ class CreateServicesTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnUpdate();
             // $table->foreignId('animal_info_id')->comment('buck_tag')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
-            // $table->unsignedBigInteger('doe_tag')->comment('animal tag');
-            // $table->foreign('doe_tag')->references('id')->on('animal_infos')->onUpdate('cascade')->onDelete('cascade');
-            $table->integer('buck_tag')->index();
-            $table->integer('doe_tag')->index();
+            $table->unsignedBigInteger('buck_tag')->comment('animal tag, sire')->index();
+            $table->foreign('buck_tag')->references('id')->on('animal_infos')->onUpdate('cascade')->onDelete('cascade');
+            $table->unsignedBigInteger('doe_tag')->comment('animal tag, dam')->index();
+            $table->foreign('doe_tag')->references('id')->on('animal_infos')->onUpdate('cascade')->onDelete('cascade');
+            // $table->integer('buck_tag')->index();
+            // $table->integer('doe_tag')->index();
             $table->boolean('is_giving_birth')->default(0);
             $table->date('date_of_service');
             $table->date('expected_d_o_b');

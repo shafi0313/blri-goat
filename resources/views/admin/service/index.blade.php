@@ -44,8 +44,8 @@
                                         @php $service = $servic->first() @endphp
                                         <tr class="text-center">
                                             <td>{{ $x++ }} </td>
-                                            <td>{{ $service->buck_tag }} </td>
-                                            <td>{{ $service->doe_tag }} </td>
+                                            <td>{{ $service->buckTag->animal_tag }} </td>
+                                            <td>{{ $service->doeTag->animal_tag }} </td>
                                             {{-- <td>{{ $service->animalInfo->sex }} </td>
                                             <td>{{ $service->animalInfo->birth_wt }} </td> --}}
                                             <td>{{ \Carbon\Carbon::parse($service->date_of_service)->format('d/m/Y') }} </td>
