@@ -156,7 +156,7 @@
 
                                     <div class="form-group col-md-3">
                                         <label for="sire">Sire</label>
-                                        <input name="sire" type="text" class="form-control @error('sire') is-invalid @enderror" onInput="this.value = this.value.replace(/[a-zA-z\-*/]/g,'');" value="{{old('sire')}}">
+                                        <input name="sire" type="text" class="form-control @error('sire') is-invalid @enderror" id="sire" onInput="this.value = this.value.replace(/[a-zA-z\-*/]/g,'');" value="{{old('sire')}}">
                                         @error('sire')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
@@ -342,6 +342,7 @@
                 res = $.parseJSON(res);
                 $('#d_o_b').val(res.expected_d_o_b);
                 $('#generation').val(res.generation);
+                $('#sire').val(res.buck_tag);
                 var sessionBirthCal;
                 var sessionBirth = new Date(res.expected_d_o_b).getMonth()+1;
                 if(sessionBirth==3 || sessionBirth==4 || sessionBirth==5 || sessionBirth==6){

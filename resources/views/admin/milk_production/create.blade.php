@@ -125,7 +125,7 @@
                                     </div>
 
                                     <div class="form-group col-md-3">
-                                        <label for="milk_yield">Milk yield/ lactation <span class="t_r">*</span></label>
+                                        <label for="milk_yield">Milk yield/ lactation</label>
                                         <input name="milk_yield" type="number" step="any" class="form-control @error('milk_yield') is-invalid @enderror" value="{{old('milk_yield')}}" required>
                                         @error('milk_yield')
                                             <div class="alert alert-danger">{{ $message }}</div>
