@@ -123,45 +123,46 @@ class AnimalInfoController extends Controller
             //     Reproduction::create($reproduction);
             // }
 
-            if(!empty($request->dam))
-            {
-                Service::whereDoe_tag($request->dam)->latest()->first()->update(['is_giving_birth'=>1]) || null;
-                // $dbGetAnimalInfo = AnimalInfo::select(['id','dam','d_o_b'])->whereId($request->dam)->first();
-                $dbGetReproduction = Reproduction::whereAnimal_info_id($request->dam)->first();
-                if ($dbGetReproduction->kidding_1st_date == null) {
-                    $reproduction['kidding_1st_date'] = $request->d_o_b;
-                    $reproduction['litter_size_1st_kidding'] = $request->litter_size;
-                } elseif ($dbGetReproduction->kidding_2nd_date == null) {
-                    $reproduction['kidding_2nd_date'] = $request->d_o_b;
-                    $reproduction['kidding_2nd_liter'] = $request->litter_size;
-                } elseif ($dbGetReproduction->kidding_3rd_date == null) {
-                    $reproduction['kidding_3rd_date'] = $request->d_o_b;
-                    $reproduction['kidding_3rd_liter'] = $request->litter_size;
-                } elseif ($dbGetReproduction->kidding_4th_date == null) {
-                    $reproduction['kidding_4th_date'] = $request->d_o_b;
-                    $reproduction['kidding_4th_liter'] = $request->litter_size;
-                } elseif ($dbGetReproduction->kidding_5th_date == null) {
-                    $reproduction['kidding_5th_date'] = $request->d_o_b;
-                    $reproduction['kidding_5th_liter'] = $request->litter_size;
-                } elseif ($dbGetReproduction->kidding_6th_date == null) {
-                    $reproduction['kidding_6th_date'] = $request->d_o_b;
-                    $reproduction['kidding_6th_liter'] = $request->litter_size;
-                } elseif ($dbGetReproduction->kidding_7th_date == null) {
-                    $reproduction['kidding_7th_date'] = $request->d_o_b;
-                    $reproduction['kidding_7th_liter'] = $request->litter_size;
-                } elseif ($dbGetReproduction->kidding_8th_date == null) {
-                    $reproduction['kidding_8th_date'] = $request->d_o_b;
-                    $reproduction['kidding_8th_liter'] = $request->litter_size;
-                } elseif ($dbGetReproduction->kidding_9th_date == null) {
-                    $reproduction['kidding_9th_date'] = $request->d_o_b;
-                    $reproduction['kidding_9th_liter'] = $request->litter_size;
-                } elseif ($dbGetReproduction->kidding_10th_date == null) {
-                    $reproduction['kidding_10th_date'] = $request->d_o_b;
-                    $reproduction['kidding_10th_liter'] = $request->litter_size;
+            // return $request->dam;
+            // if($request->dam || !empty($request->dam_input)){
+                if($request->dam!='Select'){
+                    Service::whereDoe_tag($request->dam)->latest()->first()->update(['is_giving_birth'=>1]) || null;
+                    // $dbGetAnimalInfo = AnimalInfo::select(['id','dam','d_o_b'])->whereId($request->dam)->first();
+                    $dbGetReproduction = Reproduction::whereAnimal_info_id($request->dam)->first();
+                    if ($dbGetReproduction->kidding_1st_date == null) {
+                        $reproduction['kidding_1st_date'] = $request->d_o_b;
+                        $reproduction['litter_size_1st_kidding'] = $request->litter_size;
+                    } elseif ($dbGetReproduction->kidding_2nd_date == null) {
+                        $reproduction['kidding_2nd_date'] = $request->d_o_b;
+                        $reproduction['kidding_2nd_liter'] = $request->litter_size;
+                    } elseif ($dbGetReproduction->kidding_3rd_date == null) {
+                        $reproduction['kidding_3rd_date'] = $request->d_o_b;
+                        $reproduction['kidding_3rd_liter'] = $request->litter_size;
+                    } elseif ($dbGetReproduction->kidding_4th_date == null) {
+                        $reproduction['kidding_4th_date'] = $request->d_o_b;
+                        $reproduction['kidding_4th_liter'] = $request->litter_size;
+                    } elseif ($dbGetReproduction->kidding_5th_date == null) {
+                        $reproduction['kidding_5th_date'] = $request->d_o_b;
+                        $reproduction['kidding_5th_liter'] = $request->litter_size;
+                    } elseif ($dbGetReproduction->kidding_6th_date == null) {
+                        $reproduction['kidding_6th_date'] = $request->d_o_b;
+                        $reproduction['kidding_6th_liter'] = $request->litter_size;
+                    } elseif ($dbGetReproduction->kidding_7th_date == null) {
+                        $reproduction['kidding_7th_date'] = $request->d_o_b;
+                        $reproduction['kidding_7th_liter'] = $request->litter_size;
+                    } elseif ($dbGetReproduction->kidding_8th_date == null) {
+                        $reproduction['kidding_8th_date'] = $request->d_o_b;
+                        $reproduction['kidding_8th_liter'] = $request->litter_size;
+                    } elseif ($dbGetReproduction->kidding_9th_date == null) {
+                        $reproduction['kidding_9th_date'] = $request->d_o_b;
+                        $reproduction['kidding_9th_liter'] = $request->litter_size;
+                    } elseif ($dbGetReproduction->kidding_10th_date == null) {
+                        $reproduction['kidding_10th_date'] = $request->d_o_b;
+                        $reproduction['kidding_10th_liter'] = $request->litter_size;
+                    }
+                    Reproduction::whereAnimal_info_id($request->dam)->update($reproduction);
                 }
-                Reproduction::whereAnimal_info_id($request->dam)->update($reproduction);
-            }
-        // }
+            // }
 
         try {
             DB::commit();
