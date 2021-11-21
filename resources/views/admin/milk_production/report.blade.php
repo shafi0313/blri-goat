@@ -34,7 +34,6 @@
                                             <th>Litter Size</th>
                                             <th>Date of Milking</th>
                                             <th>Milk Production (ml)</th>
-                                            {{-- <th>Average milk produ (ml)</th> --}}
                                             <th>Lactation length (day)</th>
                                             <th>Milk yield/ lactation</th>
                                             {{-- <th class="no-sort" style="text-align:center;width:80px" >Action</th> --}}
@@ -50,13 +49,11 @@
                                             <td>{{ $milkProduction->litter_size }}</td>
                                             <td>{{ \Carbon\Carbon::parse($milkProduction->date_of_milking)->format('d/m/Y') }} </td>
                                             <td>{{ $milkProduction->milk_production }} </td>
-                                            {{-- <td>{{ $milkProduction->average_milk_production }}</td> --}}
                                             <td>{{ $milkProduction->lactation_length }}</td>
                                             <td>{{ ($milkProductions->where('animal_info_id',$milkProduction->animal_info_id)->sum('milk_production')/$milkProduction->count()) *  $milkProduction->lactation_length }}</td>
                                         </tr>
                                         @endforeach
                                     </tbody>
-
                                         <tr>
                                             <th class="text-right" colspan="5">Average milk production (ml)</th>
                                             <th class="text-center">{{$milkProductions->sum('milk_production')/$milkProductions->count()}}</th>
