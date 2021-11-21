@@ -29,9 +29,9 @@ class DiseaseTreatmentController extends Controller
             return $error;
         }
         $animalInfos = getAnimalInfo();
-        // $diseases = Disease::all();
-        // $clinicalSigns = ClinicalSign::all();
-        return view('admin.disease_treatment.create', compact('animalInfos'));
+        $diseases = Disease::all();
+        $clinicalSigns = ClinicalSign::all();
+        return view('admin.disease_treatment.create', compact('animalInfos','diseases','clinicalSigns'));
     }
 
 
@@ -45,16 +45,20 @@ class DiseaseTreatmentController extends Controller
             'animal_cat_id' => 'required',
             'animal_sub_cat_id' => 'sometimes',
             'type' => 'required',
-            // 'disease_id' => 'required|max:155',
-            // 'clinical_sign_id' => 'nullable|max:155',
-            'disease' => 'required|max:255',
-            'clinical_sign' => 'required|max:155',
+            'disease_id' => 'required',
+            'clinical_sign_id' => 'required',
             'disease_season' => 'required|max:155',
             'medicine_prescribed' => 'nullable',
             'disease_date' => 'required|date',
-            'recovered_dead' => 'required|max:155',
+            'recovered_dead' => 'required',
         ]);
         $data['user_id'] = Auth::user()->id;
+
+        if($request->recovered_dead=='Dead'){
+            AnimalInfo::whereId($request->animal_info_id)->first()->update([
+                'status' => 1,
+            ]);
+        }
 
         AnimalInfo::whereId($request->animal_info_id)->first()->updated(['remark' => $request->recovered_dead]);
         try{

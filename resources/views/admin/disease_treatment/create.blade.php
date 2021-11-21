@@ -64,10 +64,17 @@
                                     </div>
 
                                     <div class="form-group col-md-3" id="disease_div">
-                                        <label for="disease">Name of Disease <span class="t_r">*</span></label>
-                                        <select name="disease" id="disease" class="form-control" required>
+                                        <label for="disease_id">Name of Disease <span class="t_r">*</span></label>
+                                        <select name="disease_id" id="disease" class="form-control" required>
                                             <option>Select</option>
-                                            <option value="Pneumonia">Pneumonia</option>
+                                            <option  value="0">Other</option>
+                                            @foreach ($diseases as $disease)
+                                            <option value="{{ $disease->id }}">{{ $disease->name }}</option>
+                                            @endforeach
+
+
+
+                                            {{-- <option value="Pneumonia">Pneumonia</option>
                                             <option value="PPR">PPR</option>
                                             <option value="Bloat">Bloat</option>
                                             <option value="Urolithiasis">Urolithiasis</option>
@@ -78,41 +85,48 @@
                                             <option value="Malnutrition">Malnutrition</option>
                                             <option value="Ecthyma">Ecthyma</option>
                                             <option value="Mastitis">Mastitis</option>
-                                            <option value="Abortion">Abortion</option>
-                                            <option value="Other">Other</option>
+                                            <option value="Abortion">Abortion</option> --}}
+
                                         </select>
                                         @error('disease')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
 
-                                    <div class="form-group col-md-3" style="display: none" id="disease_input">
+                                    {{-- <div class="form-group col-md-3" style="display: none" id="disease_input">
                                         <label for="disease">Disease <span class="t_r">*</span></label>
                                         <input type="text" id="disease_inputt" class="form-control @error('disease') is-invalid @enderror" name="disease" value="{{old('disease')}}">
                                         @error('disease')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
-                                    </div>
+                                    </div> --}}
 
                                     <div class="form-group col-md-3" id="clinical_sign_div">
                                         <label for="disease_name">Clinical Sign <span class="t_r">*</span></label>
-                                        <select name="clinical_sign" id="clinical_sign" class="form-control @error('clinical_sign_id') is-invalid @enderror" required>
-                                            <option >Select</option>
+                                        <select name="clinical_sign_id" id="clinical_sign" class="form-control @error('clinical_sign_id') is-invalid @enderror" required>
+                                            <option>Select</option>
+                                            <option value="0">Others</option>
+                                            @foreach ($clinicalSigns as $clinicalSign)
+                                            <option value="{{ $clinicalSign->id }}">{{ $clinicalSign->name }}</option>
+                                            @endforeach
+
+
+                                            {{-- <option >Select</option>
                                             <option value="Diarrhea">Diarrhea</option>
-                                            <option value="Other">Other</option>
+                                            <option value="Other">Other</option> --}}
                                         </select>
                                         @error('clinical_sign_id')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
 
-                                    <div class="form-group col-md-3" style="display: none" id="clinical_sign_in_div">
+                                    {{-- <div class="form-group col-md-3" style="display: none" id="clinical_sign_in_div">
                                         <label for="clinical_sign_id">Clinical Sign <span class="t_r">*</span></label>
                                         <input type="text" id="clinical_sign_input" class="form-control @error('clinical_sign_id') is-invalid @enderror" name="clinical_sign" value="{{old('clinical_sign_id')}}">
                                         @error('clinical_sign')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
-                                    </div>
+                                    </div> --}}
 
 
                                     <div class="form-group col-md-3">
@@ -158,6 +172,9 @@
                                 </div>
                             </form>
                         </div>
+                        {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                            Launch demo modal
+                          </button> --}}
                     {{-- Page Content End --}}
                     </div>
                 </div>
@@ -166,6 +183,71 @@
     </div>
     @include('admin.layout.footer')
 </div>
+
+
+
+ <!-- Modal -->
+ <form id="disease_store" action="{{ route('disease.store') }}" method="post" autocomplete="off">
+    @csrf
+    <div class="modal fade" id="disease_modal" tabindex="-1" role="dialog"
+        aria-labelledby="measure">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="measure" style="color: red !important">Add Disease</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">×</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Disease Name</label>
+                                <input type="text" name="disease_name" id="disease_name" class="form-control" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-success ">Save </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+ <!-- Modal -->
+ <form id="clinical_sign_store" action="{{ route('clinical-sign.store') }}" method="post" autocomplete="off">
+    @csrf
+    <div class="modal fade" id="clinical_sign_modal" tabindex="-1" role="dialog"
+        aria-labelledby="measure">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="measure" style="color: red !important">Add Clinical Sign</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">×</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Clinical Sign Name</label>
+                                <input type="text" name="clinical_sign_name" id="clinical_sign_name" class="form-control" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-success ">Save </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
 
 @push('custom_scripts')
 <script>
@@ -188,47 +270,26 @@
 
                 var userinput = res.d_o_b;
                 var dob = new Date(userinput);
-
-                // var dob = new Date(userinput);
-
-                //check user provide input or not
                 if(userinput==null || userinput==''){
                 document.getElementById("message").innerHTML = "**Choose a date please!";
                 return false;
-                }
-
-                //execute if user entered a date
-                else {
-                    //extract and collect only date from date-time string
+                } else {
                     var mdate = userinput.toString();
                     var dobYear = parseInt(mdate.substring(0,4), 10);
                     var dobMonth = parseInt(mdate.substring(5,7), 10);
                     var dobDate = parseInt(mdate.substring(8,10), 10);
-
-                    //get the current date from system
                     var today = new Date();
-                    //date string after broking
                     var birthday = new Date(dobYear, dobMonth-1, dobDate);
-
-                    //calculate the difference of dates
                     var diffInMillisecond = today.valueOf() - birthday.valueOf();
-
-                    //convert the difference in milliseconds and store in day and year variable
                     var year_age = Math.floor(diffInMillisecond / 31536000000);
                     var day_age = Math.floor((diffInMillisecond % 31536000000) / 86400000);
-
-                    //when birth date and month is same as today's date
                     if ((today.getMonth() == birthday.getMonth()) && (today.getDate() == birthday.getDate())) {
                             alert("Happy Birthday!");
                         }
-
                     var month_age = Math.floor(day_age/30);
                     day_ageday_age = day_age % 30;
-
                     var tMnt= (month_age + (year_age*12));
                     var tDays =(tMnt*30) + day_age;
-
-                    //DOB is greater than today's date, generate an error: Invalid date
                     if (dob>today) {
                         document.getElementById("result").innerHTML = ("Invalid date input - Please try again!");
                     }
@@ -240,7 +301,6 @@
             }
         })
     });
-
 
     // Session of birth Calculation
     $("#disease_date").on('change', function(){
@@ -256,32 +316,143 @@
         $('#season_o_birth').val(sessionBirthCal);
     });
 
+    // $("#disease").on('change', function(){
+    //     var disease = $(this).val();
+    //     if(disease=='Other'){
+    //         $("#disease_input").show();
+    //         $("#disease_div").hide();
+    //         $("#disease").attr('disabled', true);
+    //         $("#disease_inputt").attr('disabled', false);
+    //     }else{
+    //         $("#disease_inputt").attr('disabled', true);
+    //         $("#disease").attr('disabled', false);
+    //     }
+    // });
+
+    // $("#clinical_sign").on('change', function(){
+    //     var clinical_sign = $(this).val();
+    //     if(clinical_sign=='Other'){
+    //         $("#clinical_sign_in_div").show();
+    //         $("#clinical_sign_div").hide();
+    //         $("#clinical_sign").attr('disabled', true);
+    //         $("#clinical_sign_input").attr('disabled', false);
+    //     }else{
+    //         $("#clinical_sign_input").attr('disabled', true);
+    //         $("#clinical_sign").attr('disabled', false);
+    //     }
+    // });
+
+
+
+
+
+
     $("#disease").on('change', function(){
-        var disease = $(this).val();
-        if(disease=='Other'){
-            $("#disease_input").show();
-            $("#disease_div").hide();
-            $("#disease").attr('disabled', true);
-            $("#disease_inputt").attr('disabled', false);
-        }else{
-            $("#disease_inputt").attr('disabled', true);
-            $("#disease").attr('disabled', false);
+        var buy_measure_unit = $(this).val();
+        if(buy_measure_unit == "0"){
+            $('#disease_modal').modal('show');
         }
+    });
+
+    $("#disease_store").submit(function(e){
+        var postData = $(this).serializeArray();
+        var formURL = $(this).attr("action");
+        console.log(formURL);
+        $.ajax(
+        {
+            url : formURL,
+            timeout: 1000,
+            type: "POST",
+            async:false,
+            crossDomain:true,
+            data : postData,
+            success:function(res){
+                if(res.status == 200){
+                    let disease = '<option value="" selected="" disabled="">Select</option> <option value="0">Others</option>';
+                    $.each(res.diseases, function(i,v){
+                        disease += '<option value="'+v.id+'">'+v.name+'</option>';
+                    });
+                    $("#disease").html(disease);
+                    $(".job_success").text('Success.');
+                    $("#disease_name").val("");
+                    toast('success', res.message);
+                    $('#disease_modal').modal('hide');
+                } else {
+                    toast('error', res.message);
+                }
+            },
+            error:err=>{
+                toast('error', 'Error');
+            }
+
+        });
+        e.preventDefault();
     });
 
     $("#clinical_sign").on('change', function(){
-        var clinical_sign = $(this).val();
-        if(clinical_sign=='Other'){
-            $("#clinical_sign_in_div").show();
-            $("#clinical_sign_div").hide();
-            $("#clinical_sign").attr('disabled', true);
-            $("#clinical_sign_input").attr('disabled', false);
-        }else{
-            $("#clinical_sign_input").attr('disabled', true);
-            $("#clinical_sign").attr('disabled', false);
+        var buy_measure_unit = $(this).val();
+        if(buy_measure_unit == "0"){
+            $('#clinical_sign_modal').modal('show');
         }
     });
 
+    $("#clinical_sign_store").submit(function(e){
+        var postData = $(this).serializeArray();
+        var formURL = $(this).attr("action");
+        console.log(formURL);
+        $.ajax(
+        {
+            url : formURL,
+            timeout: 1000,
+            type: "POST",
+            async:false,
+            crossDomain:true,
+            data : postData,
+            success:function(res){
+                if(res.status == 200){
+                    let clinicalSign = '<option value="" selected="" disabled="">Select</option> <option value="0">Others</option>';
+                    $.each(res.clinicalSigns, function(i, v){
+                        clinicalSign += '<option value="'+v.id+'">'+v.name+'</option>';
+                    });
+                    $("#clinical_sign").html(clinicalSign);
+                    $(".job_success").text('Success.');
+                    $("#clinical_sign_name").val("");
+                    toast('success', res.message);
+                    $('#clinical_sign_modal').modal('hide');
+                } else {
+                    toast('error', res.message);
+                }
+            },
+            error:err=>{
+                toast('error', 'Error');
+            }
+
+        });
+        e.preventDefault();
+    });
+
+</script>
+<script>
+    function toast(status,header,msg) {
+        Command: toastr[status](header, msg)
+        toastr.options = {
+            "closeButton": true,
+            "debug": false,
+            "newestOnTop": true,
+            "progressBar": true,
+            "positionClass": "toast-top-right",
+            "preventDuplicates": true,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "2000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
+    }
 </script>
 @endpush
 @endsection

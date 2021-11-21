@@ -59,7 +59,7 @@ class BlriDeathController extends Controller
                 // ->whereIn('id', animalKid($to_date))
                 // ->orWhereIn('id', animalGrowing($to_date))
                 // ->orWhereIn('id', animalAdult($to_date))
-                ->where('remark','Dead')
+                ->whereStatus(1)
                 ->get();
 
         if($deaths->count() < 1){

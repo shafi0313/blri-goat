@@ -110,7 +110,7 @@
 
 
 <script src="{{ asset('backend/datepicker/js/bootstrap-datepicker.min.js') }}"></script>
-
+<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 @include('sweetalert::alert')
 
 @stack('custom_scripts')

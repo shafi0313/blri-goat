@@ -32,6 +32,7 @@ use App\Http\Controllers\Admin\SemenAnalysisController;
 use App\Http\Controllers\Admin\CommunityStockController;
 use App\Http\Controllers\Admin\MilkProductionController;
 use App\Http\Controllers\Admin\CastrationRecordController;
+use App\Http\Controllers\Admin\Category\DiseaseController;
 use App\Http\Controllers\Admin\DiseaseTreatmentController;
 use App\Http\Controllers\Admin\Report\BlriBirthController;
 use App\Http\Controllers\Admin\Report\BlriDeathController;
@@ -152,6 +153,11 @@ Route::middleware(['auth','admin'])->prefix('admin')->group(function(){
 
     // Castration Record
     Route::resource('/castration-record', CastrationRecordController::class);
+
+
+
+
+    Route::resource('/disease', DiseaseController::class);
 
     // Report
     Route::get('/research/selectDate', [ResearchStockController::class, 'selectDate'])->name('researchStock.selectDate');

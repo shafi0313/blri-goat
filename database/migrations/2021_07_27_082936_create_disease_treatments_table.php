@@ -22,10 +22,10 @@ class CreateDiseaseTreatmentsTable extends Migration
             $table->unsignedBigInteger('animal_sub_cat_id')->nullable();
             $table->foreign('animal_sub_cat_id')->references('id')->on('animal_cats')->cascadeOnUpdate();
             $table->enum('type',['1','2'])->comment('1=Goat,2=Sheep');
-            // $table->foreignId('disease_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
-            // $table->foreignId('clinical_sign_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
-            $table->string('disease')->nullable();
-            $table->string('clinical_sign')->nullable();
+            $table->foreignId('disease_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId('clinical_sign_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+            // $table->string('disease')->nullable();
+            // $table->string('clinical_sign')->nullable();
             $table->string('disease_season')->nullable();
             $table->date('disease_date');
             $table->text('medicine_prescribed')->nullable();
