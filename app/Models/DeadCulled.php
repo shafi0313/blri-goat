@@ -14,4 +14,9 @@ class DeadCulled extends Model
     {
         return $this->belongsTo(AnimalInfo::class, 'animal_info_id', 'id');
     }
+
+    public function animalCat()
+    {
+        return $this->belongsTo(AnimalCat::class, 'animal_cat_id');
+    }
 }

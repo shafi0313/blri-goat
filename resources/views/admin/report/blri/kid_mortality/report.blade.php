@@ -62,7 +62,6 @@
                                             <tr class="text-center">
                                                 <td>{{$death->first()->animalCat->name}}</td>
 
-
                                                 @if ($animals->where('sex','M')->whereIn('id',animalKid($to_date))->count() != 0)
                                                     <td>{{ 100 * $death->where('sex','M')->whereIn('id',animalKid($to_date))->count() / $animals->where('sex','M')->whereIn('id',animalKid($to_date))->count() }}</td>
                                                 @else

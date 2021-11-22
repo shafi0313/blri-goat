@@ -14,9 +14,9 @@ class BlriKidMortalityController extends Controller
 {
     public function selectDate()
     {
-        $animalCats = AnimalCat::where('parent_id',0)->get();
+        $animalCats = AnimalCat::where('parent_id', 0)->get();
         $researchFarms = Farm::all();
-        return view('admin.report.blri.kid_mortality.select_date', compact('animalCats','researchFarms'));
+        return view('admin.report.blri.kid_mortality.select_date', compact('animalCats', 'researchFarms'));
     }
 
     public function report(Request $request)
@@ -27,20 +27,20 @@ class BlriKidMortalityController extends Controller
         $animal_sub_cat_id = $request->get('animal_sub_cat_id');
         $farm_id = $request->get('farm_id');
 
-        if(!$animal_cat_id){
+        if (!$animal_cat_id) {
             $animalCatDb = 'animal_cat_id';
             $animalCat = AnimalCat::select('id')->get()->pluck('id');
-        }else if($animal_sub_cat_id==0){
+        } elseif ($animal_sub_cat_id==0) {
             $getAnimalCat = $animal_cat_id;
             $animalCat = explode(',', $getAnimalCat);
             $animalCatDb = 'animal_cat_id';
-        }else{
+        } else {
             $getAnimalCat = $animal_sub_cat_id;
             $animalCat = explode(',', $getAnimalCat);
             $animalCatDb = 'animal_sub_cat_id';
         }
 
-        if(AnimalInfo::whereIn($animalCatDb, $animalCat)->count() < 1){
+        if (AnimalInfo::whereIn($animalCatDb, $animalCat)->count() < 1) {
             Alert::error('Data Not Found');
             return back();
         }
@@ -57,16 +57,15 @@ class BlriKidMortalityController extends Controller
         // $allAnimal = animalKid($to_date).animalGrowing($to_date).animalAdult($to_date);
 
 
-        $deaths = DiseaseTreatment::with(['animalInfo' => function($q)use($farm_id) {
+        $deaths = DiseaseTreatment::with(['animalInfo' => function ($q) use ($farm_id) {
             $q->where('farm_id', $farm_id);
-
         }])
         ->whereIn($animalCatDb, $animalCat)
         ->whereBetween('disease_date', [$form_date,$to_date])
-        ->where('recovered_dead','Dead')
+        ->whereStatus('recovered_dead', 'Dead')
         ->get();
 
-        if($deaths->count() < 1){
+        if ($deaths->count() < 1) {
             Alert::error('Data Not Found');
             return back();
         }
@@ -85,9 +84,9 @@ class BlriKidMortalityController extends Controller
                 // ->whereBetween('d_o_b', [$form_date,$to_date])
                 // ->whereIn('id', animalKid($to_date))
                 ->where('farm_id', $farm_id)
-                ->where('remark','Dead')
+                ->whereStatus(1)
                 ->get();
 
-        return view('admin.report.blri.kid_mortality.report', compact('deaths','animals','form_date','to_date'));
+        return view('admin.report.blri.kid_mortality.report', compact('deaths', 'animals', 'form_date', 'to_date'));
     }
 }

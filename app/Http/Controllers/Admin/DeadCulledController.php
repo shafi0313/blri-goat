@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\AnimalInfo;
 use App\Models\DeadCulled;
+use App\Models\CommunityCat;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -43,6 +44,15 @@ class DeadCulledController extends Controller
             'date_dead_culled'  => 'required|date',
         ]);
         $data['user_id'] = Auth::user()->id;
+
+        $animalInfo = AnimalInfo::whereId($request->animal_info_id)->first();
+        $data['animal_cat_id'] = $animalInfo->animal_cat_id;
+        $data['animal_sub_cat_id'] = $animalInfo->animal_sub_cat_id;
+        $data['farm_id'] = $animalInfo->farm_id;
+        $data['community_id'] = $animalInfo->community_id;
+        $data['community_cat_id'] = $animalInfo->community_cat_id;
+        $data['type'] = $animalInfo->type;
+        $data['sex'] = $animalInfo->sex;
 
         if($request->dead_culled == 'Death'){
             AnimalInfo::whereId($request->animal_info_id)->first()->update([

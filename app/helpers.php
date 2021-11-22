@@ -28,6 +28,7 @@ if(!function_exists('bdDate'))
         return \Carbon\Carbon::parse($bdDate)->format('d/m/Y');
     }
 }
+
 if(!function_exists('nextDate'))
 {
     function nextDate($date,$add)
@@ -35,6 +36,14 @@ if(!function_exists('nextDate'))
         return \Carbon\Carbon::parse($date)->addDays($add)->format('d/m/Y');
     }
 }
+
+// if(!function_exists('age'))
+// {
+//     function age($date,$add)
+//     {
+//         return \Carbon\Carbon::parse($date)->addDays($add)->format('d/m/Y');
+//     }
+// }
 
 if (!function_exists('animalKid')) {
     function animalKid($to_date)

@@ -14,7 +14,7 @@ class AnimalInfo extends Model
 
     public static function getAnimalInfo()
     {
-        return $datas = DB::table('animal_infos')->select(['animal_tag','type','sire','dam','color','sex','birth_wt','litter_size','generation','paity','dam_milk','d_o_b','season_d_o_b','remark'])->get();
+        return DB::table('animal_infos')->select(['animal_tag','type','sire','dam','color','sex','birth_wt','litter_size','generation','paity','dam_milk','d_o_b','season_d_o_b','remark'])->get();
     }
 
     public function animalCat()
@@ -25,5 +25,10 @@ class AnimalInfo extends Model
     public function diseaseTreatment()
     {
         return $this->hasOne(DiseaseTreatment::class, 'animal_info_id');
+    }
+
+    public function death()
+    {
+        return $this->hasOne(DeadCulled::class, 'animal_info_id');
     }
 }
