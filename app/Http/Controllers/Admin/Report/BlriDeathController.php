@@ -79,24 +79,7 @@ class BlriDeathController extends Controller
                 ->where('dead_culled', 'Death')
                 ->whereIn($animalCatDb, $animalCat)
                 ->whereBetween('date_dead_culled', [$form_date,$to_date]);
-                // ->where('animal_infos.sex','F')
-                // ->whereIn('animal_infos.id',animalAdult($to_date))
-                // ->count();
                 // ->get();
-
-                // return$deathsAdultM = $deaths->where('sex','F')
-                //             ->whereIn('id',animalAdult($to_date));
-
-                            // return count($deaths);
-                // $deathsAdultF = $deaths->where('animal_infos.sex','F')
-                //             ->whereIn('animal_infos.id',animalAdult($to_date))
-                //             ->count();
-
-        // $deaths = DeadCulled::where('dead_culled', 'Death')
-        //         ->whereIn($animalCatDb, $animalCat)
-        //         ->get();
-
-
 
 
 

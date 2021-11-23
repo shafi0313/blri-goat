@@ -58,20 +58,20 @@
                                         </thead>
 
                                         <tbody>
-                                            @foreach ($deaths->groupBy('animal_cat_id') as $death)
+                                            @foreach ($deaths->get()->groupBy('animal_cat_id') as $death)
                                             <tr class="text-center">
-                                                <td>{{$death->first()->animalCat->name}}</td>
+                                                <td>{{$death->first()->name}}</td>
 
                                                 @if ($animals->where('sex','M')->whereIn('id',animalKid($to_date))->count() != 0)
                                                     <td>{{ 100 * $death->where('sex','M')->whereIn('animal_info_id',animalKid($to_date))->count() / $animals->where('sex','M')->whereIn('id',animalKid($to_date))->count() }}%</td>
                                                 @else
-                                                    <td>0</td>
+                                                    <td>0%</td>
                                                 @endif
 
                                                 @if ($animals->where('sex','F')->whereIn('id',animalKid($to_date))->count() != 0)
                                                     <td>{{ 100 * $death->where('sex','F')->whereIn('animal_info_id',animalKid($to_date))->count() / $animals->where('sex','F')->whereIn('id',animalKid($to_date))->count() }}%</td>
                                                 @else
-                                                    <td>0</td>
+                                                    <td>0%</td>
                                                 @endif
                                             </tr>
                                             @endforeach

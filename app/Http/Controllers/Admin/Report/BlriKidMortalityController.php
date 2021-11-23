@@ -8,6 +8,7 @@ use App\Models\AnimalInfo;
 use App\Models\DeadCulled;
 use Illuminate\Http\Request;
 use App\Models\DiseaseTreatment;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -66,9 +67,16 @@ class BlriKidMortalityController extends Controller
         // ->whereStatus('recovered_dead', 'Dead')
         // ->get();
 
-        $deaths = DeadCulled::where('dead_culled', 'Death')
+        $deaths = DB::table('animal_infos')
+                ->join('dead_culleds', 'dead_culleds.animal_info_id', '=', 'animal_infos.id')
+                ->join('animal_cats', 'animal_cats.id', '=', 'animal_infos.animal_cat_id')
+                // ->select('animal_infos.id','animal_infos.d_o_b','animal_infos.animal_cat_id','dead_culleds.animal_info_id','dead_culleds.dead_culled','animal_cats.name')
+                // ->select('animal_infos.*','dead_culleds.*','animal_cats.*')
+                ->where('dead_culled', 'Death')
                 ->whereIn($animalCatDb, $animalCat)
-                ->get();
+                ->whereIn('animal_info_id', animalKid($to_date))
+                ->whereBetween('date_dead_culled', [$form_date,$to_date]);
+                // ->get();
 
         if ($deaths->count() < 1) {
             Alert::error('Data Not Found');
@@ -87,7 +95,7 @@ class BlriKidMortalityController extends Controller
 
         $animals = AnimalInfo::whereIn($animalCatDb, $animalCat)
                 // ->whereBetween('d_o_b', [$form_date,$to_date])
-                // ->whereIn('id', animalKid($to_date))
+                ->whereIn('id', animalKid($to_date))
                 ->where('farm_id', $farm_id)
                 ->whereStatus(1)
                 ->get();
