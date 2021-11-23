@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Report;
 use App\Models\Farm;
 use App\Models\AnimalCat;
 use App\Models\AnimalInfo;
+use App\Models\DeadCulled;
 use Illuminate\Http\Request;
 use App\Models\DiseaseTreatment;
 use App\Http\Controllers\Controller;
@@ -57,13 +58,17 @@ class BlriKidMortalityController extends Controller
         // $allAnimal = animalKid($to_date).animalGrowing($to_date).animalAdult($to_date);
 
 
-        $deaths = DiseaseTreatment::with(['animalInfo' => function ($q) use ($farm_id) {
-            $q->where('farm_id', $farm_id);
-        }])
-        ->whereIn($animalCatDb, $animalCat)
-        ->whereBetween('disease_date', [$form_date,$to_date])
-        ->whereStatus('recovered_dead', 'Dead')
-        ->get();
+        // $deaths = DiseaseTreatment::with(['animalInfo' => function ($q) use ($farm_id) {
+        //     $q->where('farm_id', $farm_id);
+        // }])
+        // ->whereIn($animalCatDb, $animalCat)
+        // ->whereBetween('disease_date', [$form_date,$to_date])
+        // ->whereStatus('recovered_dead', 'Dead')
+        // ->get();
+
+        $deaths = DeadCulled::where('dead_culled', 'Death')
+                ->whereIn($animalCatDb, $animalCat)
+                ->get();
 
         if ($deaths->count() < 1) {
             Alert::error('Data Not Found');

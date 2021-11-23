@@ -71,18 +71,18 @@ class BlriDeathController extends Controller
 
 
 
-        // $deaths = DB::table('animal_infos')
-        //         ->join('dead_culleds', 'dead_culleds.animal_info_id', '=', 'animal_infos.id')
-        //         ->join('animal_cats', 'animal_cats.id', '=', 'animal_infos.animal_cat_id')
-        //         // ->select('animal_infos.*','animal_infos.animal_cat_id','animal_infos.animal_tag','dead_culleds.dead_culled','animal_cats.name')
-        //         // ->select('animal_infos.*','dead_culleds.*','animal_cats.*')
-        //         ->where('dead_culled', 'Death')
-        //         ->whereIn($animalCatDb, $animalCat)
-        //         ->whereBetween('date_dead_culled', [$form_date,$to_date])
-        //         // ->where('animal_infos.sex','F')
-        //         // ->whereIn('animal_infos.id',animalAdult($to_date))
-        //         // ->count();
-        //         ->get(['animal_infos.*','dead_culleds.*','animal_cats.*']);
+        $deaths = DB::table('animal_infos')
+                ->join('dead_culleds', 'dead_culleds.animal_info_id', '=', 'animal_infos.id')
+                ->join('animal_cats', 'animal_cats.id', '=', 'animal_infos.animal_cat_id')
+                // ->select('animal_infos.id','animal_infos.d_o_b','animal_infos.animal_cat_id','dead_culleds.animal_info_id','dead_culleds.dead_culled','animal_cats.name')
+                // ->select('animal_infos.*','dead_culleds.*','animal_cats.*')
+                ->where('dead_culled', 'Death')
+                ->whereIn($animalCatDb, $animalCat)
+                ->whereBetween('date_dead_culled', [$form_date,$to_date]);
+                // ->where('animal_infos.sex','F')
+                // ->whereIn('animal_infos.id',animalAdult($to_date))
+                // ->count();
+                // ->get();
 
                 // return$deathsAdultM = $deaths->where('sex','F')
                 //             ->whereIn('id',animalAdult($to_date));
@@ -92,9 +92,9 @@ class BlriDeathController extends Controller
                 //             ->whereIn('animal_infos.id',animalAdult($to_date))
                 //             ->count();
 
-        $deaths = DeadCulled::where('dead_culled', 'Death')
-                ->whereIn($animalCatDb, $animalCat)
-                ->get();
+        // $deaths = DeadCulled::where('dead_culled', 'Death')
+        //         ->whereIn($animalCatDb, $animalCat)
+        //         ->get();
 
 
 
