@@ -91,7 +91,7 @@ class BlriDeathController extends Controller
         $animals = AnimalInfo::whereIn($animalCatDb, $animalCat)
                 ->where('farm_id', $farm_id)
                 // ->whereBetween('d_o_b', [$form_date,$to_date])
-                ->where('status','!=',1)
+                // ->where('status','!=',1)
                 ->get();
 
         return view('admin.report.blri.death.report', compact('deaths', 'form_date', 'to_date', 'animals'));

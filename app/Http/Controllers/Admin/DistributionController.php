@@ -48,12 +48,11 @@ class DistributionController extends Controller
             'purpose' => $request->purpose,
         ];
 
-        AnimalInfo::whereId($request->animal_info_id)->first()->update([
-            'status' => 2,
-        ]);
-
         try{
             Distribution::create($data);
+            AnimalInfo::whereId($request->animal_info_id)->first()->update([
+                'status' => 2,
+            ]);
             DB::commit();
             toast('Success','success');
             return redirect()->route('distribution.index');

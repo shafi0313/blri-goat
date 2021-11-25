@@ -97,7 +97,7 @@ class BlriKidMortalityController extends Controller
                 // ->whereBetween('d_o_b', [$form_date,$to_date])
                 ->whereIn('id', animalKid($to_date))
                 ->where('farm_id', $farm_id)
-                ->whereStatus(1)
+                // ->whereStatus(1)
                 ->get();
 
         return view('admin.report.blri.kid_mortality.report', compact('deaths', 'animals', 'form_date', 'to_date'));
