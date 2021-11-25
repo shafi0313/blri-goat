@@ -96,39 +96,39 @@
 									</div>
 
                                     <div class="form-group col-md-3 goatCat" style="display: none">
-                                        <label for="sire">Goat Category <span class="t_r">*</span></label>
-                                        <select name="animal_cat_id" id="" class="form-control animal goat @error('sire') is-invalid @enderror">
+                                        <label for="animal_cat_id">Goat Category <span class="t_r">*</span></label>
+                                        <select name="animal_cat_id" id="" class="form-control animal goat @error('animal_cat_id') is-invalid @enderror">
                                             <option >Select</option>
                                             @foreach ($goatCats as $goatCat)
                                             <option value="{{$goatCat->id}}">{{$goatCat->name}}</option>
                                             @endforeach
                                         </select>
-                                        @error('sire')
+                                        @error('animal_cat_id')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
 
                                     <div class="form-group col-md-3 goatCat" style="display: none">
-                                        <label for="sire">Goat Sub Category *</span></label>
-                                        <select name="animal_sub_cat_id" id="" class="form-control animalSub goat @error('sire') is-invalid @enderror"></select>
+                                        <label for="animal_sub_cat_id">Goat Sub Category *</span></label>
+                                        <select name="animal_sub_cat_id" id="" class="form-control animalSub goat @error('animal_sub_cat_id') is-invalid @enderror"></select>
                                     </div>
 
                                     <div class="form-group col-md-3 sheepCat" style="display: none">
-                                        <label for="sire">Sheep Category <span class="t_r">*</span></label>
-                                        <select name="animal_cat_id" id="" class="form-control animal sheep @error('sire') is-invalid @enderror">
+                                        <label for="animal_cat_id">Sheep Category <span class="t_r">*</span></label>
+                                        <select name="animal_cat_id" id="" class="form-control animal sheep @error('animal_cat_id') is-invalid @enderror">
                                             <option>Select</option>
                                             @foreach ($sheepCats as $sheeptCat)
                                             <option value="{{$sheeptCat->id}}">{{$sheeptCat->name}}</option>
                                             @endforeach
                                         </select>
-                                        @error('sire')
+                                        @error('animal_cat_id')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
 
                                     <div class="form-group col-md-3 sheepCat" style="display: none">
-                                        <label for="sire">Sheep Sub Category </label>
-                                        <select name="animal_sub_cat_id" id="" class="form-control animalSub sheep @error('sire') is-invalid @enderror"></select>
+                                        <label for="animal_sub_cat_id">Sheep Sub Category </label>
+                                        <select name="animal_sub_cat_id" id="" class="form-control animalSub sheep @error('animal_sub_cat_id') is-invalid @enderror"></select>
                                     </div>
                                 </div>
 
@@ -177,14 +177,6 @@
                                         <label for="dam_input">Dam</label>
                                         <input type="text" class="form-control" name="dam_input">
                                     </div>
-
-                                    {{-- <div class="form-group col-md-3">
-                                        <label for="breed">Breed </label>
-                                        <input name="breed" type="text" class="form-control @error('breed') is-invalid @enderror" value="{{old('breed')}}">
-                                        @error('breed')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div> --}}
 
                                     <div class="form-group col-md-3">
                                         <label for="color">Coat Color </label>

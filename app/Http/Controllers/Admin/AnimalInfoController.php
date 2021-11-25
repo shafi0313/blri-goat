@@ -206,7 +206,7 @@ class AnimalInfoController extends Controller
         foreach ($serviceInfos as $serviceInfo) {
             $expected_d_o_b = $serviceInfo->expected_d_o_b;
             $generation = $serviceInfo->generation;
-            $buck_tag = $serviceInfo->buck_tag;
+            $buck_tag = $serviceInfo->buckTag->animal_tag;
         }
         return json_encode(['expected_d_o_b' => $expected_d_o_b, 'generation' => $generation, 'buck_tag' => $buck_tag]);
     }
