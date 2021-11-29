@@ -42,8 +42,9 @@
                                         <select name="is" id="" class="form-control @error('is') is-invalid @enderror">
                                             <option selected value disabled>Select</option>
                                             <option value="1">Admin</option>
-                                            <option value="2">Editor</option>
-                                            <option value="3">Viewer</option>
+                                            <option value="2">Creator</option>
+                                            <option value="3">Editor</option>
+                                            <option value="4">Viewer</option>
                                         </select>
                                         @error('is_')
                                             <div class="alert alert-danger">{{ $message }}</div>

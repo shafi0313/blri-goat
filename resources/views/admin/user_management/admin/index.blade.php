@@ -67,7 +67,7 @@
                                                     @php $permission = 'Editor' @endphp
                                                     @break
                                                 @case(4)
-                                                    @php $permission = 'viewer' @endphp
+                                                    @php $permission = 'Viewer' @endphp
                                                     @break
                                                 @default
                                                     @php $permission = 'Community' @endphp
@@ -95,7 +95,6 @@
                                         @endforeach
                                     </tbody>
                                 </table>
-
                             </div>
                         </div>
                     </div>

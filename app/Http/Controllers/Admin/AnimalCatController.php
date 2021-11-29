@@ -27,6 +27,9 @@ class AnimalCatController extends Controller
         if ($error = $this->sendPermissionError('create')) {
             return $error;
         }
+        if ($error = $this->sendPermissionError('create')) {
+            return $error;
+        }
         // $data = $this->validate($request, [
         //     'type' => 'required',
         //     'name' => 'required',
