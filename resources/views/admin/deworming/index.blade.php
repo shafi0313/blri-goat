@@ -43,7 +43,18 @@
                                         @php $deworming =  $dewormin->first() @endphp
                                         <tr class="text-center">
                                             <td>{{ $x++ }} </td>
-                                            <td>{{ $deworming->type==1?'Injectable':'Olar' }}</td>
+                                            @switch($deworming->medicine_type)
+                                                @case(1)
+                                                    @php $type='Injectable' @endphp
+                                                    @break
+                                                @case(2)
+                                                    @php $type='Oral' @endphp
+                                                    @break
+                                                @default
+                                                    @php $type='Others' @endphp
+
+                                            @endswitch
+                                            <td>{{ $type }}</td>
                                             <td>{{ $deworming->medicine_name }}</td>
                                             <td>{{ bdDate($deworming->deworming_date) }}</td>
                                             <td>{{ nextDate($deworming->deworming_date,90) }}</td>

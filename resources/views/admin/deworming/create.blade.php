@@ -38,33 +38,6 @@
                                 @csrf
                                 <input type="hidden" name="type" id="type">
                                 <div class="row">
-                                    {{-- <div class="form-group col-md-3">
-                                        <label for="name">Animal Tag <span class="t_r">*</span></label>
-                                        <select name="animal_info_id" id="animalInfo" class="form-control @error('animal_info_id') is-invalid @enderror">
-                                            <option value="">Select</option>
-                                            @foreach ($animalInfos as $animalInfo)
-                                            <option value="{{$animalInfo->id}}">{{$animalInfo->animal_tag}}</option>
-                                            @endforeach
-                                        </select>
-                                        @error('animal_info_id')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div> --}}
-
-                                    {{-- <div class="form-group col-md-3">
-                                        <label for="">Breed <span class="t_r">*</span></label>
-                                        <input type="text" class="form-control" id="breed"  value="" readonly>
-                                    </div>
-
-                                    <div class="form-group col-md-3">
-                                        <label for="">Sex <span class="t_r">*</span></label>
-                                        <input type="text" class="form-control" id="sex"  value="" readonly>
-                                    </div>
-
-                                    <div class="form-group col-md-3">
-                                        <label for="">Age <span class="t_r">*</span></label>
-                                        <p style="color:#008CBA" id="result"></p>
-                                    </div> --}}
                                     <div class="form-group col-md-3">
                                         <label for="name">Animal Tag From <span class="t_r">*</span></label>
                                         <select name="to" id="" class="form-control @error('animal_info_id') is-invalid @enderror">
@@ -91,7 +64,7 @@
                                         @enderror
                                     </div>
 
-                                    <div class="form-check col-md-3">
+                                    {{-- <div class="form-check col-md-3">
 										<label>Type <span class="t_r">*</span></label><br>
 										<label class="form-radio-label" id="injectable">
 											<input class="form-radio-input" type="radio" name="medicine_type" value="1" required>
@@ -101,7 +74,20 @@
 											<input class="form-radio-input" type="radio" name="medicine_type" value="2" required>
 											<span class="form-radio-sign">Oral</span>
 										</label>
-									</div>
+									</div> --}}
+
+                                    <div class="form-group col-md-3">
+                                        <label for="medicine_type">Type<span class="t_r">*</span></label>
+                                        <select name="medicine_type" id="" class="form-control @error('medicine_type') is-invalid @enderror">
+                                            <option>Select</option>
+                                            <option value="1">Injectable</option>
+                                            <option value="2">Oral</option>
+                                            <option value="3">Others</option>
+                                        </select>
+                                        @error('medicine_type')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
 
                                     <div class="form-group col-md-3">
                                         <label for="medicine_name">Name of Medicine <span class="t_r">*</span></label>
