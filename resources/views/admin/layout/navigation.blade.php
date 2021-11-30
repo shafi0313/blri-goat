@@ -90,7 +90,7 @@
                         </ul>
                     </div>
                 </li>
-                
+
                 <li class="nav-item {{$p=='farmSett'?'active submenu':''}}">
                     <a data-toggle="collapse" href="#invoice">
                         <i class="fas fa-tools"></i>
@@ -232,6 +232,11 @@
                             <li class="{{$sm=='parasite'?'active':''}}">
                                 <a href="{{ route('parasite.index') }}">
                                     <span class="sub-item">Parasite</span>
+                                </a>
+                            </li>
+                            <li class="{{$sm=='deathEntry'?'active':''}}">
+                                <a href="{{ route('death-entry.index') }}">
+                                    <span class="sub-item">Death Entry</span>
                                 </a>
                             </li>
                         </ul>
