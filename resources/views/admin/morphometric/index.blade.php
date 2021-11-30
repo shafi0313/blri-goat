@@ -35,6 +35,11 @@
                                             <th>Body length (cm)</th>
                                             <th>Weigher height</th>
                                             <th>Horn pattern</th>
+                                            <th>Scrotum length</th>
+                                            <th>Scrotum diameter</th>
+                                            <th>Rump height</th>
+                                            <th>Rump length</th>
+                                            <th>Rump weight</th>
                                             <th>Horn length</th>
                                             <th>Tail length</th>
                                             <th>Ear length</th>
@@ -52,10 +57,14 @@
                                             <td>{{ $x++ }} </td>
                                             <td>{{ $morphometric->animalInfo->animal_tag }} </td>
                                             <td>{{ $morphometric->animalInfo->sex }} </td>
-                                            {{-- <td>{{ $morphometric->age }} </td> --}}
                                             <td>{{ $morphometric->body_lenght }} </td>
                                             <td>{{ $morphometric->weither_height }} </td>
                                             <td>{{ $morphometric->horn_pattern }} </td>
+                                            <td>{{ $morphometric->scrotum_length }} </td>
+                                            <td>{{ $morphometric->scrotum_diameter }} </td>
+                                            <td>{{ $morphometric->rump_height }} </td>
+                                            <td>{{ $morphometric->rump_weight }} </td>
+                                            <td>{{ $morphometric->rump_length }} </td>
                                             <td>{{ $morphometric->horn_length }} </td>
                                             <td>{{ $morphometric->tail_length }} </td>
                                             <td>{{ $morphometric->ear_length }} </td>

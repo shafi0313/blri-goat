@@ -40,7 +40,7 @@
                                 <input type="hidden" value="{{ $communityCat->user->id}}" name="user_id">
                                 <div class="row">
                                     <div class="form-group col-sm-6">
-                                        <label for="name">Owner Name <span class="t_r">*</span></label>
+                                        <label for="name">The person in charge <span class="t_r">*</span></label>
                                         <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ $communityCat->user->name }}" required>
                                         @error('name')
                                             <div class="alert alert-danger">{{ $message }}</div>

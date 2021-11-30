@@ -30,7 +30,7 @@
                                         <tr>
                                             <th style="width: 35px">SL</th>
                                             <th>Community Farm Name</th>
-                                            <th>Farm Name</th>
+                                            <th>Owner Name</th>
                                             <th>Phone Number</th>
                                             <th>NID No.</th>
                                             <th>Address</th>

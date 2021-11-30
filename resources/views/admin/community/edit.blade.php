@@ -38,7 +38,7 @@
                                 @method('PUT')
                                 <div class="row justify-content-center">
                                     <div class="form-group col-6">
-                                        <label for="size" class="col-sm-2 control-label">Farm Name <span class="t_r">*</span></label>
+                                        <label for="size" class="col-sm-2 control-label">Owner Name <span class="t_r">*</span></label>
                                         <div class="col-sm-12">
                                             <input type="text" class="form-control" name="name" value="{{$farm->name}}" required>
                                         </div>

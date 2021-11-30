@@ -38,8 +38,8 @@
                                 @csrf
                                 <div class="row">
                                     <div class="form-group col-sm-6">
-                                        <label for="name">Owner Name <span class="t_r">*</span></label>
-                                        <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{old('name')}}" placeholder="Enter Author Name" required>
+                                        <label for="name">The person in charge <span class="t_r">*</span></label>
+                                        <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{old('name')}}" placeholder="Enter the person in charge" required>
                                         @error('name')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror

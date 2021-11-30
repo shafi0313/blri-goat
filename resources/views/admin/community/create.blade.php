@@ -39,7 +39,7 @@
                                 <div class="row">
 
                                     <div class="form-group col-md-6">
-                                        <label for="community_cat_id">Farm Name <span class="t_r">*</span></label>
+                                        <label for="community_cat_id">Owner Name <span class="t_r">*</span></label>
                                         <select name="community_cat_id" id="" class="form-control @error('community_cat_id') is-invalid @enderror">
                                             <option selected disabled value>Select</option>
                                             @foreach ($communityCats as $communityCat)
@@ -57,7 +57,7 @@
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
-                                    
+
                                     <div class="form-group col-md-6">
                                         <label for="phone">Phone Number <span class="t_r">*</span></label>
                                         <input type="text" maxlength="11" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{old('phone')}}" required>
