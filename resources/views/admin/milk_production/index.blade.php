@@ -30,6 +30,7 @@
                                         <tr class="text-center">
                                             <th style="width: 35px">SL</th>
                                             <th>Animal Tag</th>
+                                            <th>Type</th>
                                             <th>Parity number</th>
                                             <th>Litter Size</th>
                                             <th>Date of Milking</th>
@@ -49,6 +50,7 @@
                                         <tr class="text-center">
                                             <td>{{ $x++ }} </td>
                                             <td>{{ $milkProduction->animalInfo->animal_tag }} </td>
+                                            <td>{{ animalType($milkProduction->animalInfo->type) }} </td>
                                             <td>{{ $milkProduction->parity_number }}</td>
                                             <td>{{ $milkProduction->litter_size }}</td>
                                             <td>{{ \Carbon\Carbon::parse($milkProduction->date_of_milking)->format('d/m/Y') }} </td>

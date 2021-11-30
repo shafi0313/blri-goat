@@ -239,6 +239,11 @@
                                     <span class="sub-item">Death Entry</span>
                                 </a>
                             </li>
+                            <li class="{{$sm=='postMortem'?'active':''}}">
+                                <a href="{{ route('post-mortem.index') }}">
+                                    <span class="sub-item">Post Mortem</span>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </li>

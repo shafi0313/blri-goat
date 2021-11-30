@@ -30,6 +30,7 @@
                                         <tr class="text-center">
                                             <th style="width: 35px">SL</th>
                                             <th>Animal Tag</th>
+                                            <th>Type</th>
                                             <th>Sex</th>
                                             {{-- <th>Age</th> --}}
                                             <th>Body length (cm)</th>
@@ -56,6 +57,7 @@
                                         <tr class="text-center">
                                             <td>{{ $x++ }} </td>
                                             <td>{{ $morphometric->animalInfo->animal_tag }} </td>
+                                            <td>{{ animalType($morphometric->animalInfo->type) }} </td>
                                             <td>{{ $morphometric->animalInfo->sex }} </td>
                                             <td>{{ $morphometric->body_lenght }} </td>
                                             <td>{{ $morphometric->weither_height }} </td>

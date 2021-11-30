@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDeathEntriesTable extends Migration
+class CreatePostMortemsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,18 @@ class CreateDeathEntriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('death_entries', function (Blueprint $table) {
+        Schema::create('post_mortems', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnUpdate();
             $table->foreignId('animal_info_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->date('date');
-            $table->string('death_time',20);
-            $table->string('clinical_history');
-            $table->string('clinical_findings');
             $table->string('species',196);
-            $table->string('address');
-            $table->string('probable_cause_death');
+            $table->string('death_time',20);
+            $table->string('necropsy_time',20);
+            $table->string('clinical_history');
+            $table->string('gross_lesions');
+            $table->string('microscopic_lesions');
+            $table->string('tentative');
             $table->timestamps();
         });
     }
@@ -35,6 +36,6 @@ class CreateDeathEntriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('death_entries');
+        Schema::dropIfExists('post_mortems');
     }
 }

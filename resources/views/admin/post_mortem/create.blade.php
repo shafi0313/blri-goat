@@ -1,7 +1,7 @@
 @extends('admin.layout.master')
-@section('title', 'Death Entry')
+@section('title', 'Post Mortem')
 @section('content')
-@php $p='healthM'; $sm="deathEntry"; @endphp
+@php $p='healthM'; $sm="postMortem"; @endphp
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">
@@ -9,9 +9,9 @@
                 <ul class="breadcrumbs">
                     <li class="nav-home"><a href="{{ route('admin.dashboard')}}"><i class="flaticon-home"></i></a></li>
                     <li class="separator"><i class="flaticon-right-arrow"></i></li>
-                    <li class="nav-item"><a href="{{ route('death-entry.index')}}">Death Entry</a></li>
+                    <li class="nav-item"><a href="{{ route('post-mortem.index')}}">Post Mortem</a></li>
                     <li class="separator"><i class="flaticon-right-arrow"></i></li>
-                    <li class="nav-item active">Add Death Entry</li>
+                    <li class="nav-item active">Add Post Mortem</li>
                 </ul>
             </div>
             <div class="divider1"></div>
@@ -34,7 +34,7 @@
                                     </ul>
                                 </div>
                             @endif
-                            <form action="{{ route('death-entry.store')}}" method="post">
+                            <form action="{{ route('post-mortem.store')}}" method="post">
                                 @csrf
                                 <input type="hidden" name="type" id="type">
                                 <input type="hidden" name="date" id="d_o_b">
@@ -75,6 +75,14 @@
                                     </div> --}}
 
                                     <div class="form-group col-md-3">
+                                        <label for="species">Species <span class="t_r">*</span></label>
+                                        <input type="text" class="form-control @error('species') is-invalid @enderror" name="species" value="{{old('species')}}" required>
+                                        @error('species')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+
+                                    <div class="form-group col-md-3">
                                         <label for="date">Date <span class="t_r">*</span></label>
                                         <input type="date" class="form-control @error('date') is-invalid @enderror" name="date" value="{{old('date')}}" required>
                                         @error('date')
@@ -90,6 +98,14 @@
                                         @enderror
                                     </div>
 
+                                    <div class="form-group col-md-3">
+                                        <label for="necropsy_time">Time of Necropsy <span class="t_r">*</span></label>
+                                        <input type="time" class="form-control @error('necropsy_time') is-invalid @enderror" name="necropsy_time" value="{{old('necropsy_time')}}" required>
+                                        @error('necropsy_time')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+
                                     <div class="form-group col-md-12">
                                         <label for="clinical_history">Clinical History <span class="t_r">*</span></label>
                                         <input type="text" class="form-control @error('clinical_history') is-invalid @enderror" name="clinical_history" value="{{old('clinical_history')}}" required>
@@ -99,33 +115,25 @@
                                     </div>
 
                                     <div class="form-group col-md-12">
-                                        <label for="clinical_findings">Clinical Findings <span class="t_r">*</span></label>
-                                        <input type="text" class="form-control @error('clinical_findings') is-invalid @enderror" name="clinical_findings" value="{{old('clinical_findings')}}" required>
-                                        @error('clinical_findings')
+                                        <label for="gross_lesions">Gross Lesions <span class="t_r">*</span></label>
+                                        <input type="text" class="form-control @error('gross_lesions') is-invalid @enderror" name="gross_lesions" value="{{old('gross_lesions')}}" required>
+                                        @error('gross_lesions')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
 
                                     <div class="form-group col-md-12">
-                                        <label for="species">Species <span class="t_r">*</span></label>
-                                        <input type="text" class="form-control @error('species') is-invalid @enderror" name="species" value="{{old('species')}}" required>
-                                        @error('species')
+                                        <label for="microscopic_lesions">Microscopic Lesions <span class="t_r">*</span></label>
+                                        <input type="text" class="form-control @error('microscopic_lesions') is-invalid @enderror" name="microscopic_lesions" value="{{old('microscopic_lesions')}}" required>
+                                        @error('microscopic_lesions')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
 
                                     <div class="form-group col-md-12">
-                                        <label for="address">Address <span class="t_r">*</span></label>
-                                        <input type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{old('address')}}" required>
-                                        @error('address')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-
-                                    <div class="form-group col-md-12">
-                                        <label for="probable_cause_death">Probable Cause Death <span class="t_r">*</span></label>
-                                        <input type="text" class="form-control @error('probable_cause_death') is-invalid @enderror" name="probable_cause_death" value="{{old('probable_cause_death')}}" required>
-                                        @error('probable_cause_death')
+                                        <label for="tentative">Tentative/Final Diagnosis <span class="t_r">*</span></label>
+                                        <input type="text" class="form-control @error('tentative') is-invalid @enderror" name="tentative" value="{{old('tentative')}}" required>
+                                        @error('tentative')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>

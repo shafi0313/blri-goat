@@ -30,6 +30,7 @@
                                         <tr class="text-center">
                                             <th style="width: 35px">SL</th>
                                             <th>Animal Tag</th>
+                                            <th>Type</th>
                                             <th>Sex</th>
                                             <th>Name of Medicine</th>
                                             <th>Date of Deworming</th>
@@ -44,6 +45,7 @@
                                         <tr class="text-center">
                                             <td>{{ $x++ }} </td>
                                             <td>{{ $deworming->animalInfo->animal_tag }} </td>
+                                            <td>{{ animalType($deworming->animalInfo->type) }} </td>
                                             <td>{{ $deworming->animalInfo->sex }} </td>
                                             <td>{{ $deworming->medicine_name }}</td>
                                             <td>{{ bdDate($deworming->deworming_date) }}</td>

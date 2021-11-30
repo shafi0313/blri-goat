@@ -30,6 +30,7 @@
                                         <tr class="text-center">
                                             <th style="width: 35px">SL</th>
                                             <th>Animal Tag</th>
+                                            <th>Type</th>
                                             <th>Sex</th>
                                             <th>Breed</th>
                                             {{-- <th>Dead/Culled</th>
@@ -44,6 +45,7 @@
                                         <tr class="text-center">
                                             <td>{{ $x++ }} </td>
                                             <td>{{ $castrationRecord->animalInfo->animal_tag }} </td>
+                                            <td>{{ animalType($castrationRecord->animalInfo->type) }} </td>
                                             <td>{{ $castrationRecord->animalInfo->sex }} </td>
                                             <td>{{ $castrationRecord->animalInfo->breed }} </td>
                                             {{-- <td>{{ $castrationRecord->dead_culled }}</td>

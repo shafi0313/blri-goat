@@ -30,6 +30,7 @@
                                         <tr class="text-center">
                                             <th style="width: 35px">SL</th>
                                             <th>Animal Tag</th>
+                                            <th>Type</th>
                                             <th>Age at Puberty (Months)	</th>
                                             <th>Date at 1st service</th>
                                             <th>Date of 1st kidding</th>
@@ -79,6 +80,7 @@
                                         <tr class="text-center">
                                             <td>{{ $x++ }} </td>
                                             <td>{{ $reproduction->animalInfo->animal_tag }} </td>
+                                            <td>{{ animalType($reproduction->animalInfo->type) }} </td>
                                             <td>{{ $reproduction->puberty_age }}</td>
                                             <td>{{ $reproduction->service_1st_date }}</td>
                                             <td>{{ $reproduction->kidding_1st_date }}</td>

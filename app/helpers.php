@@ -10,6 +10,15 @@ if (!function_exists('float2')) {
     }
 }
 
+
+if (!function_exists('animalType')) {
+    function animalType($type)
+    {
+        return $type==1?'Goat':'Sheep';
+    }
+}
+
+
 if (!function_exists('getAnimalInfo')) {
     function getAnimalInfo(){
         if (Auth::user()->is==1) {

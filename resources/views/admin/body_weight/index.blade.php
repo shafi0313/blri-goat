@@ -30,6 +30,7 @@
                                         <tr class="text-center">
                                             <th style="width: 35px">SL</th>
                                             <th>Animal Tag</th>
+                                            <th>Type</th>
                                             <th>Sex</th>
                                             <th>Birth Wt.(kg)</th>
                                             <th>1 m. body wt.(kg)</th>
@@ -57,6 +58,7 @@
                                         <tr class="text-center">
                                             <td>{{ $x++ }} </td>
                                             <td>{{ $productionRecord->animalInfo->animal_tag }} </td>
+                                            <td>{{ animalType($productionRecord->animalInfo->type) }} </td>
                                             <td>{{ $productionRecord->animalInfo->sex }} </td>
                                             <td>{{ $productionRecord->animalInfo->birth_wt }} </td>
                                             <td>{{ $productionRecord->month_1 }} </td>

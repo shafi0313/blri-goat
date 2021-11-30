@@ -30,6 +30,7 @@
                                         <tr class="text-center">
                                             <th style="width: 35px">SL</th>
                                             <th>Animal Tag</th>
+                                            <th>Type</th>
                                             <th>Sex</th>
                                             {{-- <th>Breed</th> --}}
                                             <th>Name of Disease</th>
@@ -46,6 +47,7 @@
                                         <tr class="text-center">
                                             <td>{{ $x++ }} </td>
                                             <td>{{ $diseaseTreatment->animalInfo->animal_tag }} </td>
+                                            <td>{{ animalType($diseaseTreatment->animalInfo->type) }} </td>
                                             <td>{{ $diseaseTreatment->animalInfo->sex }} </td>
                                             {{-- <td>{{ $diseaseTreatment->animalInfo->breed }} </td> --}}
                                             <td>{{ $diseaseTreatment->disease->name }} </td>

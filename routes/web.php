@@ -19,6 +19,7 @@ use App\Http\Controllers\Admin\AnimalInfoController;
 use App\Http\Controllers\Admin\BodyWeightController;
 use App\Http\Controllers\Admin\DeadCulledController;
 use App\Http\Controllers\Admin\DeathEntryController;
+use App\Http\Controllers\Admin\PostMortemController;
 use App\Http\Controllers\Admin\VaccinationController;
 use App\Http\Controllers\Admin\CommunityCatController;
 use App\Http\Controllers\Admin\DistributionController;
@@ -156,12 +157,13 @@ Route::middleware(['auth','admin'])->prefix('admin')->group(function(){
     Route::resource('/castration-record', CastrationRecordController::class);
 
 
-
-
     Route::resource('/disease', DiseaseController::class);
 
     // Death
     Route::resource('/death-entry', DeathEntryController::class);
+
+    // Post Mortem
+    Route::resource('/post-mortem', PostMortemController::class);
 
     // Report
     Route::get('/research/selectDate', [ResearchStockController::class, 'selectDate'])->name('researchStock.selectDate');

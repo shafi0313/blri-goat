@@ -29,8 +29,8 @@
                                     <thead class="bg-secondary thw">
                                         <tr class="text-center">
                                             <th style="width: 35px">SL</th>
-                                            <th>Amimal Tag</th>
-                                            <th>Breed</th>
+                                            <th>Animal Tag</th>
+                                            <th>Type</th>
                                             <th>Sex</th>
                                             <th>Name of Disease</th>
                                             <th>Clinical Sign</th>
@@ -51,8 +51,8 @@
                                         <tr class="text-center">
                                             <td>{{ $x++ }} </td>
                                             <td>{{ $diseaseHealth->animalInfo->animal_tag }} </td>
+                                            <td>{{ animalType($diseaseHealth->animalInfo->type) }} </td>
                                             <td>{{ $diseaseHealth->animalInfo->sex }} </td>
-                                            <td>{{ $diseaseHealth->animalInfo->birth_wt }} </td>
                                             <td>{{ $diseaseHealth->disease_name }} </td>
                                             <td>{{ $diseaseHealth->clinical_sign }} </td>
                                             <td>{{ $diseaseHealth->disease_season }} </td>

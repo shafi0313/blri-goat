@@ -30,6 +30,7 @@
                                         <tr class="text-center">
                                             <th style="width: 35px">SL</th>
                                             <th>Animal Tag</th>
+                                            <th>Type</th>
                                             <th>Semen collecting Date</th>
                                             <th>Semen Volume</th>
                                             <th>Semen color</th>
@@ -43,6 +44,7 @@
                                         <tr class="text-center">
                                             <td>{{ $x++ }} </td>
                                             <td>{{ $semenAnalysis->animalInfo->animal_tag }} </td>
+                                            <td>{{ animalType($deadCulled->animalInfo->type) }} </td>
                                             <td>{{ \Carbon\Carbon::parse($semenAnalysis->coll_date)->format('d/m/Y') }} </td>
                                             <td>{{ $semenAnalysis->volume }} </td>
                                             <td>{{ $semenAnalysis->s_color }} </td>

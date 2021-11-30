@@ -30,7 +30,7 @@
                                         <tr class="text-center">
                                             <th style="width: 35px">SL</th>
                                             <th>Animal Tag</th>
-                                            <th>Breed</th>
+                                            <th>Type</th>
                                             <th>Sex</th>
                                             <th>Age</th>
                                             <th>Date of Feces collection</th>
@@ -46,7 +46,7 @@
                                         <tr class="text-center">
                                             <td>{{ $x++ }} </td>
                                             <td>{{ $parasite->animalInfo->animal_tag }} </td>
-                                            <td>{{ $parasite->animalInfo->breed }} </td>
+                                            <td>{{ animalType($parasite->animalInfo->type) }} </td>
                                             <td>{{ $parasite->animalInfo->sex }} </td>
                                             <td>{{ \Carbon\Carbon::parse($parasite->animalInfo->d_o_b)->diff(\Carbon\Carbon::now())->format('%y years, %m months') }} </td>
                                             <td>{{ \Carbon\Carbon::parse($parasite->feces_collection_date)->format('d/m/Y') }} </td>

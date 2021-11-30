@@ -30,6 +30,7 @@
                                         <tr class="text-center">
                                             <th style="width: 35px">SL</th>
                                             <th>Animal Tag</th>
+                                            <th>Type</th>
                                             <th>Sex</th>
                                             <th>Date</th>
                                             <th>Time of death</th>
@@ -47,9 +48,10 @@
                                         <tr class="text-center">
                                             <td>{{ $x++ }} </td>
                                             <td>{{$death->animalInfo->animal_tag }} </td>
+                                            <td>{{ animalType($death->animalInfo->type) }} </td>
                                             <td>{{$death->animalInfo->sex }} </td>
                                             <td>{{ bdDate($death->date) }}</td>
-                                            <td>{{ $death->date_time }}</td>
+                                            <td>{{ $death->death_time }}</td>
                                             <td>{{ $death->clinical_history }}</td>
                                             <td>{{ $death->clinical_findings }}</td>
                                             <td>{{ $death->species }}</td>
@@ -60,7 +62,7 @@
                                                     {{-- <a href="{{route('disease-and-treatment.edit',$diseaseTreatment->id)}}" title="Edit" class="btn btn-link btn-primary btn-lg">
                                                         <i class="fa fa-edit"></i>
                                                     </a> --}}
-                                                    <form action="{{ route('dead-culled.destroy',$death->id) }}" method="POST">
+                                                    <form action="{{ route('death-entry.destroy',$death->id) }}" method="POST">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" title="Delete" class="btn btn-link btn-danger" onclick="return confirm('Are you sure?')">

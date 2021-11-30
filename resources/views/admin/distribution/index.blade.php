@@ -30,6 +30,7 @@
                                         <tr class="text-center">
                                             <th style="width: 35px">SL</th>
                                             <th>Animal Tag</th>
+                                            <th>Type</th>
                                             <th>Sex</th>
                                             <th>Birth Wt.(kg)</th>
                                             <th>Distribution date</th>
@@ -44,6 +45,7 @@
                                         <tr class="text-center">
                                             <td>{{ $x++ }} </td>
                                             <td>{{ $distribution->animalInfo->animal_tag }} </td>
+                                            <td>{{ animalType($distribution->animalInfo->type) }} </td>
                                             <td>{{ $distribution->animalInfo->sex }} </td>
                                             <td>{{ $distribution->animalInfo->birth_wt }} </td>
                                             <td>{{ \Carbon\Carbon::parse($distribution->dis_date)->format('d/m/Y') }} </td>
