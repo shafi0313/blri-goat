@@ -34,7 +34,7 @@ class BlriStockController extends Controller
         //         $pBlackBengalPatha++;
         //     };
         // }
-        $pBlackBengalPatha = $animals->where('animal_cat_id',1)->where('sex', 'M')->where('reproductive',1)->where(animalAdult($request->to_date))->count();
+        $pBlackBengalPatha = $animals->where('animal_cat_id',1)->where('sex', 'M')->where('reproductive',1)->whereIn('id',animalAdult($request->to_date))->count();
 
         // Jamuna piri
         // $pJamunapariPathaGets = $animals->where('animal_cat_id',7)->where('sex', 'M')->where('reproductive',1);
@@ -45,7 +45,7 @@ class BlriStockController extends Controller
         //         $pJamunapariPatha++;
         //     };
         // }
-        $pJamunapariPatha = $animals->where('animal_cat_id',7)->where('sex', 'M')->where('reproductive',1)->where(animalAdult($request->to_date))->count();
+        $pJamunapariPatha = $animals->where('animal_cat_id',7)->where('sex', 'M')->where('reproductive',1)->whereIn('id',animalAdult($request->to_date))->count();
 
         // Boar
         $pBoerPathaGets = $animals->where('animal_cat_id',8)->where('sex', 'M')->where('reproductive',1);
@@ -59,26 +59,26 @@ class BlriStockController extends Controller
         $pBoerPatha;
 
         // 	Jamunapari cross Black Bengal
-        $pJCBPathaGets = $animals->where('animal_cat_id',9)->where('sex', 'M')->where('reproductive',1);
-        $pJCBPatha = 0;
-        foreach($pJCBPathaGets as $pJCBPathaGet){
-            $data = \Carbon\Carbon::parse($pJCBPathaGet->d_o_b)->diff(\Carbon\Carbon::now())->format('%y%m');
-            if($data > 7){
-                $pJCBPatha++;
-            };
-        }
-        $pJCBPatha;
+        // $pJCBPathaGets = $animals->where('animal_cat_id',9)->where('sex', 'M')->where('reproductive',1);
+        // $pJCBPatha = 0;
+        // foreach($pJCBPathaGets as $pJCBPathaGet){
+        //     $data = \Carbon\Carbon::parse($pJCBPathaGet->d_o_b)->diff(\Carbon\Carbon::now())->format('%y%m');
+        //     if($data > 7){
+        //         $pJCBPatha++;
+        //     };
+        // }
+        $pJCBPatha = $animals->where('animal_cat_id',9)->where('sex', 'M')->where('reproductive',1)->whereIn('id',animalAdult($request->to_date))->count();
 
         // Boer cross Jamunapari
-        $pBCJPathaGets = $animals->where('animal_cat_id',10)->where('sex', 'M')->where('reproductive',1);
-        $pBCJPatha = 0;
-        foreach($pBCJPathaGets as $pBCJPathaGet){
-            $data = \Carbon\Carbon::parse($pBCJPathaGet->d_o_b)->diff(\Carbon\Carbon::now())->format('%y%m');
-            if($data > 7){
-                $pBCJPatha++;
-            };
-        }
-        $pBCJPatha;
+        // $pBCJPathaGets = $animals->where('animal_cat_id',10)->where('sex', 'M')->where('reproductive',1);
+        // $pBCJPatha = 0;
+        // foreach($pBCJPathaGets as $pBCJPathaGet){
+        //     $data = \Carbon\Carbon::parse($pBCJPathaGet->d_o_b)->diff(\Carbon\Carbon::now())->format('%y%m');
+        //     if($data > 7){
+        //         $pBCJPatha++;
+        //     };
+        // }
+        $pBCJPatha = $animals->where('animal_cat_id',10)->where('sex', 'M')->where('reproductive',1)->whereIn('id',animalAdult($request->to_date))->count();
         // প্রজননক্ষম পাঁঠা End ________________________________________________________________________
 
 
@@ -198,7 +198,7 @@ class BlriStockController extends Controller
 
         // ছাগী
         // Adult Start __________________________________________________________________________________
-        // $pBlackBengalGasiGets = $animals->where('animal_cat_id',1)->where('sex', 'F')->where('reproductive',0);
+        // $pBlackBengalGasiGets = $animals->where('animal_cat_id',1)->where('sex', 'F');
         // $pBlackBengalGasi = 0;
         // foreach($pBlackBengalGasiGets as $pBlackBengalGasiGet){
         //     $data = \Carbon\Carbon::parse($pBlackBengalGasiGet->d_o_b)->diff(\Carbon\Carbon::now())->format('%y%m');
@@ -206,19 +206,21 @@ class BlriStockController extends Controller
         //         $pBlackBengalGasi++;
         //     };
         // }
-        $pBlackBengalGasi = $animals->where('animal_cat_id',1)->where('sex', 'F')->where('reproductive',1)->where(animalAdult($request->to_date))->count();
+        $pBlackBengalGasi = $animals->where('animal_cat_id',1)->where('sex', 'F')->whereIn('id',animalAdult($request->to_date))->count();
 
-        // $pJamunapariGasiGets = $animals->where('animal_cat_id', 7)->where('sex', 'F')->where('reproductive',0);
-        // $pJamunapariGasi = 0;
-        // foreach($pJamunapariGasiGets as $pJamunapariGasiGet){
-        //     $data = \Carbon\Carbon::parse($pJamunapariGasiGet->d_o_b)->diff(\Carbon\Carbon::now())->format('%y%m');
-        //     if($data > 7){
-        //         $pJamunapariGasi++;
-        //     };
-        // }
-        $pJamunapariGasi = $animals->where('animal_cat_id', 7)->where('sex', 'F')->where('reproductive',0)->where(animalAdult($request->to_date))->count();
+        $pJamunapariGasiGets = $animals->where('animal_cat_id', 7)->where('sex', 'F');
+        $pJamunapariGasi = 0;
+        foreach($pJamunapariGasiGets as $pJamunapariGasiGet){
+            $data = \Carbon\Carbon::parse($pJamunapariGasiGet->d_o_b)->diff(\Carbon\Carbon::now())->format('%y%m');
+            if($data > 7){
+                $pJamunapariGasi++;
+            };
+        }
 
-        // $pBoerGasiGets = $animals->where('animal_cat_id', 8)->where('sex', 'F')->where('reproductive',0);
+        // return $pJamunapariGasi;
+        $pJamunapariGasi = $animals->where('animal_cat_id', 7)->where('sex', 'F')->whereIn('id',animalAdult($request->to_date))->count();
+
+        // $pBoerGasiGets = $animals->where('animal_cat_id', 8)->where('sex', 'F');
         // $pBoerGasi = 0;
         // foreach($pBoerGasiGets as $pBoerGasiGet){
         //     $data = \Carbon\Carbon::parse($pBoerGasiGet->d_o_b)->diff(\Carbon\Carbon::now())->format('%y%m');
@@ -226,10 +228,10 @@ class BlriStockController extends Controller
         //         $pBoerGasi++;
         //     };
         // }
-        $pBoerGasi = $animals->where('animal_cat_id', 8)->where('sex', 'F')->where('reproductive',0)->where(animalAdult($request->to_date))->count();
+        $pBoerGasi = $animals->where('animal_cat_id', 8)->where('sex', 'F')->whereIn('id',animalAdult($request->to_date))->count();
 
         // 	Jamunapari cross Black Bengal
-        // $pJCBGasiGets = $animals->where('animal_cat_id',9)->where('sex', 'F')->where('reproductive',0);
+        // $pJCBGasiGets = $animals->where('animal_cat_id',9)->where('sex', 'F');
         // $pJCBGasi = 0;
         // foreach($pJCBGasiGets as $pJCBGasiGet){
         //     $data = \Carbon\Carbon::parse($pJCBGasiGet->d_o_b)->diff(\Carbon\Carbon::now())->format('%y%m');
@@ -237,10 +239,10 @@ class BlriStockController extends Controller
         //         $pJCBGasi++;
         //     };
         // }
-        $pJCBGasi = $animals->where('animal_cat_id',9)->where('sex', 'F')->where('reproductive',0)->where(animalAdult($request->to_date))->count();
+        $pJCBGasi = $animals->where('animal_cat_id',9)->where('sex', 'F')->whereIn('id',animalAdult($request->to_date))->count();
 
         // Boer cross Jamunapari
-        // $pBCJGasiGets = $animals->where('animal_cat_id',10)->where('sex', 'F')->where('reproductive',0);
+        // $pBCJGasiGets = $animals->where('animal_cat_id',10)->where('sex', 'F');
         // $pBCJGasi = 0;
         // foreach($pBCJGasiGets as $pBCJGasiGet){
         //     $data = \Carbon\Carbon::parse($pBCJGasiGet->d_o_b)->diff(\Carbon\Carbon::now())->format('%y%m');
@@ -248,13 +250,13 @@ class BlriStockController extends Controller
         //         $pBCJGasi++;
         //     };
         // }
-        $pBCJGasi  = $animals->where('animal_cat_id',10)->where('sex', 'F')->where('reproductive',0)->where(animalAdult($request->to_date))->count();;
+        $pBCJGasi  = $animals->where('animal_cat_id',10)->where('sex', 'F')->whereIn('id',animalAdult($request->to_date))->count();;
         // Adult End __________________________________________________________________________________
 
 
 
         // বাড়ন্ত ছাগী Start ____________________________________________________________________________________
-        $bBlackBengalGasiGets = $animals->where('animal_cat_id',1)->where('sex', 'F')->where('reproductive',0);
+        $bBlackBengalGasiGets = $animals->where('animal_cat_id',1)->where('sex', 'F');
         $bBlackBengalGasi = 0;
         foreach($bBlackBengalGasiGets as $bBlackBengalGasiGet){
             $data = \Carbon\Carbon::parse($bBlackBengalGasiGet->d_o_b)->diff(\Carbon\Carbon::now())->format('%y%m');
@@ -264,7 +266,7 @@ class BlriStockController extends Controller
         }
         $bBlackBengalGasi;
 
-        $bJamunapariGasiGets = $animals->where('animal_cat_id', 7)->where('sex', 'F')->where('reproductive',0);
+        $bJamunapariGasiGets = $animals->where('animal_cat_id', 7)->where('sex', 'F');
         $bJamunapariGasi = 0;
         foreach($bJamunapariGasiGets as $bJamunapariGasiGet){
             $data = \Carbon\Carbon::parse($bJamunapariGasiGet->d_o_b)->diff(\Carbon\Carbon::now())->format('%y%m');
@@ -274,7 +276,7 @@ class BlriStockController extends Controller
         }
         $bJamunapariGasi;
 
-        $bBoerGasiGets = $animals->where('animal_cat_id', 8)->where('sex', 'F')->where('reproductive',0);
+        $bBoerGasiGets = $animals->where('animal_cat_id', 8)->where('sex', 'F');
         $bBoerGasi = 0;
         foreach($bBoerGasiGets as $bBoerGasiGet){
             $data = \Carbon\Carbon::parse($bBoerGasiGet->d_o_b)->diff(\Carbon\Carbon::now())->format('%y%m');
@@ -285,7 +287,7 @@ class BlriStockController extends Controller
         $bBoerGasi;
 
         // 	Jamunapari cross Black Bengal
-        $bJCBGasiGets = $animals->where('animal_cat_id',9)->where('sex', 'F')->where('reproductive',0);
+        $bJCBGasiGets = $animals->where('animal_cat_id',9)->where('sex', 'F');
         $bJCBGasi = 0;
         foreach($bJCBGasiGets as $bJCBGasiGet){
             $data = \Carbon\Carbon::parse($bJCBGasiGet->d_o_b)->diff(\Carbon\Carbon::now())->format('%y%m');
@@ -296,7 +298,7 @@ class BlriStockController extends Controller
         $bJCBGasi;
 
         // Boer cross Jamunapari
-        $bBCJGasiGets = $animals->where('animal_cat_id',10)->where('sex', 'F')->where('reproductive',0);
+        $bBCJGasiGets = $animals->where('animal_cat_id',10)->where('sex', 'F');
         $bBCJGasi = 0;
         foreach($bBCJGasiGets as $bBCJGasiGet){
             $data = \Carbon\Carbon::parse($bBCJGasiGet->d_o_b)->diff(\Carbon\Carbon::now())->format('%y%m');
@@ -308,7 +310,7 @@ class BlriStockController extends Controller
         // বাড়ন্ত ছাগী End ____________________________________________________________________________________
 
         // Baby ছাগী Start ____________________________________________________________________________________
-        $babyBlackBengalGasiGets = $animals->where('animal_cat_id',1)->where('sex', 'F')->where('reproductive',0);
+        $babyBlackBengalGasiGets = $animals->where('animal_cat_id',1)->where('sex', 'F');
         $babyBlackBengalGasi = 0;
         foreach($babyBlackBengalGasiGets as $babyBlackBengalGasiGet){
             $data = \Carbon\Carbon::parse($babyBlackBengalGasiGet->d_o_b)->diff(\Carbon\Carbon::now())->format('%y%m');
@@ -318,7 +320,7 @@ class BlriStockController extends Controller
         }
         $babyBlackBengalGasi;
 
-        $babyJamunapariGasiGets = $animals->where('animal_cat_id', 7)->where('sex', 'F')->where('reproductive',0);
+        $babyJamunapariGasiGets = $animals->where('animal_cat_id', 7)->where('sex', 'F');
         $babyJamunapariGasi = 0;
         foreach($babyJamunapariGasiGets as $babyJamunapariGasiGet){
             $data = \Carbon\Carbon::parse($babyJamunapariGasiGet->d_o_b)->diff(\Carbon\Carbon::now())->format('%y%m');
@@ -328,7 +330,7 @@ class BlriStockController extends Controller
         }
         $babyJamunapariGasi;
 
-        $babyBoerGasiGets = $animals->where('animal_cat_id', 8)->where('sex', 'F')->where('reproductive',0);
+        $babyBoerGasiGets = $animals->where('animal_cat_id', 8)->where('sex', 'F');
         $babyBoerGasi = 0;
         foreach($babyBoerGasiGets as $babyBoerGasiGet){
             $data = \Carbon\Carbon::parse($babyBoerGasiGet->d_o_b)->diff(\Carbon\Carbon::now())->format('%y%m');
@@ -339,7 +341,7 @@ class BlriStockController extends Controller
         $babyBoerGasi;
 
         // 	Jamunapari cross Black Bengal
-        $babyJCBGasiGets = $animals->where('animal_cat_id',9)->where('sex', 'F')->where('reproductive',0);
+        $babyJCBGasiGets = $animals->where('animal_cat_id',9)->where('sex', 'F');
         $babyJCBGasi = 0;
         foreach($babyJCBGasiGets as $babyJCBGasiGet){
             $data = \Carbon\Carbon::parse($babyJCBGasiGet->d_o_b)->diff(\Carbon\Carbon::now())->format('%y%m');
@@ -350,7 +352,7 @@ class BlriStockController extends Controller
         $babyJCBGasi;
 
         // Boer cross Jamunapari
-        $babyBCJGasiGets = $animals->where('animal_cat_id',10)->where('sex', 'F')->where('reproductive',0);
+        $babyBCJGasiGets = $animals->where('animal_cat_id',10)->where('sex', 'F');
         $babyBCJGasi = 0;
         foreach($babyBCJGasiGets as $babyBCJGasiGet){
             $data = \Carbon\Carbon::parse($babyBCJGasiGet->d_o_b)->diff(\Carbon\Carbon::now())->format('%y%m');
@@ -363,7 +365,7 @@ class BlriStockController extends Controller
 
 
         // পূর্বের স্টক ____________________________________________________________
-        $preAnimalStocks = AnimalInfo::where('created_at', '<', $form_date)->get();
+        $preAnimalStocks = AnimalInfo::where('d_o_b', '<', $form_date)->get();
 
 
         $bornThisMonth = AnimalInfo::whereMonth('d_o_b', $form_date_month)->get();

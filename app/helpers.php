@@ -88,7 +88,7 @@ if (!function_exists('animalAdult')) {
     function animalAdult($to_date)
     {
         $getAnimalDOBs = AnimalInfo::all();
-        $animalDOB =[];
+        $animalDOB = [];
         foreach ($getAnimalDOBs as $key =>  $getAnimalDOB) {
             $data = \Carbon\Carbon::parse($getAnimalDOB->d_o_b)->diff($to_date)->format('%y%m');
             if ($data > 7) {
@@ -98,3 +98,11 @@ if (!function_exists('animalAdult')) {
         return $animalDOB;
     }
 }
+
+// $pJamunapariGasi = 0;
+//         foreach($pJamunapariGasiGets as $pJamunapariGasiGet){
+//             $data = \Carbon\Carbon::parse($pJamunapariGasiGet->d_o_b)->diff(\Carbon\Carbon::now())->format('%y%m');
+//             if($data > 7){
+//                 $pJamunapariGasi++;
+//             };
+//         }

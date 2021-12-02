@@ -13,9 +13,9 @@ class CastrationRecordController extends Controller
     public function index()
     {
         if (Auth::user()->is==1) {
-            $castrationRecords = CastrationRecord::all();
+            $castrationRecords = CastrationRecord::whereSex('M')->whereReproductive(0)->get();
         }else{
-            $castrationRecords = CastrationRecord::whereUser_id(Auth::user()->id)->get();
+            $castrationRecords = CastrationRecord::whereUser_id(Auth::user()->id)->whereSex('M')->whereReproductive(0)->get();
         }
         return view('admin.castration_record.index', compact('castrationRecords'));
     }
