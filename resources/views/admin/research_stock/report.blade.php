@@ -73,11 +73,11 @@
                                             <tr>
                                                 <td>১.৩</td>
                                                 <td>খাঁসী</td>
-                                                <td>{{ $blackBengalKhasi = $animals->where('animal_cat_id',1)->where('sex', 'M')->where('m_type',2)->count() }}</td>
-                                                <td>{{ $jamunapariKhasi = $animals->where('animal_cat_id',7)->where('sex', 'M')->where('m_type',2)->count() }}</td>
-                                                <td>{{ $boerKhasi = $animals->where('animal_cat_id',8)->where('sex', 'M')->where('m_type',2)->count() }}</td>
-                                                <td>{{ $jCBKhasi = $animals->where('animal_cat_id',9)->where('sex', 'M')->where('m_type',2)->count() }}</td>
-                                                <td>{{ $bCJKhasi = $animals->where('animal_cat_id',10)->where('sex', 'M')->where('m_type',2)->count() }}</td>
+                                                <td>{{ $blackBengalKhasi = $animals->where('animal_cat_id',1)->where('sex', 'M')->where('reproductive',0)->count() }}</td>
+                                                <td>{{ $jamunapariKhasi = $animals->where('animal_cat_id',7)->where('sex', 'M')->where('reproductive',0)->count() }}</td>
+                                                <td>{{ $boerKhasi = $animals->where('animal_cat_id',8)->where('sex', 'M')->where('reproductive',0)->count() }}</td>
+                                                <td>{{ $jCBKhasi = $animals->where('animal_cat_id',9)->where('sex', 'M')->where('reproductive',0)->count() }}</td>
+                                                <td>{{ $bCJKhasi = $animals->where('animal_cat_id',10)->where('sex', 'M')->where('reproductive',0)->count() }}</td>
                                                 <td>{{ $khasiTotal = $blackBengalKhasi + $jamunapariKhasi + $boerKhasi + $jCBKhasi + $bCJKhasi }}</td>
                                             </tr>
                                             <tr>

@@ -29,9 +29,10 @@ class CreateAnimalInfosTable extends Migration
             // $table->tinyInteger('a_type')->comment('Amimal Type');
             $table->integer('sire')->nullable();
             $table->integer('dam')->nullable();
-            $table->string('breed')->nullable();
+            // $table->string('breed')->nullable();
             $table->string('color',80)->nullable();
             $table->enum('sex', ['M','F']);
+            $table->boolean('is_reproductive')->default(0);
             $table->double('birth_wt',4,2);
             $table->string('litter_size');
             $table->integer('generation');

@@ -40,9 +40,11 @@ class CastrationRecordController extends Controller
             'animal_info_id' => 'required',
             'date'  => 'required|date',
         ]);
-
         $data['user_id'] = Auth::user()->id;
 
+        AnimalInfo::whereId($request->animal_info_id)->first()->update([
+            'is_reproductive' => 1,
+        ]);
 
         try{
             CastrationRecord::create($data);
