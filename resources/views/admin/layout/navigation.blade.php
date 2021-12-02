@@ -236,12 +236,12 @@
                             </li>
                             <li class="{{$sm=='deathEntry'?'active':''}}">
                                 <a href="{{ route('death-entry.index') }}">
-                                    <span class="sub-item">Death Entry</span>
+                                    <span class="sub-item">Death Record</span>
                                 </a>
                             </li>
                             <li class="{{$sm=='postMortem'?'active':''}}">
                                 <a href="{{ route('post-mortem.index') }}">
-                                    <span class="sub-item">Post Mortem</span>
+                                    <span class="sub-item">Post Mortem Record</span>
                                 </a>
                             </li>
                         </ul>
