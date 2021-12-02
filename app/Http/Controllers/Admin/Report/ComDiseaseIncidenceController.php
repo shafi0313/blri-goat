@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use RealRashid\SweetAlert\Facades\Alert;
 
-class DiseaseIncidenceController extends Controller
+class ComDiseaseIncidenceController extends Controller
 {
     public function selectDate()
     {

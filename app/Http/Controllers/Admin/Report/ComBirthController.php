@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use RealRashid\SweetAlert\Facades\Alert;
 
-class BirthController extends Controller
+class ComBirthController extends Controller
 {
     public function selectDate()
     {

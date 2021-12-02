@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\PurchaseInvoice;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\AboutController;
@@ -12,6 +13,7 @@ use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\ParasiteController;
 use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\AnimalCatController;
+use App\Http\Controllers\Admin\Report\BlriStockController;
 use App\Http\Controllers\Admin\CommunityController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DewormingController;
@@ -24,24 +26,23 @@ use App\Http\Controllers\Admin\VaccinationController;
 use App\Http\Controllers\Admin\CommunityCatController;
 use App\Http\Controllers\Admin\DistributionController;
 use App\Http\Controllers\Admin\MorphometricController;
-use App\Http\Controllers\Admin\Report\BirthController;
-use App\Http\Controllers\Admin\Report\DeathController;
 use App\Http\Controllers\Admin\ReproductionController;
 use App\Http\Controllers\Admin\ResearchFarmController;
 use App\Http\Controllers\Admin\DiseaseHealthController;
-use App\Http\Controllers\Admin\ResearchStockController;
 use App\Http\Controllers\Admin\SemenAnalysisController;
 use App\Http\Controllers\Admin\CommunityStockController;
 use App\Http\Controllers\Admin\MilkProductionController;
+use App\Http\Controllers\Admin\Report\ComBirthController;
+use App\Http\Controllers\Admin\Report\ComDeathController;
 use App\Http\Controllers\Admin\CastrationRecordController;
 use App\Http\Controllers\Admin\Category\DiseaseController;
 use App\Http\Controllers\Admin\DiseaseTreatmentController;
 use App\Http\Controllers\Admin\Report\BlriBirthController;
 use App\Http\Controllers\Admin\Report\BlriDeathController;
-use App\Http\Controllers\Admin\Report\KidMortalityController;
 use App\Http\Controllers\Admin\Category\ClinicalSignController;
+use App\Http\Controllers\Admin\Report\ComKidMortalityController;
 use App\Http\Controllers\Admin\Report\BlriKidMortalityController;
-use App\Http\Controllers\Admin\Report\DiseaseIncidenceController;
+use App\Http\Controllers\Admin\Report\ComDiseaseIncidenceController;
 use App\Http\Controllers\Admin\Report\BlriDiseaseIncidenceController;
 
 /*
@@ -166,8 +167,8 @@ Route::middleware(['auth','admin'])->prefix('admin')->group(function(){
     Route::resource('/post-mortem', PostMortemController::class);
 
     // Report
-    Route::get('/research/selectDate', [ResearchStockController::class, 'selectDate'])->name('researchStock.selectDate');
-    Route::get('/research-stock', [ResearchStockController::class, 'researchStock'])->name('researchStock.report');
+    Route::get('/research/selectDate', [BlriStockController::class, 'selectDate'])->name('researchStock.selectDate');
+    Route::get('/research-stock', [BlriStockController::class, 'researchStock'])->name('researchStock.report');
 
     Route::get('/community-stock/selectDate', [CommunityStockController::class, 'selectDate'])->name('communityStock.selectDate');
     Route::get('/community-stock/report', [CommunityStockController::class, 'researchStock'])->name('communityStock.report');
@@ -215,22 +216,22 @@ Route::middleware(['auth','admin'])->prefix('admin')->group(function(){
 
         Route::prefix('community')->group(function(){
             Route::prefix('disease-incidence')->group(function(){
-                Route::get('/select', [DiseaseIncidenceController::class, 'selectDate'])->name('report.disease.selectDate');
-                Route::post('/report', [DiseaseIncidenceController::class, 'report'])->name('report.disease.report');
+                Route::get('/select', [ComDiseaseIncidenceController::class, 'selectDate'])->name('report.disease.selectDate');
+                Route::post('/report', [ComDiseaseIncidenceController::class, 'report'])->name('report.disease.report');
             });
             Route::prefix('birth')->group(function(){
-                Route::get('/select', [BirthController::class, 'selectDate'])->name('report.bitrh.selectDate');
-                Route::post('/report', [BirthController::class, 'report'])->name('report.bitrh.report');
+                Route::get('/select', [ComBirthController::class, 'selectDate'])->name('report.bitrh.selectDate');
+                Route::post('/report', [ComBirthController::class, 'report'])->name('report.bitrh.report');
             });
 
             Route::prefix('death')->group(function(){
-                Route::get('/select', [DeathController::class, 'selectDate'])->name('report.death.selectDate');
-                Route::post('/report', [DeathController::class, 'report'])->name('report.death.report');
+                Route::get('/select', [ComDeathController::class, 'selectDate'])->name('report.death.selectDate');
+                Route::post('/report', [ComDeathController::class, 'report'])->name('report.death.report');
             });
 
             Route::prefix('kid-mortality')->group(function(){
-                Route::get('/select', [KidMortalityController::class, 'selectDate'])->name('report.kidMortality.selectDate');
-                Route::post('/report', [KidMortalityController::class, 'report'])->name('report.kidMortality.report');
+                Route::get('/select', [ComKidMortalityController::class, 'selectDate'])->name('report.kidMortality.selectDate');
+                Route::post('/report', [ComKidMortalityController::class, 'report'])->name('report.kidMortality.report');
             });
         });
     });
