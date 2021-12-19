@@ -13,9 +13,9 @@ class CastrationRecordController extends Controller
     public function index()
     {
         if (Auth::user()->is==1) {
-            $castrationRecords = CastrationRecord::whereSex('M')->whereReproductive(0)->get();
+            $castrationRecords = CastrationRecord::all();
         }else{
-            $castrationRecords = CastrationRecord::whereUser_id(Auth::user()->id)->whereSex('M')->whereReproductive(0)->get();
+            $castrationRecords = CastrationRecord::whereUser_id(Auth::user()->id)->get();
         }
         return view('admin.castration_record.index', compact('castrationRecords'));
     }
@@ -26,7 +26,11 @@ class CastrationRecordController extends Controller
         if ($error = $this->sendPermissionError('create')) {
             return $error;
         }
-        $animalInfos = getAnimalInfo();
+        if (Auth::user()->is==1) {
+            $animalInfos = AnimalInfo::whereSex('M')->whereStatus(0)->get();
+        }else{
+            $animalInfos = AnimalInfo::whereUser_id(Auth::user()->id)->whereSex('M')->whereStatus(0)->get();
+        }
         return view('admin.castration_record.create', compact('animalInfos'));
     }
 

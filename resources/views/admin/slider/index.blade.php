@@ -39,17 +39,6 @@
                                             <th class="no-sort text-center" style="width:40px">Action</th>
                                         </tr>
                                     </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>SN</th>
-                                            <th>Title</th>
-                                            <th>Author</th>
-                                            <th>Post</th>
-                                            <th>Image</th>
-                                            <th>Date</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </tfoot>
                                     <tbody>
                                         @php $x=1;@endphp
                                         @foreach($sliders as $slider)
@@ -66,9 +55,20 @@
                                                         <i class="fa fa-edit"></i>
                                                     </a>
                                                     <span>||</span>
-                                                    <a href="{{route('slider.destroy',$slider->id)}}" data-toggle="tooltip" title="" class="btn btn-link btn-danger delete" data-original-title="Remove">
-                                                        <i class="fa fa-times"></i>
-                                                    </a>
+                                                    {{-- <form action="{{ route('slider.destroy',$slider->id) }}" method="post">
+                                                    @csrf @method('DELETE')
+                                                        <button type="submit"  class="btn btn-link btn-danger delete">
+                                                            <i class="fa fa-times"></i>
+                                                        </button>
+                                                    </form> --}}
+
+                                                    <form action="{{ route('slider.destroy', $slider->id) }}" method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" title="Delete" class="btn btn-link btn-danger" data-original-title="Remove" onclick="return confirm('Are you sure?')">
+                                                            <i class="fa fa-times"></i>
+                                                        </button>
+                                                    </form>
                                                 </div>
                                             </td>
                                         </tr>

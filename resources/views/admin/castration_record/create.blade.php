@@ -51,15 +51,15 @@
                                         @enderror
                                     </div>
 
-                                    <div class="form-group col-md-3">
+                                    {{-- <div class="form-group col-md-3">
                                         <label for="">Breed <span class="t_r">*</span></label>
                                         <input type="text" class="form-control" id="breed"  value="" readonly>
-                                    </div>
+                                    </div> --}}
 
-                                    <div class="form-group col-md-3">
+                                    {{-- <div class="form-group col-md-3">
                                         <label for="">Sex <span class="t_r">*</span></label>
                                         <input type="text" class="form-control" id="sex"  value="" readonly>
-                                    </div>
+                                    </div> --}}
 
                                     <div class="form-group col-md-3">
                                         <label for="">Age <span class="t_r">*</span></label>

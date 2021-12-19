@@ -1,6 +1,6 @@
 @extends('admin.layout.master')
 @section('title', 'Slider')
-@php $p='slider'; @endphp
+@php $p='slider'; $sm='' @endphp
 @section('content')
 <div class="main-panel">
     <div class="content">
@@ -47,14 +47,14 @@
                                     </div>
                                     <div class="form-group col-md-8">
                                         <label for="link" class="placeholder">Link</label>
-                                        <input id="link" name="link" type="text" class="form-control" value="{{$slider->link}}" placeholder="http://oasis-it-center.com/">
+                                        <input id="link" name="link" type="text" class="form-control" value="{{$slider->link}}" >
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label for="link_name" class="placeholder">Link Name</label>
                                         <input id="link_name" name="link_name" type="text" class="form-control" value="{{$slider->link_name}}" placeholder="Click">
                                     </div>
                                     <div class="col-md-5">
-                                        <img src="{{ asset('images/slider/'.$slider->image) }}" height="150" width="400" alt="">
+                                        <img src="{{ asset('files/images/slider/'.$slider->image) }}" height="150" width="400" alt="">
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label for="image" class="placeholder">Image <span class="t_r">* Height:1200px Widht:450px</span></label>
