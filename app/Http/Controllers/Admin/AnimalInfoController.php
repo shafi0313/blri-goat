@@ -82,7 +82,7 @@ class AnimalInfoController extends Controller
             'color' => $request->color,
             'sex' => $request->sex,
             'birth_wt' => $request->birth_wt,
-            'litter_size' => $request->litter_size,
+
             'd_o_b' => $request->d_o_b,
             'season_o_birth' => $request->season_o_birth,
             'remark' => $request->remark,
@@ -108,6 +108,12 @@ class AnimalInfoController extends Controller
         }
         $paity = Service::where('is_giving_birth', 1)->count();
         $data['paity'] =  $paity + 1;
+
+        if($request->litter_size==1){
+            $data['litter_size'] = $request->litter_size;
+        }else{
+            $data['litter_size'] = $request->litter_size_input;
+        }
 
         $animalInfo = AnimalInfo::create($data);
 

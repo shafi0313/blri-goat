@@ -194,18 +194,24 @@
                                         @enderror
                                     </div>
 
-                                    <div class="form-group col-md-3">
+                                    <div class="form-group col-md-3 litter_size_div">
                                         <label for="litter_size">Litter Size <span class="t_r">*</span></label>
-                                        <select name="litter_size" class="form-control @error('litter_size') is-invalid @enderror" required>
+                                        <select name="litter_size" id="litter_size" class="form-control @error('litter_size') is-invalid @enderror">
                                             <option selected value disabled>Select</option>
                                             <option value="single">Single</option>
                                             <option value="twin">Twin</option>
                                             <option value="triplet">Triplet</option>
                                             <option value="quadruplet">Quadruplet</option>
+                                            <option value="-1">Others</option>
                                         </select>
                                         @error('litter_size')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
+                                    </div>
+
+                                    <div class="form-group col-md-3 litter_size_input_form" style="display: none">
+                                        <label for="litter_size_input">Litter Size</label>
+                                        <input type="text" class="form-control" name="litter_size_input">
                                     </div>
 
                                     <div class="form-group col-md-3">
@@ -350,6 +356,14 @@
         if(dam_tag == -1){
             $('.dam_form').hide()
             $('.dam_input_form').show()
+        }
+    });
+
+    $('#litter_size').on('change',function(e) {
+        var litter_size = $(this).val();
+        if(litter_size == -1){
+            $('.litter_size_div').hide()
+            $('.litter_size_input_form').show()
         }
     });
 
