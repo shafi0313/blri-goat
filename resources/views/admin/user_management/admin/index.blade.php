@@ -73,7 +73,7 @@
                                                     @php $permission = 'Community' @endphp
                                             @endswitch
                                             <td>{{ $permission }}</td>
-                                            <td>{{ $adminUser->phone }}</td>
+                                            <td>0{{ $adminUser->phone }}</td>
                                             <td>{{ $adminUser->email }}</td>
                                             <td>{{ $adminUser->address }}</td>
                                             <td class="text-center">

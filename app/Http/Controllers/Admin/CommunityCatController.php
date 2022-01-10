@@ -134,30 +134,28 @@ class CommunityCatController extends Controller
                                                             ->uncompromised()],
         ]);
 
-
-        DB::beginTransaction();
-
+        // DB::beginTransaction();
         $user = [
             'name' => $request->input('name'),
-            // 'email' => strtolower($request->input('email')),
             'phone' => $request->input('phone'),
             'age' => $request->input('age'),
             'gender' => $request->input('gender'),
             'address' => $request->input('address'),
-            'password' => bcrypt($request->input('password')),
         ];
         if(!empty($request->password)){
-            $data['password'] = bcrypt($request->input('password'));
+            $user['password'] = bcrypt($request->input('password'));
+        }
+        if(!empty($request->email_check)){
+            $user['email'] = strtolower($request->input('email'));
         }
         $image_name = '';
         if($request->hasFile('image')){
             $image = $request->file('image');
-            $image_name = "user_".rand(0,1000).'.'.$image->getClientOriginalExtension();
+            $image_name = "user_".rand(0, 1000).'.'.$image->getClientOriginalExtension();
             $request->image->move('files/images/user/',$image_name);
             $user['profile_photo_path'] = $image_name;
         }
-
-        $user = User::whereId($request->user_id)->update($user);
+        User::whereId($request->user_id)->update($user);
 
         $community = [
             'name' => $request->community_name,

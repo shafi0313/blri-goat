@@ -123,6 +123,8 @@ class AdminUserController extends Controller
                                                             ->uncompromised()],
         ]);
 
+        DB::beginTransaction();
+
         $image_name = '';
         if ($request->hasFile('image')) {
             $image = $request->file('image');
@@ -132,11 +134,9 @@ class AdminUserController extends Controller
             $image_name = $request->oldImage;
         }
 
-        DB::beginTransaction();
 
         $data = [
             'name' => $request->input('name'),
-            'email' => strtolower($request->input('email')),
             'phone' => $request->input('phone'),
             'age' => $request->input('age'),
             'gender' => $request->input('gender'),
@@ -146,6 +146,9 @@ class AdminUserController extends Controller
 
         if (!empty($request->password)) {
             $data['password'] = bcrypt($request->input('password'));
+        }
+        if(!empty($request->email_check)){
+            $user['email'] = strtolower($request->input('email'));
         }
 
         if (Auth::user()->is == 1) {

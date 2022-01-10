@@ -70,8 +70,12 @@
                                     </div>
 
                                     <div class="form-group col-sm-6">
-                                        <label for="email">Email <span class="t_r">*</span></label>
-                                        <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" value="{{$adminUsers->email}}" placeholder="Enter Email" required>
+                                        <label for="email" class="mr-4">Email</label>
+                                        <label class="form-check-label" id="email_check">
+											<input class="form-check-input" type="checkbox" name="email_check">
+											<span class="form-check-sign">If you change the email address click the check box</span>
+										</label>
+                                        <input type="email" name="email" id="email" class="form-control @error('email') is-invalid @enderror" value="{{$adminUsers->email}}" placeholder="Enter Email" disabled>
                                         @error('email')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
@@ -137,7 +141,11 @@
 </div>
 
 @push('custom_scripts')
-
+<script>
+    $('#email_check').click(function () {
+        $('#email').attr('disabled', false);
+    })
+</script>
 @endpush
 @endsection
 

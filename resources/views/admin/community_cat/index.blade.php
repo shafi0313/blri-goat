@@ -30,9 +30,6 @@
                                         <tr>
                                             <th style="width: 35px">SL</th>
                                             <th>Name</th>
-                                            {{-- <th>Contact Person</th>
-                                            <th>Phone Number</th>
-                                            <th>NID No.</th> --}}
                                             <th>Address</th>
                                             <th class="no-sort" style="text-align:center;width:80px" >Action</th>
                                         </tr>
@@ -43,11 +40,8 @@
                                         <tr>
                                             <td class="text-center">{{ $x++ }} </td>
                                             <td>{{ $communityCat->name }} </td>
-                                            {{-- <td>{{ $communityCat->contact_person }} </td>
-                                            <td>{{ $communityCat->phone }} </td>
-                                            <td>{{ $communityCat->nid }} </td> --}}
                                             <td>{{ $communityCat->address }} </td>
-                                            <td>
+                                            <td class="text-center">
                                                 <div class="form-button-action">
                                                     <a href="{{ route('community-cat.edit', $communityCat->id) }}" title="Edit" class="btn btn-link btn-primary btn-lg">
                                                         <i class="fa fa-edit"></i>
