@@ -80,26 +80,49 @@ class BodyWeightController extends Controller
 
     public function edit($id)
     {
-        if ($error = $this->sendPermissionError('edit')) {
+        if ($error = $this->sendPermissionError('create')) {
             return $error;
         }
-        $productionRecord = BodyWeight::find($id);
-        return view('admin.body_weight.edit', compact('productionRecord'));
+        $animalInfos = getAnimalInfo();
+        $data = BodyWeight::find($id);
+        return view('admin.body_weight.edit', compact('animalInfos','data'));
     }
 
-    public function update(BodyWeightUpdateRequest $request, BodyWeight $ProductionRecord)
+    public function update(Request $request, $id)
     {
         if ($error = $this->sendPermissionError('edit')) {
             return $error;
         }
-        $data = $request->validated();
+        // $productionRecord = $query->validated();
 
+        $birth_wt = $request->birth_wt;
+        $animal_info_id = $request->animal_info_id;
+        $data = [
+            'user_id' => Auth::user()->id,
+            'animal_info_id' => $request->animal_info_id,
+            'month_1' => $request->month_1,
+            'month_2' => $request->month_2,
+            'month_3' => $request->month_3,
+            'month_4' => $request->month_4,
+            'month_5' => $request->month_5,
+            'month_6' => $request->month_6,
+            'month_7' => $request->month_7,
+            'month_8' => $request->month_8,
+            'month_9' => $request->month_9,
+            'month_10' => $request->month_10,
+            'month_11' => $request->month_11,
+            'month_12' => $request->month_12,
+        ];
+
+        DB::beginTransaction();
         try{
-            $ProductionRecord->update($data);
+            BodyWeight::find($id)->update($data);
+            DB::commit();
             toast('Success','success');
-            return redirect()->route('production-record.index');
+            return redirect()->route('body-weight.index');
         }catch(\Exception $ex){
-             toast('Error','error');
+            DB::rollBack();
+            toast($ex->getMessage(),'Error', 'error');
             return redirect()->back();
         }
     }

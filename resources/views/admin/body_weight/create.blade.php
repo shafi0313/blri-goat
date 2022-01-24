@@ -9,7 +9,7 @@
                 <ul class="breadcrumbs">
                     <li class="nav-home"><a href="{{ route('admin.dashboard')}}"><i class="flaticon-home"></i></a></li>
                     <li class="separator"><i class="flaticon-right-arrow"></i></li>
-                    <li class="nav-item"><a href="{{ route('animal-info.index')}}">Body Weight</a></li>
+                    <li class="nav-item"><a href="{{ route('body-weight.index')}}">Body Weight</a></li>
                     <li class="separator"><i class="flaticon-right-arrow"></i></li>
                     <li class="nav-item active">Add Body Weight</li>
                 </ul>
@@ -140,7 +140,7 @@
 
                                     <div class="form-group col-md-3">
                                         <label for="month_10">10 months body wt. (kg)</label>
-                                        <input type="number" class="form-control @error('month_10') is-invalid @enderror" name="month_11" id="month_10">
+                                        <input type="number" class="form-control @error('month_10') is-invalid @enderror" name="month_10" id="month_10">
                                         @error('month_10')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
@@ -161,38 +161,6 @@
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
-
-                                    {{-- <div class="form-group col-md-3">
-                                        <label for="g_rate_month_3">Growth rate at 3 months (g/d)</label>
-                                        <input type="number" class="form-control @error('g_rate_month_3') is-invalid @enderror" name="g_rate_month_3" value="{{old('g_rate_month_3')}}">
-                                        @error('g_rate_month_3')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-
-                                    <div class="form-group col-md-3">
-                                        <label for="g_rate_month_6">Growth rate at 6 months (g/d)</label>
-                                        <input type="number" class="form-control @error('g_rate_month_6') is-invalid @enderror" name="g_rate_month_6" value="{{old('g_rate_month_6')}}">
-                                        @error('g_rate_month_6')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-
-                                    <div class="form-group col-md-3">
-                                        <label for="g_rate_month_9">Growth rate at 9 months (g/d)</label>
-                                        <input type="number" class="form-control @error('g_rate_month_9') is-invalid @enderror" name="g_rate_month_9" value="{{old('g_rate_month_9')}}">
-                                        @error('g_rate_month_9')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-
-                                    <div class="form-group col-md-3">
-                                        <label for="g_rate_month_12">Growth rate at 12 months (g/d)</label>
-                                        <input type="number" class="form-control @error('g_rate_month_12') is-invalid @enderror" name="g_rate_month_12" value="{{old('g_rate_month_12')}}">
-                                        @error('g_rate_month_12')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div> --}}
                                 </div>
 
                                 <div align="center" class="mr-auto card-action">

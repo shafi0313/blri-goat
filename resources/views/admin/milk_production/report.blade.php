@@ -36,7 +36,7 @@
                                             <th>Milk Production (ml)</th>
                                             <th>Lactation length (day)</th>
                                             <th>Milk yield/ lactation</th>
-                                            {{-- <th class="no-sort" style="text-align:center;width:80px" >Action</th> --}}
+                                            <th class="no-sort" style="text-align:center;width:80px" >Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -51,6 +51,20 @@
                                             <td>{{ $milkProduction->milk_production }} </td>
                                             <td>{{ $milkProduction->lactation_length }}</td>
                                             <td>{{ ($milkProductions->where('animal_info_id',$milkProduction->animal_info_id)->sum('milk_production')/$milkProduction->count()) *  $milkProduction->lactation_length }}</td>
+                                            <td>
+                                                <div class="form-button-action">
+                                                    <a href="{{route('milk-production.edit',$milkProduction->id)}}" class="btn btn-link btn-primary btn-lg">
+                                                        Edit
+                                                    </a>
+                                                    {{-- <form action="{{ route('milk-production.destroy', $milkProduction->id) }}" method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" title="Delete" class="btn btn-link btn-danger" onclick="return confirm('Are you sure?')">
+                                                            <i class="fa fa-times"></i>
+                                                        </button>
+                                                    </form> --}}
+                                                </div>
+                                            </td>
                                         </tr>
                                         @endforeach
                                     </tbody>

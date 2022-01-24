@@ -49,7 +49,7 @@
                                             <th>Growth rate at 6 months (g/d)</th>
                                             <th>Growth rate at 9 months (g/d)</th>
                                             <th>Growth rate at 12 months (g/d)</th>
-                                            {{-- <th class="no-sort" style="text-align:center;width:80px" >Action</th> --}}
+                                            <th class="no-sort" style="text-align:center;width:80px" >Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -97,20 +97,20 @@
                                             @else
                                             <td></td>
                                             @endisset
-                                            {{-- <td>
+                                            <td>
                                                 <div class="form-button-action">
                                                     <a href="{{route('body-weight.edit',$productionRecord->id)}}" title="Edit" class="btn btn-link btn-primary btn-lg">
-                                                        <i class="fa fa-edit"></i>
+                                                        Edit
                                                     </a>
-                                                    <form action="{{ route('farm.destroy', $productionRecord->id) }}" method="POST">
+                                                    {{-- <form action="{{ route('farm.destroy', $productionRecord->id) }}" method="POST">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" title="Delete" class="btn btn-link btn-danger" data-original-title="Remove" onclick="return confirm('Are you sure?')">
                                                             <i class="fa fa-times"></i>
                                                         </button>
-                                                    </form>
+                                                    </form> --}}
                                                 </div>
-                                            </td> --}}
+                                            </td>
                                         </tr>
                                         @endforeach
                                     </tbody>

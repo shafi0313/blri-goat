@@ -11,16 +11,17 @@
                     <li class="separator"><i class="flaticon-right-arrow"></i></li>
                     <li class="nav-item"><a href="{{ route('milk-production.index')}}">Milk Production</a></li>
                     <li class="separator"><i class="flaticon-right-arrow"></i></li>
-                    <li class="nav-item active">Edit</li>
+                    <li class="nav-item active">Edit Milk Production</li>
                 </ul>
             </div>
             <div class="divider1"></div>
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
+                        {{-- Page Content Start --}}
                         <div class="card-header">
                             <div class="d-flex align-items-center">
-                                <h4 class="card-title">Edit License Milk Production</h4>
+                                <h4 class="card-title">Edit</h4>
                             </div>
                         </div>
                         <div class="card-body">
@@ -33,101 +34,68 @@
                                     </ul>
                                 </div>
                             @endif
-                            <form action="{{ route('milk-production.update', $productionRecord->id)}}" method="post">
-                                @csrf
-                                @method('PUT')
+                            <form action="{{ route('milk-production.update', $data->id)}}" method="post">
+                                @csrf @method('PUT')
+                                <input type="hidden" name="type" id="type">
                                 <div class="row">
+                                    @include('admin.edit_animal_tag')
 
                                     <div class="form-group col-md-3">
-                                        <label for="">Animal Tag <span class="t_r">*</span></label>
-                                        <input type="text" class="form-control" value="{{$productionRecord->animalInfo->animal_tag}}" readonly>
-                                    </div>
-                                    <div class="form-group col-md-3">
-                                        <label for="">Sex <span class="t_r">*</span></label>
-                                        <input type="text" class="form-control" value="{{$productionRecord->animalInfo->sex}}" readonly>
-                                    </div>
-
-                                    <div class="form-group col-md-3">
-                                        <label for="">Goat Color <span class="t_r">*</span></label>
-                                        <input type="text" class="form-control" value="{{$productionRecord->animalInfo->color}}" readonly>
-                                    </div>
-
-                                    <div class="form-group col-md-3">
-                                        <label for="">Birth Wt. (Kg) <span class="t_r">*</span></label>
-                                        <input type="text" class="form-control" value="{{$productionRecord->animalInfo->color}}" readonly>
-                                    </div>
-
-
-                                    <div class="form-group col-md-3">
-                                        <label for="month_1">1 months body wt. (kg)</label>
-                                        <input type="number" class="form-control @error('month_1') is-invalid @enderror" name="month_1" value="{{$productionRecord->month_1}}">
-                                        @error('month_1')
+                                        <label for="parity_number">Parity number <span class="t_r">*</span></label>
+                                        <input name="parity_number" type="number" class="form-control @error('parity_number') is-invalid @enderror" id="paity" value="{{$data->parity_number}}" required>
+                                        @error('parity_number')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
 
                                     <div class="form-group col-md-3">
-                                        <label for="month_2">2 months body wt. (kg)</label>
-                                        <input type="number" class="form-control @error('month_2') is-invalid @enderror" name="month_2" value="{{$productionRecord->month_2}}">
-                                        @error('month_2')
+                                        <label for="litter_size">Litter Size <span class="t_r">*</span></label>
+                                        <input name="litter_size" type="text" class="form-control @error('litter_size') is-invalid @enderror" id="litter_size" value="{{$data->litter_size}}" required>
+                                        @error('litter_size')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
 
                                     <div class="form-group col-md-3">
-                                        <label for="month_3">3 months body wt. (kg)</label>
-                                        <input type="number" class="form-control @error('month_3') is-invalid @enderror" name="month_3" value="{{$productionRecord->month_3}}">
-                                        @error('month_3')
+                                        <label for="date_of_milking">Date of Milking <span class="t_r">*</span></label>
+                                        <input name="date_of_milking" type="date" class="form-control @error('date_of_milking') is-invalid @enderror" value="{{$data->date_of_milking}}" required>
+                                        @error('date_of_milking')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
 
                                     <div class="form-group col-md-3">
-                                        <label for="month_4">4 months body wt. (kg)</label>
-                                        <input type="number" class="form-control @error('month_4') is-invalid @enderror" name="month_4" value="{{$productionRecord->month_4}}">
-                                        @error('month_4')
+                                        <label for="milk_production">Milk Production (ml) <span class="t_r">*</span></label>
+                                        <input name="milk_production" type="number" step="any" class="form-control @error('milk_production') is-invalid @enderror" value="{{$data->milk_production}}" required>
+                                        @error('milk_production')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
 
                                     <div class="form-group col-md-3">
-                                        <label for="month_5">5 months body wt. (kg)</label>
-                                        <input type="number" class="form-control @error('month_5') is-invalid @enderror" name="month_5" value="{{$productionRecord->month_5}}">
-                                        @error('month_5')
+                                        <label for="lactation_length">Lactation length (day)</label>
+                                        <input name="lactation_length" type="number" step="any" class="form-control @error('lactation_length') is-invalid @enderror" value="{{$data->lactation_length}}">
+                                        @error('lactation_length')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
 
                                     <div class="form-group col-md-3">
-                                        <label for="month_6">6 months body wt. (kg)</label>
-                                        <input type="number" class="form-control @error('month_6') is-invalid @enderror" name="month_6" value="{{$productionRecord->month_6}}">
-                                        @error('month_6')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-
-                                    <div class="form-group col-md-3">
-                                        <label for="g_rate_month_3">Growth rate at 3 months (g/d)</label>
-                                        <input type="number" class="form-control @error('g_rate_month_3') is-invalid @enderror" name="g_rate_month_3" value="{{$productionRecord->g_rate_month_3}}">
-                                        @error('g_rate_month_3')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-
-                                    <div class="form-group col-md-3">
-                                        <label for="g_rate_month_6">Growth rate at 6 months (g/d)</label>
-                                        <input type="number" class="form-control @error('g_rate_month_6') is-invalid @enderror" name="g_rate_month_6" value="{{$productionRecord->g_rate_month_6}}">
-                                        @error('g_rate_month_6')
+                                        <label for="milk_yield">Milk yield/ lactation</label>
+                                        <input name="milk_yield" type="number" step="any" class="form-control @error('milk_yield') is-invalid @enderror" value="{{$data->milk_yield}}">
+                                        @error('milk_yield')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
                                 </div>
+
                                 <div align="center" class="mr-auto card-action">
                                     <button type="submit" class="btn btn-success">Submit</button>
                                     <button type="reset" class="btn btn-danger">Reset</button>
                                 </div>
                             </form>
                         </div>
+                    {{-- Page Content End --}}
                     </div>
                 </div>
             </div>
@@ -136,8 +104,28 @@
     @include('admin.layout.footer')
 </div>
 
-@include('sweetalert::alert')
 @push('custom_scripts')
+<script>
+    $('#animalInfo').on('change',function(e) {
+        var animalInfoId = $(this).val();
+        $.ajax({
+            url:'{{ route("get.getAnimalInfo") }}',
+            type:"get",
+            data: {
+                animalInfoId: animalInfoId
+                },
+            success:function (res) {
+                res = $.parseJSON(res);
+                $('#sex').val(res.sex);
+                $('#color').val(res.color);
+                $('#birth_wt').val(res.birth_wt);
+                $('#type').val(res.type);
+                $('#paity').val(res.paity);
+                $('#litter_size').val(res.litter_size);
+            }
+        })
+    });
+</script>
 @endpush
 @endsection
 

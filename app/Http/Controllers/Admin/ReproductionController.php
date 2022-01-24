@@ -63,23 +63,39 @@ class ReproductionController extends Controller
 
     public function edit($id)
     {
-        $productionRecord = Reproduction::find($id);
-        return view('admin.production_record.edit', compact('productionRecord'));
+        if ($error = $this->sendPermissionError('create')) {
+            return $error;
+        }
+        $animalInfos = getAnimalInfo();
+        $data = Reproduction::find($id);
+        return view('admin.reproduction.edit', compact('animalInfos','data'));
     }
 
-    public function update(ProductionRecordUpdateRequest $request, ProductionRecord $ProductionRecord)
+    public function update(Request $request, $id)
     {
-        $data = $request->validated();
+        if ($error = $this->sendPermissionError('edit')) {
+            return $error;
+        }
+        DB::beginTransaction();
+
+        $data['animal_info_id'] = $request->animal_info_id;
+        $data['puberty_age'] = $request->puberty_age;
+        $data['user_id'] = Auth::user()->id;
+
+        Reproduction::find($id)->update($data);
 
         try{
-            $ProductionRecord->update($data);
+            DB::commit();
             toast('Success','success');
-            return redirect()->route('production-record.index');
+            return redirect()->route('reproduction-record.index');
         }catch(\Exception $ex){
-             toast('Error','error');
+            return $ex->getMessage();
+            DB::rollBack();
+            toast('Error', 'error');
             return redirect()->back();
         }
     }
+
     public function getAnimalInfo(Request $request)
     {
         $animalInfoId = $request->animalInfoId;

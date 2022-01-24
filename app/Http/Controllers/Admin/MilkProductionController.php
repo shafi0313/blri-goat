@@ -80,6 +80,60 @@ class MilkProductionController extends Controller
         return view('admin.milk_production.report', compact('milkProductions'));
     }
 
+    public function edit($id)
+    {
+        if ($error = $this->sendPermissionError('edit')) {
+            return $error;
+        }
+        if (Auth::user()->is==1) {
+            $animalInfos = AnimalInfo::whereSex('F')->whereStatus(0)->get();
+        }else{
+            $animalInfos = AnimalInfo::whereUser_id(Auth::user()->id)->whereSex('F')->whereStatus(0)->get();
+        }
+        $data = MilkProduction::find($id);
+        return view('admin.milk_production.edit', compact('animalInfos','data'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        if ($error = $this->sendPermissionError('edit')) {
+            return $error;
+        }
+        $this->validate($request, [
+            'animal_info_id' => 'required',
+            'parity_number' => 'required',
+            'litter_size' => 'required',
+            'date_of_milking' => 'required',
+            'milk_production' => 'required',
+            // 'average_milk_production' => 'required',
+        ]);
+
+        $data = [
+            'animal_info_id' => $request->animal_info_id,
+            'parity_number' => $request->parity_number,
+            'litter_size' => $request->litter_size,
+            'date_of_milking' => $request->date_of_milking,
+            'milk_production' => $request->milk_production,
+            'average_milk_production' => $request->average_milk_production,
+            'lactation_length' => $request->lactation_length,
+            'milk_yield' => $request->milk_yield,
+        ];
+        $data['user_id'] = Auth::user()->id;
+
+        DB::beginTransaction();
+        try{
+            MilkProduction::find($id)->update($data);
+            DB::commit();
+            toast('Success','success');
+            return redirect()->route('milk-production.index');
+        }catch(\Exception $ex){
+            return $ex->getMessage();
+            DB::rollBack();
+            toast('Error', 'error');
+            return redirect()->back();
+        }
+    }
+
     public function destroy($id)
     {
         if ($error = $this->sendPermissionError('delete')) {

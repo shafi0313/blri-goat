@@ -66,7 +66,7 @@
                                             <th>Date of 10th kidding</th>
                                             <th>Litter size at 10th kidding</th>
                                             <th>Remarks</th>
-                                            {{-- <th class="no-sort" style="text-align:center;width:80px" >Action</th> --}}
+                                            <th class="no-sort" style="text-align:center;width:80px" >Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -137,20 +137,20 @@
                                             <td>{{ $reproduction->kidding_10th_liter }}</td>
 
                                             <td>{{ $reproduction->remarks }}</td>
-                                            {{-- <td>
+                                            <td>
                                                 <div class="form-button-action">
                                                     <a href="{{route('reproduction-record.edit',$reproduction->id)}}" title="Edit" class="btn btn-link btn-primary btn-lg">
                                                         <i class="fa fa-edit"></i>
                                                     </a>
-                                                    <form action="{{ route('farm.destroy', $reproduction->id) }}" method="POST">
+                                                    {{-- <form action="{{ route('farm.destroy', $reproduction->id) }}" method="POST">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" title="Delete" class="btn btn-link btn-danger" data-original-title="Remove" onclick="return confirm('Are you sure?')">
                                                             <i class="fa fa-times"></i>
                                                         </button>
-                                                    </form>
+                                                    </form> --}}
                                                 </div>
-                                            </td> --}}
+                                            </td>
                                         </tr>
                                         @endforeach
                                     </tbody>
