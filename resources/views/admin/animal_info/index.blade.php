@@ -70,10 +70,10 @@
                                             <td>{{ $animalInfo->remark }} </td>
                                             <td class="text-center">
                                                 <div class="form-button-action">
-                                                    {{-- <a href="{{ route('farm.edit', $animalInfo->id) }}" title="Edit" class="btn btn-link btn-primary btn-lg">
+                                                    <a href="{{ route('animal-info.edit', $animalInfo->id) }}" title="Edit" class="btn btn-link btn-primary btn-lg">
                                                         <i class="fa fa-edit"></i>
-                                                    </a> --}}
-                                                    <form action="{{ route('farm.destroy', $animalInfo->id) }}" method="POST">
+                                                    </a>
+                                                    <form action="{{ route('animal-info.destroy', $animalInfo->id) }}" method="POST">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" title="Delete" class="btn btn-link btn-danger" data-original-title="Remove" onclick="return confirm('Are you sure?')">

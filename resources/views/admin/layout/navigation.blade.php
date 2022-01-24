@@ -91,6 +91,9 @@
                     </div>
                 </li>
 
+                @endrole
+                @endif
+
                 <li class="nav-item {{$p=='farmSett'?'active submenu':''}}">
                     <a data-toggle="collapse" href="#invoice">
                         <i class="fas fa-tools"></i>
@@ -99,6 +102,7 @@
                     </a>
                     <div class="collapse {{$p=='farmSett'?'show':''}}" id="invoice">
                         <ul class="nav nav-collapse">
+                            @role('admin')
                             <li class="{{$sm=='farm'?'active':''}} ">
                                 <a href="{{ route('farm.index') }}">
                                     <span class="sub-item">Research Farm</span>
@@ -109,17 +113,20 @@
                                     <span class="sub-item">Community Farm</span>
                                 </a>
                             </li>
+                            @endrole
 
                             <li class="{{$sm=='comm'?'active':''}}">
                                 <a href="{{ route('community.index') }}">
                                     <span class="sub-item">Individual Farm</span>
                                 </a>
                             </li>
+                            @role('admin')
                             <li class="{{$sm=='animalCat'?'active':''}}">
                                 <a href="{{ route('animal-cat.index') }}">
                                     <span class="sub-item">Animal Category</span>
                                 </a>
                             </li>
+                            @endrole
                             {{-- <li class="{{$sm=='animalCat'?'':''}}">
                                 <a href="{{ route('clinical-sign.index') }}">
                                     <span class="sub-item">Clinical Sign Category</span>
@@ -128,8 +135,7 @@
                         </ul>
                     </div>
                 </li>
-                @endrole
-                @endif
+
 
                 <li class="nav-item {{$p=='animalRecord'?'active':''}}">
                     <a data-toggle="collapse" href="#animal">
