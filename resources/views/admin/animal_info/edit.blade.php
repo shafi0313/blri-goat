@@ -38,6 +38,8 @@
                             <form action="{{ route('animal-info.update', $data->id)}}" method="post">
                                 @csrf
                                 @method('PUT')
+                                <input type="hidden" id="community_cat_id" value="{{ $data->community_cat_id}}">
+                                <input type="hidden" id="animal_cat_id" value="{{ $data->animal_cat_id}}">
                                 <div class="row">
                                     <div class="form-check">
 										<label>Select <span class="t_r">*</span></label><br>
@@ -303,6 +305,37 @@
         // $('.goat').attr('required', false)
     }
 
+    var communityCatId = $('#community_cat').val();
+    var community_cat_id = $("#community_cat_id").val();
+        $.ajax({
+            url:'{{ route("animalInfo.getCommunity") }}',
+            type:"get",
+            data: {
+                communityCatId: communityCatId,
+                community_cat_id: community_cat_id,
+
+                },
+            success:function (res) {
+                res = $.parseJSON(res);
+                $('#comm').html(res.com);
+            }
+        })
+
+        var animalCatId = $('.animal').val();
+        var animal_cat_id = $('#animal_cat_id').val();
+        $.ajax({
+            url:'{{ route("animalInfo.getAnimalCat") }}',
+            type:"get",
+            data: {
+                animalCatId: animalCatId,
+                animal_cat_id: animal_cat_id
+                },
+            success:function (res) {
+                res = $.parseJSON(res);
+                $('.animalSub').html(res.animal);
+            }
+        })
+
     $(document).ready(function() {
         $('.dam_tag').select2();
     });
@@ -347,7 +380,7 @@
             url:'{{ route("animalInfo.getCommunity") }}',
             type:"get",
             data: {
-                communityCatId: communityCatId
+                communityCatId: communityCatId,
                 },
             success:function (res) {
                 res = $.parseJSON(res);

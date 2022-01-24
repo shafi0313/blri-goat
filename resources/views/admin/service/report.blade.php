@@ -20,7 +20,7 @@
                         <div class="card-header">
                             <div class="d-flex align-items-center">
                                 <h4 class="card-title">Service</h4>
-                                <a href="{{route('milk-production.create')}}" class="btn btn-primary btn-round ml-auto text-light"><i class="fa fa-plus"></i> Add New</a>
+                                <a href="{{route('service.create')}}" class="btn btn-primary btn-round ml-auto text-light"><i class="fa fa-plus"></i> Add New</a>
                             </div>
                         </div>
                         <div class="card-body">
@@ -35,6 +35,7 @@
                                             <th>Expected Date of Birth</th>
                                             <th>Natural/AI</th>
                                             <th>Repeat Heat/not</th>
+                                            <th class="no-sort" style="text-align:center;width:80px" >Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -48,6 +49,20 @@
                                             <td>{{ \Carbon\Carbon::parse($service->expected_d_o_b)->format('d/m/Y') }} </td>
                                             <td>{{ $service->natural }} </td>
                                             <td>{{ $service->repeat_heat }} </td>
+                                            <td>
+                                                <div class="form-button-action">
+                                                    <a href="{{route('service.edit',$service->id)}}">
+                                                        Edit
+                                                    </a>
+                                                    {{-- <form action="{{ route('service.destroy', $service->id) }}" method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" title="Delete" class="btn btn-link btn-danger" onclick="return confirm('Are you sure?')">
+                                                            Delete
+                                                        </button>
+                                                    </form> --}}
+                                                </div>
+                                            </td>
                                         </tr>
                                         @endforeach
                                     </tbody>

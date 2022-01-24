@@ -306,10 +306,10 @@ class AnimalInfoController extends Controller
     {
         $communityCatId = $request->communityCatId;
         $Communities = Community::where('community_cat_id', $communityCatId)->get();
-        $com = '';
-        $com .= '<option value="">Select</option>';
+        $com = '<option value="">Select</option>';
         foreach ($Communities as $community) {
-            $com .= '<option value="'.$community->id.'">'.$community->name.'</option>';
+            $select = $request->community_cat_id==$community->community_cat_id?'selected':'';
+            $com .= "<option value='$community->id' $select>$community->name</option>";
         }
         return json_encode(['com'=>$com]);
     }
@@ -318,10 +318,10 @@ class AnimalInfoController extends Controller
     {
         $animalCatId = $request->animalCatId;
         $animalCats = AnimalCat::where('parent_id', $animalCatId)->get();
-        $animal = '';
-        $animal .= '<option value="0">Select</option>';
+        $animal = '<option value="">Select</option>';
         foreach ($animalCats as $animalCat) {
-            $animal .= '<option value="'.$animalCat->id.'">'.$animalCat->name.'</option>';
+            $select = $request->animal_cat_id==$animalCat->parent_id?'selected':'';
+            $animal .= "<option value='$animalCat->id' $select>$animalCat->name</option>";
         }
         return json_encode(['animal'=>$animal]);
     }

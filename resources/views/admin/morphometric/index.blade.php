@@ -76,14 +76,14 @@
                                             <td>{{ $morphometric->eye_to_eye_length }} </td>
                                             <td>
                                                 <div class="form-button-action">
-                                                    {{-- <a href="{{route('reproduction-record.edit',$morphometric->id)}}" title="Edit" class="btn btn-link btn-primary btn-lg">
-                                                        <i class="fa fa-edit"></i>
-                                                    </a> --}}
+                                                    <a href="{{route('morphometric.edit',$morphometric->id)}}" title="Edit" class="btn btn-link btn-primary btn-lg">
+                                                        Edit
+                                                    </a>
                                                     <form action="{{ route('morphometric.destroy', $morphometric->id) }}" method="POST">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" title="Delete" class="btn btn-link btn-danger" onclick="return confirm('Are you sure?')">
-                                                            <i class="fa fa-times"></i>
+                                                            Delete
                                                         </button>
                                                     </form>
                                                 </div>
