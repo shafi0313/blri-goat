@@ -63,6 +63,14 @@ class AnimalInfoController extends Controller
         if ($error = $this->sendPermissionError('create')) {
             return $error;
         }
+
+        $this->validate($request, [
+            'animal_cat_id' => 'required',
+            'animal_tag' => 'required',
+            'sex' => 'required',
+            'generation' => 'required',
+        ]);
+
         $animal_sub_cat_id = $request->animal_sub_cat_id;
         if ($animal_sub_cat_id==0) {
             $animal_sub_cat_id = null;
@@ -118,7 +126,7 @@ class AnimalInfoController extends Controller
 
         $animalInfo = AnimalInfo::create($data);
 
-        if($request->dam!='Select'){
+        if($request->dam!='Select' && empty($request->dam_input)){
             Service::whereDoe_tag($request->dam)->latest()->first()->update(['is_giving_birth'=>1]) || null;
             $dbGetReproduction = Reproduction::whereAnimal_info_id($request->dam)->first();
             if ($dbGetReproduction->kidding_1st_date == null) {
@@ -201,6 +209,7 @@ class AnimalInfoController extends Controller
             'animal_cat_id' => 'required',
             'animal_tag' => 'required',
             'sex' => 'required',
+            'generation' => 'required',
         ]);
 
 

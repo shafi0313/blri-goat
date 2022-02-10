@@ -167,7 +167,7 @@
                                     </div>
 
                                     <div class="form-group col-md-3 dam_input_form" style="display: none">
-                                        <label for="dam">Dam</label>
+                                        <label for="dam_input">Dam</label>
                                         <input type="text" class="form-control" name="dam_input">
                                     </div>
 

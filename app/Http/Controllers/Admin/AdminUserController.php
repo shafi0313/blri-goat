@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
+use App\Models\ModelHasRole;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -152,10 +153,7 @@ class AdminUserController extends Controller
         }
 
         if (Auth::user()->is == 1) {
-            $permission = [
-                'role_id' => $request->input('is'),
-            ];
-            DB::table('model_has_roles')->whereModel_id($id)->update($permission);
+            ModelHasRole::whereModel_id($id)->update(['role_id' => $request->input('is')]);
         }
 
         try {
