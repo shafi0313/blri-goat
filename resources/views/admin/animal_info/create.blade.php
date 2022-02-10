@@ -77,7 +77,7 @@
                                     </div>
 
                                     <div class="form-group col-md-3 community" style="display: none">
-                                        <label for="name">Sub Farm <span class="t_r">*</span></label>
+                                        <label for="name">Sub Farm</label>
                                         <select name="community_id" id="comm" class="form-control"></select>
                                     </div>
                                 </div>
@@ -109,8 +109,8 @@
                                     </div>
 
                                     <div class="form-group col-md-3 goatCat" style="display: none">
-                                        <label for="animal_sub_cat_id">Goat Sub Category *</span></label>
-                                        <select name="animal_sub_cat_id" id="" class="form-control animalSub goat @error('animal_sub_cat_id') is-invalid @enderror"></select>
+                                        <label for="animal_sub_cat_id">Goat Sub Category</label>
+                                        <select name="animal_sub_cat_id" id="" class="form-control animalSub @error('animal_sub_cat_id') is-invalid @enderror"></select>
                                     </div>
 
                                     <div class="form-group col-md-3 sheepCat" style="display: none">
@@ -128,7 +128,7 @@
 
                                     <div class="form-group col-md-3 sheepCat" style="display: none">
                                         <label for="animal_sub_cat_id">Sheep Sub Category </label>
-                                        <select name="animal_sub_cat_id" id="" class="form-control animalSub sheep @error('animal_sub_cat_id') is-invalid @enderror"></select>
+                                        <select name="animal_sub_cat_id" id="" class="form-control animalSub @error('animal_sub_cat_id') is-invalid @enderror"></select>
                                     </div>
                                 </div>
 
@@ -187,8 +187,8 @@
                                     </div>
 
                                     <div class="form-group col-md-3">
-                                        <label for="birth_wt">Birth Weight (Kg) <span class="t_r">*</span></label>
-                                        <input name="birth_wt" type="text" class="form-control @error('birth_wt') is-invalid @enderror" onInput="this.value = this.value.replace(/[a-zA-z\-*/]/g,'');" value="{{old('birth_wt')}}" required>
+                                        <label for="birth_wt">Birth Weight (Kg)</label>
+                                        <input name="birth_wt" type="text" class="form-control @error('birth_wt') is-invalid @enderror" onInput="this.value = this.value.replace(/[a-zA-z\-*/]/g,'');" value="{{old('birth_wt')}}">
                                         @error('birth_wt')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
@@ -231,8 +231,8 @@
                                     </div> --}}
 
                                     <div class="form-group col-md-3">
-                                        <label for="d_o_b">Date of Birth <span class="t_r">*</span></label>
-                                        <input  name="d_o_b" id="d_o_b" type="date" class="form-control @error('d_o_b') is-invalid @enderror" value="{{old('d_o_b')}}" required>
+                                        <label for="d_o_b">Date of Birth</label>
+                                        <input  name="d_o_b" id="d_o_b" type="date" class="form-control @error('d_o_b') is-invalid @enderror" value="{{old('d_o_b')}}">
                                         @error('d_o_b')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror

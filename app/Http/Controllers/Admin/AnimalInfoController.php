@@ -196,6 +196,14 @@ class AnimalInfoController extends Controller
         if ($error = $this->sendPermissionError('create')) {
             return $error;
         }
+
+        $this->validate($request, [
+            'animal_cat_id' => 'required',
+            'animal_tag' => 'required',
+            'sex' => 'required',
+        ]);
+
+
         $animal_sub_cat_id = $request->animal_sub_cat_id;
         if ($animal_sub_cat_id==0) {
             $animal_sub_cat_id = null;

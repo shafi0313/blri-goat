@@ -47,7 +47,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <p class="copy">BLRI &copy; {{date('Y')}} All Rights Reserved &nbsp;&nbsp;&nbsp;||&nbsp;&nbsp;&nbsp; Developed by: <a href="https://www.lsccom.com/">LS COMMUNICATIONS</a><span></span></p>
+                            <p class="copy">BLRI &copy; {{date('Y')}} All Rights Reserved &nbsp;&nbsp;&nbsp;||&nbsp;&nbsp;&nbsp; Developed by: <a href="http://lscominc.com/">LS COMMUNICATIONS</a><span></span></p>
                         </div>
                     </div>
                 </div>

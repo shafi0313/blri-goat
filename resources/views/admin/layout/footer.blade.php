@@ -8,7 +8,7 @@
             </ul>
         </nav>
         <div class="copyright ml-auto">
-            Powered <i class="fa fa-heart heart text-danger"></i> by <a href="#">LS COMMUNICATIONS</a>
+            Powered <i class="fa fa-heart heart text-danger"></i> by <a href="http://lscominc.com/">LS COMMUNICATIONS</a>
         </div>
     </div>
 </footer>
