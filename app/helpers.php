@@ -11,6 +11,17 @@ if (!function_exists('float2')) {
 }
 
 
+if (!function_exists('farmOrCommunityData')) {
+    function farmOrCommunityData($animalId)
+    {
+        $animalInfo = AnimalInfo::whereId($animalId)->first();
+        $data['farm_id'] = $animalInfo->farm_id;
+        $data['community_cat_id'] = $animalInfo->community_cat_id;
+        $data['community_id'] = $animalInfo->community_id;
+        return $data;
+    }
+}
+
 if (!function_exists('animalType')) {
     function animalType($type)
     {

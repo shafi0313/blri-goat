@@ -41,11 +41,11 @@
                                     <div class="form-check">
 										<label>Select <span class="t_r">*</span></label><br>
 										<label class="form-radio-label" id="farm">
-											<input class="form-radio-input" type="radio" name="optionsRadios" value="">
+											<input class="form-radio-input" type="radio" name="optionsRadios" value="" required>
 											<span class="form-radio-sign">Research Farm</span>
 										</label>
 										<label class="form-radio-label ml-3" id="community">
-											<input class="form-radio-input" type="radio" name="optionsRadios" value="">
+											<input class="form-radio-input" type="radio" name="optionsRadios" value="" required>
 											<span class="form-radio-sign">Community Farm</span>
 										</label>
 									</div>
@@ -256,7 +256,7 @@
                                 </div>
 
                                 <div align="center" class="mr-auto card-action">
-                                    <button type="submit" class="btn btn-success">Submit</button>
+                                    <button type="submit" id="submit" class="btn btn-success">Submit</button>
                                     <button type="reset" class="btn btn-danger">Reset</button>
                                 </div>
                             </form>
@@ -418,7 +418,6 @@
         }
         $('#season_o_birth').val(sessionBirthCal);
     });
-
 </script>
 @endpush
 @endsection

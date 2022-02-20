@@ -16,6 +16,9 @@ class CreateDeathEntriesTable extends Migration
         Schema::create('death_entries', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnUpdate();
+            $table->foreignId('farm_id')->nullable()->constrained()->cascadeOnUpdate();
+            $table->foreignId('community_cat_id')->nullable()->constrained()->cascadeOnUpdate();
+            $table->foreignId('community_id')->nullable()->constrained()->cascadeOnUpdate();
             $table->foreignId('animal_info_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->date('date');
             $table->string('death_time',20);

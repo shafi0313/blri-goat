@@ -16,6 +16,9 @@ class CreateDewormingsTable extends Migration
         Schema::create('dewormings', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnUpdate();
+            $table->foreignId('farm_id')->nullable()->constrained()->cascadeOnUpdate();
+            $table->foreignId('community_cat_id')->nullable()->constrained()->cascadeOnUpdate();
+            $table->foreignId('community_id')->nullable()->constrained()->cascadeOnUpdate();
             $table->foreignId('animal_info_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->integer('group');
             $table->boolean('medicine_type');

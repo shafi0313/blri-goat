@@ -5,10 +5,11 @@ namespace App\Http\Controllers\Admin;
 use Carbon\Carbon;
 use App\Models\Upazila;
 use App\Models\District;
+use App\Models\AnimalCat;
+use App\Models\Community;
 use App\Models\AnimalInfo;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\AnimalCat;
 
 class GlobalController extends Controller
 {
@@ -53,6 +54,25 @@ class GlobalController extends Controller
         $name .= '<option value="0">Select</option>';
         foreach($animalCats as $animalCat){
             $name .= '<option value="'.$animalCat->id.'">'.$animalCat->name.'</option>';
+        }
+        return json_encode(['name'=>$name]);
+    }
+
+    public function getCommunity(Request $request)
+    {
+        $fOrC = preg_replace('/[^a-z A-Z]/', '', $request->farmOrComId);
+        $farmOrComId = preg_replace('/[^0-9]/', '', $request->farmOrComId);
+        if($fOrC=='c'){
+            $communities = Community::where('community_cat_id', $farmOrComId)->get();
+            $select = $request->community_cat_id;
+        }
+
+
+        $name = '<option value="0">Select</option>';
+        foreach($communities as $community){
+            $select = $select==$community->id ? "selected" :'';
+            // $name .= '<option value="'.$community->id.'" >'.$community->no.'-'.$community->name.'</option>';
+            $name .= "<option value='$community->id'  $select>$community->name</option>";
         }
         return json_encode(['name'=>$name]);
     }

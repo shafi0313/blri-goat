@@ -21,6 +21,14 @@ class AnimalInfo extends Model
     {
         return $this->belongsTo(AnimalCat::class, 'animal_cat_id');
     }
+    public function farm()
+    {
+        return $this->belongsTo(Farm::class, 'farm_id');
+    }
+    public function communityCat()
+    {
+        return $this->belongsTo(CommunityCat::class, 'community_cat_id');
+    }
 
     public function diseaseTreatment()
     {

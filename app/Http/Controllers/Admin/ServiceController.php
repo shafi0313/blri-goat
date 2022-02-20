@@ -8,9 +8,9 @@ use App\Models\AnimalInfo;
 use App\Models\Reproduction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Actions\FarmOrCommunityData;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Requests\ReproductionStoreRequest;
 
 class ServiceController extends Controller
 {
@@ -63,7 +63,6 @@ class ServiceController extends Controller
         }
         DB::beginTransaction();
 
-        // $generation = $animal_info_id->generation;
         $data = [
             'user_id' => Auth::user()->id,
             'buck_tag' => $request->buck_tag,
@@ -74,8 +73,9 @@ class ServiceController extends Controller
             'repeat_heat' => $repeat_heat,
             'generation' => $animal_info_id->generation,
         ];
-        Service::create($data);
 
+        $farmOrCommunityData = FarmOrCommunityData::getFarmOrCommunityData($animal_info_id->id);
+        Service::create(array_merge($data,$farmOrCommunityData));
 
         $getReproduction = Reproduction::where('animal_info_id', $animal_info_id->id)->first();
         if($getReproduction==null || $getReproduction->count() < 1 ){
@@ -84,7 +84,7 @@ class ServiceController extends Controller
                 'animal_info_id' => $animal_info_id->id,
                 'service_1st_date' => $request->date_of_service,
             ];
-            Reproduction::create($reproduction);
+            Reproduction::create(array_merge($reproduction,$farmOrCommunityData));
         }else{
             if($getReproduction->service_1st_date == null){
                 $reproduction['service_1st_date'] = $request->date_of_service;

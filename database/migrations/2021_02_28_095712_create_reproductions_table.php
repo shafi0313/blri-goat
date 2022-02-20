@@ -16,6 +16,9 @@ class CreateReproductionsTable extends Migration
         Schema::create('reproductions', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnUpdate();
+            $table->foreignId('farm_id')->nullable()->constrained()->cascadeOnUpdate();
+            $table->foreignId('community_cat_id')->nullable()->constrained()->cascadeOnUpdate();
+            $table->foreignId('community_id')->nullable()->constrained()->cascadeOnUpdate();
             $table->foreignId('animal_info_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->integer('puberty_age')->nullable();
             $table->date('service_1st_date')->nullable();

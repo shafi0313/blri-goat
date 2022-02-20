@@ -21,17 +21,39 @@ use App\Http\Requests\PrductionRecordStoreRequest;
 
 class AnimalInfoController extends Controller
 {
-    public function exportIntoExcel()
+    public function downloadSelect()
     {
-        return Excel::download(new AnimalInfoExport, 'animal_information.xlsx');
+        if (Auth::user()->is == 1) {
+            $farms = Farm::all(['id','name']);
+            $communityCats = CommunityCat::select(['id','name'])->get();
+            return view('admin.animal_info.download_select', compact('farms','communityCats'));
+        } else {
+            $communities = Community::whereCommunity_cat_id(CommunityCat::whereUser_id(Auth::user()->id)->first('id')->id)->get(['id','no','name']);
+            return view('admin.animal_info.download_select', compact('communities'));
+        }
+    }
+
+     public function exportIntoExcel(Request $request)
+    {
+        $fOrC = preg_replace('/[^a-z A-Z]/', '', $request->farmOrCommunityId);
+        $farmOrComId = preg_replace('/[^0-9]/', '', $request->farmOrCommunityId);
+        $community_id = $request->community_id;
+        if($fOrC=='f')
+        {
+            $farm = 'farm_id';
+        }else{
+            $farm = 'community_cat_id';
+        }
+        // return Excel::download(new AnimalInfoExport, 'animal_information.xlsx');
+        return Excel::download(new AnimalInfoExport($farm,$farmOrComId,$community_id), 'animal_information.xlsx');
     }
 
     public function index()
     {
         if (Auth::user()->is==1) {
-            $animalInfos = AnimalInfo::all();
+            $animalInfos = AnimalInfo::with(['animalCat','farm','communityCat'])->get();
         } else {
-            $animalInfos = AnimalInfo::whereUser_id(Auth::user()->id)->get();
+            $animalInfos = AnimalInfo::with('animalCat')->whereUser_id(Auth::user()->id)->get();
         }
         return view('admin.animal_info.index', compact('animalInfos'));
     }
@@ -90,7 +112,6 @@ class AnimalInfoController extends Controller
             'color' => $request->color,
             'sex' => $request->sex,
             'birth_wt' => $request->birth_wt,
-
             'd_o_b' => $request->d_o_b,
             'season_o_birth' => $request->season_o_birth,
             'remark' => $request->remark,
@@ -122,9 +143,7 @@ class AnimalInfoController extends Controller
         }else{
             $data['litter_size'] = $request->litter_size_input;
         }
-        // return $data;
-
-        $animalInfo = AnimalInfo::create($data);
+        AnimalInfo::create($data);
 
         if($request->dam!='Select' && empty($request->dam_input)){
             Service::whereDoe_tag($request->dam)->latest()->first()->update(['is_giving_birth'=>1]) || null;
@@ -169,7 +188,6 @@ class AnimalInfoController extends Controller
             return redirect()->route('animal-info.index');
         } catch (\Exception $ex) {
             DB::rollBack();
-            // return $ex->getMessage();
             toast('Error', 'error');
             return redirect()->back();
         }
@@ -223,7 +241,6 @@ class AnimalInfoController extends Controller
         $data = [
             'user_id' => Auth::user()->id,
             'animal_cat_id' => $request->animal_cat_id,
-            // 'animal_sub_cat_id' => $animal_sub_cat_id,
             'type' => $request->type,
             'm_type' => $request->m_type,
             'sire' => $request->sire,

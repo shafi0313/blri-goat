@@ -56,14 +56,6 @@ use App\Http\Controllers\Admin\Report\BlriDiseaseIncidenceController;
 |
 */
 
-Route::get('/t', function () {
-    // $ip = geoip()->getClientIP();
-    // $geoInfo = geoip()->getLocation($ip);
-    // dd($geoInfo);
-
-    // return PurchaseInvoice::with('productCal')->get();
-
-});
 
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 // Route::get('/register', [AuthController::class, 'register'])->name('register');
@@ -119,8 +111,10 @@ Route::middleware(['auth','admin'])->prefix('admin')->group(function(){
     Route::resource('/animal-info', AnimalInfoController::class);
     Route::get('/get-community', [AnimalInfoController::class, 'getCommunity'])->name('animalInfo.getCommunity');
     Route::get('/get-animal-sub-cat', [AnimalInfoController::class, 'getAnimalCat'])->name('animalInfo.getAnimalCat');
-    Route::get('/animal-info-excel', [AnimalInfoController::class, 'exportIntoExcel'])->name('animalInfo.exportIntoExcel');
     Route::get('/get-service', [AnimalInfoController::class, 'getService'])->name('getService');
+
+    Route::get('/download-select', [AnimalInfoController::class, 'downloadSelect'])->name('animalInfo.downloadSelect');
+    Route::post('/animal-info-excel', [AnimalInfoController::class, 'exportIntoExcel'])->name('animalInfo.exportIntoExcel');
 
     // Morphometric
     Route::resource('/morphometric', MorphometricController::class);
@@ -237,6 +231,7 @@ Route::middleware(['auth','admin'])->prefix('admin')->group(function(){
     });
 
     Route::get('/animal-sub-cat', [GlobalController::class, 'animalSubCat'])->name('animalSubCat');
+    Route::get('/get-communities', [GlobalController::class, 'getCommunity'])->name('get.getCommunity');
 
 });
 

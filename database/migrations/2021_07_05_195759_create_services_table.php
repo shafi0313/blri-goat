@@ -16,7 +16,10 @@ class CreateServicesTable extends Migration
         Schema::create('services', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnUpdate();
-            // $table->foreignId('animal_info_id')->comment('buck_tag')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId('farm_id')->nullable()->constrained()->cascadeOnUpdate();
+            $table->foreignId('community_cat_id')->nullable()->constrained()->cascadeOnUpdate();
+            $table->foreignId('community_id')->nullable()->constrained()->cascadeOnUpdate();
+            
             $table->unsignedBigInteger('buck_tag')->comment('animal tag, sire')->index();
             $table->foreign('buck_tag')->references('id')->on('animal_infos')->onUpdate('cascade')->onDelete('cascade');
             $table->unsignedBigInteger('doe_tag')->comment('animal tag, dam')->index();

@@ -16,6 +16,9 @@ class CreateBodyWeightsTable extends Migration
         Schema::create('body_weights', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnUpdate();
+            $table->foreignId('farm_id')->nullable()->constrained()->cascadeOnUpdate();
+            $table->foreignId('community_cat_id')->nullable()->constrained()->cascadeOnUpdate();
+            $table->foreignId('community_id')->nullable()->constrained()->cascadeOnUpdate();
             $table->foreignId('animal_info_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->float('month_1')->nullable();
             $table->float('month_2')->nullable();

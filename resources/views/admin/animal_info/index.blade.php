@@ -10,7 +10,7 @@
                     <li class="nav-home">
                     <a href="{{ route('admin.dashboard')}}"><i class="flaticon-home"></i></a></li>
                     <li class="separator"><i class="flaticon-right-arrow"></i></li>
-                    <li class="nav-item active">Aminal Information</li>
+                    <li class="nav-item active">Animal Information</li>
                 </ul>
             </div>
             <div class="divider1"></div>
@@ -20,7 +20,7 @@
                         <div class="card-header">
                             <div class="d-flex align-items-center">
                                 <h4 class="card-title">Animal Information</h4>
-                                <a href="{{route('animalInfo.exportIntoExcel')}}" class="btn btn-info btn-round ml-auto text-light"><i class="fas fa-file-excel"></i> Download</a>&nbsp;&nbsp;
+                                <a href="{{route('animalInfo.downloadSelect')}}" class="btn btn-info btn-round ml-auto text-light"><i class="fas fa-file-excel"></i> Download</a>&nbsp;&nbsp;
                                 <a href="{{route('animal-info.create')}}" class="btn btn-primary btn-round text-light"><i class="fa fa-plus"></i> Add New</a>
                             </div>
                         </div>
@@ -30,6 +30,7 @@
                                     <thead class="bg-secondary thw">
                                         <tr class="text-center">
                                             <th style="width: 35px">SL</th>
+                                            <th>Farm</th>
                                             <th>Animal Tag</th>
                                             <th>Breed</th>
                                             <th>Coat color</th>
@@ -40,19 +41,37 @@
                                             <th>Paity</th>
                                             <th>Sire</th>
                                             <th>Dam</th>
-                                            {{-- <th>Dam Milk</th> --}}
                                             <th>Date of Birth</th>
                                             <th>Season of Birth</th>
-                                            {{-- <th>Death Date</th> --}}
                                             <th>Remark</th>
-                                            <th class="no-sort" style="text-align:center;width:40px" >Action</th>
+                                            <th class="no-sort" style="text-align:center;width:40px">Action</th>
                                         </tr>
                                     </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                    </tfoot>
                                     <tbody>
                                         @php $x=1; @endphp
                                         @foreach ($animalInfos as $animalInfo)
                                         <tr class="text-center">
                                             <td>{{ $x++ }} </td>
+                                            <td>{{ $animalInfo->farm!=null?$animalInfo->farm->name:$animalInfo->communityCat->name }} </td>
                                             <td>{{ $animalInfo->animal_tag }} </td>
                                             <td class="text-left">{{ $animalInfo->animalCat->name }} </td>
                                             <td>{{ $animalInfo->color }} </td>
@@ -63,10 +82,8 @@
                                             <td>{{ $animalInfo->paity }} </td>
                                             <td>{{ $animalInfo->sire }} </td>
                                             <td>{{ $animalInfo->dam }} </td>
-                                            {{-- <td>{{ $animalInfo->dam_milk }} </td> --}}
                                             <td>{{ $animalInfo->d_o_b }} </td>
                                             <td>{{ $animalInfo->season_o_birth }} </td>
-                                            {{-- <td>{{ $animalInfo->death_date }} </td> --}}
                                             <td>{{ $animalInfo->remark }} </td>
                                             <td class="text-center">
                                                 <div class="form-button-action">
