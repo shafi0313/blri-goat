@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Parasite;
 use App\Models\AnimalInfo;
 use Illuminate\Http\Request;
+use App\Actions\FarmOrCommunityData;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
@@ -45,10 +46,10 @@ class ParasiteController extends Controller
             'parasite_name'  => 'required|max:100',
         ]);
         $data['user_id'] = Auth::user()->id;
-
+        $farmOrCommunityData = FarmOrCommunityData::getFarmOrCommunityData($request->animal_info_id);
 
         try{
-            Parasite::create($data);
+            Parasite::create($data+$farmOrCommunityData);
             toast('Success','success');
             return redirect()->route('parasite.index');
         }catch(\Exception $ex){

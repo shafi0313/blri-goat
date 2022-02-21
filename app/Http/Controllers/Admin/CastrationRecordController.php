@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\AnimalInfo;
 use Illuminate\Http\Request;
 use App\Models\CastrationRecord;
+use App\Actions\FarmOrCommunityData;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
@@ -49,9 +50,10 @@ class CastrationRecordController extends Controller
         AnimalInfo::whereId($request->animal_info_id)->first()->update([
             'is_reproductive' => 1,
         ]);
+        $farmOrCommunityData = FarmOrCommunityData::getFarmOrCommunityData($request->animal_info_id);
 
         try{
-            CastrationRecord::create($data);
+            CastrationRecord::create($data+$farmOrCommunityData);
             toast('Success','success');
             return redirect()->route('castration-record.index');
         }catch(\Exception $ex){

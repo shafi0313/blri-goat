@@ -7,6 +7,7 @@ use App\Models\AnimalInfo;
 use App\Models\ClinicalSign;
 use Illuminate\Http\Request;
 use App\Models\DiseaseTreatment;
+use App\Actions\FarmOrCommunityData;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
@@ -61,8 +62,9 @@ class DiseaseTreatmentController extends Controller
         }
 
         AnimalInfo::whereId($request->animal_info_id)->first()->updated(['remark' => $request->recovered_dead]);
+        $farmOrCommunityData = FarmOrCommunityData::getFarmOrCommunityData($request->animal_info_id);
         try{
-            DiseaseTreatment::create($data);
+            DiseaseTreatment::create($data+$farmOrCommunityData);
             toast('Success','success');
             return redirect()->route('disease-and-treatment.index');
         }catch(\Exception $ex){

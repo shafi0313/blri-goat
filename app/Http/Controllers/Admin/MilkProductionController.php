@@ -6,6 +6,7 @@ use App\Models\AnimalInfo;
 use Illuminate\Http\Request;
 use App\Models\MilkProduction;
 use Illuminate\Support\Facades\DB;
+use App\Actions\FarmOrCommunityData;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
@@ -59,10 +60,11 @@ class MilkProductionController extends Controller
             'milk_yield' => $request->milk_yield,
         ];
         $data['user_id'] = Auth::user()->id;
+        $farmOrCommunityData = FarmOrCommunityData::getFarmOrCommunityData($request->animal_info_id);
 
         DB::beginTransaction();
         try{
-            MilkProduction::create($data);
+            MilkProduction::create($data+$farmOrCommunityData);
             DB::commit();
             toast('Success','success');
             return redirect()->route('milk-production.index');

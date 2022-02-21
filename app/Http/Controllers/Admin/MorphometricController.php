@@ -6,6 +6,7 @@ use App\Models\AnimalInfo;
 use App\Models\Morphometric;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Actions\FarmOrCommunityData;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
@@ -59,15 +60,16 @@ class MorphometricController extends Controller
             'eye_to_eye_length' => $request->eye_to_eye_length,
         ];
         $data['user_id'] = Auth::user()->id;
+        $farmOrCommunityData = FarmOrCommunityData::getFarmOrCommunityData($request->animal_info_id);
 
         DB::beginTransaction();
         try{
-            Morphometric::create($data);
+            Morphometric::create($data + $farmOrCommunityData);
             DB::commit();
             toast('Success','success');
             return redirect()->route('morphometric.index');
         }catch(\Exception $ex){
-            return $ex->getMessage();
+            // return $ex->getMessage();
             DB::rollBack();
             toast('Error', 'error');
             return redirect()->back();

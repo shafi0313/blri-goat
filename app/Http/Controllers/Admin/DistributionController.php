@@ -6,6 +6,7 @@ use App\Models\AnimalInfo;
 use App\Models\Distribution;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Actions\FarmOrCommunityData;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
@@ -47,9 +48,9 @@ class DistributionController extends Controller
             'address_of_rec' => $request->address_of_rec,
             'purpose' => $request->purpose,
         ];
-
+        $farmOrCommunityData = FarmOrCommunityData::getFarmOrCommunityData($request->animal_info_id);
         try{
-            Distribution::create($data);
+            Distribution::create($data+$farmOrCommunityData);
             AnimalInfo::whereId($request->animal_info_id)->first()->update([
                 'status' => 2,
             ]);

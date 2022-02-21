@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\AnimalInfo;
 use App\Models\Vaccination;
 use Illuminate\Http\Request;
+use App\Actions\FarmOrCommunityData;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
@@ -45,11 +46,14 @@ class VaccinationController extends Controller
             // 'total_vaccinated' => 'required|max:155',
         ]);
 
-        $animals = AnimalInfo::whereBetween('id',[$request->to, $request->from])->get()->pluck('id');
+        $animals = AnimalInfo::whereBetween('id',[$request->to, $request->from])->get();
         $group = Vaccination::max('group') + 1 ;
         foreach($animals as $key => $value){
             $data = [
-                'animal_info_id' => $animals[$key],
+                'farm_id' => $animals->pluck('farm_id')[$key],
+                'community_cat_id' => $animals->pluck('community_cat_id')[$key],
+                'community_id' => $animals->pluck('community_id')[$key],
+                'animal_info_id' => $animals->pluck('id')[$key],
                 'user_id' => Auth::user()->id,
                 'group' =>  $group,
                 'vaccine_name' => $request->vaccine_name,

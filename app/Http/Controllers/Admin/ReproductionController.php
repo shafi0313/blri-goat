@@ -6,6 +6,7 @@ use App\Models\AnimalInfo;
 use App\Models\Reproduction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Actions\FarmOrCommunityData;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ReproductionStoreRequest;
@@ -43,10 +44,11 @@ class ReproductionController extends Controller
         $data['user_id'] = Auth::user()->id;
 
         $reproductions = Reproduction::whereAnimal_info_id($request->animal_info_id)->first();
+        $farmOrCommunityData = FarmOrCommunityData::getFarmOrCommunityData($request->animal_info_id);
         if(!empty($reproductions)){
             Reproduction::whereId($reproductions->id)->update($data);
         }else{
-            Reproduction::create($data);
+            Reproduction::create($data+$farmOrCommunityData);
         }
 
         try{

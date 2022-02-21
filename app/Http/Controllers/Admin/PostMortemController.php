@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\AnimalInfo;
 use App\Models\PostMortem;
 use Illuminate\Http\Request;
+use App\Actions\FarmOrCommunityData;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
@@ -49,9 +50,10 @@ class PostMortemController extends Controller
             'tentative'             => 'required',
         ]);
         $data['user_id'] = Auth::user()->id;
+        $farmOrCommunityData = FarmOrCommunityData::getFarmOrCommunityData($request->animal_info_id);
 
         try {
-            PostMortem::create($data);
+            PostMortem::create($data+$farmOrCommunityData);
             AnimalInfo::whereId($request->animal_info_id)->first()->update(['status' => 1]);
             toast('Success', 'success');
             return redirect()->route('post-mortem.index');

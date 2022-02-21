@@ -44,7 +44,7 @@
                                         <tr class="text-center">
                                             <td>{{ $x++ }} </td>
                                             <td>{{ $semenAnalysis->animalInfo->animal_tag }} </td>
-                                            <td>{{ animalType($deadCulled->animalInfo->type) }} </td>
+                                            <td>{{ animalType($semenAnalysis->animalInfo->type) }} </td>
                                             <td>{{ \Carbon\Carbon::parse($semenAnalysis->coll_date)->format('d/m/Y') }} </td>
                                             <td>{{ $semenAnalysis->volume }} </td>
                                             <td>{{ $semenAnalysis->s_color }} </td>

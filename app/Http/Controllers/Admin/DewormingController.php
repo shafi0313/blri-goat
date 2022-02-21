@@ -44,10 +44,13 @@ class DewormingController extends Controller
         ]);
 
         $group = Deworming::max('group') + 1 ;
-        $animals = AnimalInfo::whereBetween('id',[$request->to, $request->from])->get()->pluck('id');
+        $animals = AnimalInfo::whereBetween('id',[$request->to, $request->from])->get();
         foreach($animals as $key => $value){
             $data = [
-                'animal_info_id' => $animals[$key],
+                'farm_id' => $animals->pluck('farm_id')[$key],
+                'community_cat_id' => $animals->pluck('community_cat_id')[$key],
+                'community_id' => $animals->pluck('community_id')[$key],
+                'animal_info_id' => $animals->pluck('id')[$key],
                 'user_id' => Auth::user()->id,
                 'group' =>  $group,
                 'medicine_type' => $request->medicine_type,

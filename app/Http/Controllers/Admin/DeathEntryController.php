@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\AnimalInfo;
 use App\Models\DeathEntry;
 use Illuminate\Http\Request;
+use App\Actions\FarmOrCommunityData;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
@@ -47,9 +48,10 @@ class DeathEntryController extends Controller
             'probable_cause_death'  => 'required',
         ]);
         $data['user_id'] = Auth::user()->id;
+        $farmOrCommunityData = FarmOrCommunityData::getFarmOrCommunityData($request->animal_info_id);
 
         try{
-            DeathEntry::create($data);
+            DeathEntry::create($data+$farmOrCommunityData);
             AnimalInfo::whereId($request->animal_info_id)->first()->update(['status' => 1]);
             toast('Success','success');
             return redirect()->route('death-entry.index');

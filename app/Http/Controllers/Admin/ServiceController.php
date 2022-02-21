@@ -75,7 +75,7 @@ class ServiceController extends Controller
         ];
 
         $farmOrCommunityData = FarmOrCommunityData::getFarmOrCommunityData($animal_info_id->id);
-        Service::create(array_merge($data,$farmOrCommunityData));
+        Service::create($data + $farmOrCommunityData);
 
         $getReproduction = Reproduction::where('animal_info_id', $animal_info_id->id)->first();
         if($getReproduction==null || $getReproduction->count() < 1 ){
@@ -84,7 +84,7 @@ class ServiceController extends Controller
                 'animal_info_id' => $animal_info_id->id,
                 'service_1st_date' => $request->date_of_service,
             ];
-            Reproduction::create(array_merge($reproduction,$farmOrCommunityData));
+            Reproduction::create($reproduction + $farmOrCommunityData);
         }else{
             if($getReproduction->service_1st_date == null){
                 $reproduction['service_1st_date'] = $request->date_of_service;

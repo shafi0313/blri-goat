@@ -6,6 +6,7 @@ use App\Models\AnimalInfo;
 use Illuminate\Http\Request;
 use App\Models\SemenAnalysis;
 use Illuminate\Support\Facades\DB;
+use App\Actions\FarmOrCommunityData;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
@@ -51,10 +52,10 @@ class SemenAnalysisController extends Controller
             'number_of_straw' => $request->number_of_straw,
         ];
         $data['user_id'] = Auth::user()->id;
-
+        $farmOrCommunityData = FarmOrCommunityData::getFarmOrCommunityData($request->animal_info_id);
         DB::beginTransaction();
         try{
-            SemenAnalysis::create($data);
+            SemenAnalysis::create($data+$farmOrCommunityData);
             DB::commit();
             toast('Success','success');
             return redirect()->route('semen-analysis.index');

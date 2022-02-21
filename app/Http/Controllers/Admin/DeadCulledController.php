@@ -6,6 +6,7 @@ use App\Models\AnimalInfo;
 use App\Models\DeadCulled;
 use App\Models\CommunityCat;
 use Illuminate\Http\Request;
+use App\Actions\FarmOrCommunityData;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
@@ -59,9 +60,10 @@ class DeadCulledController extends Controller
                 'status' => 1,
             ]);
         }
+        $farmOrCommunityData = FarmOrCommunityData::getFarmOrCommunityData($request->animal_info_id);
 
         try{
-            DeadCulled::create($data);
+            DeadCulled::create($data+$farmOrCommunityData);
             toast('Success','success');
             return redirect()->route('dead-culled.index');
         }catch(\Exception $ex){
