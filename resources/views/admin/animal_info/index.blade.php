@@ -71,7 +71,7 @@
                                         @foreach ($animalInfos as $animalInfo)
                                         <tr class="text-center">
                                             <td>{{ $x++ }} </td>
-                                            <td>{{ $animalInfo->farm!=null?$animalInfo->farm->name:$animalInfo->communityCat->name }} </td>
+                                            <td>{{ $animalInfo->farm!=null?$animalInfo->farm->name:($animalInfo->community_cat_id!=null?$animalInfo->communityCat->name:'') }} </td>
                                             <td>{{ $animalInfo->animal_tag }} </td>
                                             <td class="text-left">{{ $animalInfo->animalCat->name }} </td>
                                             <td>{{ $animalInfo->color }} </td>
