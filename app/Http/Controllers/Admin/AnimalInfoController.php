@@ -11,13 +11,10 @@ use App\Models\AnimalInfo;
 use App\Models\CommunityCat;
 use App\Models\Reproduction;
 use Illuminate\Http\Request;
-use App\Models\ProductionRecord;
 use App\Exports\AnimalInfoExport;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Requests\AnimalInfoStoreRequest;
-use App\Http\Requests\PrductionRecordStoreRequest;
 
 class AnimalInfoController extends Controller
 {
@@ -87,7 +84,7 @@ class AnimalInfoController extends Controller
         }
 
         $this->validate($request, [
-            'animal_cat_id' => 'required',
+            'animal_cat_id' => 'required|integer',
             'animal_tag' => 'required',
             'sex' => 'required',
             'generation' => 'required',
