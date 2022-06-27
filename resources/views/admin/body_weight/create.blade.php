@@ -68,7 +68,7 @@
 
                                     <div class="form-group col-md-3">
                                         <label for="month_1">1 months body wt. (kg)</label>
-                                        <input type="number" class="form-control @error('month_1') is-invalid @enderror" name="month_1" id="month_1">
+                                        <input type="number" step="any" class="form-control @error('month_1') is-invalid @enderror" name="month_1" id="month_1">
                                         @error('month_1')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
@@ -76,7 +76,7 @@
 
                                     <div class="form-group col-md-3">
                                         <label for="month_2">2 months body wt. (kg)</label>
-                                        <input type="number" class="form-control @error('month_2') is-invalid @enderror" name="month_2" id="month_2">
+                                        <input type="number" step="any" class="form-control @error('month_2') is-invalid @enderror" name="month_2" id="month_2">
                                         @error('month_2')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
@@ -84,7 +84,7 @@
 
                                     <div class="form-group col-md-3">
                                         <label for="month_3">3 months body wt. (kg)</label>
-                                        <input type="number" class="form-control @error('month_3') is-invalid @enderror" name="month_3" id="month_3">
+                                        <input type="number" step="any" class="form-control @error('month_3') is-invalid @enderror" name="month_3" id="month_3">
                                         @error('month_3')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
@@ -92,7 +92,7 @@
 
                                     <div class="form-group col-md-3">
                                         <label for="month_4">4 months body wt. (kg)</label>
-                                        <input type="number" class="form-control @error('month_4') is-invalid @enderror" name="month_4" id="month_4">
+                                        <input type="number" step="any" class="form-control @error('month_4') is-invalid @enderror" name="month_4" id="month_4">
                                         @error('month_4')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
@@ -100,7 +100,7 @@
 
                                     <div class="form-group col-md-3">
                                         <label for="month_5">5 months body wt. (kg)</label>
-                                        <input type="number" class="form-control @error('month_5') is-invalid @enderror" name="month_5" id="month_5">
+                                        <input type="number" step="any" class="form-control @error('month_5') is-invalid @enderror" name="month_5" id="month_5">
                                         @error('month_5')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
@@ -108,7 +108,7 @@
 
                                     <div class="form-group col-md-3">
                                         <label for="month_6">6 months body wt. (kg)</label>
-                                        <input type="number" class="form-control @error('month_6') is-invalid @enderror" name="month_6" id="month_6">
+                                        <input type="number" step="any" class="form-control @error('month_6') is-invalid @enderror" name="month_6" id="month_6">
                                         @error('month_6')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
@@ -116,7 +116,7 @@
 
                                     <div class="form-group col-md-3">
                                         <label for="month_7">7 months body wt. (kg)</label>
-                                        <input type="number" class="form-control @error('month_7') is-invalid @enderror" name="month_7" id="month_7">
+                                        <input type="number" step="any" class="form-control @error('month_7') is-invalid @enderror" name="month_7" id="month_7">
                                         @error('month_7')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
@@ -124,7 +124,7 @@
 
                                     <div class="form-group col-md-3">
                                         <label for="month_8">8 months body wt. (kg)</label>
-                                        <input type="number" class="form-control @error('month_8') is-invalid @enderror" name="month_8" id="month_8">
+                                        <input type="number" step="any" class="form-control @error('month_8') is-invalid @enderror" name="month_8" id="month_8">
                                         @error('month_8')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
@@ -132,7 +132,7 @@
 
                                     <div class="form-group col-md-3">
                                         <label for="month_9">9 months body wt. (kg)</label>
-                                        <input type="number" class="form-control @error('month_9') is-invalid @enderror" name="month_9" id="month_9">
+                                        <input type="number" step="any" class="form-control @error('month_9') is-invalid @enderror" name="month_9" id="month_9">
                                         @error('month_9')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
@@ -140,7 +140,7 @@
 
                                     <div class="form-group col-md-3">
                                         <label for="month_10">10 months body wt. (kg)</label>
-                                        <input type="number" class="form-control @error('month_10') is-invalid @enderror" name="month_10" id="month_10">
+                                        <input type="number" step="any" class="form-control @error('month_10') is-invalid @enderror" name="month_10" id="month_10">
                                         @error('month_10')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
@@ -148,7 +148,7 @@
 
                                     <div class="form-group col-md-3">
                                         <label for="month_11">11 months body wt. (kg)</label>
-                                        <input type="number" class="form-control @error('month_11') is-invalid @enderror" name="month_11" id="month_11">
+                                        <input type="number" step="any" class="form-control @error('month_11') is-invalid @enderror" name="month_11" id="month_11">
                                         @error('month_11')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
@@ -156,7 +156,7 @@
 
                                     <div class="form-group col-md-3">
                                         <label for="month_12">12 months body wt. (kg)</label>
-                                        <input type="number" class="form-control @error('month_12') is-invalid @enderror" name="month_12" id="month_12">
+                                        <input type="number" step="any" class="form-control @error('month_12') is-invalid @enderror" name="month_12" id="month_12">
                                         @error('month_12')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror

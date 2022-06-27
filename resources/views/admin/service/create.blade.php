@@ -66,7 +66,7 @@
                                         <select class="doe_tag form-control" id="" name="doe_tag">
                                             <option >Select</option>
                                             @foreach ($animalInfosF as $animalInfoF)
-                                                <option value="{{ $animalInfoF->id }}">{{ $animalInfoF->animal_tag }} => {{ $animalInfoF->dam }}</option>
+                                                <option value="{{ $animalInfoF->id }}">{{ $animalInfoF->animal_tag }}</option>
                                             @endforeach
                                         </select>
                                     </div>
