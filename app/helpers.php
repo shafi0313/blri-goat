@@ -10,6 +10,13 @@ if (!function_exists('float2')) {
     }
 }
 
+if (!function_exists('bdDate')) {
+    function bdDate($data)
+    {
+        return \Carbon\Carbon::parse($data)->format('d/m/Y');
+    }
+}
+
 
 if (!function_exists('farmOrCommunityData')) {
     function farmOrCommunityData($animalId)

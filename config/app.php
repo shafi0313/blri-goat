@@ -167,7 +167,7 @@ return [
          */
         Maatwebsite\Excel\ExcelServiceProvider::class,
         \Torann\GeoIP\GeoIPServiceProvider::class,
-        Barryvdh\Debugbar\ServiceProvider::class,
+        // Barryvdh\Debugbar\ServiceProvider::class,
 
         // Barryvdh\DomPDF\ServiceProvider::class,
         /*
@@ -192,7 +192,6 @@ return [
     */
 
     'aliases' => [
-
         'App' => Illuminate\Support\Facades\App::class,
         'Arr' => Illuminate\Support\Arr::class,
         'Artisan' => Illuminate\Support\Facades\Artisan::class,
