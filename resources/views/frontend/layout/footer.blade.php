@@ -7,7 +7,6 @@
                         <h3>Get In Touch</h3>
                         <div class="footer_contact">
                             <p> <strong>Address: </strong> BLRI, Savar, Dhaka-1341, Bangladesh</p>
-
                             <p> <strong>Phone: </strong> ০২-৯0000000</a></p>
                             <p> <strong>Email: </strong> support@gsms-blri.org</p>
                             <ul>
