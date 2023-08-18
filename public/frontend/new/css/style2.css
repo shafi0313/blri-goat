@@ -1,0 +1,83 @@
+.bistarito{
+
+    font-size: 16px;
+    font-weight: 700;
+    height: 38px;
+    line-height: 18px;
+    padding: 10px 20px;
+    color: #ff6a28;
+    text-transform: uppercase;
+}
+ 
+.bistarito:hover{
+    background: #242424;
+} 
+
+
+
+.body_widget3 h3.widget_title {
+    border-bottom: 1px solid #ddd;
+    color: #11336D;
+    font-size: 20px;
+    margin: 0 0 15px;
+    font-weight: 500;
+    line-height: 24px;
+    text-align: center;
+    /* background: #11336D; */
+    font-weight: 600;
+}
+.body_widget3.widget_categories {
+  border: 1px solid #ddd;
+  margin-bottom: 39px;
+  overflow: hidden;
+}
+
+.body_widget3 .full_body_tt {
+        padding: 20px 20px;
+}
+
+.body_widget3 .widget_body_left {
+    width: 30%;
+    float: left;
+}
+
+.body_widget3 .widget_body_left .widget_body_left_img{
+    width: 85%;
+    margin: auto;
+}
+
+.body_widget3 .widget_body_left .widget_body_left_img img{
+    width: 100%;
+    height: 100%;
+}
+
+.body_widget3 .widget_body_right {
+    width: 70%;
+    float: right;
+}
+
+
+.body_widget3.widget_categories h3.widget_title {
+  padding: 12px 15px;
+}
+.body_widget3.widget_categories ul {
+  padding: 0 0 19px 15px;
+}
+.body_widget3.widget_categories ul li {
+  line-height: 30px;
+}
+.body_widget3.widget_categories ul li a {
+    color: #000;
+    font-size: 16px;
+}
+.body_widget3.widget_categories ul li a:hover {
+  color: #ff6a28;
+}
+
+
+
+
+
+
+
+
