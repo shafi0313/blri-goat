@@ -28,13 +28,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h2>Welcome To SBPGC</h2>
-                    <p>Birshreshtha Noor Mohammad Public College at Peelkhana, Dhaka is one of the most reputed
-                        educational institutions in Dhaka Metropolitan Shaikh Burhanuddin Post Graduate College
-                        Established in 1965.
-
-                        The name of Shaikh Burhanuddin was taken from the name of Imaamut Tareeqat Allama Shaykh Sayyid
-                        Muhammad Burhanuddin Uwaysi (Rad.) to commemorate his holly name.</p>
+                    <h2>Welcome To BLRI</h2>
+                    <p>The institute was founded in 1984 in Savar Upazila, Dhaka division, Bangladesh. The executive head is
+                        the director general and a 14-member board of management. The chairman is the Minister for Fisheries
+                        and Livestock. In 2014, it developed a new species of layer chicken whose sex was discernable at
+                        day one of their life. It developed cattle feed from moringa tree and vegetable waste.</p>
                     <button class="btn btn-primary">More..</button>
                 </div>
             </div>
