@@ -33,7 +33,7 @@
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <table id="multi-filter-select" class="display table table-striped table-hover">
+                                    <table id="data_table" class="table table-striped table-hover">
                                         <thead class="bg-secondary thw">
                                             <tr class="text-center">
                                                 <th style="width: 35px">SL</th>
@@ -51,10 +51,10 @@
                                                 <th>Date of Birth</th>
                                                 <th>Season of Birth</th>
                                                 <th>Remark</th>
-                                                <th class="no-sort" style="text-align:center;width:40px">Action</th>
+                                                <th style="text-align:center;width:80px">Action</th>
                                             </tr>
                                         </thead>
-                                        <tfoot>
+                                        {{-- <tfoot>
                                             <tr>
                                                 <td></td>
                                                 <td></td>
@@ -72,9 +72,9 @@
                                                 <td></td>
                                                 <td></td>
                                             </tr>
-                                        </tfoot>
+                                        </tfoot> --}}
                                         <tbody>
-                                            @php $x=1; @endphp
+                                            {{-- @php $x=1; @endphp
                                             @foreach ($animalInfos as $animalInfo)
                                                 <tr class="text-center">
                                                     <td>{{ $x++ }} </td>
@@ -114,7 +114,7 @@
                                                         </div>
                                                     </td>
                                                 </tr>
-                                            @endforeach
+                                            @endforeach --}}
                                         </tbody>
                                     </table>
                                 </div>
@@ -127,89 +127,132 @@
         @include('admin.layout.footer')
     </div>
 
-
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Add License Farm</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <form action="{{ route('farm.store') }}" method="POST">
-                    @csrf
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label for="" class="col-sm-2 control-label">Farm Name <span
-                                    class="t_r">*</span></label>
-                            <div class="col-sm-12">
-                                <input type="text" class="form-control" name="name" placeholder="Enter Farm Name"
-                                    required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="" class="col-sm-2 control-label">Information </label>
-                            <div class="col-sm-12">
-                                <input type="text" class="form-control" name="info"
-                                    placeholder="Enter Farm Information">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="" class="col-sm-2 control-label">Address <span
-                                    class="t_r">*</span></label>
-                            <div class="col-sm-12">
-                                <input type="text" class="form-control" name="address"
-                                    placeholder="Enter Farm Information">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Save</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
     @push('custom_scripts')
         <script>
-            $(document).ready(function() {
-                $('#basic-datatables').DataTable({});
-                $('#multi-filter-select').DataTable({
-                    "lengthMenu": [
-                        [50, 100, -1],
-                        [50, 100, "All"]
+            $(function() {
+                $('#data_table').DataTable({
+                    processing: true,
+                    serverSide: true,
+                    deferRender: true,
+                    ordering: true,
+                    responsive: true,
+                    scrollY: 400,
+                    ajax: "{{ route('animal-info.index') }}",
+                    columns: [{
+                            data: 'DT_RowIndex',
+                            name: 'DT_RowIndex',
+                            className: "text-center",
+                            width: "50px",
+                            searchable: false,
+                            orderable: false,
+                        },
+                        {
+                            data: 'farm',
+                            name: 'farm'
+                        },
+                        {
+                            data: 'animal_tag',
+                            name: 'animal_tag'
+                        },
+                        {
+                            data: 'animalCatName',
+                            name: 'animalCatName'
+                        },
+                        {
+                            data: 'color',
+                            name: 'color'
+                        },
+                        {
+                            data: 'sex',
+                            name: 'sex'
+                        },
+                        {
+                            data: 'birth_wt',
+                            name: 'birth_wt'
+                        },
+                        {
+                            data: 'litter_size',
+                            name: 'litter_size'
+                        },
+                        {
+                            data: 'generation',
+                            name: 'generation'
+                        },
+                        {
+                            data: 'paity',
+                            name: 'paity'
+                        },
+                        {
+                            data: 'sire',
+                            name: 'sire'
+                        },
+                        {
+                            data: 'dam',
+                            name: 'dam'
+                        },
+                        {
+                            data: 'd_o_b',
+                            name: 'd_o_b'
+                        },
+                        {
+                            data: 'season_o_birth',
+                            name: 'season_o_birth'
+                        },
+                        {
+                            data: 'remark',
+                            name: 'remark'
+                        },
+                        {
+                            data: 'action',
+                            name: 'action',
+                            orderable: false,
+                            searchable: false
+                        },
                     ],
-                    "order": [],
-                    initComplete: function() {
-                        this.api().columns().every(function() {
-                            var column = this;
-                            var select = $(
-                                    '<select class="form-control form-control-sm"><option value=""></option></select>'
-                                )
-                                .appendTo($(column.footer()).empty())
-                                .on('change', function() {
-                                    var val = $.fn.dataTable.util.escapeRegex(
-                                        $(this).val()
-                                    );
-
-                                    column
-                                        .search(val ? '^' + val + '$' : '', true, false)
-                                        .draw();
-                                });
-
-                            column.data().unique().sort().each(function(d, j) {
-                                select.append('<option value="' + d + '">' + d +
-                                    '</option>')
-                            });
-                        });
-                    }
+                    // fixedColumns: false,
+                    scroller: {
+                        loadingIndicator: true
+                    },
+                    // order: [
+                    //     [1, 'asc']
+                    // ]
                 });
             });
+        </script>
+        <script>
+            // $(document).ready(function() {
+            //     $('#basic-datatables').DataTable({});
+            //     $('#multi-filter-select').DataTable({
+            //         "lengthMenu": [
+            //             [50, 100, -1],
+            //             [50, 100, "All"]
+            //         ],
+            //         "order": [],
+            //         initComplete: function() {
+            //             this.api().columns().every(function() {
+            //                 var column = this;
+            //                 var select = $(
+            //                         '<select class="form-control form-control-sm"><option value=""></option></select>'
+            //                     )
+            //                     .appendTo($(column.footer()).empty())
+            //                     .on('change', function() {
+            //                         var val = $.fn.dataTable.util.escapeRegex(
+            //                             $(this).val()
+            //                         );
+
+            //                         column
+            //                             .search(val ? '^' + val + '$' : '', true, false)
+            //                             .draw();
+            //                     });
+
+            //                 column.data().unique().sort().each(function(d, j) {
+            //                     select.append('<option value="' + d + '">' + d +
+            //                         '</option>')
+            //                 });
+            //             });
+            //         }
+            //     });
+            // });
         </script>
     @endpush
 

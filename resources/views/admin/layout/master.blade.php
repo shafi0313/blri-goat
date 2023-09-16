@@ -27,12 +27,10 @@
     <link rel="stylesheet" href="{{ asset('backend/css/style.css') }}">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" >
 
-	<!-- CSS Just for demo purpose, don't include it in your project -->
-    <link rel="stylesheet" href="{{ asset('backend/css/demo.css') }}">
-
     {{-- For Date Picker --}}
     <link rel="stylesheet" href="{{ asset('backend/datepicker/css/bootstrap-datepicker3.standalone.min.css') }}">
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+	<link rel="stylesheet" href="//cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
 
     <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
@@ -92,25 +90,25 @@
 <!-- Moment JS -->
 <script src="{{ asset('backend/js/plugin/moment/moment.min.js') }}"></script>
 
-<!-- Chart JS -->
-{{-- <script src="{{ asset('backend/js/plugin/chart.js/chart.min.js') }}"></script> --}}
-
 <!-- jQuery Sparkline -->
 <script src="{{ asset('backend/js/plugin/jquery.sparkline/jquery.sparkline.min.js') }}"></script>
 
-{{-- <!-- Chart Circle --> --}}
-<script src="{{ asset('backend/js/plugin/chart-circle/circles.min.js') }}"></script>
-
 <!-- Datatables -->
-<script src="{{ asset('backend/js/plugin/datatables/datatables.min.js') }}"></script>
-
+{{-- <script src="{{ asset('backend/js/plugin/datatables/datatables.min.js') }}"></script> --}}
 
 <!-- Azzara JS -->
 <script src="{{ asset('backend/js/ready.min.js') }}"></script>
 
-
 <script src="{{ asset('backend/datepicker/js/bootstrap-datepicker.min.js') }}"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script src="//cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
+{{-- Sweet alert --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"
+integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA=="
+crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="{{ asset('backend/js/plugins-init.js') }}"></script>
 @include('sweetalert::alert')
 
 @stack('custom_scripts')

@@ -158,3 +158,13 @@ select.form-control-sm:not([size]):not([multiple]), .input-group-sm>select.form-
     min-height: 200px !important;
     max-height: 400px !important;
 }
+
+/* ._btn {
+    border: none !important;
+    background: none;
+    font-size: 17px;
+    margin: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    line-height: 1px !important;
+} */

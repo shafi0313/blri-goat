@@ -15,6 +15,7 @@ use App\Exports\AnimalInfoExport;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Yajra\DataTables\Facades\DataTables;
 
 class AnimalInfoController extends Controller
 {
@@ -44,14 +45,40 @@ class AnimalInfoController extends Controller
         return Excel::download(new AnimalInfoExport($farm, $farmOrComId, $community_id), 'animal_information.xlsx');
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        if (Auth::user()->is == 1) {
-            $animalInfos = AnimalInfo::with(['animalCat', 'farm', 'communityCat'])->latest()->get();
-        } else {
-            $animalInfos = AnimalInfo::with('animalCat')->whereUser_id(Auth::user()->id)->latest()->get();
+        if ($request->ajax()) {
+            if (Auth::user()->is == 1) {
+                $animalInfos = AnimalInfo::with(['animalCat', 'farm', 'communityCat'])->latest();
+            } else {
+                $animalInfos = AnimalInfo::with(['animalCat', 'communityCat'])->whereUser_id(Auth::user()->id)->latest();
+            }
+            return DataTables::of($animalInfos)
+                ->addIndexColumn()
+                ->addColumn('farm', function ($row) {
+                    return $row->farm != null ? $row->farm->name : ($row->community_cat_id != null ? $row->communityCat->name : '');
+                })
+                ->addColumn('animalCatName', function ($row) {
+                    return $row->animalCat->name;
+                })
+                ->addColumn('d_o_b', function ($row) {
+                    return bdDate($row->d_o_b);
+                })
+                ->addColumn('created_at', function ($row) {
+                    return $row->created_at->diffForHumans();
+                })
+                ->addColumn('action', function ($row) {
+                    $btn = '';
+                    $btn .= view('button', ['type' => 'edit', 'route' => 'animal-info', 'row' => $row]);
+                    $btn .= view('button', ['type' => 'ajax-delete', 'route' => route('animal-info.destroy', $row->id), 'row' => $row, 'src' => 'dt']);
+                    return $btn;
+                })
+                ->rawColumns(['created_at', 'action'])
+                ->make(true);
         }
-        return view('admin.animal_info.index', compact('animalInfos'));
+
+        // return view('admin.animal_info.index', compact('animalInfos'));
+        return view('admin.animal_info.index');
     }
 
     public function create()
@@ -363,5 +390,15 @@ class AnimalInfoController extends Controller
             $buck_tag       = $serviceInfo->buckTag->animal_tag;
         }
         return json_encode(['expected_d_o_b' => $expected_d_o_b, 'generation' => $generation, 'buck_tag' => $buck_tag]);
+    }
+
+    public function destroy($id)
+    {
+        try {
+            AnimalInfo::find($id)->delete();
+            return response()->json(['message' => 'The information has been deleted'], 200);
+        } catch (\Exception $e) {
+            return response()->json(['message' => 'Oops something went wrong, Please try again'], 500);
+        }
     }
 }
